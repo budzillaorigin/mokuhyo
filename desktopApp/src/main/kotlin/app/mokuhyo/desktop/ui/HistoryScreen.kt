@@ -63,7 +63,7 @@ fun HistoryList(app: AppGraph) {
         } + conversations.map { c ->
             val stored = app.conversations.stored(c)
             Row(c.id, c.startedAt, when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario: ${c.topic}"; "INTERPRET" -> "Interpretation: ${c.topic}"; "STORYLINE" -> "Exercise week: ${c.topic}"; else -> "Conversation: ${c.topic}" },
-                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (app.conversations.speakingLabel(c, speakingRows)?.let { " · ${it.text}" } ?: ""),
+                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (if (stored.draft != null) " · interrupted; resume in Speaking" else "") + (app.conversations.speakingLabel(c, speakingRows)?.let { " · ${it.text}" } ?: ""),
                 stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC" || c.kind == "SCENARIO" || c.kind == "INTERPRET" || c.kind == "STORYLINE") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false)
         }.sortedByDescending { it.at }
     }

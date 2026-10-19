@@ -439,6 +439,7 @@ data class PragmaticFlag(val kind: String, val severity: String = "medium", val 
 }
 
 /** Who the partner is (BRIEF_PHASE8 §B.4.2), for the prompt. */
+@Serializable
 data class PersonaContext(
     val name: String,
     val rankTitle: String,
@@ -523,6 +524,7 @@ class OpiCulturalReview : PromptTask<OpiCulturalReview.Input, OpiCulturalReview.
 }
 
 /** A scenario for a role-play conversation (English, for the prompt). */
+@Serializable
 data class RolePlayContext(val situation: String, val partnerRole: String, val learnerRole: String)
 
 /** `generate_topics` (BRIEF §5.4 Speaking "generate more"): new conversation topics for a domain, in the language. */

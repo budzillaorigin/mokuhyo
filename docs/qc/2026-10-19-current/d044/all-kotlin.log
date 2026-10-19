@@ -1,0 +1,55 @@
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+Reusing configuration cache.
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:jvmTestProcessResources UP-TO-DATE
+> Task :shared:processJvmTestResources SKIPPED
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:generateCommonMainDictionaryDatabaseInterface UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:convertXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForTest NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :desktopApp:generateResourceAccessorsForTest SKIPPED
+> Task :desktopApp:assembleTestResources UP-TO-DATE
+> Task :desktopApp:processTestResources UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+> Task :shared:compileTestKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmTestJava NO-SOURCE
+> Task :shared:jvmTestClasses UP-TO-DATE
+> Task :shared:jvmTest UP-TO-DATE
+> Task :shared:allTests UP-TO-DATE
+
+> Task :desktopApp:compileKotlin
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/speaking/SpeakingScreen.kt:159:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar
+> Task :desktopApp:compileTestKotlin
+> Task :desktopApp:compileTestJava NO-SOURCE
+> Task :desktopApp:testClasses UP-TO-DATE
+
+> Task :desktopApp:test
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 34s
+19 actionable tasks: 5 executed, 14 up-to-date
+Configuration cache entry reused.

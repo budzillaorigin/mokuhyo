@@ -1,0 +1,58 @@
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+Calculating task graph as no cached configuration is available for tasks: :desktopApp:test --tests *InterviewCancelTest --tests *InterviewCaptureTest
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:generateCommonMainDictionaryDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:convertXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :desktopApp:copyNonXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForTest NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForTest SKIPPED
+> Task :desktopApp:assembleTestResources UP-TO-DATE
+> Task :desktopApp:processTestResources UP-TO-DATE
+
+> Task :shared:compileKotlinJvm
+w: file:///workspace/mokuhyo/shared/src/jvmMain/kotlin/app/mokuhyo/lang/IcuText.kt:17:36 No cast needed.
+w: file:///workspace/mokuhyo/shared/src/jvmMain/kotlin/app/mokuhyo/report/ProgressReport.kt:302:38 Redundant call of conversion method.
+
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses
+> Task :shared:jvmJar
+
+> Task :desktopApp:compileKotlin
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/speaking/SpeakingScreen.kt:134:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar
+> Task :desktopApp:compileTestKotlin
+> Task :desktopApp:compileTestJava NO-SOURCE
+> Task :desktopApp:testClasses UP-TO-DATE
+
+> Task :desktopApp:test
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 31s
+15 actionable tasks: 7 executed, 8 up-to-date
+Configuration cache entry stored.

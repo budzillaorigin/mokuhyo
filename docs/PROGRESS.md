@@ -899,3 +899,37 @@ downloads are denied by this container's network policy (HTTP 403).
 - Windows and macOS windows at 150 % (rail, Review keyboard focus);
 - the D-042 open list: streaming interviewer replies, the Kokoro / VOICEVOX pilot, 24 kHz re-renders of shipped clips,
   laptop benchmarks, instructor calibration, and the missing dev assets for `gate_terms.sh` and the Japanese DBs.
+## 2026-10-19 — D-044 interview readiness checkpoint
+
+Pulled main `9a1c761` and worked on `codex/interview-readiness-d044`. C1–C4 were committed in the requested order:
+`1136aab` capture lifecycle, `12516ce` generation cancellation recovery, `62569a8` durable turn checkpoints/recovery,
+`a8c0e7d` speech before critique and foreground inference priority. Followed with `9b01bd7` VAD startup,
+`7d0f0a0` device/audio work off the UI thread and `e9ffcad` isolated test packs. Final review added `11ab177` to
+retain audio through a write failure and `f87d031` to keep capture ownership outside conditional controls with a
+Topic audio-output regression. Each behavioral regression fails on the pulled main; the unchanged-main replay
+reports 14 runtime assertion/control-state failures across 16 selected cases, with two passing controls.
+
+**Validation on this Linux headless workspace:**
+- `./gradlew :shared:allTests :desktopApp:test --console=plain`: **384 shared + 42 desktop**, zero failures/errors.
+  Built the pinned Japanese tokenizer development pack first. Dictionaries and real model/voice assets remain
+  absent: 27 conditional stdout `SKIP` messages, despite zero runner-level skips.
+- `PassageAudioLoadTest`: all seven pass both with staged resources and with an empty bundled resource root.
+  The prior three failures were sandbox fixture-selection issues, not failures in the owner's green three-OS CI.
+- Python: Ruff, **12/12** test scripts, license/model-doc/provenance gates pass. Terms seeds/alignment/offline feeds
+  pass; reference-PDF overlap is skipped with `MOKUHYO_NO_SOURCES=1` because source PDFs are unavailable.
+- CPU native build and `:desktopApp:createDistributable` pass. Both development and packaged launcher smoke pass
+  offline with native CPU, DB, all 11 languages and a rendered 1180×800 frame.
+- Full `gate_build` is blocked here at the existing Piper-voice download (proxy 403). Debian installer generation
+  is blocked by absent `fakeroot`. These are recorded separately from the passing distributable/smoke checks.
+
+**Delivery:** the PR targets main and must remain unmerged for the owner. Commit `37316dd` adds a workflow restricted
+to the merge of this same-repository branch; after merge it runs `gh workflow run ci.yml --ref main`, requesting the
+three-OS matrix with `workflow_dispatch`. No merge, public release or pre-merge dispatch was performed.
+
+**Still open:** 30-minute physical interviews, actual ASR/TTS/LLM p50/p95 and memory measurements, microphone/speaker
+unplug recovery, Windows/macOS hardware validation, and an honest measured support matrix. The separate naturalness
+phase (model selection by timing, compact local voices, prerecorded fallback questions, streaming and passage
+rerenders) was not started. No model/voice/provenance policy changed.
+
+See [D-044](DECISIONS.md) and [validation evidence](qc/2026-10-19-current/D044_VALIDATION.md) for the decisions,
+reproduction script, logs and stage-timing limitations.

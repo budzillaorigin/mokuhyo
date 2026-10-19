@@ -69,6 +69,34 @@ class BundleRoundTripTest {
 
     private val packs = Bundle.PacksList(listOf("es"), listOf("es_ES-davefx-medium"), listOf("eurollm-9b-instruct-q4km"))
 
+    @Test fun recoverySnapshotsMergeAfterAnEarlierBundleWithoutLosingTurns() {
+        val a = Machine("draft-A")
+        val b = Machine("draft-B")
+        try {
+            val id = a.conversations.newId()
+            val first = StoredConversation(listOf(Turn(Speaker.PARTNER, "¿Hola?")),
+                draft = app.mokuhyo.history.ConversationDraft(id, 1))
+            a.conversations.checkpoint(id, a.learner, "es", "OPI", null, 0, first, app.mokuhyo.opi.CorrectionsMode.OFF)
+            val bundle = File(a.dir, "draft.mokuhyo")
+            a.backup.export(bundle, listOf("es"), packs)
+            b.backup.importBundle(bundle)
+            val second = first.copy(transcript = first.transcript + Turn(Speaker.LEARNER, "Hola."), draft = first.draft!!.copy(savedAt = 2))
+            a.conversations.checkpoint(id, a.learner, "es", "OPI", null, 0, second, app.mokuhyo.opi.CorrectionsMode.OFF)
+            a.backup.export(bundle, listOf("es"), packs)
+            b.backup.importBundle(bundle)
+            assertEquals(2L, b.count("conversation"), "both immutable snapshots survive")
+            assertEquals(second.transcript, b.conversations.stored(b.conversations.list(b.learner, "es").single()).transcript)
+            a.conversations.save(id, a.learner, "es", "OPI", null, 0, second.copy(draft = null), null, emptyList(), null)
+            a.backup.export(bundle, listOf("es"), packs)
+            b.backup.importBundle(bundle)
+            assertEquals(id, b.conversations.list(b.learner, "es").single().id)
+            assertEquals(3L, b.count("conversation"), "completion does not rewrite a snapshot")
+            assertEquals(0L, b.backup.importBundle(bundle).total)
+        } finally {
+            a.driver.close(); b.driver.close(); a.dir.deleteRecursively(); b.dir.deleteRecursively()
+        }
+    }
+
     @Test
     fun plainRoundTripIsLosslessAndIdempotent() = roundTrip(null)
 

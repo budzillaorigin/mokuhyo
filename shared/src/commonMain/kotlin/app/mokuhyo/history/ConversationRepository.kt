@@ -37,6 +37,15 @@ data class StoredConversation(
     val calibrated: Boolean? = null,
     val trend: app.mokuhyo.opi.SpeakingTrend.Status? = null,
     val trendReason: String? = null,
+    /** Immutable recovery snapshots use ordinary conversation rows, so old bundle readers still keep them. */
+    val draft: ConversationDraft? = null,
+)
+
+@Serializable
+data class ConversationDraft(
+    val sessionId: String, val savedAt: Long,
+    val opi: app.mokuhyo.opi.OpiCheckpoint? = null,
+    val topic: app.mokuhyo.opi.TopicCheckpoint? = null,
 )
 
 /**
@@ -57,7 +66,7 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
         db.historyQueries.upsertConversation(
             Conversation(
                 id = id, learnerId = learnerId, lang = lang, kind = kind, topic = topic, startedAt = startedAt,
-                endedAt = clock.now().toEpochMilliseconds(),
+                endedAt = if (stored.draft != null) null else clock.now().toEpochMilliseconds(),
                 turnsJson = json.encodeToString(StoredConversation.serializer(), stored),
                 ratingJson = rating?.let { json.encodeToString(OpiRating.serializer(), it) },
                 rollingLevelJson = json.encodeToString(ListSerializer(String.serializer()), rollingLevels),
@@ -65,6 +74,13 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
                 aabJson = aab?.let { json.encodeToString(app.mokuhyo.opi.AfterActionBrief.serializer(), it) },
             ),
         )
+    }
+
+    /** Append a snapshot before calling slow/external work. Never rewrite a prior snapshot or completed result. */
+    fun checkpoint(id: String, learnerId: String, lang: String, kind: String, topic: String?, startedAt: Long,
+        stored: StoredConversation, mode: app.mokuhyo.opi.CorrectionsMode) {
+        require(stored.draft?.sessionId == id)
+        save("$id:checkpoint:${newId()}", learnerId, lang, kind, topic, startedAt, stored, null, emptyList(), "recordings/$id", mode)
     }
 
     /** Records one learner turn's feedback (BRIEF_PHASE8 C-11); the same record in Live and After-action mode. */
@@ -87,7 +103,14 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
         db.historyQueries.insertRecording(Recording(Uuid.random().toString(), conversationId, null, turnIndex.toLong(), path, durationMs, sha256, clock.now().toEpochMilliseconds(), null))
     }
 
-    fun list(learnerId: String, lang: String): List<Conversation> = db.historyQueries.conversations(learnerId, lang).executeAsList()
+    fun list(learnerId: String, lang: String): List<Conversation> {
+        val all = db.historyQueries.conversations(learnerId, lang).executeAsList()
+        val completed = all.filter { stored(it).draft == null }.associateBy { it.id }
+        val drafts = all.filter { stored(it).draft != null }.groupBy { stored(it).draft!!.sessionId }
+            .filterKeys { it !in completed && get(it)?.deleted == null }
+            .values.map { snapshots -> snapshots.maxWith(compareBy<Conversation> { stored(it).draft!!.savedAt }.thenBy { it.id }) }
+        return (completed.values + drafts).sortedByDescending { it.startedAt }
+    }
 
     fun get(id: String): Conversation? = db.historyQueries.conversation(id).executeAsOneOrNull()
 
@@ -108,7 +131,16 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
         return app.mokuhyo.opi.SpeakingTrend.label(c.kind, estimate, r.engine != null, r.selfRated, s.trend, s.trendReason, speakingRows[c.id])
     }
 
-    fun recordings(conversationId: String): List<Recording> = db.historyQueries.recordingsFor(conversationId).executeAsList()
+    fun recordings(conversationId: String): List<Recording> = db.historyQueries.recordingsFor(
+        get(conversationId)?.let { stored(it).draft?.sessionId } ?: conversationId).executeAsList()
 
-    fun tombstone(id: String) = db.historyQueries.tombstoneConversation(clock.now().toEpochMilliseconds(), id)
+    fun tombstone(id: String) {
+        val root = get(id)?.let { stored(it).draft?.sessionId } ?: id
+        val row = get(id) ?: return
+        db.transaction {
+            db.historyQueries.conversations(row.learnerId, row.lang).executeAsList().filter {
+                it.id == root || stored(it).draft?.sessionId == root
+            }.forEach { db.historyQueries.tombstoneConversation(clock.now().toEpochMilliseconds(), it.id) }
+        }
+    }
 }

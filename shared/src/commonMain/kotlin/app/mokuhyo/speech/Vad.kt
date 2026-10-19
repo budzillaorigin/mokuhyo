@@ -31,7 +31,10 @@ class Vad(
     fun feed(rms: Double): Event? {
         if (done) return null
         frames++
-        if (floor.isNaN()) floor = rms
+        // Record means "speak now": frame one may already contain a voice. Only a quiet initial frame is a
+        // noise-floor observation. RMS alone cannot distinguish a steady loud fan from a steady vowel; preserve
+        // either for transcription/manual Stop instead of declaring a live microphone silent and losing speech.
+        if (floor.isNaN()) floor = minOf(rms, minLevel / 3)
         val threshold = max(floor * 3, minLevel)
         val loud = rms >= threshold
         // Noise floor from quiet frames only: fast down, slow up; speech never drags it upward.

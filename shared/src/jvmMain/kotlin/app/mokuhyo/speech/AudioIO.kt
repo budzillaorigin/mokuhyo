@@ -60,7 +60,15 @@ object AudioIO {
             while (running.get()) {
                 val n = line.read(buf, 0, buf.size)
                 if (n > 0) {
-                    synchronized(out) { out.write(buf, 0, n) }
+                    val atLimit = synchronized(out) {
+                        out.write(buf, 0, n)
+                        out.size() >= format.sampleRate * format.frameSize * 120
+                    }
+                    if (atLimit) {
+                        running.set(false)
+                        onEvent(Vad.Event.AUTO_STOP)
+                        break
+                    }
                     val level = rms(buf, n)
                     onLevel(level)
                     vad?.feed(level)?.let(onEvent)
@@ -91,12 +99,14 @@ object AudioIO {
             val info = DataLine.Info(TargetDataLine::class.java, format)
             val supported = mixer?.isLineSupported(info) ?: AudioSystem.isLineSupported(info)
             if (!supported) continue
+            var line: TargetDataLine? = null
             try {
-                val line = (mixer?.getLine(info) ?: AudioSystem.getLine(info)) as TargetDataLine
+                line = (mixer?.getLine(info) ?: AudioSystem.getLine(info)) as TargetDataLine
                 line.open(format)
                 line.start()
                 return Recording(line, format, onLevel, vad, onEvent)
             } catch (e: Exception) {
+                runCatching { line?.close() }
                 last = e
             }
         }

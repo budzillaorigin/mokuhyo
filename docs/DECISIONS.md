@@ -520,3 +520,51 @@ consistent with rules 5, 7, 8 and 11.
     calibration.
   - **Missing dev assets:** the Japanese dictionary and tokenizer DBs, and the reference PDFs for `gate_terms.sh`.
   - **Real-window checks:** keyboard testing on Review and the rail; Windows/macOS windows at 150 %.
+## D-044 — recoverable spoken interviews and foreground speech priority (owner handoff, 2026-10-19)
+
+Implemented on `codex/interview-readiness-d044`, based on pulled main `9a1c761`. The owner requested C1–C4 in
+order, one fix per commit with regressions failing on main, plus fixture isolation. The brief also requires C5/C6.
+The earlier D-042/D-043 delivery, playback and assessment-label work remains in place.
+
+- **Capture ownership:** Interview and Topic keep `VoiceCapture` composed outside the generation-busy UI.
+  Visibility does not cancel transcription. Capture has its own operation state, explicit ASR Cancel/retry,
+  retained pending PCM/text, cancellation propagation and `finally` cleanup. Confirmation and stale callbacks
+  are covered by tests using a synthetic JavaSound input and delayed recognizer.
+- **Cancellation:** Retry/End remain available when generation stops before the first question or after an
+  answer. OPI turn-record indices are stable within the session. An unanswered committed question is re-delivered
+  without advancing phases; a repeated answer submission cannot append a duplicate. Feedback scheduling resets
+  in `finally`, and Cancel joins the stopped job before recovery proceeds.
+- **Durability:** accepted turns and permitted recordings are checkpointed before inference; transcript snapshots
+  are saved before feedback drain/rating/AAB. Checkpoints are immutable ordinary conversation rows with optional
+  JSON recovery metadata and nullable `endedAt`, requiring no schema or bundle-format change. History shows the
+  latest interrupted snapshot; Speaking offers recovery. Completion writes the canonical session row while earlier
+  checkpoints remain stored and exportable. Existing append-only bundle import keeps successive snapshots.
+  Failed Topic replies retain the unanswered learner turn. Audio-write errors retain PCM in the active screen
+  for Retry, and navigation during persistence cannot skip the permitted audio write. Re-recordings use distinct
+  files rather than overwriting an earlier recording.
+- **Speech before feedback:** Topic `say` commits/returns the partner reply; a separate feedback pass updates the
+  exchange. After-action and CPU-only sessions defer critique until the end; CPU Live explains this in the UI.
+  The gateway serializes issued inference, cancels only its active background task, and waits for cancellation
+  cleanup before issuing foreground work. This ordering matters because the native Llama cancel covers already
+  issued work. Interview feedback queue capacity is 32; end-of-session feedback waits at most 30 seconds. Missing
+  feedback is not fabricated, and accepted transcripts remain recoverable independently of grading.
+- **Capture responsiveness:** device open/Stop/close, conversion, recording writes/hashes and fluency analysis
+  run off the UI thread. Cancellation during device acquisition still closes the returned handle. Each recording
+  is capped at two minutes. The first loud frame is no longer assumed to be background silence. RMS-only VAD
+  deliberately retains ambiguous loud noise/voice for ASR/manual Stop; real noisy-room tuning remains unverified.
+- **Fixture isolation:** tests explicitly choose their temporary packs root and assert the resolved file. Normal
+  bundled → data-dir → checkout precedence is unchanged. The three reviewed failures were sandbox-specific;
+  the owner's green three-OS CI at `033f0ef`, including build/smoke, is not contradicted.
+- **Scope/provenance:** no new model, voice engine, voice weights or provenance exception. Timing-based model
+  selection, compact voices, prerecorded fallback questions, streaming and passage rerendering are a later phase.
+  Rule 13 continues to apply, with only the existing D-041 Chatterbox exception.
+- **Delivery:** open a PR against main and leave it unmerged. A separate workflow, restricted to a merged PR from
+  this branch in this repository, dispatches `ci.yml` on main after the owner merges. It checks out no PR code and
+  uses only `contents: read` and `actions: write`. No public release is part of this change.
+
+Validation: **384 shared + 42 desktop tests, zero failures/errors**, 14 failing regression assertions against
+unchanged main, Python 12/12, license/provenance checks, native CPU build, distributable and packaged offline smoke.
+27 conditional stdout skips identify absent real models/voices/dictionaries; JUnit's zero skip count is not a full
+integration pass. Full local staging hits a proxy 403 fetching an existing Piper voice; Debian packaging lacks
+`fakeroot`. Windows/macOS CI and 30-minute physical-device latency/quality evidence remain outstanding.
+See [D-044 evidence](qc/2026-10-19-current/D044_VALIDATION.md) for commands, commits and limits.

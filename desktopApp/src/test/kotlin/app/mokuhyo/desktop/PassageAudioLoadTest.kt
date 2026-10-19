@@ -61,7 +61,10 @@ class PassageAudioLoadTest {
         val dir = Files.createTempDirectory("mokuhyo-f1").toFile()
         File(dir, "packs/es/audio").mkdirs()
         File(dir, "packs/es/audio/$name").writeBytes(bytes)
-        return AppGraph(AppDirs.ensure(dir))
+        return AppGraph(AppDirs.ensure(dir), packsRoot = File(dir, "packs")).also {
+            assertEquals(File(dir, "packs/es/audio/$name").canonicalFile, it.packFile("es", "audio/$name")?.canonicalFile,
+                "the damaged-clip fixture must win even when the build has staged bundled packs")
+        }
     }
 
     private class FakeSpeech(val voices: List<VoiceSpec>, val speak: suspend (VoiceSpec) -> SpokenAudio?) : SpeechOutput {

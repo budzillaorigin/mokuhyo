@@ -58,6 +58,13 @@ data class OpiTurnRecord(
     val rated: Boolean get() = outcome != OpiTurnOutcome.NOT_RATED
 }
 
+@Serializable
+data class OpiCheckpoint(
+    val startedAt: Long, val transcript: List<Turn>, val turns: List<OpiTurnRecord>, val phase: OpiPhase,
+    val workingLevel: IlrLevel, val turnsInPhase: Int, val questionPhase: OpiPhase, val rolePlay: RolePlay?,
+    val finished: Boolean, val scriptedTurns: Int, val test: Boolean,
+)
+
 /**
  * Practice OPI (BRIEF §6.2): warm-up → level checks → probes → role-play → wind-down, adapting the working level up
  * on sustained answers and down on breakdown. With a model, `opi_interviewer_turn` writes each question in the
@@ -80,8 +87,9 @@ class OpiSession(
     private val random: Random = Random.Default,
     /** The pragmatics pack's norms the interviewer follows (BRIEF_PHASE8 C-07). */
     private val culturalNotes: List<String> = emptyList(),
+    restored: OpiCheckpoint? = null,
 ) {
-    val startedAt: Instant = clock.now()
+    val startedAt: Instant = restored?.let { Instant.fromEpochMilliseconds(it.startedAt) } ?: clock.now()
     private val history = mutableListOf<Turn>()
     private val asked = mutableSetOf<String>()
 
@@ -102,11 +110,28 @@ class OpiSession(
     var finished: Boolean = false
         private set
 
+    init {
+        restored?.let { s ->
+            history.addAll(s.transcript); records.addAll(s.turns)
+            asked.addAll(s.turns.map { it.question }); usedDomains.addAll(s.turns.mapNotNull { it.domain })
+            phase = s.phase; workingLevel = s.workingLevel; turnsInPhase = s.turnsInPhase
+            questionPhase = s.questionPhase; rolePlay = s.rolePlay; finished = s.finished; scriptedTurns = s.scriptedTurns
+        }
+    }
+
+    fun checkpoint() = OpiCheckpoint(startedAt.toEpochMilliseconds(), transcript, turns, phase, workingLevel,
+        turnsInPhase, questionPhase, rolePlay, finished, scriptedTurns, test)
+
     val transcript: List<Turn> get() = history.toList()
     val turns: List<OpiTurnRecord> get() = records.toList()
 
     /** The interviewer's next line, or null once the interview is over. */
     suspend fun next(): InterviewerLine? {
+        // A cancelled dispatcher handoff may have committed the question without displaying it. Re-deliver that
+        // stable record (index = turn ID) until it is answered; retry must not advance the phase a second time.
+        records.lastOrNull()?.takeIf { it.answer == null }?.let {
+            return InterviewerLine(it.question, it.english, it.phase, it.engine, it.domain)
+        }
         if (finished) return null
         if (phase == OpiPhase.ROLEPLAY && rolePlay == null) rolePlay = pickRolePlay()
         // Slot filling (BRIEF_PHASE8 N-00b): the session picks phase, target level, topic area and question type; the model
@@ -150,6 +175,7 @@ class OpiSession(
 
     /** Records the candidate's answer (STT transcript or typed) and adapts the working level. */
     fun answer(text: String) {
+        if (records.lastOrNull()?.answer != null || history.lastOrNull()?.speaker != Speaker.PARTNER) return
         val answer = text.trim()
         history += Turn(Speaker.LEARNER, answer)
         val words = wordCount(answer)
