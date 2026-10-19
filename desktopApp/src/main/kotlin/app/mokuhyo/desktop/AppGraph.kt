@@ -30,7 +30,7 @@ import kotlin.time.Clock
 import kotlin.uuid.Uuid
 
 /** Everything the UI needs, created once at startup. Heavy pieces (native runtime, hardware probe) load lazily off the UI thread. */
-class AppGraph(val dataDir: File = AppDirs.ensure()) {
+class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     val dbFile = File(dataDir, "db/mokuhyo.sqlite")
     private val opened = DatabaseFactory.open(dbFile)
@@ -58,7 +58,7 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
     val firstRunDone: Boolean get() = settings.bool(Settings.Key.FIRST_RUN_DONE)
 
     /** Content packs: bundled in the installer, else installed into the data dir, else the dev checkout's content/packs. */
-    val packsDir: File? = listOfNotNull(
+    val packsDir: File? = packsRoot ?: listOfNotNull(
         Resources.dir?.let { File(it, "packs") },
         File(dataDir, "packs"),
         Resources.repoDir?.let { File(it, "content/packs") },
