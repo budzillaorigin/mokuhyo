@@ -74,6 +74,7 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 SystemVoices(app)
                 AudioCheck(app)
+                DiagnosticsSection(app)
             }
             SettingsTab.CONTENT -> {
                 ImportLexicon(app)

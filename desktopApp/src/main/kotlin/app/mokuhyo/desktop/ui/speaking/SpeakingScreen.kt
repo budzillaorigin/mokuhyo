@@ -85,6 +85,10 @@ import app.mokuhyo.opi.Storyline
 import app.mokuhyo.opi.StorylineRunner
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.FallbackKind
+import app.mokuhyo.speech.TimelineTrace
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.traceMark
 import app.mokuhyo.speech.FluencyAnalyzer
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.CancellationException
@@ -363,6 +367,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var pendingFeedback by remember { mutableStateOf<Pair<Int, TurnFeedback.Input>?>(null) }
     var operationFailed by remember { mutableStateOf(false) }
     val questionTextAllowed = !test || delivery.textFallback
+    // Stage timings for Settings → Speech & audio → Diagnostics (BRIEF_INTERVIEW_SPEED N1): no text, no audio.
+    val timeline = remember { app.timings.start(conversationId, if (test) "OPI_TEST" else "OPI", module.code, app.timelineSetup(module.code)) }
 
     suspend fun checkpoint() {
         val snapshot = StoredConversation(session.transcript, opiTurns = session.turns, english = lines.map { it.second },
@@ -426,7 +432,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         busy = true
         operationFailed = false
         status = "Saving your answer…"
-        job = scope.launch(start = CoroutineStart.UNDISPATCHED) {
+        if (timeline.current < 0) timeline.beginTurn(cold = true)
+        job = scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
             try {
                 queue?.foregroundBusy(true)
                 // A navigation/cancel arriving during the checkpoint must not skip the permitted audio write.
@@ -441,6 +448,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     }
                 }
                 pendingAudio = null
+                traceMark(TurnStage.CHECKPOINT_SAVED)
                 report?.let { fluency += it }
                 pendingFeedback?.let { (turn, input) -> queue?.enqueue(turn, input) }
                 pendingFeedback = null
@@ -453,10 +461,14 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 if (lines.size < session.transcript.size) lines += Turn(Speaker.PARTNER, line.text) to line.english
                 delivery.newQuestion(lines.lastIndex)
                 checkpoint()
+                if (line.engine == null) timeline.note { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
                 asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
                 status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
                 askAloud(line.text)
                 status = readyStatus()
+                // This partner line is done; the learner's answer to it starts the next turn.
+                withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
+                timeline.beginTurn()
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -510,6 +522,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
                 prompt = lines.lastOrNull()?.first?.text.orEmpty(),
                 visible = !busy && !operationFailed && lines.lastOrNull()?.first?.speaker == Speaker.PARTNER && delivery.canAnswer,
+                timeline = timeline,
             ) { t, pcm -> submitAnswer(t, pcm) }
             if (!started) {
                 Button(onClick = { started = true; nextQuestion() }) { Text("Start") }
@@ -561,8 +574,10 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             }
             if (busy && job != null && !finished) TextButton(onClick = {
                 val previous = job
+                timeline.mark(TurnStage.CANCEL_REQUESTED)
                 job = scope.launch {
                     previous?.cancelAndJoin()
+                    timeline.mark(TurnStage.CANCEL_EFFECTIVE)
                     delivery.stop()
                     busy = false
                     status = "Stopped."
@@ -825,6 +840,7 @@ private fun TopicConversation(
     var feedbackJob by remember { mutableStateOf<Job?>(null) }
     val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
     val added = remember { mutableStateListOf<String>() }
+    val timeline = remember { app.timings.start(conversationId, kind, module.code, app.timelineSetup(module.code)).also { it.beginTurn(cold = true) } }
 
     suspend fun checkpoint() {
         val snapshot = StoredConversation(session.transcript, exchanges = session.exchanges.toList(),
@@ -847,13 +863,14 @@ private fun TopicConversation(
         if (pcm != null) pendingAudio = session.transcript.lastIndex to pcm
         busy = true
         status = "Your partner is replying…"
-        scope.launch(start = CoroutineStart.UNDISPATCHED) {
+        scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
             try {
                 withContext(NonCancellable + Dispatchers.IO) {
                     checkpoint()
                     pendingAudio?.let { (turn, samples) -> saveRecording(app, conversationId, turn, samples) }
                 }
                 pendingAudio = null
+                traceMark(TurnStage.CHECKPOINT_SAVED)
                 feedbackJob?.cancelAndJoin()
                 val ex = withContext(Dispatchers.Default) { session.say(text) }
                 if (ex == null) {
@@ -863,6 +880,8 @@ private fun TopicConversation(
                     checkpoint()
                     exchanges += ex
                     status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                    withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
+                    timeline.beginTurn()
                     if (pcm != null) fluency += withContext(Dispatchers.Default) {
                         val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                         FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
@@ -1001,7 +1020,7 @@ private fun TopicConversation(
         if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
             enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
             visible = !busy && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER,
-            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
+            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" "), timeline = timeline) { t, pcm -> send(t, pcm) }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty() && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER, onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }

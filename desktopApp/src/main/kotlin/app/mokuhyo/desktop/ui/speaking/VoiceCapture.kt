@@ -26,7 +26,11 @@ import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.platform.Os
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.TimelineTrace
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.TurnTimeline
 import app.mokuhyo.speech.Vad
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
@@ -52,6 +56,8 @@ fun VoiceCapture(
     /** Words the learner is likely to say (the question, the topic, key terms): Whisper's initial prompt (N-00b). */
     prompt: String = "",
     visible: Boolean = true,
+    /** The session's timeline (BRIEF_INTERVIEW_SPEED N1): capture, endpoint and ASR stages go to its current turn. */
+    timeline: TurnTimeline? = null,
     onSend: (String, ShortArray) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -62,6 +68,7 @@ fun VoiceCapture(
     var transcription by remember { mutableStateOf<Job?>(null) }
     var audio by remember { mutableStateOf<ShortArray?>(null) }
     var captureWork by remember { mutableStateOf<Job?>(null) }
+    var vad by remember { mutableStateOf<Vad?>(null) }
     DisposableEffect(Unit) {
         onDispose {
             captureWork?.cancel()
@@ -77,7 +84,9 @@ fun VoiceCapture(
         audio = pcm
         onBusy(true)
         onStatus("Transcribing…")
-        transcription = scope.launch {
+        timeline?.note { answerMs = pcm.size / 16L }
+        timeline?.mark(TurnStage.ASR_QUEUED)
+        transcription = scope.launch(timeline?.let { TimelineTrace(it) } ?: EmptyCoroutineContext) {
             try {
                 val text = withContext(Dispatchers.IO) { app.recognizer()?.transcribe(pcm, module.sttLanguage, prompt)?.text.orEmpty().trim() }
                 when {
@@ -86,6 +95,7 @@ fun VoiceCapture(
                     else -> { audio = null; onStatus(""); onSend(text, pcm) }
                 }
             } catch (e: CancellationException) {
+                timeline?.mark(TurnStage.CANCEL_EFFECTIVE)
                 onStatus("Transcription stopped. You can retry the saved audio or record again.")
                 throw e
             } catch (e: Exception) {
@@ -97,15 +107,18 @@ fun VoiceCapture(
         }
     }
 
-    fun finish(noSpeech: Boolean = false) {
+    fun finish(noSpeech: Boolean = false, auto: Boolean = false) {
         val r = rec ?: return
         rec = null
+        // The learner's last speech: back-dated by the silence the VAD has heard since (N1 headline start).
+        vad?.takeIf { it.heardSpeech && !auto }?.let { timeline?.markBefore(TurnStage.LAST_SPEECH, it.trailingSilenceMs.toLong()) }
         level = 0.0
         onBusy(true)
         onStatus("Finishing recording…")
         captureWork = scope.launch {
             try {
                 val pcm = withContext(NonCancellable + Dispatchers.IO) { r.stop() }
+                timeline?.mark(TurnStage.CAPTURE_STOP)
                 audio = pcm
                 currentCoroutineContext().ensureActive()
                 if (noSpeech) onStatus(noAudioHint() + " You can retry transcription of this audio.") else transcribe(pcm)
@@ -131,10 +144,16 @@ fun VoiceCapture(
             try {
                 // If cancellation arrives during a blocking driver open, retain the returned handle for cleanup.
                 withContext(NonCancellable + Dispatchers.IO) {
-                    opened = AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = Vad(), onEvent = { e ->
+                    val detector = Vad().also { vad = it }
+                    opened = AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = detector, onEvent = { e ->
+                        // Marked on the capture thread, when the VAD decided, not when the UI got round to it.
+                        if (e == Vad.Event.AUTO_STOP) timeline?.let { t ->
+                            if (detector.heardSpeech) t.markBefore(TurnStage.LAST_SPEECH, detector.trailingSilenceMs.toLong())
+                            t.mark(TurnStage.VAD_ENDPOINT)
+                        }
                         scope.launch {
                             when (e) {
-                                Vad.Event.AUTO_STOP -> finish()
+                                Vad.Event.AUTO_STOP -> finish(auto = true)
                                 Vad.Event.NO_AUDIO -> finish(noSpeech = true)
                                 Vad.Event.SPEECH_START -> onStatus("Listening… it stops by itself when you finish.")
                             }
@@ -174,7 +193,7 @@ fun VoiceCapture(
             Text("Microphone operation in progress…")
         }
         if (transcription != null) {
-            OutlinedButton(onClick = { transcription?.cancel() }) { Text("Cancel transcription") }
+            OutlinedButton(onClick = { timeline?.mark(TurnStage.CANCEL_REQUESTED); transcription?.cancel() }) { Text("Cancel transcription") }
         } else if (audio != null && captureWork == null) {
             OutlinedButton(onClick = { audio?.let(::transcribe) }) { Text("Retry transcription") }
         }

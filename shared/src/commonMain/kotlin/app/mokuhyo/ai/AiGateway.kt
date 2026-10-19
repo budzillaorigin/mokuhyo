@@ -1,5 +1,7 @@
 package app.mokuhyo.ai
 
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.currentTrace
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withTimeout
@@ -76,6 +78,7 @@ class AiGateway(
     @Throws(Exception::class)
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
         val start = kotlin.time.TimeSource.Monotonic.markNow()
+        currentTrace()?.mark(TurnStage.LLM_QUEUED)
         val result = scheduler.run(task.name == "turn_feedback",
             deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
         val ms = start.elapsedNow().inWholeMilliseconds
@@ -95,7 +98,10 @@ class AiGateway(
         var messages = withJsonContract(base, task.schema)
         var lastProblem = ""
         val attempts = if (settings.retryInvalid) 2 else 1
+        val trace = currentTrace()
         repeat(attempts) { attempt ->
+            trace?.mark(TurnStage.LLM_START)
+            trace?.timeline?.note(trace.turn) { llmAttempts++ }
             val result = try {
                 withTimeout(timeoutMs ?: settings.timeoutMs) {
                     lm.complete(
@@ -121,7 +127,10 @@ class AiGateway(
                 null -> listOf("output was not valid JSON matching the schema")
                 else -> task.validate(input, parsed, context)
             }
-            if (parsed != null && problems.isEmpty()) return AiResult.Ok(parsed, result.engine)
+            if (parsed != null && problems.isEmpty()) {
+                trace?.mark(TurnStage.LLM_VALIDATED)
+                return AiResult.Ok(parsed, result.engine)
+            }
             lastProblem = problems.joinToString("; ")
             if (attempt == 0) {
                 messages = messages + ChatMessage(Role.ASSISTANT, result.text) + ChatMessage(

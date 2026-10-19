@@ -212,6 +212,12 @@ Documents under `tools/sources/` (git-ignored PDFs; `tools/sources/SOURCES.json`
 | Vulkan-Headers, SPIRV-Headers (compiled into the Vulkan variant of `mokuhyo_native`), shaderc `glslc` (shader compiler) | Apache-2.0 OR MIT / MIT-style (Khronos) / Apache-2.0 | https://github.com/KhronosGroup/Vulkan-Headers · https://github.com/KhronosGroup/SPIRV-Headers · https://github.com/google/shaderc |
 | jpackage Windows launcher (`jpackageapplauncherw.exe`, from the Temurin JDK) — shipped as `Mokuhyo.exe` | GPL-2.0 WITH Classpath-exception-2.0 | part of OpenJDK — https://github.com/adoptium/jdk21u |
 
+## Test and benchmark fixtures (tools only — never shipped)
+
+| Fixture | License | Source / use |
+|---|---|---|
+| `tools/bench/answers.json` — synthetic learner answers (short and long, 11 languages) for `--bench-interview` | Apache-2.0 | Written for this repository (`source = "llm"`, unreviewed); no test, textbook or official material. Spoken by the app's own voice service at bench time (synthetic audio, never committed) or replaced by the owner's self-recorded WAVs via `--clips`. Timing input only, never shipped. |
+
 ## Inspiration only — no content used
 
 Tsumugi's reference apps, the public DLPT familiarization guides, ACTFL/ILR OPI manuals. No official DLPT, OPI, DLI, ACTFL or LEAP material is included, ever.

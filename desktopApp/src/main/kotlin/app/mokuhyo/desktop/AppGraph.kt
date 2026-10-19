@@ -216,6 +216,22 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     /** One gateway for every AI task; reads the current model per call so settings changes apply. */
     /** Rolling diagnostics log in the data dir (BRIEF_PHASE8 N-00b). */
     val log = RollingLog(java.io.File(dataDir, "logs"))
+    /** The last spoken session's stage timings (BRIEF_INTERVIEW_SPEED N1). */
+    val timings = Timings(dataDir) { hardware.value }
+
+    /** What a spoken session in [lang] runs on, for its timeline header: identifiers only. */
+    fun timelineSetup(lang: String): app.mokuhyo.speech.TimelineSetup {
+        val ollama = settings.bool(Settings.Key.USE_OLLAMA)
+        val model = if (ollama) null else chosenModel()
+        return app.mokuhyo.speech.TimelineSetup(
+            modelId = if (ollama) "ollama:" + (settings.get(Settings.Key.OLLAMA_MODEL) ?: "?") else model?.id,
+            modelHash = model?.files?.firstOrNull()?.sha256?.take(16),
+            voiceId = runCatching { speech.voicesFor(lang).firstOrNull()?.let { "${it.engine}:${it.id}" } }.getOrNull(),
+            backend = if (ollama) "endpoint" else if (runtime.gpuActive) "gpu" else "cpu",
+            llmThreads = app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads().takeIf { !runtime.gpuActive && !ollama },
+            asrThreads = app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads(),
+        )
+    }
 
     val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000), onCall = log::ai)
 

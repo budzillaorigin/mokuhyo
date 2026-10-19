@@ -3,6 +3,9 @@ package app.mokuhyo.desktop
 import app.mokuhyo.lang.VoiceSpec
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.currentTrace
+import app.mokuhyo.tts.Wav
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ensureActive
@@ -47,13 +50,18 @@ object Voice {
         else -> voice.engine
     } + " · " + voice.id + (voice.speaker?.let { " #$it" } ?: "")
 
-    /** Where audio goes: the device (tests replace it to observe what would have played). */
+    /**
+     * Where audio goes: the device (tests replace it to observe what would have played). [started] runs once the output
+     * line is open and sound is about to flow: the timeline's "first partner audio" (BRIEF_INTERVIEW_SPEED N1).
+     */
     @Volatile
-    internal var output: (wav: ByteArray, device: String?, stop: () -> Boolean) -> Unit = { wav, device, stop -> AudioIO.play(wav, device, stop = stop) }
+    internal var output: (wav: ByteArray, device: String?, stop: () -> Boolean, started: () -> Unit) -> Unit = { wav, device, stop, started ->
+        AudioIO.open(wav, device).also { started() }.run(stop)
+    }
 
     /** Plays [wav] on the output device chosen in Settings: the one output path every screen uses. */
-    fun play(app: AppGraph, wav: ByteArray, stop: () -> Boolean = { false }) =
-        output(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop)
+    fun play(app: AppGraph, wav: ByteArray, stop: () -> Boolean = { false }, started: () -> Unit = {}) =
+        output(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop, started)
 
     /**
      * Synthesizes [text] with the app's voice service and plays it on the chosen output device. Cancelling the caller
@@ -61,11 +69,21 @@ object Voice {
      */
     suspend fun say(app: AppGraph, text: String, lang: String, voice: VoiceSpec? = null, stop: () -> Boolean = { false }): Outcome =
         withContext(Dispatchers.IO) {
+            // Stage marks for the session timeline, when the caller carries one (N1). Text never goes to it.
+            val trace = currentTrace()
+            trace?.mark(TurnStage.TTS_START)
+            val synthStart = System.nanoTime()
             val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext Outcome.NoVoice
+            trace?.mark(TurnStage.TTS_FIRST_PCM)
+            trace?.timeline?.note(trace.turn) {
+                ttsSynthMs += (System.nanoTime() - synthStart) / 1_000_000
+                ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
+            }
             ensureActive()
             val job = coroutineContext.job
             try {
-                play(app, spoken.wav) { stop() || !job.isActive }
+                play(app, spoken.wav, { stop() || !job.isActive }) { trace?.mark(TurnStage.OUTPUT_START) }
+                trace?.mark(TurnStage.OUTPUT_END)
                 ensureActive()
                 Outcome.Played(spoken.voice)
             } catch (e: CancellationException) {

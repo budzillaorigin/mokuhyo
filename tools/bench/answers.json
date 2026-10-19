@@ -1,0 +1,54 @@
+{
+  "format": "mokuhyo-bench-answers/1",
+  "note": "Synthetic learner answers for `--bench-interview` (BRIEF_INTERVIEW_SPEED N1). Written for this repository; not taken from any test, textbook or official material. The bench speaks them with the app's own voice service (or uses self-recorded WAVs given with --clips) and feeds the audio to speech recognition. 'long' is read back to back until the clip reaches about two minutes. Timing fixtures only: never shipped in the app.",
+  "source": "llm",
+  "verified": false,
+  "license": "Apache-2.0",
+  "longTargetSeconds": 115,
+  "answers": {
+    "ja": {
+      "short": "はい、私は東京の会社で働いています。毎朝電車で通勤しています。",
+      "long": "去年の夏、家族と一緒に北海道へ旅行しました。最初の日は札幌に泊まって、夜はラーメンを食べに行きました。次の日はレンタカーを借りて、富良野のラベンダー畑を見に行きました。天気がとてもよくて、写真をたくさん撮りました。ただ、帰りの道で渋滞があって、ホテルに着いたのは夜の十時ごろでした。三日目は小樽に行って、運河の近くを散歩したり、ガラスのお店を見たりしました。子供たちはお寿司が一番おいしかったと言っていました。今度は冬に行って、雪まつりを見たいと思っています。"
+    },
+    "es": {
+      "short": "Trabajo en una oficina en el centro de la ciudad y normalmente voy en autobús.",
+      "long": "El verano pasado fui de viaje con mi familia a la costa del norte. El primer día llegamos a Santander por la tarde y fuimos directamente a la playa. Al día siguiente alquilamos un coche y visitamos varios pueblos pequeños en las montañas. Hacía buen tiempo, pero por la noche refrescaba bastante. Comimos mucho pescado y probamos un queso muy fuerte que a mi hijo no le gustó nada. Lo más difícil fue encontrar aparcamiento, porque había muchos turistas. Al final del viaje estábamos cansados, pero muy contentos. Si tuviera más vacaciones, volvería el año que viene y me quedaría más tiempo en las montañas."
+    },
+    "fr": {
+      "short": "Je travaille dans une banque à Lyon, et je prends le métro tous les matins.",
+      "long": "L'été dernier, je suis parti en Bretagne avec deux amis. Nous avons loué une petite maison près de la mer, à côté d'un village de pêcheurs. Le premier jour, il a plu toute la journée, alors nous avons visité un musée et nous avons mangé des crêpes. Ensuite, le temps s'est amélioré et nous avons fait de longues promenades sur la côte. Un soir, nous sommes allés à un concert de musique traditionnelle sur la place du village. J'ai trouvé les gens très accueillants. Le seul problème, c'était la circulation le samedi, quand tout le monde rentrait à Paris. Si je pouvais, j'y retournerais au printemps, quand il y a moins de touristes."
+    },
+    "de": {
+      "short": "Ich arbeite in einem Krankenhaus in Hamburg und fahre jeden Tag mit dem Fahrrad zur Arbeit.",
+      "long": "Letztes Jahr bin ich mit meiner Frau nach Österreich in die Berge gefahren. Wir haben in einem kleinen Hotel in einem Dorf gewohnt, wo man morgens die Kühe hören konnte. Am ersten Tag sind wir auf einen Berg gewandert, aber es war viel anstrengender, als ich gedacht hatte. Oben gab es eine Hütte, und dort haben wir Suppe gegessen und die Aussicht genossen. Am nächsten Tag hat es geregnet, deshalb sind wir in die Stadt gefahren und haben ein Museum besucht. Das Essen war sehr gut, aber ziemlich teuer. Wenn wir wieder hinfahren, möchte ich lieber im Herbst reisen, weil es dann ruhiger ist und das Wetter stabiler."
+    },
+    "pt-BR": {
+      "short": "Eu trabalho numa escola em São Paulo e vou de metrô todos os dias.",
+      "long": "No ano passado, eu viajei com a minha família para o Nordeste. Primeiro, a gente ficou três dias em Salvador e visitou o centro histórico, que é muito bonito. Depois, alugamos um carro e fomos para uma praia mais tranquila no litoral. A estrada era boa, mas demorou mais do que a gente esperava por causa das obras. Na praia, eu aprendi a andar de caiaque, e meus filhos passaram o dia inteiro na água. À noite, comíamos peixe e acarajé num restaurante pequeno perto da pousada. O único problema foi o calor, que era muito forte à tarde. Se eu tivesse mais tempo, ficaria pelo menos duas semanas e conheceria outras cidades da região."
+    },
+    "ru": {
+      "short": "Я работаю инженером на заводе и каждый день езжу на работу на автобусе.",
+      "long": "Прошлым летом я ездил с семьёй на Байкал. Сначала мы прилетели в Иркутск и провели там один день: гуляли по центру и смотрели старые деревянные дома. Потом мы поехали на машине на берег озера и сняли небольшой домик. Вода была очень холодная, но дети всё равно купались каждый день. Однажды мы взяли лодку и поплыли на остров, где почти не было людей. Погода быстро менялась: утром было солнце, а вечером начинался сильный ветер. Больше всего мне понравилась местная рыба, которую готовили прямо на берегу. Если бы у меня был отпуск подольше, я бы обязательно поехал туда зимой, когда озеро покрыто льдом."
+    },
+    "zh-Hans": {
+      "short": "我在北京的一家公司工作，每天坐地铁上班。",
+      "long": "去年夏天，我和家人一起去云南旅游了。我们先到了昆明，在那里住了两天，参观了公园和花市。然后我们坐火车去了大理，在古城里租了一辆自行车，沿着湖边骑了一整天。那里的天气很舒服，不太热，也不太冷。晚上我们在一家小饭馆吃了当地的菜，有点儿辣，但是非常好吃。后来我们又去了丽江，可是那里的游客太多了，有点儿挤。我觉得最难忘的是在山上看日出，虽然很早就要起床，但是风景特别美。如果有机会，我还想再去一次，多住几天。"
+    },
+    "ko": {
+      "short": "저는 서울에 있는 회사에서 일하고, 매일 지하철로 출근해요.",
+      "long": "작년 여름에 가족하고 같이 제주도에 여행을 갔어요. 첫날은 비행기가 조금 늦게 도착해서 호텔에서 쉬고 근처 식당에서 해물탕을 먹었어요. 다음 날에는 차를 빌려서 해안 도로를 따라 드라이브를 했어요. 바다 색깔이 정말 예뻐서 여러 번 차를 세우고 사진을 찍었어요. 셋째 날에는 한라산에 올라가려고 했는데, 날씨가 나빠져서 중간에 내려왔어요. 그래서 오후에는 박물관에 가고 시장에서 귤을 샀어요. 아이들은 말을 탄 것이 제일 재미있었다고 했어요. 다음에는 가을에 가서 산에 끝까지 올라가 보고 싶어요."
+    },
+    "ar": {
+      "short": "أعمل مدرسًا في مدرسة ثانوية، وأذهب إلى العمل بالسيارة كل يوم.",
+      "long": "في الصيف الماضي سافرت مع عائلتي إلى الإسكندرية لمدة أسبوع. وصلنا في المساء وذهبنا مباشرة إلى الفندق القريب من البحر. في اليوم الثاني زرنا المكتبة الكبيرة والمتحف، ثم تمشينا على الكورنيش حتى غروب الشمس. كان الجو جميلًا، لكن الشوارع كانت مزدحمة جدًا في المساء. أكلنا السمك في مطعم صغير، وكان الطعام لذيذًا والأسعار معقولة. في أحد الأيام ذهب الأطفال إلى الشاطئ وسبحوا طوال اليوم. أصعب شيء كان العثور على موقف للسيارة. لو كان عندي وقت أطول لزرت مدنًا أخرى على الساحل وبقيت هناك أسبوعين على الأقل."
+    },
+    "fa": {
+      "short": "من در یک بیمارستان در تهران کار می‌کنم و هر روز با مترو به سر کار می‌روم.",
+      "long": "تابستان گذشته با خانواده‌ام به شمال ایران سفر کردیم. اول به رشت رفتیم و یک روز در بازار قدیمی گشتیم و غذاهای محلی خوردیم. بعد با ماشین به یک روستای کوچک در کوهستان رفتیم و دو شب آنجا ماندیم. هوا خیلی خنک و تمیز بود و صبح‌ها مه همه جا را می‌گرفت. یک روز پیاده‌روی طولانی کردیم و به یک آبشار رسیدیم. بچه‌ها از دیدن اسب‌ها و گوسفندها خیلی خوشحال شدند. تنها مشکل ما ترافیک جاده در روز آخر بود. اگر فرصت داشتم، پاییز دوباره به آنجا می‌رفتم، چون رنگ درخت‌ها در آن فصل خیلی زیباست."
+    },
+    "id": {
+      "short": "Saya bekerja di sebuah kantor di Jakarta dan setiap hari naik kereta ke kantor.",
+      "long": "Tahun lalu saya berlibur ke Yogyakarta bersama keluarga. Hari pertama kami mengunjungi keraton dan berjalan-jalan di sekitar Malioboro sampai malam. Besoknya kami bangun pagi sekali untuk melihat matahari terbit di Borobudur. Pemandangannya sangat indah, tetapi tangganya cukup melelahkan untuk anak-anak. Siangnya kami makan gudeg di warung kecil dekat penginapan. Hari ketiga kami menyewa mobil dan pergi ke pantai di selatan. Ombaknya besar, jadi kami tidak berenang, hanya duduk dan menikmati angin. Kalau ada waktu lebih lama, saya ingin kembali dan belajar membuat batik di sana."
+    }
+  }
+}
