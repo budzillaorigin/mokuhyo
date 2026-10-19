@@ -30,6 +30,8 @@ data class ReportData(
         val at: Instant, val kind: String, val topic: String?, val estimate: String?, val nextSteps: List<String>, val aiRated: Boolean,
         /** BRIEF_PHASE8 C-11: the session's corrections mode and its After Action Brief, when one was made. */
         val mode: String? = null, val aab: app.mokuhyo.opi.AfterActionBrief? = null,
+        /** The same label History shows (QC follow-up F4); null falls back to the estimate and "(AI-rated)". */
+        val label: app.mokuhyo.opi.SpeakingTrend.Label? = null,
     )
 
     data class Transcript(val at: Instant, val title: String, val lines: List<Pair<String, String>>)
@@ -100,8 +102,7 @@ class ProgressReport(private val fontsDir: File) {
         }
         // QC 2026-10-19 #3: carry the provisional status (uncalibrated AI rating, short or incomplete form) into the PDF.
         if (d.languages.any { s -> s.trends.values.any { it.lastOrNull()?.provisional == true } }) {
-            w.text("* provisional: a short or incomplete test form, or a speaking rating by the AI model that hasn't been calibrated " +
-                "against instructor ratings for that language.", 9f, gray = true)
+            w.text(app.mokuhyo.opi.SpeakingTrend.PROVISIONAL_NOTE, 9f, gray = true)
         }
     }
 
@@ -126,7 +127,8 @@ class ProgressReport(private val fontsDir: File) {
         if (s.conversations.isEmpty()) w.text("None in this period.", 10f, gray = true)
         s.conversations.forEach { c ->
             val kind = when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario"; "INTERPRET" -> "Interpretation"; "STORYLINE" -> "Exercise week"; else -> "Conversation" }
-            w.text("${dateFmt.format(c.at)} · $kind${c.topic?.let { " · $it" } ?: ""}${c.estimate?.let { " · ILR $it" } ?: ""}${if (c.aiRated) " (AI-rated)" else ""}", 10.5f)
+            val rating = c.label?.text ?: (c.estimate?.let { "ILR $it" + if (c.aiRated) " (AI-rated)" else "" })
+            w.text("${dateFmt.format(c.at)} · $kind${c.topic?.let { " · $it" } ?: ""}${rating?.let { " · $it" } ?: ""}", 10.5f)
             c.nextSteps.forEach { w.text("   • $it", 9.5f, gray = true) }
             c.aab?.let { a ->
                 w.text("   After Action Brief (${c.mode?.replace('_', ' ') ?: "after action"}): ${a.turns} turns, ${a.durationSec / 60} min" +
@@ -138,6 +140,8 @@ class ProgressReport(private val fontsDir: File) {
                     a.cultural.joinToString(", ") { "${it.tag} ${it.flags.size}" }, 9.5f, gray = true)
             }
         }
+        // F4: a provisional interview entry is explained on the same page, with the cover's footnote.
+        if (s.conversations.any { it.label?.provisional == true }) w.text(app.mokuhyo.opi.SpeakingTrend.PROVISIONAL_NOTE, 9f, gray = true)
         w.gap(8f)
         w.text("Weak areas", 13f, bold = true)
         if (s.weakTextTypes.isEmpty() && s.weakQuestionTypes.isEmpty() && s.recurringErrors.isEmpty()) w.text("Nothing stands out yet.", 10f, gray = true)

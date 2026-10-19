@@ -38,6 +38,7 @@ class ReportBuilder(
             }
             fun weak(m: Map<String, IntArray>) = m.filter { it.value[1] >= 3 && it.value[0] * 100 / it.value[1] < 60 }
                 .map { it.key to it.value[0] * 100 / it.value[1] }.sortedBy { it.second }
+            val speakingRows = history.speakingRows(learnerId, l.code)
             val convs = conversations.list(learnerId, l.code).filter { inRange(it.startedAt) }.sortedBy { it.startedAt }
             val errors = db.srsQueries.itemsAll().executeAsList().filter { it.learnerId == learnerId && it.lang == l.code && it.kind == "ERROR" && it.deleted == null }
                 .map { it.front to it.back.substringBefore('\n') }
@@ -52,7 +53,7 @@ class ReportBuilder(
                     val interp = conversations.stored(c).interpret.mapNotNull { it.grade?.score }
                     ReportData.ConversationRow(Instant.ofEpochMilli(c.startedAt), c.kind, c.topic, r?.estimate,
                         r?.nextSteps.orEmpty() + listOfNotNull(interp.takeIf { it.isNotEmpty() }?.let { "Interpretation score ${it.average().toInt()}/100 over ${it.size} chunks" }),
-                        r?.engine != null, c.correctionsMode, conversations.aab(c))
+                        r?.engine != null, c.correctionsMode, conversations.aab(c), conversations.speakingLabel(c, speakingRows))
                 },
                 weakTextTypes = weak(byText), weakQuestionTypes = weak(byType), recurringErrors = errors,
                 reviewItems = reviews.total(learnerId, l.code), reviewsDue = reviews.dueCount(learnerId, l.code),

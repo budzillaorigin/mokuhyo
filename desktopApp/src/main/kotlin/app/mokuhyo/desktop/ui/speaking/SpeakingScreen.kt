@@ -514,18 +514,23 @@ private fun saveInterview(
     app: AppGraph, id: String, lang: String, session: OpiSession, rating: OpiRating?, test: Boolean, english: List<String>,
     cultural: CulturalReview?, mode: CorrectionsMode, aab: AfterActionBrief?, spoken: Int, typed: Int, textFallback: Boolean,
 ): String? {
-    // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
-    app.conversations.save(
-        id, app.learnerId, lang, if (test && !textFallback) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
-        StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural),
-        rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
-    )
     // Only a spoken, model-rated test counts toward the speaking trend, and it stays provisional until the language and
     // tier are calibrated against instructor ratings (rule 7: honest labels; QC 2026-10-19 #3).
-    val estimate = rating?.estimate ?: return null
-    val modelRated = rating.engine != null
+    val estimate = rating?.estimate
+    val modelRated = rating?.engine != null
     val tier = app.tier
-    val calibrated = tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
+    val calibrated = estimate != null && tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
+    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null)
+    // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
+    // How it was answered and the trend decision are kept with it, so History and the PDF label it the same way (F4).
+    app.conversations.save(
+        id, app.learnerId, lang, if (test && !textFallback) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
+        StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural,
+            spokenAnswers = spoken, typedAnswers = typed, textFallback = textFallback, calibrated = calibrated,
+            trend = decision.status, trendReason = decision.reason),
+        rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
+    )
+    if (estimate == null) return null
     val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated)
         ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback).takeIf { test }
     app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, entry.confidence, entry.provisional)
@@ -553,8 +558,13 @@ private fun InterviewResults(
             Button(onClick = {
                 selfRating = session.selfRate(pack.checklist, checked.toSet())
                 val c = app.conversations.get(conversationId)
+                // Keep what saveInterview stored (glosses, answer counts, fallback); a self-rating stays out of the trend (F4).
+                val saved = c?.let { app.conversations.stored(it) } ?: StoredConversation(session.transcript, cultural = cultural)
+                val decision = SpeakingTrend.decide(test, modelRated = false, saved.spokenAnswers ?: 0, saved.typedAnswers ?: 0,
+                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null)
                 app.conversations.save(conversationId, app.learnerId, module.code, if (test) "OPI_TEST" else "OPI", null,
-                    session.startedAt.toEpochMilliseconds(), StoredConversation(session.transcript, opiTurns = session.turns, cultural = cultural),
+                    session.startedAt.toEpochMilliseconds(),
+                    saved.copy(transcript = session.transcript, opiTurns = session.turns, cultural = cultural, trend = decision.status, trendReason = decision.reason),
                     selfRating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$conversationId",
                     c?.let { app.conversations.mode(it) }, c?.let { app.conversations.aab(it) })
             }) { Text("Save my self-rating") }
@@ -563,7 +573,12 @@ private fun InterviewResults(
     val shown = selfRating ?: rating
     SectionCard {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(shown.estimate?.let { "Estimated speaking level: ILR $it" } ?: "No estimate", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
+            // The same label History and the PDF use (QC follow-up F4), read back from what was saved.
+            val label = remember(shown) {
+                app.conversations.get(conversationId)?.let { app.conversations.speakingLabel(it, app.history.speakingRows(app.learnerId, module.code)) }
+            }
+            Text(shown.estimate?.let { "Estimated speaking level: " + (label?.text ?: "ILR $it") } ?: "No estimate",
+                style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
             if (shown.engine != null) Badge("AI-generated · ${shown.engine}")
             if (shown.selfRated) Badge("Self-rated")
         }
