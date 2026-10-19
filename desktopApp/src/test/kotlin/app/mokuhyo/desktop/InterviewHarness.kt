@@ -126,6 +126,7 @@ internal class InterviewHarness : AutoCloseable {
         pump()
     }
     fun type(text: String) {
+        until("text field missing") { nodes().any { it.config.getOrNull(SemanticsActions.SetText) != null } }
         nodes().first { it.config.getOrNull(SemanticsActions.SetText) != null }.config[SemanticsActions.SetText].action!!(AnnotatedString(text))
         pump()
     }

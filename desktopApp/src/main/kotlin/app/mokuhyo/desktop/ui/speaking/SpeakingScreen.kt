@@ -87,11 +87,10 @@ import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FluencyAnalyzer
 import app.mokuhyo.srs.ReviewService
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -360,6 +359,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         if (lines.lastOrNull()?.first?.speaker == Speaker.PARTNER) it.newQuestion(lines.lastIndex)
     } }
     var trendNote by remember { mutableStateOf<String?>(null) }
+    var pendingAudio by remember { mutableStateOf<Pair<Int, ShortArray>?>(null) }
+    var pendingFeedback by remember { mutableStateOf<Pair<Int, TurnFeedback.Input>?>(null) }
+    var operationFailed by remember { mutableStateOf(false) }
     val questionTextAllowed = !test || delivery.textFallback
 
     suspend fun checkpoint() {
@@ -386,51 +388,83 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         busy = true
         status = if (mode.records) "Preparing your After Action Brief…" else "Saving…"
         job = scope.launch(start = CoroutineStart.UNDISPATCHED) {
-            checkpoint()
-            queue?.drain()
-            val r = if (mode.records) withContext(Dispatchers.Default) { session.rate() } else null
-            val c = if (mode.records && r?.engine != null) withContext(Dispatchers.Default) { session.culturalReview(notes) } else null
-            val brief = AfterActionBuilder.build(
-                app.gateway.takeIf { mode.records && app.languageModel() != null }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
-                if (test) "Interview test" else "Interview practice", null, (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000,
-                session.transcript, records.sortedBy { it.turnIndex }, session.turns.mapNotNull { it.levelAfter?.label }, fluencyStats(fluency),
-                cardLookup(app, module.code),
-            )
-            rating = r
-            cultural = c
-            aab = brief
-            trendNote = withContext(Dispatchers.IO) {
-                saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
+            try {
+                withContext(NonCancellable + Dispatchers.IO) {
+                    checkpoint()
+                    pendingAudio?.let { (turn, pcm) -> saveRecording(app, conversationId, turn, pcm) }
+                }
+                pendingAudio = null
+                queue?.drain()
+                val r = if (mode.records) withContext(Dispatchers.Default) { session.rate() } else null
+                val c = if (mode.records && r?.engine != null) withContext(Dispatchers.Default) { session.culturalReview(notes) } else null
+                val brief = AfterActionBuilder.build(
+                    app.gateway.takeIf { mode.records && app.languageModel() != null }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
+                    if (test) "Interview test" else "Interview practice", null, (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000,
+                    session.transcript, records.sortedBy { it.turnIndex }, session.turns.mapNotNull { it.levelAfter?.label }, fluencyStats(fluency),
+                    cardLookup(app, module.code),
+                )
+                rating = r
+                cultural = c
+                aab = brief
+                trendNote = withContext(Dispatchers.IO) {
+                    saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
+                }
+                done = true
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                finished = false
+                operationFailed = true
+                status = "Couldn't finish saving: ${e.message}. Keep this screen open and retry."
+            } finally {
+                busy = false
             }
-            busy = false
-            done = true
         }
     }
 
     fun nextQuestion() {
         busy = true
-        status = "The interviewer is thinking…"
-        job = scope.launch {
+        operationFailed = false
+        status = "Saving your answer…"
+        job = scope.launch(start = CoroutineStart.UNDISPATCHED) {
             try {
-            queue?.foregroundBusy(true)
-            val line = withContext(Dispatchers.Default) { session.next() }
-            queue?.foregroundBusy(false)
-            if (line == null) {
-                complete()
-                return@launch
-            }
-            lines += Turn(Speaker.PARTNER, line.text) to line.english
-            checkpoint()
-            delivery.newQuestion(lines.lastIndex)
-            // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
-            asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
-            status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
-            askAloud(line.text)
-            busy = false
-            status = readyStatus()
+                queue?.foregroundBusy(true)
+                // A navigation/cancel arriving during the checkpoint must not skip the permitted audio write.
+                val audio = pendingAudio
+                val report = withContext(NonCancellable + Dispatchers.IO) {
+                    checkpoint()
+                    audio?.let { (turn, pcm) ->
+                        saveRecording(app, conversationId, turn, pcm)
+                        val text = lines.getOrNull(turn)?.first?.text.orEmpty()
+                        val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
+                        FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
+                    }
+                }
+                pendingAudio = null
+                report?.let { fluency += it }
+                pendingFeedback?.let { (turn, input) -> queue?.enqueue(turn, input) }
+                pendingFeedback = null
+                status = "The interviewer is thinking…"
+                val line = withContext(Dispatchers.Default) { session.next() }
+                if (line == null) {
+                    complete()
+                    return@launch
+                }
+                if (lines.size < session.transcript.size) lines += Turn(Speaker.PARTNER, line.text) to line.english
+                delivery.newQuestion(lines.lastIndex)
+                checkpoint()
+                asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
+                status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
+                askAloud(line.text)
+                status = readyStatus()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                operationFailed = true
+                status = "Couldn't continue: ${e.message}. Keep this screen open and retry; your answer is retained."
             } finally {
                 queue?.foregroundBusy(false)
-                busy = false
+                if (!finished) busy = false
             }
         }
     }
@@ -441,21 +475,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         lines += Turn(Speaker.LEARNER, text) to ""
         if (pcm != null && pcm.isNotEmpty()) spoken++ else typedAnswers++
         session.answer(text)
-        queue?.enqueue(turnIndex, TurnFeedback.Input(module.code, pack.profile.registerNotes, question, text, notes))
-        busy = true
-        job = scope.launch(start = CoroutineStart.UNDISPATCHED) {
-            checkpoint()
-            if (pcm != null && pcm.isNotEmpty()) {
-                val report = withContext(NonCancellable + Dispatchers.IO) {
-                    saveRecording(app, conversationId, turnIndex, pcm)
-                    val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
-                    FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
-                }
-                fluency += report
-            }
-            currentCoroutineContext().ensureActive()
-            nextQuestion()
-        }
+        pendingFeedback = turnIndex to TurnFeedback.Input(module.code, pack.profile.registerNotes, question, text, notes)
+        if (pcm != null && pcm.isNotEmpty()) pendingAudio = turnIndex to pcm
+        nextQuestion()
     }
 
     Page(if (test) "Interview test" else "Interview practice", "${module.nameEnglish} · phase: ${session.phase.wireName.replace('_', ' ')}" +
@@ -486,7 +508,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 Button(onClick = { started = true; nextQuestion() }) { Text("Start") }
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
-                if (last?.first?.speaker == Speaker.PARTNER) {
+                if (last?.first?.speaker == Speaker.PARTNER && !operationFailed) {
                     delivery.problem?.let { Text(it, color = MaterialTheme.colorScheme.error) }
                     if (test && !delivery.canAnswer && delivery.needsRecovery) {
                         Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
@@ -525,7 +547,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                         }
                     }
                 } else {
-                    Text("The next question was stopped. Your accepted answer is kept.")
+                    Text("You can retry the question or end the interview. Your accepted answer is kept.")
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(onClick = { nextQuestion() }) { Text("Retry question") }
                         TextButton(onClick = { session.stop(); complete() }) { Text("End interview") }
@@ -794,6 +816,7 @@ private fun TopicConversation(
     var level by remember { mutableStateOf(0.0) }
     var aab by remember { mutableStateOf<AfterActionBrief?>(null) }
     val hasStt = remember { app.recognizer() != null }
+    var pendingAudio by remember { mutableStateOf<Pair<Int, ShortArray>?>(null) }
     var feedbackJob by remember { mutableStateOf<Job?>(null) }
     val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
     val added = remember { mutableStateListOf<String>() }
@@ -816,44 +839,52 @@ private fun TopicConversation(
 
     fun send(text: String, pcm: ShortArray?) {
         session.accept(text)
+        if (pcm != null) pendingAudio = session.transcript.lastIndex to pcm
         busy = true
         status = "Your partner is replying…"
         scope.launch(start = CoroutineStart.UNDISPATCHED) {
-            checkpoint()
-            if (pcm != null) withContext(NonCancellable + Dispatchers.IO) {
-                saveRecording(app, conversationId, session.transcript.lastIndex, pcm)
-            }
-            feedbackJob?.cancelAndJoin()
-            val ex = withContext(Dispatchers.Default) { session.say(text) }
-            if (ex == null) {
-                // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
-                status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
-            } else {
-                checkpoint()
-                exchanges += ex
-                val turn = exchanges.size * 2 - 1
-                status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
-                if (pcm != null) fluency += withContext(Dispatchers.Default) {
-                    val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
-                    FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
+            try {
+                withContext(NonCancellable + Dispatchers.IO) {
+                    checkpoint()
+                    pendingAudio?.let { (turn, samples) -> saveRecording(app, conversationId, turn, samples) }
                 }
-                if (mode.records && !deferFeedback) {
-                    val index = exchanges.lastIndex
-                    feedbackJob = scope.launch { collectFeedback(index) }
+                pendingAudio = null
+                feedbackJob?.cancelAndJoin()
+                val ex = withContext(Dispatchers.Default) { session.say(text) }
+                if (ex == null) {
+                    // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
+                    status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
+                } else {
+                    checkpoint()
+                    exchanges += ex
+                    status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                    if (pcm != null) fluency += withContext(Dispatchers.Default) {
+                        val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
+                        FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
+                    }
+                    if (mode.records && !deferFeedback) {
+                        val index = exchanges.lastIndex
+                        feedbackJob = scope.launch { collectFeedback(index) }
+                    }
                 }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                status = "Couldn't continue: ${e.message}. Your answer is retained; retry the reply."
+            } finally {
+                busy = false
             }
-            busy = false
         }
     }
 
     suspend fun save(brief: AfterActionBrief?) {
         withContext(Dispatchers.IO) {
-        onFinished?.invoke(session, conversationId)
-        app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
-            StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId", mode, brief)
-        session.recurringErrors().forEach { c ->
-            app.reviews.add(app.learnerId, module.code, ReviewService.Kind.ERROR, "${c.from}→${c.to}", c.from, "${c.to}\n${c.why}")
-        }
+            onFinished?.invoke(session, conversationId)
+            app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
+                StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId", mode, brief)
+            session.recurringErrors().forEach { c ->
+                app.reviews.add(app.learnerId, module.code, ReviewService.Kind.ERROR, "${c.from}→${c.to}", c.from, "${c.to}\n${c.why}")
+            }
         }
     }
 
@@ -861,23 +892,34 @@ private fun TopicConversation(
         busy = true
         status = if (mode.records) "Preparing your After Action Brief…" else "Saving…"
         scope.launch(start = CoroutineStart.UNDISPATCHED) {
-            checkpoint()
-            if (!mode.records) {
-                save(null)
+            try {
+                withContext(NonCancellable + Dispatchers.IO) {
+                    checkpoint()
+                    pendingAudio?.let { (turn, pcm) -> saveRecording(app, conversationId, turn, pcm) }
+                }
+                pendingAudio = null
+                if (!mode.records) {
+                    save(null)
+                    busy = false
+                    close()
+                    return@launch
+                }
+                feedbackJob?.cancelAndJoin()
+                withTimeoutOrNull(30_000) {
+                    session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
+                }
+                val brief = AfterActionBuilder.build(app.gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
+                    (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,
+                    session.levelTrack.toList(), fluencyStats(fluency), cardLookup(app, module.code))
+                save(brief)
+                aab = brief
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                status = "Couldn't finish saving: ${e.message}. Keep this screen open and retry."
+            } finally {
                 busy = false
-                close()
-                return@launch
             }
-            feedbackJob?.cancelAndJoin()
-            withTimeoutOrNull(30_000) {
-                session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
-            }
-            val brief = AfterActionBuilder.build(app.gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
-                (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,
-                session.levelTrack.toList(), fluencyStats(fluency), cardLookup(app, module.code))
-            save(brief)
-            aab = brief
-            busy = false
         }
     }
 
@@ -953,7 +995,7 @@ private fun TopicConversation(
         }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty(), onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
+                if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty() && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER, onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
                 TextButton(enabled = !captureBusy, onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
             }
             val pendingAnswer = session.transcript.lastOrNull()?.takeIf { it.speaker == Speaker.LEARNER }
