@@ -504,6 +504,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             queue?.pendingCount?.collectAsState()?.value?.takeIf { it > 0 && mode == CorrectionsMode.LIVE }?.let {
                 Text("Feedback on $it answer(s) is being prepared…", style = MaterialTheme.typography.bodySmall)
             }
+            // Capture owns its scope outside the conditional generation UI. Visibility never cancels ASR.
+            if (started && !finished && hasStt) VoiceCapture(app, module,
+                confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
+                prompt = lines.lastOrNull()?.first?.text.orEmpty(),
+                visible = !busy && !operationFailed && lines.lastOrNull()?.first?.speaker == Speaker.PARTNER && delivery.canAnswer,
+            ) { t, pcm -> submitAnswer(t, pcm) }
             if (!started) {
                 Button(onClick = { started = true; nextQuestion() }) { Text("Start") }
             } else if (!busy && !finished) {
@@ -536,8 +543,6 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
                     // A test whose question wasn't heard waits until it's played or the learner falls back to text.
                     val canAnswer = delivery.canAnswer
-                    if (hasStt && canAnswer) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                        enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     if (canAnswer) OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -993,6 +998,10 @@ private fun TopicConversation(
             CircularProgressIndicator(Modifier.width(20.dp).height(20.dp), strokeWidth = 2.dp)
             Text("Working… (Tier A models on a CPU can take 10–25 seconds)")
         }
+        if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+            enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
+            visible = !busy && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER,
+            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty() && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER, onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
@@ -1003,9 +1012,6 @@ private fun TopicConversation(
                 Text("Saved answer: ${pendingAnswer.text}")
                 Button(onClick = { send(pendingAnswer.text, null) }) { Text("Retry reply") }
             }
-            if (hasStt && pendingAnswer == null) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
-                prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
             TextButton(enabled = pendingAnswer == null && !captureBusy && typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }

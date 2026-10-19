@@ -51,6 +51,7 @@ fun VoiceCapture(
     onBusy: (Boolean) -> Unit,
     /** Words the learner is likely to say (the question, the topic, key terms): Whisper's initial prompt (N-00b). */
     prompt: String = "",
+    visible: Boolean = true,
     onSend: (String, ShortArray) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -156,6 +157,8 @@ fun VoiceCapture(
         }
     }
 
+    // Keep ownership and cleanup composed even while the parent hides the controls.
+    if (!visible) return
     val p = pending
     if (p != null) {
         OutlinedTextField(edit, { edit = it }, Modifier.fillMaxWidth(), label = { Text("What I heard") },
