@@ -196,6 +196,13 @@ class OpiSession(
         return line
     }
 
+    /**
+     * The interviewer prompt as it stands, for warming the model before Start (N4): same system prompt and transcript as
+     * the next question's, so the engine has them cached when the interview begins.
+     */
+    fun warmupInput(): OpiInterviewerTurn.Input = OpiInterviewerTurn.Input(language, profile.registerNotes, phase, workingLevel,
+        history.toList(), turnsInPhase, culturalNotes = culturalNotes)
+
     /** Fills the English gloss of question [index] once the background [GlossLine] has it (N3); never overwrites one. */
     fun gloss(index: Int, english: String) {
         val r = records.getOrNull(index) ?: return

@@ -115,6 +115,29 @@ class AiGateway private constructor(
         return AiGateway({ fixed }, settings, context, onCall, scheduler)
     }
 
+    /**
+     * Loads the model and decodes [task]'s prompt for [input] with a one-token reply (N4 preflight), so the first live
+     * question starts from a warm model and a cached system prompt (the engine reuses the longest shared prefix).
+     * Returns null when warm, else why not; "no model" when none is set up.
+     */
+    suspend fun <I, O> warm(task: PromptTask<I, O>, input: I): String? {
+        val lm = model() ?: return "no model"
+        return scheduler.run(false, deferred = { "deferred" }) {
+            try {
+                withTimeout(settings.timeoutMs) {
+                    lm.complete(CompletionRequest(withJsonContract(task.messages(input), task.schema), maxTokens = 1, temperature = 0.0))
+                }
+                null
+            } catch (e: TimeoutCancellationException) {
+                "the model took too long to load"
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                e.message ?: "the model failed to load"
+            }
+        }
+    }
+
     /** The pinned (or current) model's id, for labels and timelines. */
     fun modelId(): String? = model()?.id
     /** True when a model is configured right now (it may still fail on a given call). */

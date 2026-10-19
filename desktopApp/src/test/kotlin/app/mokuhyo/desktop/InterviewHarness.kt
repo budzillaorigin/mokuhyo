@@ -103,6 +103,8 @@ internal class InterviewHarness : AutoCloseable {
             }
         }))
         InterviewMicrophone.enabled = true
+        // Device checks before Start have their own tests (InterviewPreflightTest); here they would use host devices.
+        InterviewPreflight.checks = { _, _, _, _, _ -> emptyList() }
         SpeechProvider.set(object : app.mokuhyo.lang.SpeechOutput {
             override fun voicesFor(language: String) = emptyList<app.mokuhyo.lang.VoiceSpec>()
             override suspend fun synthesize(text: String, language: String, voice: app.mokuhyo.lang.VoiceSpec?, speed: Double): app.mokuhyo.lang.SpokenAudio? = null
@@ -134,6 +136,7 @@ internal class InterviewHarness : AutoCloseable {
         scene?.close()
         app.close()
         SpeechProvider.set(null)
+        InterviewPreflight.checks = InterviewPreflight::real
         InterviewMicrophone.enabled = false
         InterviewMicrophone.stopDelayMs = 0
         InterviewMicrophone.openDelayMs = 0

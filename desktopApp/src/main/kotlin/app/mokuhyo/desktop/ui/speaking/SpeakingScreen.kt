@@ -88,6 +88,8 @@ import app.mokuhyo.opi.StorylineRunner
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FallbackKind
+import app.mokuhyo.speech.Preflight
+import app.mokuhyo.desktop.InterviewPreflight
 import app.mokuhyo.speech.TimelineTrace
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.traceMark
@@ -374,6 +376,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var pendingFeedback by remember { mutableStateOf<Pair<Int, TurnFeedback.Input>?>(null) }
     var operationFailed by remember { mutableStateOf(false) }
     val questionTextAllowed = !test || delivery.textFallback
+    var preflight by remember { mutableStateOf<Preflight.Report?>(null) }
+    var preflightJob by remember { mutableStateOf<Job?>(null) }
+    var preflightRunning by remember { mutableStateOf(false) }
     // Stage timings for Settings → Speech & audio → Diagnostics (BRIEF_INTERVIEW_SPEED N1): no text, no audio.
     val timeline = remember { app.timings.start(conversationId, if (test) "OPI_TEST" else "OPI", module.code, app.timelineSetup(module.code)) }
 
@@ -570,7 +575,50 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 timeline = timeline,
             ) { t, pcm -> submitAnswer(t, pcm) }
             if (!started) {
-                Button(onClick = { started = true; nextQuestion() }) { Text("Start") }
+                // Preflight (N4): every device and engine checked and warmed before the first question; warm-up time is
+                // reported apart from answer time. A failure blocks Start and says what to do.
+                val report = preflight
+                report?.items?.forEach { item ->
+                    val mark = when (item.state) {
+                        Preflight.State.PENDING -> "○"
+                        Preflight.State.RUNNING -> "…"
+                        Preflight.State.OK -> "✓"
+                        Preflight.State.NOT_NEEDED -> "–"
+                        Preflight.State.FAILED -> "✗"
+                    }
+                    Text("$mark ${item.title}" + (item.message?.let { " — $it" } ?: ""), style = MaterialTheme.typography.bodySmall,
+                        color = if (item.state == Preflight.State.FAILED) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface)
+                }
+                if (preflightRunning && report != null) {
+                    val done = report.items.count { it.state != Preflight.State.PENDING && it.state != Preflight.State.RUNNING }
+                    LinearProgressIndicator(progress = { done.toFloat() / report.items.size.coerceAtLeast(1) }, modifier = Modifier.fillMaxWidth())
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (!preflightRunning) Button(onClick = {
+                        status = "Checking the microphone, speakers, voice and models…"
+                        preflightRunning = true
+                        preflightJob = scope.launch {
+                            try {
+                                val checks = InterviewPreflight.checks(app, module.code, gateway, test, session.warmupInput())
+                                val r = Preflight(checks).run(timeline) { preflight = it }
+                                preflight = r
+                                val blocking = r.blocking
+                                if (blocking == null) {
+                                    if (r.state(Preflight.Kind.VOICE) == Preflight.State.NOT_NEEDED) { delivery.fallBackToText(); showText = true }
+                                    started = true
+                                    nextQuestion()
+                                } else status = "Not ready: ${blocking.message}"
+                            } finally {
+                                preflightRunning = false
+                            }
+                        }
+                    }) { Text(if (preflight?.blocking != null) "Check again" else "Start") }
+                    else TextButton(onClick = { preflightJob?.cancel(); status = "Check stopped. Press Start to try again." }) { Text("Cancel") }
+                    // No voice for a spoken test: guided text practice instead, labelled and never counted as speech.
+                    if (preflight?.blocking?.kind == Preflight.Kind.VOICE) OutlinedButton(onClick = {
+                        delivery.fallBackToText(); showText = true; started = true; nextQuestion()
+                    }) { Text("Guided text practice instead (not a spoken test)") }
+                }
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER && !operationFailed) {
