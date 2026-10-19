@@ -114,6 +114,7 @@ class LocalLlamaModel(
             cont.invokeOnCancellation { bridge.cancel() }
             bridge.generate(request.messages, grammar, request.maxTokens, request.temperature, stop, onToken = {
                 if (first) { first = false; trace?.mark(TurnStage.LLM_FIRST_TOKEN) }
+                request.onToken?.invoke(it)
             }) { full, error ->
                 if (!cont.isActive) return@generate
                 when {

@@ -318,8 +318,10 @@ private fun ModeChip(mode: CorrectionsMode) {
 private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, test: Boolean, mode: CorrectionsMode, restored: StoredConversation? = null, close: () -> Unit) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { restored?.draft?.sessionId ?: app.conversations.newId() }
+    // One conversation model for the whole interview: a settings change mid-session never swaps it (N2).
+    val gateway = remember { app.gateway.pinned() }
     val session = remember {
-        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, app.gateway, wordCounter(module), IlrLevel.L1, test = test,
+        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, gateway, wordCounter(module), IlrLevel.L1, test = test,
             culturalNotes = app.culturalNotes(module.code), restored = restored?.draft?.opi)
     }
     val notes = remember { app.culturalNotes(module.code) }
@@ -329,7 +331,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var asker by remember { mutableStateOf<String?>(null) }
     val records = remember { mutableStateListOf<TurnFeedbackRecord>().apply { addAll(app.conversations.feedback(conversationId)) } }
     val queue = remember {
-        if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope, deferredUntilEnd = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive) { rec ->
+        if (mode.records && gateway.hasModel()) FeedbackQueue(gateway, scope, deferredUntilEnd = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive) { rec ->
             records += rec
             app.conversations.addFeedback(conversationId, rec)
         }.also { q ->
@@ -404,7 +406,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 val r = if (mode.records) withContext(Dispatchers.Default) { session.rate() } else null
                 val c = if (mode.records && r?.engine != null) withContext(Dispatchers.Default) { session.culturalReview(notes) } else null
                 val brief = AfterActionBuilder.build(
-                    app.gateway.takeIf { mode.records && app.languageModel() != null }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
+                    gateway.takeIf { mode.records && gateway.hasModel() }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
                     if (test) "Interview test" else "Interview practice", null, (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000,
                     session.transcript, records.sortedBy { it.turnIndex }, session.turns.mapNotNull { it.levelAfter?.label }, fluencyStats(fluency),
                     cardLookup(app, module.code),
@@ -821,8 +823,9 @@ private fun TopicConversation(
 ) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { restored?.draft?.sessionId ?: app.conversations.newId() }
+    val gateway = remember { app.gateway.pinned() }
     val session = remember {
-        TopicSession(module.code, pack.profile, topic, app.gateway,
+        TopicSession(module.code, pack.profile, topic, gateway,
             rolePlay = restored?.draft?.topic?.rolePlay ?: rolePlay, persona = restored?.draft?.topic?.persona ?: persona?.context(),
             culturalNotes = restored?.draft?.topic?.culturalNotes ?: app.culturalNotes(module.code, persona), mode = mode,
             memory = restored?.draft?.topic?.memory ?: memory, critiqueTimeoutMs = app.critiqueTimeoutMs(), restored = restored?.draft?.topic)
@@ -932,7 +935,7 @@ private fun TopicConversation(
                 withTimeoutOrNull(30_000) {
                     session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
                 }
-                val brief = AfterActionBuilder.build(app.gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
+                val brief = AfterActionBuilder.build(gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
                     (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,
                     session.levelTrack.toList(), fluencyStats(fluency), cardLookup(app, module.code))
                 save(brief)

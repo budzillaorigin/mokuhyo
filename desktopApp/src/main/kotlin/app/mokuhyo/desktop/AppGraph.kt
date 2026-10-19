@@ -210,6 +210,30 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
         return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
+    /** This computer's timing-check results (N2), by model id. */
+    fun modelTimings(): Map<String, app.mokuhyo.ai.ModelTiming> = app.mokuhyo.ai.ModelTiming.parseAll(settings.get(Settings.Key.MODEL_TIMINGS))
+
+    /** [lang]'s quality floor from the calibration table; "unverified" without real evidence. */
+    fun qualityFloor(lang: String): app.mokuhyo.ai.QualityFloor = app.mokuhyo.ai.QualityFloor.of(lang, calibration)
+
+    /**
+     * The short on-device timing check (N2) for a downloaded [model], with Whisper and the voice for [lang] loaded
+     * alongside as they are in a session. Stores and returns the result; null when the model can't run here.
+     * Cancellable; call off the UI thread.
+     */
+    suspend fun checkSpeed(model: app.mokuhyo.ai.ModelInfo, lang: String): app.mokuhyo.ai.ModelTiming? {
+        val file = modelFile(model) ?: return null
+        val bridge = runtime.llm() ?: return null
+        val llm = llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
+        val asr = recognizer()
+        val asrLoaded = asr != null && runCatching { asr.transcribe(ShortArray(8_000), "en") }.isSuccess
+        val voiceLoaded = runCatching { speech.synthesize(Voice.sample(lang), lang) != null }.getOrDefault(false)
+        val timing = app.mokuhyo.ai.ModelTimingCheck.measure(llm, runs = 2, withSpeechLoaded = asrLoaded && voiceLoaded,
+            backend = if (runtime.gpuActive) "gpu" else "cpu", now = System::currentTimeMillis)
+        settings.put(Settings.Key.MODEL_TIMINGS, app.mokuhyo.ai.ModelTiming.encodeAll(modelTimings() + (model.id to timing)))
+        return timing
+    }
+
     private val llamaSlot = app.mokuhyo.ai.LoadedModelSlot()
     private val llamaModels = java.util.concurrent.ConcurrentHashMap<String, app.mokuhyo.ai.LanguageModel>()
 

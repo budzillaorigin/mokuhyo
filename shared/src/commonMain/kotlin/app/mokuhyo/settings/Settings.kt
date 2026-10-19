@@ -36,6 +36,8 @@ class Settings(private val db: MokuhyoDatabase) {
         FIRST_RUN_DONE("device.firstRunDone", Scope.DEVICE),
         MODEL_TIER("device.model.tier", Scope.DEVICE),
         MODEL_ID("device.model.id", Scope.DEVICE),
+        /** On-device timing check results per model id (BRIEF_INTERVIEW_SPEED N2): this computer's numbers only. */
+        MODEL_TIMINGS("device.model.timings", Scope.DEVICE),
         STT_MODEL_ID("device.stt.model", Scope.DEVICE),
         PREFER_CPU("device.native.preferCpu", Scope.DEVICE),
         USE_OLLAMA("device.ollama.use", Scope.DEVICE),

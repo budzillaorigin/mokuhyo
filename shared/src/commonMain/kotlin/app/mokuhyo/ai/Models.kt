@@ -27,6 +27,11 @@ data class CompletionRequest(
     /** Structured output: local models get a GBNF grammar, endpoints get `response_format`. */
     val jsonSchema: JsonSchema? = null,
     val stop: List<String> = emptyList(),
+    /**
+     * Streamed pieces of the reply as the engine produces them (complete UTF-8 characters), on the engine's own thread.
+     * Engines that can't stream never call it; the full text still comes back in the result.
+     */
+    val onToken: ((String) -> Unit)? = null,
 )
 
 /** [engine] is shown in the UI next to AI output, e.g. "on-device Phi-4-mini" or "endpoint llama3 @ host". */

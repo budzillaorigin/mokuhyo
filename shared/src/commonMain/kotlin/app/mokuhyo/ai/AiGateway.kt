@@ -60,15 +60,35 @@ data class AiSettings(
  * enforces a timeout, parses and validates the output, retries once with the problems spelled out, and falls back
  * deterministically. It never throws for engine problems; callers get an [AiResult].
  */
-class AiGateway(
-    /** The current model (local, endpoint, or null when none is set up). Read per call so settings changes apply. */
+class AiGateway private constructor(
     private val model: () -> LanguageModel?,
-    private val settings: AiSettings = AiSettings(),
-    private val context: ValidationContext = ValidationContext(),
-    /** Called once per [run] with what happened (BRIEF_PHASE8 N-00b: the app's rolling log). Never sees prompt text. */
-    private val onCall: (AiCall) -> Unit = {},
+    private val settings: AiSettings,
+    private val context: ValidationContext,
+    private val onCall: (AiCall) -> Unit,
+    /** One per engine: a [pinned] gateway shares it, so its calls still queue behind (and preempt) the others. */
+    private val scheduler: InferenceScheduler,
 ) {
-    private val scheduler = InferenceScheduler()
+    constructor(
+        /** The current model (local, endpoint, or null when none is set up). Read per call so settings changes apply. */
+        model: () -> LanguageModel?,
+        settings: AiSettings = AiSettings(),
+        context: ValidationContext = ValidationContext(),
+        /** Called once per [run] with what happened (BRIEF_PHASE8 N-00b: the app's rolling log). Never sees prompt text. */
+        onCall: (AiCall) -> Unit = {},
+    ) : this(model, settings, context, onCall, InferenceScheduler())
+
+    /**
+     * A gateway fixed to the model configured right now (BRIEF_INTERVIEW_SPEED N2): a spoken session keeps one
+     * conversation model loaded for its whole length, so a settings change mid-interview never swaps models (and never
+     * reloads gigabytes between two questions). It shares this gateway's scheduler.
+     */
+    fun pinned(): AiGateway {
+        val fixed = model()
+        return AiGateway({ fixed }, settings, context, onCall, scheduler)
+    }
+
+    /** The pinned (or current) model's id, for labels and timelines. */
+    fun modelId(): String? = model()?.id
     /** True when a model is configured right now (it may still fail on a given call). */
     fun hasModel(): Boolean = model() != null
 

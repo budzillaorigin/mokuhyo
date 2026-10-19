@@ -22,6 +22,9 @@ object Voice {
         "ar" to "مرحبا. لنتدرب قليلا اليوم.", "fa" to "سلام. بیایید امروز کمی تمرین کنیم.", "id" to "Halo. Mari kita berlatih sedikit hari ini.",
     )
 
+    /** A short greeting in [lang] (voice checks and warm-up). */
+    fun sample(lang: String): String = samples[lang] ?: samples.getValue("es")
+
     /** What happened when the app tried to say something (QC 2026-10-19 #2: callers must not treat silence as success). */
     sealed interface Outcome {
         /** It played to the end (or the caller stopped it) with [voice]. */

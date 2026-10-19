@@ -95,7 +95,7 @@ fun FirstRun(app: AppGraph, onDone: () -> Unit) {
                     app.settings.put(Settings.Key.FIRST_RUN_DONE, "true")
                     onDone()
                 } else {
-                    if (step == Step.HARDWARE && tier == null) tier = hw?.let { TierAdvisor.recommended(it, app.manifest.models) }
+                    if (step == Step.HARDWARE && tier == null) tier = hw?.let { TierAdvisor.recommended(it, app.manifest.models, app.modelTimings(), app.qualityFloor(app.language.value)) }
                     step = Step.entries[step.ordinal + 1]
                 }
             }) { Text(if (step == Step.AUDIO) "Finish" else "Continue") }
