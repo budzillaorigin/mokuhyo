@@ -316,6 +316,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     DisposableEffect(Unit) { onDispose { queue?.close() } }
     var status by remember { mutableStateOf("Press Start when you're ready.") }
     var busy by remember { mutableStateOf(false) }
+    var captureBusy by remember { mutableStateOf(false) }
     var showText by remember { mutableStateOf(false) }
     var level by remember { mutableStateOf(0.0) }
     var typed by remember { mutableStateOf("") }
@@ -426,7 +427,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         SectionCard {
             Text(status, style = MaterialTheme.typography.titleMedium)
             asker?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-            if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
+            if (busy || captureBusy) LinearProgressIndicator(Modifier.fillMaxWidth())
             queue?.pendingCount?.collectAsState()?.value?.takeIf { it > 0 && mode == CorrectionsMode.LIVE }?.let {
                 Text("Feedback on $it answer(s) is being prepared…", style = MaterialTheme.typography.bodySmall)
             }
@@ -446,7 +447,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     if (showText && questionTextAllowed) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         // Repeat runs as the tracked job: one playback at a time, and Cancel stops it.
-                        OutlinedButton(enabled = !delivery.playing, onClick = {
+                        OutlinedButton(enabled = !delivery.playing && !captureBusy, onClick = {
                             busy = true
                             status = "Repeating the question…"
                             job = scope.launch {
@@ -463,12 +464,12 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     // A test whose question wasn't heard waits until it's played or the learner falls back to text.
                     val canAnswer = delivery.canAnswer
                     if (hasStt && canAnswer) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                        enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
+                        enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     if (canAnswer) OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        TextButton(enabled = canAnswer && typed.isNotBlank(), onClick = { val t = typed; typed = ""; submitAnswer(t, null) }) { Text("Send typed answer") }
-                        TextButton(onClick = { session.stop(); complete() }) {
+                        TextButton(enabled = canAnswer && !captureBusy && typed.isNotBlank(), onClick = { val t = typed; typed = ""; submitAnswer(t, null) }) { Text("Send typed answer") }
+                        TextButton(enabled = !captureBusy, onClick = { session.stop(); complete() }) {
                             Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End interview")
                         }
                     }
@@ -723,6 +724,7 @@ private fun TopicConversation(
     val exchanges = remember { mutableStateListOf<TopicExchange>() }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
     var busy by remember { mutableStateOf(false) }
+    var captureBusy by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("") }
     var typed by remember { mutableStateOf("") }
     var level by remember { mutableStateOf(0.0) }
@@ -852,15 +854,15 @@ private fun TopicConversation(
         }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = exchanges.isNotEmpty(), onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
-                TextButton(onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
+                if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty(), onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
+                TextButton(enabled = !captureBusy, onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
             }
             if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                enabled = !busy, onStatus = { status = it }, onBusy = { busy = it },
+                enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
                 prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
-            TextButton(enabled = typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }
+            TextButton(enabled = !captureBusy && typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }
         }
     }
 }

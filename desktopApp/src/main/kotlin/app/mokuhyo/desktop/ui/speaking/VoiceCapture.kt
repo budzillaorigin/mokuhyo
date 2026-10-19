@@ -28,6 +28,8 @@ import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.Vad
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -53,30 +55,44 @@ fun VoiceCapture(
     var level by remember { mutableStateOf(0.0) }
     var pending by remember { mutableStateOf<Pair<String, ShortArray>?>(null) }
     var edit by remember { mutableStateOf("") }
+    var transcription by remember { mutableStateOf<Job?>(null) }
+    var audio by remember { mutableStateOf<ShortArray?>(null) }
     DisposableEffect(Unit) { onDispose { rec?.runCatching { stop() } } }
+
+    fun transcribe(pcm: ShortArray) {
+        audio = pcm
+        onBusy(true)
+        onStatus("Transcribing…")
+        transcription = scope.launch {
+            try {
+                val text = withContext(Dispatchers.IO) { app.recognizer()?.transcribe(pcm, module.sttLanguage, prompt)?.text.orEmpty().trim() }
+                when {
+                    text.isBlank() -> onStatus("I didn't catch anything. Try again, or type your answer.")
+                    confirm -> { pending = text to pcm; edit = text; onStatus("Check what I heard, then send it — or edit it, or record again.") }
+                    else -> { audio = null; onStatus(""); onSend(text, pcm) }
+                }
+            } catch (e: CancellationException) {
+                onStatus("Transcription stopped. You can retry the saved audio or record again.")
+                throw e
+            } catch (e: Exception) {
+                onStatus("Couldn't transcribe: ${e.message}. Retry the saved audio or type your answer.")
+            } finally {
+                transcription = null
+                onBusy(false)
+            }
+        }
+    }
 
     fun finish() {
         val r = rec ?: return
         rec = null
         level = 0.0
-        val pcm = r.stop()
-        onBusy(true)
-        onStatus("Transcribing…")
-        scope.launch {
-            val text = withContext(Dispatchers.IO) {
-                runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage, prompt).text.trim() }.getOrDefault("")
-            }
-            onBusy(false)
-            when {
-                text.isBlank() -> onStatus("I didn't catch anything. Try again, or type your answer.")
-                confirm -> { pending = text to pcm; edit = text; onStatus("Check what I heard, then send it — or edit it, or record again.") }
-                else -> { onStatus(""); onSend(text, pcm) }
-            }
-        }
+        transcribe(r.stop())
     }
 
     fun start() {
         pending = null
+        audio = null
         val vad = Vad()
         rec = runCatching {
             AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = vad, onEvent = { e ->
@@ -102,14 +118,19 @@ fun VoiceCapture(
         OutlinedTextField(edit, { edit = it }, Modifier.fillMaxWidth(), label = { Text("What I heard") },
             textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(enabled = edit.isNotBlank(), onClick = { pending = null; onStatus(""); onSend(edit.trim(), p.second) }) { Text("Send") }
+            Button(enabled = edit.isNotBlank(), onClick = { pending = null; audio = null; onStatus(""); onSend(edit.trim(), p.second) }) { Text("Send") }
             OutlinedButton(onClick = { pending = null; start() }) { Text("Record again") }
         }
         return
     }
     Column {
+        if (transcription != null) {
+            OutlinedButton(onClick = { transcription?.cancel() }) { Text("Cancel transcription") }
+        } else if (audio != null) {
+            OutlinedButton(onClick = { audio?.let(::transcribe) }) { Text("Retry transcription") }
+        }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(enabled = enabled || rec != null, onClick = { if (rec == null) start() else finish() }) {
+            Button(enabled = (enabled && transcription == null) || rec != null, onClick = { if (rec == null) start() else finish() }) {
                 Text(if (rec != null) "■ Stop" else "● Record")
             }
         }
