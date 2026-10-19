@@ -1,6 +1,7 @@
 """Runs every tools/**/test_*.py script (each is a plain script that exits non-zero on failure)."""
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -9,10 +10,15 @@ ROOT = Path(__file__).resolve().parent
 
 
 def main() -> int:
+    # Test output carries non-ASCII text; Windows consoles and pipes default to cp1252 (CI run #15).
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+    env = {**os.environ, "PYTHONUTF8": "1"}
     failed = []
     tests = sorted(p for p in ROOT.rglob("test_*.py") if ".venv" not in p.parts)
     for t in tests:
-        r = subprocess.run([sys.executable, t.name], cwd=t.parent, capture_output=True, text=True, check=False)
+        r = subprocess.run([sys.executable, t.name], cwd=t.parent, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", env=env, check=False)
         status = "ok" if r.returncode == 0 else "FAIL"
         print(f"{status:4}  {t.relative_to(ROOT)}")
         if r.returncode:

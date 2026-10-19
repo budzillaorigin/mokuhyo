@@ -159,4 +159,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")  # a cp1252 Windows console can't print → · — …
+    sys.stderr.reconfigure(encoding="utf-8")
     sys.exit(main())

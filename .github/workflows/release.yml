@@ -49,6 +49,9 @@ jobs:
           java-version: "21"
       - uses: gradle/actions/setup-gradle@v4
       - uses: astral-sh/setup-uv@v6
+      - name: Python for tools/ (tools/.python-version)
+        working-directory: tools
+        run: uv python install
       - uses: ilammy/msvc-dev-cmd@v1
         if: runner.os == 'Windows'
       # Ubuntu 22.04 (the oldest supported glibc) has no glslc package; LunarG's prebuilt Linux SDK supplies it. If the
