@@ -87,6 +87,7 @@ import app.mokuhyo.speech.FluencyAnalyzer
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -374,6 +375,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         busy = true
         status = "The interviewer is thinking…"
         job = scope.launch {
+            try {
             queue?.foregroundBusy(true)
             val line = withContext(Dispatchers.Default) { session.next() }
             queue?.foregroundBusy(false)
@@ -389,6 +391,10 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             askAloud(line.text)
             busy = false
             status = readyStatus()
+            } finally {
+                queue?.foregroundBusy(false)
+                busy = false
+            }
         }
     }
 
@@ -473,14 +479,23 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                             Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End interview")
                         }
                     }
+                } else {
+                    Text("The next question was stopped. Your accepted answer is kept.")
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(onClick = { nextQuestion() }) { Text("Retry question") }
+                        TextButton(onClick = { session.stop(); complete() }) { Text("End interview") }
+                    }
                 }
             }
             if (busy && job != null && !finished) TextButton(onClick = {
-                job?.cancel()
-                delivery.stop()
-                busy = false
-                status = "Stopped."
-                if (!test && delivery.needsRecovery) showText = true
+                val previous = job
+                job = scope.launch {
+                    previous?.cancelAndJoin()
+                    delivery.stop()
+                    busy = false
+                    status = "Stopped."
+                    if (!test && delivery.needsRecovery) showText = true
+                }
             }) { Text("Cancel") }
         }
         if (!test) lines.filter { it.first.speaker == Speaker.LEARNER }.lastOrNull()?.let { (turn, _) ->

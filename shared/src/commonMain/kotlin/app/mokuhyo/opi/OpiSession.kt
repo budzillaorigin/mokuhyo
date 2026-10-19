@@ -107,6 +107,11 @@ class OpiSession(
 
     /** The interviewer's next line, or null once the interview is over. */
     suspend fun next(): InterviewerLine? {
+        // A cancelled dispatcher handoff may have committed the question without displaying it. Re-deliver that
+        // stable record (index = turn ID) until it is answered; retry must not advance the phase a second time.
+        records.lastOrNull()?.takeIf { it.answer == null }?.let {
+            return InterviewerLine(it.question, it.english, it.phase, it.engine, it.domain)
+        }
         if (finished) return null
         if (phase == OpiPhase.ROLEPLAY && rolePlay == null) rolePlay = pickRolePlay()
         // Slot filling (BRIEF_PHASE8 N-00b): the session picks phase, target level, topic area and question type; the model
@@ -150,6 +155,7 @@ class OpiSession(
 
     /** Records the candidate's answer (STT transcript or typed) and adapts the working level. */
     fun answer(text: String) {
+        if (records.lastOrNull()?.answer != null || history.lastOrNull()?.speaker != Speaker.PARTNER) return
         val answer = text.trim()
         history += Turn(Speaker.LEARNER, answer)
         val words = wordCount(answer)

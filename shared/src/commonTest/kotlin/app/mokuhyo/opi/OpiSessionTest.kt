@@ -26,6 +26,20 @@ class OpiSessionTest {
 
     private fun scripted(test: Boolean = false) = OpiSession("es", profile, bank, rolePlays, AiGateway({ null }), words, test = test, random = Random(1))
 
+    @Test fun retryRedeliversTheCommittedQuestionWithoutAdvancingOrDuplicatingAnswers() = runTest {
+        val s = scripted()
+        val first = s.next()!!
+        val phase = s.phase
+        assertEquals(first.text, s.next()!!.text)
+        assertEquals(phase, s.phase)
+        assertEquals(1, s.turns.size)
+        s.answer("Una respuesta.")
+        s.answer("Una respuesta.")
+        assertEquals(2, s.transcript.size)
+        s.next()
+        assertEquals(2, s.turns.size)
+    }
+
     private val distinctQuestions = listOf(
         "¿Dónde vive usted?", "¿Qué hace los domingos?", "Hábleme de su trabajo.", "¿Cómo era su escuela primaria?",
         "Compare dos ciudades que conoce.", "¿Qué haría con un millón de euros?", "Buenas tardes, ¿tiene reserva?",
