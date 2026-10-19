@@ -5,6 +5,8 @@ import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.job
 import kotlinx.coroutines.withContext
 
 /** Speech output for the app: every caller goes through the voice service (bundled Piper, then the OS voice). */
@@ -45,16 +47,26 @@ object Voice {
         else -> voice.engine
     } + " · " + voice.id + (voice.speaker?.let { " #$it" } ?: "")
 
+    /** Where audio goes: the device (tests replace it to observe what would have played). */
+    @Volatile
+    internal var output: (wav: ByteArray, device: String?, stop: () -> Boolean) -> Unit = { wav, device, stop -> AudioIO.play(wav, device, stop = stop) }
+
     /** Plays [wav] on the output device chosen in Settings: the one output path every screen uses. */
     fun play(app: AppGraph, wav: ByteArray, stop: () -> Boolean = { false }) =
-        AudioIO.play(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop = stop)
+        output(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop)
 
-    /** Synthesizes [text] with the app's voice service and plays it on the chosen output device. */
+    /**
+     * Synthesizes [text] with the app's voice service and plays it on the chosen output device. Cancelling the caller
+     * stops it: nothing plays once cancelled during synthesis, and playback in progress stops (QC follow-up F2).
+     */
     suspend fun say(app: AppGraph, text: String, lang: String, voice: VoiceSpec? = null, stop: () -> Boolean = { false }): Outcome =
         withContext(Dispatchers.IO) {
             val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext Outcome.NoVoice
+            ensureActive()
+            val job = coroutineContext.job
             try {
-                play(app, spoken.wav, stop)
+                play(app, spoken.wav) { stop() || !job.isActive }
+                ensureActive()
                 Outcome.Played(spoken.voice)
             } catch (e: CancellationException) {
                 throw e

@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import app.mokuhyo.culture.CultureCard
 import app.mokuhyo.culture.Persona
 import app.mokuhyo.desktop.AppGraph
+import app.mokuhyo.desktop.QuestionDelivery
 import app.mokuhyo.desktop.Voice
 import app.mokuhyo.desktop.ui.Badge
 import app.mokuhyo.desktop.ui.CheckRow
@@ -331,17 +332,19 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     // How the learner answered, and whether a test had to fall back to text (QC 2026-10-19 #2, #3).
     var spoken by remember { mutableIntStateOf(0) }
     var typedAnswers by remember { mutableIntStateOf(0) }
-    var textFallback by remember { mutableStateOf(false) }
-    var voiceProblem by remember { mutableStateOf<String?>(null) }
+    // Per question: pending → playing → heard / failed / cancelled. A test answers only a question it heard (F2).
+    val delivery = remember { QuestionDelivery(test) }
     var trendNote by remember { mutableStateOf<String?>(null) }
-    val questionTextAllowed = !test || textFallback
+    val questionTextAllowed = !test || delivery.textFallback
 
     suspend fun askAloud(text: String) {
-        val outcome = speak(app, text, module.code)
-        voiceProblem = outcome.problem
+        val outcome = delivery.deliver(delivery.question) { speak(app, text, module.code) } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
         if (!outcome.ok && !test) showText = true
     }
+
+    fun readyStatus() = if (delivery.state == QuestionDelivery.State.FAILED) "The question couldn't be played."
+        else if (hasStt) "Press Record and answer." else "Type your answer."
 
     fun complete() {
         finished = true
@@ -360,7 +363,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             rating = r
             cultural = c
             aab = brief
-            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, textFallback)
+            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
             busy = false
             done = true
         }
@@ -378,12 +381,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 return@launch
             }
             lines += Turn(Speaker.PARTNER, line.text) to line.english
+            delivery.newQuestion(lines.lastIndex)
             // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
             asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
             status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
             askAloud(line.text)
             busy = false
-            status = if (voiceProblem != null) "The question couldn't be played." else if (hasStt) "Press Record and answer." else "Type your answer."
+            status = readyStatus()
         }
     }
 
@@ -407,7 +411,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         if (done) {
             val r = rating
             trendNote?.let { SectionCard { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } }
-            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test && !textFallback)
+            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test && !delivery.textFallback)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
             aab?.let { brief ->
                 AfterActionBriefView(app, module.code, brief, conversationId) { turnIndex ->
@@ -431,23 +435,33 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER) {
-                    voiceProblem?.let { problem ->
-                        Text(problem, color = MaterialTheme.colorScheme.error)
-                        if (test && !textFallback) {
-                            Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
-                                "the interview then becomes text practice and won't count toward your speaking estimate.", style = MaterialTheme.typography.bodySmall)
-                            OutlinedButton(onClick = { textFallback = true; showText = true }) { Text("Continue as text practice") }
-                        }
+                    delivery.problem?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+                    if (test && !delivery.canAnswer && delivery.needsRecovery) {
+                        Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
+                            "the interview then becomes text practice and won't count toward your speaking estimate.", style = MaterialTheme.typography.bodySmall)
+                        OutlinedButton(onClick = { delivery.fallBackToText(); showText = true }) { Text("Continue as text practice") }
                     }
-                    if (textFallback) Badge("Text practice — the voice couldn't play; not counted as a test")
+                    if (delivery.textFallback) Badge("Text practice — the voice couldn't play; not counted as a test")
                     if (questionTextAllowed) CheckRow(showText, { showText = it }) { Text("Show the question text") }
                     if (showText && questionTextAllowed) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        OutlinedButton(onClick = { scope.launch { askAloud(last.first.text) } }) { Text("Repeat the question") }
+                        // Repeat runs as the tracked job: one playback at a time, and Cancel stops it.
+                        OutlinedButton(enabled = !delivery.playing, onClick = {
+                            busy = true
+                            status = "Repeating the question…"
+                            job = scope.launch {
+                                try {
+                                    askAloud(last.first.text)
+                                } finally {
+                                    busy = false
+                                }
+                                status = readyStatus()
+                            }
+                        }) { Text("Repeat the question") }
                     }
                     // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
                     // A test whose question wasn't heard waits until it's played or the learner falls back to text.
-                    val canAnswer = !test || textFallback || voiceProblem == null
+                    val canAnswer = delivery.canAnswer
                     if (hasStt && canAnswer) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
                         enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     if (canAnswer) OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
@@ -460,7 +474,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     }
                 }
             }
-            if (busy && job != null && !finished) TextButton(onClick = { job?.cancel(); busy = false; status = "Stopped." }) { Text("Cancel") }
+            if (busy && job != null && !finished) TextButton(onClick = {
+                job?.cancel()
+                delivery.stop()
+                busy = false
+                status = "Stopped."
+                if (!test && delivery.needsRecovery) showText = true
+            }) { Text("Cancel") }
         }
         if (!test) lines.filter { it.first.speaker == Speaker.LEARNER }.lastOrNull()?.let { (turn, _) ->
             SectionCard("You said") {
