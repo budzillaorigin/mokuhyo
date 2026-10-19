@@ -21,7 +21,8 @@ object AudioIO {
 
     data class Device(val name: String, val description: String)
 
-    fun inputDevices(): List<Device> = mixers { it.isLineSupported(DataLine.Info(TargetDataLine::class.java, CAPTURE_FORMAT)) }
+    /** Inputs [record] can open: any of [CAPTURE_CANDIDATES], not only 16 kHz mono (QC 2026-10-19 #5). */
+    fun inputDevices(): List<Device> = mixers { m -> CAPTURE_CANDIDATES.any { m.isLineSupported(DataLine.Info(TargetDataLine::class.java, it)) } }
 
     fun outputDevices(): List<Device> =
         mixers { it.isLineSupported(DataLine.Info(SourceDataLine::class.java, AudioFormat(22_050f, 16, 1, true, false))) }
@@ -110,9 +111,15 @@ object AudioIO {
         return resample16k(mono, rate.toFloat())
     }
 
-    private fun resample16k(mono: FloatArray, rate: Float): ShortArray {
+    /** Mono PCM16 from [from] Hz to [to] Hz (same as [toMono16k]'s resampler; returns the input when the rates match). */
+    fun resample(samples: ShortArray, from: Int, to: Int): ShortArray =
+        if (from == to) samples else resampleTo(FloatArray(samples.size) { samples[it].toFloat() }, from.toFloat(), to.toFloat())
+
+    private fun resample16k(mono: FloatArray, rate: Float): ShortArray = resampleTo(mono, rate, 16_000f)
+
+    private fun resampleTo(mono: FloatArray, rate: Float, target: Float): ShortArray {
         if (mono.isEmpty()) return ShortArray(0)
-        val ratio = rate / 16_000f
+        val ratio = rate / target
         // Average over each output step before interpolating: a cheap low-pass against aliasing from 44.1/48 kHz.
         val smoothed = if (ratio > 1.5f) {
             val w = ratio.toInt()
@@ -128,29 +135,79 @@ object AudioIO {
         }
     }
 
-    /** Plays WAV (or AIFF) bytes to [deviceName] (null = default) and returns when done or [stop] says so. */
-    fun play(audio: ByteArray, deviceName: String? = null, speed: Double = 1.0, stop: () -> Boolean = { false }) {
-        val stream = AudioSystem.getAudioInputStream(ByteArrayInputStream(audio))
-        val base = stream.format
-        // Speed 0.8–1.0×: resample by playing at a lower sample rate (pitch drops slightly; acceptable for practice).
-        val format = AudioFormat(base.encoding, (base.sampleRate * speed).toFloat(), base.sampleSizeInBits, base.channels, base.frameSize,
-            (base.frameRate * speed).toFloat(), base.isBigEndian)
-        val info = DataLine.Info(SourceDataLine::class.java, format)
-        val line = mixerNamed(deviceName)?.let { AudioSystem.getMixer(it).getLine(info) as SourceDataLine } ?: AudioSystem.getLine(info) as SourceDataLine
-        line.open(format)
-        line.start()
-        val buf = ByteArray(4096)
-        AudioInputStream(stream, base, stream.frameLength).use { s ->
-            while (!stop()) {
-                val n = s.read(buf)
-                if (n < 0) break
-                line.write(buf, 0, n)
+    /**
+     * Audio ready to play: the output line is already open and started, so the device and format are known to work
+     * before anything (a test's limited plays, say) is counted. [run] streams it; [close] releases it unplayed.
+     */
+    class Playback internal constructor(private val line: SourceDataLine, private val stream: AudioInputStream) : AutoCloseable {
+        /**
+         * Streams to the end or until [stop] says so; returns true when it played to the end. Throws when the output
+         * fails part-way (device unplugged, line error), which callers must tell apart from the learner's Stop.
+         */
+        fun run(stop: () -> Boolean = { false }): Boolean {
+            try {
+                val buf = ByteArray(4096)
+                while (!stop()) {
+                    val n = stream.read(buf)
+                    if (n < 0) {
+                        line.drain()
+                        return true
+                    }
+                    var off = 0
+                    while (off < n) {
+                        val w = line.write(buf, off, n - off)
+                        if (w <= 0 && !line.isOpen) throw IllegalStateException("the audio output closed during playback")
+                        off += w
+                        if (stop()) break
+                    }
+                }
+                return false
+            } finally {
+                close()
             }
         }
-        if (!stop()) line.drain()
-        line.stop()
-        line.close()
+
+        override fun close() {
+            runCatching { line.stop() }
+            runCatching { line.close() }
+            runCatching { stream.close() }
+        }
     }
+
+    /**
+     * Opens [audio] (WAV or AIFF) on [deviceName] (null = default) at [speed] (0.5–2.0×; below or above 1.0 the speech is
+     * time-stretched so its pitch stays natural). Throws when the audio can't be decoded or the device can't be opened.
+     */
+    fun open(audio: ByteArray, deviceName: String? = null, speed: Double = 1.0): Playback {
+        var stream = AudioSystem.getAudioInputStream(ByteArrayInputStream(audio))
+        if (speed != 1.0) {
+            val rate = stream.format.sampleRate.toInt()
+            val pcm = toMono16(stream)
+            val stretched = TimeStretch.stretch(pcm, rate, speed.coerceIn(0.5, 2.0))
+            stream = AudioSystem.getAudioInputStream(ByteArrayInputStream(wav(stretched, rate)))
+        }
+        val format = stream.format
+        val info = DataLine.Info(SourceDataLine::class.java, format)
+        if (deviceName != null && mixerNamed(deviceName) == null) throw IllegalStateException("the output device “$deviceName” isn't connected")
+        val line = mixerNamed(deviceName)?.let { AudioSystem.getMixer(it).getLine(info) as SourceDataLine } ?: AudioSystem.getLine(info) as SourceDataLine
+        try {
+            line.open(format)
+            line.start()
+        } catch (e: Exception) {
+            runCatching { line.close() }
+            throw e
+        }
+        return Playback(line, stream)
+    }
+
+    /** Plays WAV (or AIFF) bytes to [deviceName] (null = default) and returns when done or [stop] says so. */
+    fun play(audio: ByteArray, deviceName: String? = null, speed: Double = 1.0, stop: () -> Boolean = { false }) {
+        open(audio, deviceName, speed).run(stop)
+    }
+
+    /** A pack clip (Ogg Opus at its own rate, or WAV) as WAV bytes for the player. */
+    fun clipWav(bytes: ByteArray): ByteArray =
+        if (OggOpus.isOggOpus(bytes)) OggOpus.decodeWithRate(bytes).let { (pcm, rate) -> wav(pcm, rate) } else bytes
 
     /** 16-bit PCM → WAV bytes. */
     fun wav(samples: ShortArray, sampleRate: Int = 16_000): ByteArray {
@@ -170,21 +227,30 @@ object AudioIO {
     /** Any WAV/AIFF → 16 kHz mono PCM16 (linear interpolation resampling), for Whisper. */
     fun toPcm16kMono(audio: ByteArray): ShortArray {
         val src = AudioSystem.getAudioInputStream(ByteArrayInputStream(audio))
-        val pcm = AudioSystem.getAudioInputStream(
-            AudioFormat(src.format.sampleRate, 16, src.format.channels, true, false), src,
-        )
+        val rate = src.format.sampleRate
+        val mono = toMono16(src)
+        return resample16k(FloatArray(mono.size) { mono[it].toFloat() }, rate)
+    }
+
+    /** Any WAV/AIFF → mono PCM16 at its own sample rate (no resampling: playback keeps the voice's full bandwidth). */
+    fun toMonoPcm(audio: ByteArray): Pair<ShortArray, Int> {
+        val src = AudioSystem.getAudioInputStream(ByteArrayInputStream(audio))
+        return toMono16(src) to src.format.sampleRate.toInt()
+    }
+
+    private fun toMono16(src: AudioInputStream): ShortArray {
+        val pcm = AudioSystem.getAudioInputStream(AudioFormat(src.format.sampleRate, 16, src.format.channels, true, false), src)
         val raw = pcm.readAllBytes()
         val channels = pcm.format.channels
         val frames = raw.size / (2 * channels)
-        val mono = FloatArray(frames) { f ->
+        return ShortArray(frames) { f ->
             var sum = 0
             for (c in 0 until channels) {
                 val i = (f * channels + c) * 2
-                sum += (raw[i + 1].toInt() shl 8) or (raw[i].toInt() and 0xFF)
+                sum += ((raw[i + 1].toInt() shl 8) or (raw[i].toInt() and 0xFF)).toShort().toInt()
             }
-            sum.toFloat() / channels
+            (sum / channels).toShort()
         }
-        return resample16k(mono, pcm.format.sampleRate)
     }
 
     fun rms(buf: ByteArray, n: Int): Double {

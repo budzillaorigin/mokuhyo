@@ -21,6 +21,21 @@ class OggOpusTest {
         assertTrue(energy > 2000, "decoded signal too weak: $energy")
     }
 
+    /** QC 2026-10-19: clips can keep 24 kHz for playback; the rate travels in the header and old 16 kHz clips still decode. */
+    @Test
+    fun twentyFourKilohertzRoundTripKeepsItsRate() {
+        val rate = 24_000
+        val pcm = ShortArray(rate * 2) { i -> (8000 * sin(2 * PI * 6000 * i / rate)).toInt().toShort() }
+        val ogg = OggOpus.encode(pcm, bitrate = 32_000, sampleRate = rate)
+        assertEquals(rate, OggOpus.rateOf(ogg))
+        val (back, backRate) = OggOpus.decodeWithRate(ogg)
+        assertEquals(rate, backRate)
+        assertTrue(abs(back.size - pcm.size) <= 960, "length ${back.size} vs ${pcm.size}")
+        assertEquals(16_000, OggOpus.rateOf(OggOpus.encode(ShortArray(16_000))))
+        val wav = AudioIO.clipWav(ogg)
+        assertEquals(rate, AudioIO.toMonoPcm(wav).second)
+    }
+
     @Test
     fun emptyInputIsAValidStream() {
         val ogg = OggOpus.encode(ShortArray(0))

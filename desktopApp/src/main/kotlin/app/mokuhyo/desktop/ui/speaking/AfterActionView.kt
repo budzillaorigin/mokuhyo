@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -93,7 +94,7 @@ private fun TurnReview(app: AppGraph, lang: String, r: TurnFeedbackRecord, conve
             Text("You", fontWeight = FontWeight.SemiBold)
             Text(r.learner, fontFamily = Fonts.forLanguage(lang))
             val f = File(app.dataDir, "recordings/$conversationId/turn-%02d.wav".format(r.turnIndex))
-            if (f.isFile) TextButton(onClick = { Thread { runCatching { AudioIO.play(f.readBytes()) } }.start() }) { Text("▶ my audio") }
+            if (f.isFile) TextButton(onClick = { Thread { runCatching { Voice.play(app, f.readBytes()) } }.start() }) { Text("▶ my audio") }
         }
         r.corrected?.let { c ->
             Text("Correction: $c", fontFamily = Fonts.forLanguage(lang), color = MaterialTheme.colorScheme.primary)
@@ -102,7 +103,7 @@ private fun TurnReview(app: AppGraph, lang: String, r: TurnFeedbackRecord, conve
         r.rewrite?.takeIf { it.isNotBlank() }?.let { rw ->
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("More natural: $rw", fontFamily = Fonts.forLanguage(lang))
-                TextButton(onClick = { Thread { runCatching { kotlinx.coroutines.runBlocking { app.speech.synthesize(rw, lang) }?.let { AudioIO.play(it.wav) } } }.start() }) {
+                TextButton(onClick = { Thread { runCatching { kotlinx.coroutines.runBlocking { app.speech.synthesize(rw, lang) }?.let { Voice.play(app, it.wav) } } }.start() }) {
                     Text("▶ model version")
                 }
             }

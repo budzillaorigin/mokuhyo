@@ -32,6 +32,9 @@ import java.io.File
 object ChatterboxJobs {
     private val json = Json { ignoreUnknownKeys = true }
 
+    /** Imported clips stay at 24 kHz (Chatterbox renders at 24 kHz; 16 kHz cut its upper band). */
+    const val CLIP_RATE = 24_000
+
     /** A pool voice: [ref] is the reference clip file name ("" = Chatterbox's built-in voice). */
     data class PoolVoice(val ref: String, val gender: String)
 
@@ -93,7 +96,9 @@ object ChatterboxJobs {
             val credits = File(audio, "voices.json").takeIf { it.isFile }?.let { json.parseToJsonElement(it.readText()).jsonObject.toMutableMap() } ?: mutableMapOf()
             langDir.listFiles { f -> f.extension == "wav" && !f.name.endsWith(".part.wav") }.orEmpty().sortedBy { it.name }.forEach { wav ->
                 val id = wav.nameWithoutExtension
-                File(audio, "$id.ogg").writeBytes(OggOpus.encode(AudioIO.toPcm16kMono(wav.readBytes()), bitrate = 32_000))
+                // 24 kHz keeps the voice's upper band for playback; the app makes its own 16 kHz copy for Whisper (QC 2026-10-19).
+                val (pcm, rate) = AudioIO.toMonoPcm(wav.readBytes())
+                File(audio, "$id.ogg").writeBytes(OggOpus.encode(AudioIO.resample(pcm, rate, CLIP_RATE), bitrate = 32_000, sampleRate = CLIP_RATE))
                 val refs = jobs[id]?.get("lines")?.jsonArray?.map { it.jsonObject.getValue("ref").jsonPrimitive.content.ifEmpty { "builtin" } }?.distinct()
                 val engine = if (refs.orEmpty().any { it.startsWith("vv:") }) "voicevox" else "chatterbox-multilingual"
                 credits[id] = buildJsonObject { put("engine", engine); put("voices", JsonArray(refs.orEmpty().map(::JsonPrimitive))) }

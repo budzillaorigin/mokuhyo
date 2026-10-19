@@ -118,6 +118,47 @@ class ExamSessionTest {
         assertTrue(twice.canPlayAudio(pid))
     }
 
+    /** QC 2026-10-19 #1: a play that failed in the output doesn't use up one of the test's plays. */
+    @Test
+    fun failedPlaybackGivesThePlayBack() {
+        val (items, passages) = pool(Skill.LISTENING)
+        val form = ExamAssembler.test(blueprint, Skill.LISTENING, FormLength.SLICE_30, items, passages, emptySet(), Random(1))
+        val session = ExamSession(form, PlayPolicy(plays = 1, questionsVisibleBeforeAudio = false), TestClock())
+        val pid = session.current!!.item.passageId!!
+        session.audioPlayed(pid)
+        assertFalse(session.canPlayAudio(pid))
+        session.audioFailed(pid)
+        assertTrue(session.canPlayAudio(pid))
+        assertEquals(0, session.playsOf(pid))
+        assertEquals(0, session.progress().plays[pid] ?: 0)
+        session.audioFailed(pid) // nothing to give back: stays at zero
+        assertEquals(0, session.playsOf(pid))
+    }
+
+    /** QC 2026-10-19 #1: an unplayable recording's questions leave the score instead of counting as wrong. */
+    @Test
+    fun voidedPassageIsLeftOutOfTheScoreAndSurvivesResume() {
+        val (items, passages) = pool(Skill.LISTENING)
+        val form = ExamAssembler.test(blueprint, Skill.LISTENING, FormLength.SLICE_30, items, passages, emptySet(), Random(1))
+        val session = ExamSession(form, PlayPolicy(plays = 1), TestClock())
+        val pid = session.current!!.item.passageId!!
+        val inPassage = form.items.count { it.item.passageId == pid }
+        session.voidPassage(pid)
+        assertTrue(session.isVoided(pid))
+        assertFalse(session.canPlayAudio(pid))
+        val restored = ExamSession(form, PlayPolicy(plays = 1), TestClock(), restored = session.progress())
+        assertTrue(restored.isVoided(pid))
+        val result = restored.submit()
+        assertEquals(form.items.size - inPassage, result.answers.size)
+        assertTrue(result.answers.none { a -> form.items.first { it.item.id == a.itemId }.item.passageId == pid })
+        assertEquals(inPassage, result.scoring.voidedItems)
+        assertFalse(result.scoring.complete)
+        assertTrue(result.summary.contains("not scored"))
+        val full = ExamSession(form, PlayPolicy(plays = 1), TestClock()).submit()
+        assertTrue(full.scoring.complete)
+        assertEquals(0, full.scoring.voidedItems)
+    }
+
     @Test
     fun practiceIsUntimedAndReplayable() {
         val (items, passages) = pool(Skill.LISTENING)

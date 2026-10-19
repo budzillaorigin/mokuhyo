@@ -69,7 +69,7 @@ fun AudioCheck(app: AppGraph) {
                     level = 0.0
                     samples.onSuccess { s ->
                         status = "Playing it back…"
-                        withContext(Dispatchers.IO) { runCatching { AudioIO.play(AudioIO.wav(s), app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
+                        withContext(Dispatchers.IO) { runCatching { Voice.play(app, AudioIO.wav(s)) } }
                         status = if (s.any { kotlin.math.abs(it.toInt()) > 800 }) "Microphone works." else "That was very quiet — check the input device or the OS microphone permission."
                     }.onFailure { status = "Couldn't open the microphone: ${it.message}. On macOS, allow Mokuhyo in System Settings → Privacy & Security → Microphone." }
                     busy = false
@@ -79,7 +79,7 @@ fun AudioCheck(app: AppGraph) {
                 busy = true
                 scope.launch {
                     status = "Speaking a test sentence…"
-                    status = Voice.speakSample(app, lang) ?: "Test voice played."
+                    status = Voice.speakSample(app, lang)
                     busy = false
                 }
             }) { Text("Play test voice") }

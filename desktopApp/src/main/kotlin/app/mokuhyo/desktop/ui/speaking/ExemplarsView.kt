@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Arrangement
@@ -24,7 +25,6 @@ import app.mokuhyo.desktop.ui.SectionCard
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.opi.Exemplar
 import app.mokuhyo.speech.AudioIO
-import app.mokuhyo.speech.OggOpus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -56,9 +56,9 @@ fun ExemplarAnswers(app: AppGraph, module: LanguageModule, answers: List<Exempla
                 if (!e.verified) Badge("AI-drafted · unreviewed", MaterialTheme.colorScheme.tertiaryContainer)
                 TextButton(onClick = {
                     scope.launch(Dispatchers.IO) {
-                        val clip = e.audio?.let { app.packFile(module.code, it) }?.readBytes()?.let { if (OggOpus.isOggOpus(it)) AudioIO.wav(OggOpus.decode(it)) else it }
+                        val clip = e.audio?.let { app.packFile(module.code, it) }?.readBytes()?.let(AudioIO::clipWav)
                         val wav = clip ?: app.speech.synthesize(e.response, module.code)?.wav
-                        wav?.let { runCatching { AudioIO.play(it) } }
+                        wav?.let { runCatching { Voice.play(app, it) } }
                     }
                 }) { Text("▶") }
             }

@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -167,7 +168,7 @@ private fun ListeningStep(app: AppGraph, module: LanguageModule, passageId: Stri
             status = "Preparing audio…"
             scope.launch {
                 when (val a = PassageAudio(app).load(passage)) {
-                    is PassageAudio.Result.Ready -> { status = ""; withContext(Dispatchers.IO) { runCatching { AudioIO.play(a.wav) } } }
+                    is PassageAudio.Result.Ready -> { status = ""; withContext(Dispatchers.IO) { runCatching { Voice.play(app, a.wav) } } }
                     is PassageAudio.Result.Unavailable -> status = a.reason
                 }
             }
@@ -202,7 +203,7 @@ private fun SpeakingStep(app: AppGraph, module: LanguageModule, level: String, d
     }
     SectionCard("One question — feedback comes at the end") {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            TextButton(onClick = { scope.launch(Dispatchers.IO) { app.speech.synthesize(q.prompt, module.code)?.let { runCatching { AudioIO.play(it.wav) } } } }) {
+            TextButton(onClick = { scope.launch(Dispatchers.IO) { app.speech.synthesize(q.prompt, module.code)?.let { runCatching { Voice.play(app, it.wav) } } } }) {
                 Text("▶ Listen")
             }
             Text(q.prompt, fontFamily = Fonts.forLanguage(module.code))

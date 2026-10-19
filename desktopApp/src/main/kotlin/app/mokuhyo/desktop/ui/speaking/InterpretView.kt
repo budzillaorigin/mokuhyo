@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -143,7 +144,7 @@ private fun InterpretRun(app: AppGraph, module: LanguageModule, chunks: List<Chu
             if (spoken != null) {
                 val wav = if (variant == InterpretVariant.RADIO_RELAY) AudioIO.wav(Degrade.apply(AudioIO.toPcm16kMono(spoken.wav), Degrade.Preset.RADIO, 0.45, seed = c.id.hashCode()))
                 else spoken.wav
-                runCatching { AudioIO.play(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) }
+                runCatching { Voice.play(app, wav) }
             }
         }
         if (pauseSec > 0) {
