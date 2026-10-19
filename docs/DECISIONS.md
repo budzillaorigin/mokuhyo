@@ -399,3 +399,51 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   - `docs/MODELS.md`, `docs/LICENSES.md` and the voice picker state the component's origin;
   - every other rule-13 check (LLM tiers, STT, other TTS, drafting defaults) is unchanged; no other CosyVoice-family
     model is allowed by this decision.
+
+## D-042 Functionality QC of 2026-10-19: how its findings are fixed (unattended default, 2026-10-19)
+Source: `docs/QC_REPORT_2026-10-19.md`. Each choice below is the simplest one consistent with rules 5 and 7.
+- **Listening test audio that won't play (QC #1).** A play is counted only once the output line is open and started
+  (`AudioIO.open`). If the output then fails, the play is given back (`ExamSession.audioFailed`). The learner's own
+  Stop still counts. If a recording can't be played at all, the learner can choose to leave it out of the score
+  (`ExamSession.voidPassage`, with a confirmation). Its questions are then not scored, rather than counted wrong.
+  `AttemptScoring.voidedItems` records how many were left out and `complete` becomes false. The result screen, History
+  and Home say so, and the estimate is saved as provisional. A test only uses a pre-rendered clip when the clip file
+  itself is in the pack, not just its index entry.
+- **Interview speech (QC #2).** `Voice.say` returns an outcome (played / no voice / playback failed), and the
+  interview acts on it:
+  - The interview-test button needs an installed voice.
+  - If a question can't be heard in a test, the learner can fix the audio and press Repeat. Or they can choose
+    "Continue as text practice": the question text is shown and the interview no longer counts as a test.
+  - Practice shows the question text automatically when it couldn't be heard.
+- **Speaking estimate (QC #3)** (`SpeakingTrend`). Only a model-rated *test* answered mostly by voice joins the
+  speaking trend. It is firm (confidence 0.6) only when that language and tier are calibrated (`Calibration.band`) and
+  every answer was spoken. Otherwise it is provisional (confidence 0.3). Mostly-typed tests, text-fallback tests,
+  practice and self-ratings stay out, and the results screen says why. No schema change: the response modality decides
+  whether and how a row is written, and the `provisional` flag carries it to Home, History and the PDF.
+- **One voice path (QC #4).** "Play test voice" and every other screen go through the voice service and the
+  output device set in Settings (`Voice.say` / `Voice.play`). The test names the engine and voice that played.
+- **Microphones (QC #5).** The input picker lists any device that supports one of the recorder's capture formats.
+- **Gates (QC #6).**
+  - `--roundtrip` fails when a declared clip is missing, unless `--allow-missing` is given. It prints expected /
+    present / tested counts per language.
+  - The two Python tests that needed the restricted source texts now use an invented fixture corpus
+    (`tools/terms/overlap_fixture.py`), selected through `MOKUHYO_OVERLAP_SOURCES_JSON` / `MOKUHYO_OVERLAP_CACHE`.
+- **Playback quality.**
+  - Slow playback (0.8–0.9×) is time-stretched (WSOLA, `TimeStretch`), so the voice keeps its pitch.
+  - Synthesized passages keep the voice's own sample rate.
+  - New Chatterbox imports and Piper renders are encoded at 24 kHz; the Ogg header carries the rate, so existing
+    16 kHz clips still decode. Shipped clips stay 16 kHz until re-imported or re-rendered with `--force`.
+  - The passage cache key names the engine, voice id and speaker that spoke each line, plus a render version.
+  - Pauses are 350 ms within one speaker and 700 ms at a turn change.
+  - The build-time renderer splits an overlong sentence at clauses, then words, then characters
+    (`tools/voices/textsplit.py`).
+- **No model installed.** Live corrections are not offered. Interview practice describes its questions as scripted.
+- **Not done in this pass (need people, hardware or a larger change):**
+  - a human-reviewed starter bank;
+  - instructor calibration samples;
+  - native-speaker checks: Indonesian through the Malay model, and blind voice comparisons;
+  - sentence-by-sentence streaming of interviewer replies to TTS;
+  - a Kokoro / VOICEVOX Core live-voice pilot, plus a provenance check of Kokoro's phonemizer chain before adoption;
+  - a per-language readiness panel and a guided first session;
+  - visual QA at 1024×700 and 150 % scaling, and with keyboard navigation and screen readers;
+  - laptop benchmarks and device-disconnect tests on real Windows/macOS hardware.

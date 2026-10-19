@@ -820,3 +820,41 @@ checksum-verified, the links are untracked on both branches, and the ignore rule
 
 **Note:** the Persian exemplar answers are Piper-rendered and score 67 % in the Whisper round trip. That matches the
 Persian voice's known mispronunciations, which are labelled in the app.
+
+## QC-2026-10-19 — functionality QC fixes ✅ (owner and hardware items open)
+
+What changed, per finding of `docs/QC_REPORT_2026-10-19.md` (decisions: D-042):
+
+| QC item | Fix | Regression test |
+|---|---|---|
+| #1 Listening play lost on a failed playback | Output opened before the play counts; play given back on an output error; error shown with retry; "leave this recording out of the score" in tests (result marked incomplete, estimate provisional); test pool checks that the clip file exists | `ExamSessionTest.failedPlaybackGivesThePlayBack`, `…voidedPassageIsLeftOutOfTheScoreAndSurvivesResume`, `PlaybackOpenTest` |
+| #2 Interview advances after silent TTS failure | `Voice.Outcome`; a test needs a voice to start; unheard question → Repeat or an explicitly labelled text-practice fallback; practice shows the text | (UI flow; outcome policy covered by `SpeakingTrendTest`) |
+| #3 Speaking estimate saved firm, regardless of typing or calibration | `SpeakingTrend`: spoken tests only, provisional unless calibrated and fully spoken; labels on Home and the PDF | `SpeakingTrendTest` |
+| #4 "Play test voice" bypassed Piper | Goes through the voice service and the chosen output, and names the voice; every screen plays to the chosen output device | — (same code path as interviews) |
+| #5 Mic picker stricter than recorder | Lists devices that support any capture format | `PlaybackOpenTest.recorderFormats…` |
+| #6 Gates overstate coverage | `--roundtrip` requires every declared clip (expected / present / tested); corpus-dependent Python tests use a fixture corpus | `RoundtripVerdictTest`, `terms/test_terms_gates.py`, `tracks/test_build_track.py` |
+| Voice: pitch drops at 0.8× | WSOLA time-stretch | `TimeStretchTest` |
+| Voice: 16 kHz downsampling | Native rate for synthesized passages; 24 kHz Ogg for new imports and renders | `OggOpusTest.twentyFourKilohertz…` |
+| Voice: stale cache after a voice upgrade | Cache key has the engine, voice id, speaker and render version; fallback renders aren't cached | `PassageAudioKeyTest` |
+| Voice: one overlong sentence passed whole | `textsplit.chunks` splits at clauses, then words, then characters | `voices/test_textsplit.py` |
+| No-model mode offered Live corrections | Live disabled without a model; copy says the questions are scripted | — |
+
+**Gates run here (Linux, no packs or source corpus in this container):**
+- `./gradlew :shared:allTests :desktopApp:test`: 382 tests, 0 failures, 0 skipped.
+- `run_tests.py`: 10 / 10 scripts. The two corpus-dependent scripts were failing before this change and now pass.
+- ruff, `check_licenses`, `models_doc --check` and `check_provenance`: pass.
+
+**Known gap (environment):** `tools/gates/gate_terms.sh` fails here with
+`overlap_check: text cache missing for: nato-aap-06-2019, …` (the restricted source texts aren't in this container).
+It is unchanged by this work; run it on the owner's machine.
+
+**Open from the QC (need the owner, people or real hardware), as listed in D-042:**
+- a human-reviewed starter bank and instructor calibration samples;
+- native-speaker voice checks, including Indonesian through the Malay model;
+- streaming interviewer replies sentence by sentence;
+- a Kokoro / VOICEVOX Core live-voice pilot;
+- a readiness panel and a guided first session;
+- visual QA at 1024×700 and 150 % scaling;
+- 8 GB / 16 GB laptop benchmarks and device-disconnect runs on Windows and macOS.
+
+Shipped clips stay 16 kHz until re-imported or re-rendered with `--force`.
