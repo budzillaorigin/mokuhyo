@@ -81,3 +81,39 @@ on AC power and on battery; display scaling 100/150/200 %.
    and a `.md` with the last session's timings only.
 6. **Attach both reports to an issue** titled `Timing: <OS> <RAM> <CPU/GPU> <languages>`, with the machine row from the
    matrix above, AC or battery, and the audio devices used. Paste the `.md` tables into the issue body.
+
+## Results template (filled in by the owner — empty until measured)
+
+One row per OS × RAM × language. Pass/fail is against the targets above for that profile.
+
+| OS | RAM | CPU / GPU | Language | Answers | First audio p50 / p95 (ms) | Prompt start p95 (ms) | Fallback rate | TTS RTF | Cancel latency p95 (ms) | Peak memory (MB) | 30-min endurance | Pass / fail |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Windows 10/11 | 8 GB | CPU | | short / long | | | | | | | | |
+| Windows 10/11 | 16 GB | | | short / long | | | | | | | | |
+| macOS (Apple Silicon) | 8 GB | | | short / long | | | | | | | | |
+| macOS (Apple Silicon) | 16 GB | | | short / long | | | | | | | | |
+| Linux | 8–16 GB | CPU | | short / long | | | | | | | | |
+
+Fill one row per language you ran (copy a row). Sources: `first_audio` and `prompt_start` from the bench report's
+per-language table, fallback rate and TTS RTF from its summary, cancel latency from "Cancel llm/asr/tts", peak memory
+from the report, endurance from the 30-minute session (no lost or duplicated turns, memory not growing — compare the
+first and last turns' peak memory in the exported report).
+
+## Supported computers (draft — pending measurement)
+
+Not a claim until the table above has results. Current native x86 builds require x86-64-v3 (AVX2-family) CPUs, and the
+Basic tier assumes about 8 GB of RAM; "any computer" is not supportable. README and INSTALL keep their current wording
+until N7 results exist.
+
+| Profile | Expected experience | Status |
+| --- | --- | --- |
+| 8 GB, CPU only | guided interview often; adaptive replies when the model meets the deadline | pending measurement |
+| 16 GB, CPU only | adaptive interview on the fastest model that meets the budget | pending measurement |
+| 16 GB+ with a supported GPU, or Apple Silicon | adaptive interview | pending measurement |
+
+### What this environment could not measure (2026-10-19)
+
+The cloud container that built this phase has no native runtime (its proxy refuses the pinned llama.cpp source
+download), no model, no Whisper model and no voice, so `--bench-interview` ran as a labelled dry run: only VAD
+endpointing (1.5 s, the configured tail) and scripted question selection were exercised. No latency target is met or
+missed by that run; every row above is still empty.

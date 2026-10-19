@@ -933,3 +933,38 @@ rerenders) was not started. No model/voice/provenance policy changed.
 
 See [D-044](DECISIONS.md) and [validation evidence](qc/2026-10-19-current/D044_VALIDATION.md) for the decisions,
 reproduction script, logs and stage-timing limitations.
+
+## 2026-10-19 — D-045 interview speed checkpoint (BRIEF_INTERVIEW_SPEED N1–N7)
+
+Branch `claude/interview-speed` from main `c8c04ac`; PR against main, unmerged. Commits by step:
+N1 `c7ae27e` timeline, bench, diagnostics, runbook · N2 `b6f880f` timing-aware tier advice and pinned session model ·
+N3 `47e1ff3` gloss off the live reply, `2d210da` sentence streaming, `9bdaa5e` reply deadline, `4d2c194` glosses
+deferred with feedback · N4 `b15497a` thread caps, `3892cba` preflight, `c5fc7a3` readiness panel · N5 `b65973f` guided
+labels and trend effect, `04703e7` prerendered prompts · N6 `6a94a42` audit (Kokoro and VOICEVOX Core stopped),
+`25682dd` blind listening kit · N7 this checkpoint, D-045 and the BENCHMARK results template.
+
+**Validation in this container (Linux, 4 vCPU, no audio devices, no native runtime):**
+- `./gradlew :shared:allTests :desktopApp:test`: **435 shared + 56 desktop, zero failures/errors** (was 384 + 42).
+  34 conditional `SKIP` messages for absent models, voices, dictionaries and fonts, as before.
+- Python: Ruff clean; `uv run --locked --group content --group release python run_tests.py` **13/13**;
+  `check_licenses.py`, `check_provenance.py`, `models_doc.py --check` pass.
+- `--smoke --no-network --allow-no-native` passes (DB, 11 languages, 1180×800 frame). The plain `--smoke --no-network`
+  fails only because `native/build.sh cpu` can't fetch the pinned llama.cpp tarball here (proxy HTTP 403 on
+  github.com archives); run it where the native library builds (CI, the owner's machine).
+- `--bench-interview --language es,ja --turns 4 --no-network`: runs end to end as a **dry run** — LLM, ASR and TTS
+  not run (no native runtime, model, Whisper or voice); endpoint 1500 ms p50/p95 (the VAD tail); fallback 100 %
+  (scripted bank); peak RSS 120 MB.
+
+| Target (goal, not claim) | Status |
+| --- | --- |
+| Warm conversation, 16 GB: first audio p50 ≤ 2 s, p95 ≤ 4 s | **unmeasured** |
+| 8 GB CPU: p50 ≤ 3 s, p95 ≤ 6 s, fallback reported | **unmeasured** |
+| Prerendered prompt start p95 ≤ 300 ms | **unmeasured** (no clips rendered yet) |
+| Stop/Cancel visible ≤ 100 ms, audible p95 ≤ 250 ms | **unmeasured** on devices (bench probes llm/asr/tts cancel) |
+| Live TTS RTF < 1 per released language (aim ≤ 0.5) | **unmeasured** |
+| 30-minute interview, no lost/duplicated turns, bounded memory | **unmeasured** |
+
+**Still needs the owner:** the hardware runs in docs/BENCHMARK.md; rendering the es/ja pilot prompt clips (Piper
+`--prompt-audio --language es --render`; VOICEVOX `--jobs` → `voicevox_render.py` → `--import`) and checking their size
+before the other nine languages; a native-speaker round with the listening kit (Persian, Indonesian first); a decision
+on the VAD end-of-speech tail versus the 2 s target; and, if wanted, approved transition/follow-up prompts.

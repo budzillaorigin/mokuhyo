@@ -568,3 +568,65 @@ unchanged main, Python 12/12, license/provenance checks, native CPU build, distr
 integration pass. Full local staging hits a proxy 403 fetching an existing Piper voice; Debian packaging lacks
 `fakeroot`. Windows/macOS CI and 30-minute physical-device latency/quality evidence remain outstanding.
 See [D-044 evidence](qc/2026-10-19-current/D044_VALIDATION.md) for commands, commits and limits.
+
+## D-045 — faster, more natural spoken interviews (owner brief, unattended defaults, 2026-10-19)
+
+Source: `BRIEF_INTERVIEW_SPEED_2026-10-19.md` (N1–N7), on branch `claude/interview-speed` from main `c8c04ac`. One
+change per commit with its test; the PR stays unmerged. Nothing new became a default voice, model or engine; no
+provenance exception was added (rule 13 and D-041 unchanged).
+
+- **N1 measurement.** `TurnTimeline` (shared) records monotonic marks per session and turn for the brief's stages and
+  numbers only — it has no API that takes text or audio, and fallback reasons are stored as categories
+  (`FallbackKind`). The headline `first_audio` runs from the learner's last speech, back-dated by the VAD's silence
+  tail, to the first meaningful partner audio. Deep layers mark through a coroutine-context `TimelineTrace`, so
+  background work (feedback, glosses) never marks a turn. Turn 0 and cold turns are reported apart; warm-up (N4) has
+  its own section. Peak memory: Linux `VmHWM`, macOS/Windows current RSS sampled per turn (the app process only;
+  Piper runs separately). `--bench-interview` uses the app's own model and Whisper (read-only from its data folder),
+  synthetic answers from `tools/bench/answers.json` (or the owner's own WAVs), the real VAD over each clip for the
+  endpoint, and writes JSON + Markdown; anything without real model + Whisper + voice is labelled a dry run.
+- **N2 tier choice.** The live budget is the model's share of a turn: first validated sentence ≤ 2 s, estimated by
+  the on-device timing check as first token + 24 tokens at the measured rate on the live interviewer prompt with
+  Whisper and the voice loaded. Recommendation = the most capable runnable tier meeting it, at or above the language's
+  quality floor; slower tiers stay selectable, marked "Slower — better for end-of-session grading". **Before any
+  timing**, a computer without a usable GPU is recommended at most Tier B (the 32 GB CPU-only case); with a GPU the
+  memory fit still decides. The fit reserves the KV cache (≈ context × weights / 40 000), Whisper ×1.3, 0.3 GB voice and
+  0.6 GB UI, within 80 % of RAM, or weights + cache within VRAM. Quality floors come only from non-fixture calibration
+  rows (n ≥ 5, within-one ≥ 80 %); today every floor is "unverified" and nothing is excluded by it. A session pins its
+  model (`AiGateway.pinned`); post-session grading with a larger model was not added (optional in the brief).
+- **N3 first sentence.** The live schemas are the spoken field alone; English glosses come from a background `gloss`
+  task, deferred to the end wherever feedback is (CPU-only or After action) because any prompt between turns evicts the
+  conversation's KV prefix. Streaming: complete sentences (ICU with abbreviation suppression, punctuation fallback) are
+  each checked (script/language, repetition, length) before they are spoken; a failure before anything was spoken is
+  retried, after that the turn stops and falls back. The whole-turn deadline (default 8 s; 5/8/12 s or off in
+  Settings) covers queue, generation and retries **until the first sentence is ready**; a reply that started in time
+  is not cut off. It applies only when the bank has a question to fall back on. Topic conversations stream but have no
+  deadline (no scripted bank to fall back to); they keep the progress line and the hard ceilings.
+- **N4 readiness.** Interview Start runs the preflight checklist (microphone, tone, voice, voice process, Whisper,
+  model warm-up on the interviewer's own prompt). Not-installed components are said, not failures; with no voice,
+  practice runs as labelled text practice and a test offers "Guided text practice instead". Thread caps: model + voice
+  ≤ the budget and recognition + voice ≤ the budget, one core kept for audio/UI from six cores; overrides in Settings →
+  AI. Piper's cap reaches ONNX Runtime through `MOKUHYO_TTS_THREADS` (new `patch_piper.cmake` step, applied to the
+  pinned sources and checked idempotent here; first compiled by the release build). Background LLM work during
+  recognition can still exceed the budget; it is deferrable and preempted by live replies.
+- **N5 guided interviews.** A guided turn plays the scripted question's prerendered clip (24 kHz Ogg Opus, 32 kbit/s)
+  when `prompts.json` has an intact clip rendered from the current text; otherwise live TTS, then text. Approved
+  transitions/follow-ups were **not** rendered: no approved set exists in the packs, and the brief forbids adding pack
+  content beyond the index. Trend effect: ≥ 50 % scripted questions → excluded ("guided interview — scripted
+  questions"); ≥ 10 % → a counted test is provisional ("partly guided"). Pilot indexes for `es` (Piper) and `ja`
+  (VOICEVOX `vv:8`) are committed; clips must be rendered on a host with Piper / the VOICEVOX engine. Estimated size
+  (from text length, not measured): es 2.5 MB, ja 2.2 MB, all 11 ≈ 25 MB. The VOICEVOX character credits, missing from
+  `docs/LICENSES.md` although the Japanese exam clips already used them, were added.
+- **N6 voice pilot — both candidates stopped after the audit, before any engine code.** Kokoro-82M: developer is a
+  pseudonymous account ("hexgrad"/"@rzvzn"), country not established — the brief's stop condition. VOICEVOX Core:
+  Japanese project, MIT core, but it links VOICEVOX's ONNX Runtime build and loads voice models under custom terms
+  (no reverse engineering) — not on rule 6's list for components shipped in the installer. Details in
+  `docs/MODELS.md`. The blind listening kit (`--listening-kit`, `tools/voices/listening_kit.py`) compares the sources
+  that exist (Piper, prerendered clips, optionally OS voices, off by default per D-013). Persian's pronunciation and
+  Indonesian-through-Malay still need native review; nothing here claims either is fixed.
+- **Findings for later phases.** With a 1.5 s VAD tail inside the headline, the 2 s p50 target leaves ≈ 0.5 s for
+  ASR, model and voice; meeting it likely needs a shorter, possibly adaptive end-of-speech tail (owner decision).
+  Background work between turns re-decodes the conversation prompt (now avoided on CPU; still true on GPU in Live
+  mode). Pronunciation dictionaries for names, ranks and acronyms remain out of scope.
+- **Not measured.** No latency target is claimed. This environment could build neither the native runtime (proxy 403
+  on the pinned llama.cpp source) nor Piper, and has no model, Whisper model or voice; `--bench-interview` ran as a dry
+  run. The owner's hardware runs (docs/BENCHMARK.md) decide every target.
