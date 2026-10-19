@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import app.mokuhyo.culture.CultureCard
 import app.mokuhyo.culture.Persona
 import app.mokuhyo.desktop.AppGraph
+import app.mokuhyo.desktop.Voice
 import app.mokuhyo.desktop.ui.Badge
 import app.mokuhyo.desktop.ui.CheckRow
 import app.mokuhyo.desktop.ui.Disclaimer
@@ -69,6 +70,7 @@ import app.mokuhyo.opi.PragmaticFlag
 import app.mokuhyo.opi.RolePlayContext
 import app.mokuhyo.opi.Speaker
 import app.mokuhyo.opi.SpeakingActivity
+import app.mokuhyo.opi.SpeakingTrend
 import app.mokuhyo.opi.Topic
 import app.mokuhyo.opi.TopicDomain
 import app.mokuhyo.opi.TopicExchange
@@ -113,7 +115,9 @@ fun SpeakingScreen(app: AppGraph) {
     val modes = remember { mutableStateListOf(*SpeakingActivity.entries.map { app.correctionsDefault(it) }.toTypedArray()) }
     var persona by remember(lang) { mutableStateOf<Persona?>(null) }
     val activity = when (tab) { 0, 1 -> SpeakingActivity.OPI_PRACTICE; 2 -> if (persona != null) SpeakingActivity.PERSONA else SpeakingActivity.TOPIC; else -> SpeakingActivity.PERSONA }
+    val modelInstalled = remember(lang) { app.languageModel() != null }
     val mode = CorrectionsMode.effective(modes[activity.ordinal], opiTest = tab == 1)
+        .let { if (it == CorrectionsMode.LIVE && !modelInstalled) CorrectionsMode.AFTER_ACTION else it }
     if (active) {
         when (tab) {
             0, 1 -> InterviewView(app, module, pack!!, test = tab == 1, mode) { active = false }
@@ -148,15 +152,23 @@ fun SpeakingScreen(app: AppGraph) {
         if (!hasStt) Text("Speech recognition isn't available, so you'll type your answers.", color = MaterialTheme.colorScheme.error)
         when (tab) {
             0 -> SectionCard("Interview practice") {
-                Text("A short interview (about 10 questions): warm-up, level checks, probes, a role-play and a wind-down. The questions adapt to your answers. You can show the question text if you didn't catch it.")
+                Text("A short interview (about 10 questions): warm-up, level checks, probes, a role-play and a wind-down. " +
+                    (if (hasModel) "The questions adapt to your answers." else "Without an AI model the questions come from the scripted bank, phase by phase; they don't adapt to your answers.") +
+                    " You can show the question text if you didn't catch it.")
                 ModePicker(modes[activity.ordinal], hasModel) { modes[activity.ordinal] = it }
                 Button(onClick = { active = true }) { Text("Start interview") }
             }
             1 -> SectionCard("Interview test") {
                 Text("A full 20–30 minute interview with no hints: the questions are spoken only and the transcript stays hidden until the end. Your rating counts toward your speaking estimate.")
                 Text("Corrections: After action (always, in a test) — your After Action Brief comes at the end.", style = MaterialTheme.typography.bodySmall)
-                Button(enabled = hasModel, onClick = { active = true }) { Text("Start test") }
+                // Test questions are spoken only, so a test needs a working voice (QC 2026-10-19 #2).
+                val hasVoice = remember(lang) { app.speech.voicesFor(lang).isNotEmpty() }
+                Button(enabled = hasModel && hasVoice, onClick = { active = true }) { Text("Start test") }
                 if (!hasModel) Text("The test needs an AI model for the rating.", style = MaterialTheme.typography.bodySmall)
+                if (!hasVoice) Text("The test speaks every question, and no voice for ${module.nameEnglish} is available on this computer. " +
+                    "Interview practice can show the questions as text.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                if (!hasStt) Text("Without speech recognition you'd type your answers, and a typed interview doesn't count toward your speaking estimate.",
+                    style = MaterialTheme.typography.bodySmall)
                 Disclaimer()
             }
             2 -> SectionCard("Topic conversation") {
@@ -195,18 +207,21 @@ fun SpeakingScreen(app: AppGraph) {
 private fun ModePicker(mode: CorrectionsMode, hasModel: Boolean, onChange: (CorrectionsMode) -> Unit) {
     Text("Corrections", style = MaterialTheme.typography.labelLarge)
     CorrectionsMode.entries.forEach { m ->
-        RadioRow(mode == m, { onChange(m) }) {
+        // Live corrections are written by the model; without one, don't offer them (QC 2026-10-19).
+        val available = hasModel || m != CorrectionsMode.LIVE
+        RadioRow(mode == m, { onChange(m) }, enabled = available) {
             Column {
-                Text(m.title)
+                Text(m.title + if (available) "" else " (needs an AI model)")
                 Text(when (m) {
                     CorrectionsMode.LIVE -> "Corrections, a natural rewrite and cultural notes under each of your turns."
-                    CorrectionsMode.AFTER_ACTION -> "Nothing but the conversation; everything is recorded and given to you at the end in an After Action Brief."
+                    CorrectionsMode.AFTER_ACTION -> if (hasModel) "Nothing but the conversation; everything is recorded and given to you at the end in an After Action Brief."
+                        else "Nothing but the conversation; at the end you get your transcript and recordings and rate yourself. No corrections without an AI model."
                     CorrectionsMode.OFF -> "Free-flow warm-up: transcript and recordings only — no feedback will be generated."
                 }, style = MaterialTheme.typography.bodySmall)
             }
         }
     }
-    if (!hasModel && mode != CorrectionsMode.OFF) Text("Corrections need an AI model.", style = MaterialTheme.typography.bodySmall)
+    if (!hasModel && mode == CorrectionsMode.LIVE) Text("Live corrections need an AI model; this session runs as After action.", style = MaterialTheme.typography.bodySmall)
 }
 
 /** Who you talk to (BRIEF_PHASE8 C-08): six partner personas per language (twelve for Arabic: RSAF and QEAF). */
@@ -252,10 +267,11 @@ private fun saveRecording(app: AppGraph, conversationId: String, turn: Int, pcm:
     return file.path
 }
 
-private suspend fun speak(app: AppGraph, text: String, lang: String, persona: Persona? = null) = withContext(Dispatchers.IO) {
+/** Says [text]; the outcome tells the caller whether the learner actually heard it (QC 2026-10-19 #2). */
+private suspend fun speak(app: AppGraph, text: String, lang: String, persona: Persona? = null): Voice.Outcome {
     // A persona keeps one voice of their gender (BRIEF_PHASE8 N-07).
     val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(lang), p.id, p.gender) }
-    app.speech.synthesize(text, lang, voice)?.let { runCatching { AudioIO.play(it.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
+    return Voice.say(app, text, lang, voice)
 }
 
 private fun wordCounter(module: LanguageModule): (String) -> Int {
@@ -312,6 +328,20 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     val recorder = remember { Recorder(app) }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
     val hasStt = remember { app.recognizer() != null }
+    // How the learner answered, and whether a test had to fall back to text (QC 2026-10-19 #2, #3).
+    var spoken by remember { mutableIntStateOf(0) }
+    var typedAnswers by remember { mutableIntStateOf(0) }
+    var textFallback by remember { mutableStateOf(false) }
+    var voiceProblem by remember { mutableStateOf<String?>(null) }
+    var trendNote by remember { mutableStateOf<String?>(null) }
+    val questionTextAllowed = !test || textFallback
+
+    suspend fun askAloud(text: String) {
+        val outcome = speak(app, text, module.code)
+        voiceProblem = outcome.problem
+        // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
+        if (!outcome.ok && !test) showText = true
+    }
 
     fun complete() {
         finished = true
@@ -330,7 +360,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             rating = r
             cultural = c
             aab = brief
-            saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief)
+            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, textFallback)
             busy = false
             done = true
         }
@@ -351,9 +381,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
             asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
             status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
-            speak(app, line.text, module.code)
+            askAloud(line.text)
             busy = false
-            status = if (hasStt) "Press Record and answer." else "Type your answer."
+            status = if (voiceProblem != null) "The question couldn't be played." else if (hasStt) "Press Record and answer." else "Type your answer."
         }
     }
 
@@ -361,6 +391,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         val turnIndex = lines.size
         val question = lines.lastOrNull { it.first.speaker == Speaker.PARTNER }?.first?.text.orEmpty()
         lines += Turn(Speaker.LEARNER, text) to ""
+        if (pcm != null && pcm.isNotEmpty()) spoken++ else typedAnswers++
         session.answer(text)
         queue?.enqueue(turnIndex, TurnFeedback.Input(module.code, pack.profile.registerNotes, question, text, notes))
         if (pcm != null && pcm.isNotEmpty()) {
@@ -375,6 +406,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         if (!test) " · working level ILR ${session.workingLevel.label}" else "") {
         if (done) {
             val r = rating
+            trendNote?.let { SectionCard { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } }
             if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
             aab?.let { brief ->
@@ -399,18 +431,29 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER) {
-                    if (!test) CheckRow(showText, { showText = it }) { Text("Show the question text") }
-                    if (showText && !test) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
+                    voiceProblem?.let { problem ->
+                        Text(problem, color = MaterialTheme.colorScheme.error)
+                        if (test && !textFallback) {
+                            Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
+                                "the interview then becomes text practice and won't count toward your speaking estimate.", style = MaterialTheme.typography.bodySmall)
+                            OutlinedButton(onClick = { textFallback = true; showText = true }) { Text("Continue as text practice") }
+                        }
+                    }
+                    if (textFallback) Badge("Text practice — the voice couldn't play; not counted as a test")
+                    if (questionTextAllowed) CheckRow(showText, { showText = it }) { Text("Show the question text") }
+                    if (showText && questionTextAllowed) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        OutlinedButton(onClick = { scope.launch { speak(app, last.first.text, module.code) } }) { Text("Repeat the question") }
+                        OutlinedButton(onClick = { scope.launch { askAloud(last.first.text) } }) { Text("Repeat the question") }
                     }
                     // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
-                    if (hasStt) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                    // A test whose question wasn't heard waits until it's played or the learner falls back to text.
+                    val canAnswer = !test || textFallback || voiceProblem == null
+                    if (hasStt && canAnswer) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
                         enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
-                    OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
+                    if (canAnswer) OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        TextButton(enabled = typed.isNotBlank(), onClick = { val t = typed; typed = ""; submitAnswer(t, null) }) { Text("Send typed answer") }
+                        TextButton(enabled = canAnswer && typed.isNotBlank(), onClick = { val t = typed; typed = ""; submitAnswer(t, null) }) { Text("Send typed answer") }
                         TextButton(onClick = { session.stop(); complete() }) {
                             Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End interview")
                         }
@@ -446,20 +489,27 @@ private fun LiveFeedback(module: LanguageModule, r: TurnFeedbackRecord) {
     }
 }
 
+/** Saves the interview; returns why it didn't join the speaking trend, if it didn't. */
 private fun saveInterview(
     app: AppGraph, id: String, lang: String, session: OpiSession, rating: OpiRating?, test: Boolean, english: List<String>,
-    cultural: CulturalReview?, mode: CorrectionsMode, aab: AfterActionBrief?,
-) {
+    cultural: CulturalReview?, mode: CorrectionsMode, aab: AfterActionBrief?, spoken: Int, typed: Int, textFallback: Boolean,
+): String? {
     app.conversations.save(
         id, app.learnerId, lang, if (test) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
         StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural),
         rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
     )
-    // Only a model-rated test counts toward the speaking trend (rule 7: honest labels; practice and self-ratings don't).
-    val estimate = rating?.estimate
-    if (test && estimate != null && rating.engine != null) {
-        app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, 0.5, provisional = false)
-    }
+    // Only a spoken, model-rated test counts toward the speaking trend, and it stays provisional until the language and
+    // tier are calibrated against instructor ratings (rule 7: honest labels; QC 2026-10-19 #3).
+    val estimate = rating?.estimate ?: return null
+    val modelRated = rating.engine != null
+    val tier = app.tier
+    val calibrated = tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
+    val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated)
+        ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback).takeIf { test }
+    app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, entry.confidence, entry.provisional)
+    return if (entry.provisional) "Added to your speaking trend as provisional: " +
+        (if (!calibrated) "this model's ratings aren't yet calibrated against instructor ratings for this language" else "some answers were typed") + "." else null
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -554,7 +604,7 @@ private fun TranscriptCard(app: AppGraph, module: LanguageModule, session: OpiSe
                 }
                 if (turn.speaker == Speaker.LEARNER) {
                     val file = File(app.dataDir, "recordings/$conversationId/turn-%02d.wav".format(i))
-                    if (file.isFile) TextButton(onClick = { Thread { runCatching { AudioIO.play(file.readBytes()) } }.start() }) { Text("▶") }
+                    if (file.isFile) TextButton(onClick = { Thread { runCatching { Voice.play(app, file.readBytes()) } }.start() }) { Text("▶") }
                 }
             }
         }
@@ -662,8 +712,7 @@ private fun TopicConversation(
                     val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                     fluency += FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
                 }
-                status = ""
-                speak(app, ex.reply, module.code, persona)
+                status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
             }
             busy = false
         }
@@ -716,7 +765,7 @@ private fun TopicConversation(
             Text(persona?.name ?: "Partner", fontWeight = FontWeight.SemiBold)
             Text(topic.opener, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleMedium)
             if (topic.source == "llm") Badge("AI-generated")
-            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code, persona) } }) { Text("▶ Listen") }
+            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code, persona).problem?.let { status = it } } }) { Text("▶ Listen") }
         }
         exchanges.forEach { ex ->
             SectionCard {

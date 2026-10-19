@@ -70,7 +70,8 @@ private fun ModalityCard(title: String, points: List<IlrPoint>, modifier: Modifi
             Text(last?.let { "from ${points.size} test${if (points.size == 1) "" else "s"} · last ${dateFmt.format(Instant.ofEpochMilli(it.at))}" } ?: "No tests yet",
                 style = MaterialTheme.typography.bodySmall)
             if (points.size >= 2) Text("Trend: " + points.takeLast(6).joinToString(" → ") { it.value }, style = MaterialTheme.typography.bodySmall)
-            if (last?.provisional == true) Text("* provisional (short form)", style = MaterialTheme.typography.bodySmall)
+            if (last?.provisional == true) Text(if (title == "Speaking") "* provisional (AI rating not yet calibrated against instructors, or some answers typed)"
+                else "* provisional (short form, or some questions not scored)", style = MaterialTheme.typography.bodySmall)
         }
     }
 }

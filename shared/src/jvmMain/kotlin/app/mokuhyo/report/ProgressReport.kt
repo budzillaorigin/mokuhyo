@@ -95,8 +95,13 @@ class ProgressReport(private val fontsDir: File) {
         )
         w.gap(16f)
         d.languages.forEach { s ->
-            val latest = s.trends.mapValues { it.value.lastOrNull()?.level ?: "—" }
+            val latest = s.trends.mapValues { it.value.lastOrNull()?.let { p -> p.level + if (p.provisional) "*" else "" } ?: "—" }
             w.text("${s.name}: Reading ${latest["READING"] ?: "—"} · Listening ${latest["LISTENING"] ?: "—"} · Speaking ${latest["SPEAKING"] ?: "—"}", 12f)
+        }
+        // QC 2026-10-19 #3: carry the provisional status (uncalibrated AI rating, short or incomplete form) into the PDF.
+        if (d.languages.any { s -> s.trends.values.any { it.lastOrNull()?.provisional == true } }) {
+            w.text("* provisional: a short or incomplete test form, or a speaking rating by the AI model that hasn't been calibrated " +
+                "against instructor ratings for that language.", 9f, gray = true)
         }
     }
 
