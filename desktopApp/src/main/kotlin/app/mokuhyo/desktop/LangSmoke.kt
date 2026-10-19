@@ -78,6 +78,8 @@ object LangSmoke {
      * TTS → Whisper round trip for pre-rendered clips (BRIEF_PHASE8 N-00 gate: ≥ 80 % token match):
      * `Mokuhyo --roundtrip <jobs.jsonl> --clips <dir> --whisper <ggml-*.bin> [--min 0.8]`. Each job's expected text is
      * its lines joined; its clip is `<dir>/<lang>/<id>.wav`. Prints one row per clip and the mean per language.
+     * Every job needs its clip: a missing one fails the run (QC 2026-10-19 #6: a partial set used to pass) unless
+     * `--allow-missing` is given, and the summary prints expected / present / tested counts per language.
      */
     fun roundtrip(args: Array<String>): Int = runBlocking {
         val jobs = Smoke.arg(args, "--roundtrip")?.let(::File)?.takeIf { it.isFile } ?: return@runBlocking fail("--roundtrip <jobs.jsonl> is required")
@@ -89,15 +91,23 @@ object LangSmoke {
         val stt = runtime.stt() ?: return@runBlocking fail("native library not available: ${runtime.status}")
         val recognizer = WhisperRecognizer(stt, whisper.absolutePath, whisper.name)
         val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+        val allowMissing = "--allow-missing" in args
         val scores = mutableMapOf<String, MutableList<Double>>()
+        val expected = mutableMapOf<String, Int>()
+        val missing = mutableMapOf<String, MutableList<String>>()
         jobs.readLines().filter { it.isNotBlank() }.forEach { line ->
             val o = json.parseToJsonElement(line).jsonObject
             val id = o.getValue("id").jsonPrimitive.content
             val lang = o.getValue("lang").jsonPrimitive.content
+            expected.merge(lang, 1, Int::plus)
             // A render directory of WAVs, or a pack's audio folder of Ogg Opus clips (`--clips content/packs/<lang>/..`).
-            val clip = File(clips, "$lang/$id.wav").takeIf { it.isFile } ?: File(clips, "$lang/audio/$id.ogg").takeIf { it.isFile } ?: return@forEach
+            val clip = File(clips, "$lang/$id.wav").takeIf { it.isFile } ?: File(clips, "$lang/audio/$id.ogg").takeIf { it.isFile }
+            if (clip == null) {
+                missing.getOrPut(lang) { mutableListOf() } += id
+                return@forEach
+            }
             val wav = if (clip.extension == "ogg") File.createTempFile("roundtrip", ".wav").apply {
-                deleteOnExit(); writeBytes(AudioIO.wav(app.mokuhyo.speech.OggOpus.decode(clip.readBytes())))
+                deleteOnExit(); writeBytes(AudioIO.clipWav(clip.readBytes()))
             } else clip
             val text = o.getValue("lines").jsonArray.joinToString(" ") { it.jsonObject.getValue("text").jsonPrimitive.content }
             val module = registry.module(lang)
@@ -106,9 +116,32 @@ object LangSmoke {
             scores.getOrPut(lang) { mutableListOf() } += m
             println("roundtrip: %-7s %-28s %3.0f%% \"%s\"".format(lang, id, m * 100, heard.take(80)))
         }
-        val failed = scores.filter { (_, v) -> v.average() < min }
-        scores.forEach { (l, v) -> println("roundtrip: %-7s mean %3.0f%% over %d clips %s".format(l, v.average() * 100, v.size, if (l in failed) "FAIL" else "OK")) }
-        if (failed.isEmpty() && scores.isNotEmpty()) 0 else 1
+        val verdict = roundtripVerdict(expected, missing.mapValues { it.value.size }, scores, min, allowMissing)
+        expected.keys.sorted().forEach { l ->
+            val v = scores[l].orEmpty()
+            val absent = missing[l].orEmpty()
+            println("roundtrip: %-7s expected %d · present %d · tested %d · mean %s %s".format(l, expected.getValue(l), expected.getValue(l) - absent.size, v.size,
+                if (v.isEmpty()) "—" else "%3.0f%%".format(v.average() * 100), verdict.getValue(l)))
+            if (absent.isNotEmpty()) println("roundtrip: %-7s missing: %s".format(l, absent.take(20).joinToString() + if (absent.size > 20) " …" else ""))
+        }
+        if (verdict.isNotEmpty() && verdict.values.all { it == "OK" }) 0 else 1
+    }
+
+    /**
+     * Per language "OK" or why not: no clips tested, clips missing (unless [allowMissing]), or a mean below [min]. An empty
+     * job list gives an empty map, which the caller treats as a failure.
+     */
+    internal fun roundtripVerdict(
+        expected: Map<String, Int>, missing: Map<String, Int>, scores: Map<String, List<Double>>, min: Double, allowMissing: Boolean,
+    ): Map<String, String> = expected.keys.associateWith { l ->
+        val v = scores[l].orEmpty()
+        val absent = missing[l] ?: 0
+        when {
+            v.isEmpty() -> "FAIL (no clips tested)"
+            absent > 0 && !allowMissing -> "FAIL ($absent of ${expected.getValue(l)} clips missing)"
+            v.average() < min -> "FAIL (below ${(min * 100).toInt()} %)"
+            else -> "OK"
+        }
     }
 
     private val toSimplified: Transliterator by lazy { Transliterator.getInstance("Traditional-Simplified") }
