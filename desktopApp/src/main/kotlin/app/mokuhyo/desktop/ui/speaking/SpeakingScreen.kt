@@ -506,7 +506,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 delivery.newQuestion(lines.lastIndex)
                 checkpoint()
                 if (line.engine == null) timeline.note { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
-                asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
+                asker = line.engine?.let { "Asked by $it" } ?: ("Guided interview — scripted question" + (line.fallbackReason?.let { " ($it)" } ?: ""))
                 status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
                 if (line.spokenByStream) {
                     val outcome = delivery.deliver(delivery.question) { speaking.await() ?: Voice.Outcome.NoVoice }
@@ -724,7 +724,9 @@ private fun saveInterview(
     val modelRated = rating?.engine != null
     val tier = app.tier
     val calibrated = estimate != null && tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
-    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null)
+    val guided = session.scriptedTurns
+    val questions = session.turns.size
+    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null, guided = guided, questions = questions)
     // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
     // How it was answered and the trend decision are kept with it, so History and the PDF label it the same way (F4).
     app.conversations.save(
@@ -735,11 +737,12 @@ private fun saveInterview(
         rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
     )
     if (estimate == null) return null
-    val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated)
-        ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback).takeIf { test }
+    val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated, guided, questions)
+        ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback, guided, questions).takeIf { test }
     app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, entry.confidence, entry.provisional)
     return if (entry.provisional) "Added to your speaking trend as provisional: " +
-        (if (!calibrated) "this model's ratings aren't yet calibrated against instructor ratings for this language" else "some answers were typed") + "." else null
+        (if (!calibrated) "this model's ratings aren't yet calibrated against instructor ratings for this language"
+        else if (typed > 0) "some answers were typed" else "$guided of $questions questions were scripted (guided)") + "." else null
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -765,7 +768,8 @@ private fun InterviewResults(
                 // Keep what saveInterview stored (glosses, answer counts, fallback); a self-rating stays out of the trend (F4).
                 val saved = c?.let { app.conversations.stored(it) } ?: StoredConversation(session.transcript, cultural = cultural)
                 val decision = SpeakingTrend.decide(test, modelRated = false, saved.spokenAnswers ?: 0, saved.typedAnswers ?: 0,
-                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null)
+                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null,
+                    guided = session.scriptedTurns, questions = session.turns.size)
                 app.conversations.save(conversationId, app.learnerId, module.code, if (test) "OPI_TEST" else "OPI", null,
                     session.startedAt.toEpochMilliseconds(),
                     saved.copy(transcript = session.transcript, opiTurns = session.turns, cultural = cultural, trend = decision.status, trendReason = decision.reason),

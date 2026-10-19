@@ -93,6 +93,19 @@ class SpeakingLabelTest {
         pdfText(m)?.let { pdf -> assertTrue("not in speaking trend — mostly typed" in interviewLine(pdf), pdf) }
     }
 
+    /** BRIEF_INTERVIEW_SPEED N5: a mostly guided interview says so in History and the PDF, through the same label. */
+    @Test
+    fun aGuidedInterviewIsLabelledInHistoryAndThePdf() {
+        val m = machine()
+        val id = m.conversations.newId()
+        val d = SpeakingTrend.decide(true, true, spoken = 10, typed = 0, textFallback = false, calibrated = true, guided = 7, questions = 10)
+        m.conversations.save(id, "L", "es", "OPI_TEST", null, 0,
+            StoredConversation(transcript, spokenAnswers = 10, typedAnswers = 0, textFallback = false, calibrated = true, trend = d.status, trendReason = d.reason),
+            rating, listOf("2"), null)
+        assertEquals("ILR 2 (AI-rated, not in speaking trend — guided interview — scripted questions)", historyLabel(m, id))
+        pdfText(m)?.let { pdf -> assertTrue("guided interview — scripted questions" in interviewLine(pdf), pdf) }
+    }
+
     /** Records saved before 2026-10-19 have no stored context: their estimate row (or its absence) decides. */
     @Test
     fun olderRecordsFallBackToTheirEstimateRow() {

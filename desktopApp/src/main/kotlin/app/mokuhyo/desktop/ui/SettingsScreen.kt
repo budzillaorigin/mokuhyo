@@ -283,7 +283,7 @@ private fun SpeakingDefaults(app: AppGraph) {
                 FilterChip(deadline == ms, { deadline = ms; app.settings.put(Settings.Key.REPLY_DEADLINE, ms.toString()) }, label = { Text(label) })
             }
         }
-        Text("Prepared questions are labeled \"Scripted question\" and count toward the guided share of the interview.",
+        Text("Prepared questions are labeled \"Guided interview — scripted question\"; a mostly guided test stays out of your speaking estimate.",
             style = MaterialTheme.typography.bodySmall)
     }
     SectionCard("Speaking: corrections") {
