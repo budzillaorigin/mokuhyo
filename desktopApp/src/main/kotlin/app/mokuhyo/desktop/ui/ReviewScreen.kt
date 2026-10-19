@@ -41,8 +41,9 @@ fun ReviewScreen(app: AppGraph) {
     var shown by remember(lang, version) { mutableStateOf(false) }
     var lastUndo by remember(lang) { mutableStateOf<Pair<String, String>?>(null) }
     val focus = remember { FocusRequester() }
-    LaunchedEffect(lang, version) { runCatching { focus.requestFocus() } }
     val card: ReviewCard? = due.firstOrNull()
+    // Only a shown card can take focus: with an empty queue there is nothing to focus (QC follow-up: the warning).
+    LaunchedEffect(lang, version, card != null) { if (card != null) runCatching { focus.requestFocus() } }
     fun grade(r: Rating) {
         val c = card ?: return
         lastUndo = app.reviews.grade(c.item.id, r) to c.item.id
