@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -27,6 +28,9 @@ base defense — The local measures taken to protect a base. Also called BD. (JP
 counter-drone cell — A team that detects and defeats hostile drones near a base. (JP 3-01)
 \f"""
 
+# CI run #15: the Windows console is cp1252, and refresh.py prints "→".
+CP1252_CONSOLE = {**{k: v for k, v in os.environ.items() if k != "PYTHONUTF8"}, "PYTHONIOENCODING": "cp1252"}
+
 
 def terms(old_entries: list[D.Entry]) -> list[dict]:
     return [{"id": f"t-{i}", "term_en": e.term, "definition_en": refresh.clean(e.definition),
@@ -51,8 +55,10 @@ def test_cli() -> None:
         old = D.dod_dictionary("fixture-old", OLD.split("\f"))
         (tmp / "terms.json").write_text(json.dumps({"terms": terms(old)}), encoding="utf-8")
         r = subprocess.run([sys.executable, str(HERE / "refresh.py"), "--new-pages", str(tmp / "new.txt"), "--old-id", "fixture-old",
-                            "--terms", str(tmp / "terms.json"), "--out", str(tmp / "out.json")], capture_output=True, text=True, check=False)
+                            "--terms", str(tmp / "terms.json"), "--out", str(tmp / "out.json")], capture_output=True,
+                           encoding="utf-8", env=CP1252_CONSOLE, check=False)
         assert r.returncode == 0, r.stderr
+        assert "→" in r.stdout, r.stdout
         out = json.loads((tmp / "out.json").read_text(encoding="utf-8"))
         assert (len(out["changed"]), len(out["deprecated"]), len(out["candidates"])) == (1, 1, 1), out
 

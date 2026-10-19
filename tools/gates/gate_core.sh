@@ -7,6 +7,8 @@ GRADLE="${GRADLE:-./gradlew}"
 # mecab-python3 had no wheel). UV_PYTHON overrides any interpreter the caller's environment selects.
 UV_PYTHON=$(tr -d '[:space:]' < tools/.python-version)
 export UV_PYTHON
+# Tool output carries non-ASCII text; a Windows console defaults to cp1252 (CI run #15).
+export PYTHONUTF8=1
 echo "== gate_core: Kotlin tests"
 $GRADLE :shared:allTests :desktopApp:test --console=plain
 echo "== gate_core: Python lint + tests"
