@@ -210,6 +210,9 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
         return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
+    /** The interviewer's whole-turn reply deadline (N3): 8 s unless changed in Settings; null when turned off. */
+    fun replyDeadlineMs(): Long? = (settings.get(Settings.Key.REPLY_DEADLINE)?.toLongOrNull() ?: DEFAULT_REPLY_DEADLINE_MS).takeIf { it > 0 }
+
     /** This computer's timing-check results (N2), by model id. */
     fun modelTimings(): Map<String, app.mokuhyo.ai.ModelTiming> = app.mokuhyo.ai.ModelTiming.parseAll(settings.get(Settings.Key.MODEL_TIMINGS))
 
@@ -288,6 +291,8 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     }
 
     companion object {
+        const val DEFAULT_REPLY_DEADLINE_MS = 8_000L
+
         val osLabel: String get() = "${Os.current.id}-${Os.arch}"
     }
 }

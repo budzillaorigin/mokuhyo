@@ -252,6 +252,16 @@ private fun SpeakingDefaults(app: AppGraph) {
         }
         Text("Recording stops by itself after a short silence. If nothing is heard, you'll get a hint about the microphone.",
             style = MaterialTheme.typography.bodySmall)
+        // The whole-turn deadline (BRIEF_INTERVIEW_SPEED N3): device-local, it depends on this computer's speed.
+        var deadline by remember { mutableStateOf(app.replyDeadlineMs() ?: 0L) }
+        Text("If the interviewer's reply isn't ready in time, ask a prepared question instead", style = MaterialTheme.typography.labelLarge)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            listOf(5_000L to "5 s", AppGraph.DEFAULT_REPLY_DEADLINE_MS to "8 s (default)", 12_000L to "12 s", 0L to "Always wait").forEach { (ms, label) ->
+                FilterChip(deadline == ms, { deadline = ms; app.settings.put(Settings.Key.REPLY_DEADLINE, ms.toString()) }, label = { Text(label) })
+            }
+        }
+        Text("Prepared questions are labeled \"Scripted question\" and count toward the guided share of the interview.",
+            style = MaterialTheme.typography.bodySmall)
     }
     SectionCard("Speaking: corrections") {
         Text("How corrections appear by default. Interview tests always run as After action.", style = MaterialTheme.typography.bodyMedium)

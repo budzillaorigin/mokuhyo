@@ -327,7 +327,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     val gateway = remember { app.gateway.pinned() }
     val session = remember {
         OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, gateway, wordCounter(module), IlrLevel.L1, test = test,
-            culturalNotes = app.culturalNotes(module.code), restored = restored?.draft?.opi)
+            culturalNotes = app.culturalNotes(module.code), restored = restored?.draft?.opi, replyDeadlineMs = app.replyDeadlineMs())
     }
     val notes = remember { app.culturalNotes(module.code) }
     val lines = remember { mutableStateListOf<Pair<Turn, String>>().apply {

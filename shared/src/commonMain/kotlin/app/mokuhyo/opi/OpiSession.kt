@@ -98,6 +98,12 @@ class OpiSession(
     /** The pragmatics pack's norms the interviewer follows (BRIEF_PHASE8 C-07). */
     private val culturalNotes: List<String> = emptyList(),
     restored: OpiCheckpoint? = null,
+    /**
+     * Whole-turn deadline for the model's question (N3): when the first sentence isn't ready by then, a scripted
+     * question for the phase is used instead, so the learner isn't left waiting. Null = no deadline (the gateway's
+     * hard ceiling only). Applies only when the bank has a question to fall back on.
+     */
+    private val replyDeadlineMs: Long? = null,
 ) {
     val startedAt: Instant = restored?.let { Instant.fromEpochMilliseconds(it.startedAt) } ?: clock.now()
     private val history = mutableListOf<Turn>()
@@ -165,7 +171,9 @@ class OpiSession(
         val task = OpiInterviewerTurn { scripted(it.phase) }
         var reason: String? = null
         var streamed = emptyList<String>()
-        val result = if (speak == null) gateway.run(task, input) else gateway.stream(task, input, splitter, speak).also { streamed = it.spoken }.result
+        val deadline = replyDeadlineMs?.takeIf { hasScripted(phase) }
+        val result = if (speak == null) gateway.run(task, input, deadlineMs = deadline)
+            else gateway.stream(task, input, splitter, speak, deadlineMs = deadline).also { streamed = it.spoken }.result
         val (out, engine) = when (val r = result) {
             is AiResult.Ok -> r.value to r.engine
             is AiResult.Fallback -> { reason = r.reason; r.value to null }
@@ -295,6 +303,10 @@ class OpiSession(
         val fresh = rolePlays.filter { it.opening !in exclude }
         return aim.firstNotNullOfOrNull { lv -> fresh.filter { it.level == lv }.randomOrNull(random) } ?: fresh.randomOrNull(random)
     }
+
+    /** Whether [scripted] can supply a question for [phase] (an unasked bank question, or a role-play card). */
+    private fun hasScripted(phase: OpiPhase): Boolean =
+        bank.any { it.phase == phase.wireName && it.prompt !in asked } || (phase == OpiPhase.ROLEPLAY && rolePlays.any { it.opening !in asked })
 
     /** Scripted fallback: an unasked bank question for the phase near the working level, in an unused domain if possible. */
     private fun scripted(phase: OpiPhase): OpiInterviewerTurn.Output? {

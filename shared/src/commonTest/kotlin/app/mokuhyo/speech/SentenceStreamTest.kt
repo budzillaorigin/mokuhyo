@@ -18,6 +18,7 @@ import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -175,5 +176,57 @@ class SentenceStreamTest {
         assertEquals("bad", s.problem)
         assertEquals(emptyList(), s.feed("cosa.\"}"))
         assertEquals(emptyList(), s.finish())
+    }
+}
+
+class ReplyDeadlineTest {
+    private class FirstSentenceAt(private val ms: Long) : LanguageModel {
+        override val id = "slow"
+        override val isLocal = true
+        var cancelled = false
+        override suspend fun complete(request: CompletionRequest): CompletionResult {
+            try {
+                delay(ms)
+                request.onToken?.invoke("{\"utterance\":\"¿Y su familia? ")
+                delay(ms)
+                request.onToken?.invoke("¿Dónde vive?\"}")
+            } catch (e: kotlinx.coroutines.CancellationException) {
+                cancelled = true
+                throw e
+            }
+            return CompletionResult("{\"utterance\":\"¿Y su familia? ¿Dónde vive?\"}", "slow", null)
+        }
+    }
+
+    private val bank = listOf(BankQuestion("w1", "warmup", "1", "¿Cómo se llama usted?", "What is your name?", "personal"))
+
+    private fun session(model: LanguageModel, deadline: Long?, bank: List<BankQuestion> = this.bank) =
+        OpiSession("es", OpiProfile("es", "usted"), bank, emptyList(), AiGateway({ model }), { it.split(' ').size }, IlrLevel.L1, replyDeadlineMs = deadline)
+
+    @Test
+    fun aMissedDeadlinePlaysAPhaseAppropriateScriptedQuestion() = runTest {
+        val model = FirstSentenceAt(10_000)
+        val spoken = ArrayList<String>()
+        val line = session(model, 8_000).next(speak = { spoken += it })!!
+        assertEquals(8_000, testScheduler.currentTime, "the learner waited no longer than the deadline")
+        assertEquals("¿Cómo se llama usted?", line.text)
+        assertNull(line.engine)
+        assertEquals(FallbackKind.DEADLINE, FallbackKind.ofReason(line.fallbackReason))
+        assertTrue(spoken.isEmpty() && model.cancelled, "nothing half-made was spoken and generation stopped")
+    }
+
+    @Test
+    fun aFirstSentenceInTimeIsNotCutOffLater() = runTest {
+        val line = session(FirstSentenceAt(5_000), 8_000).next(speak = {})!!
+        assertTrue(line.spokenByStream, "the reply started within 8 s, so the rest may take longer")
+        assertEquals(10_000, testScheduler.currentTime)
+    }
+
+    @Test
+    fun theDeadlineAlsoCoversTheNonStreamingPathAndOnlyAppliesWithAFallback() = runTest {
+        val line = session(FirstSentenceAt(10_000), 8_000).next()!!
+        assertEquals(FallbackKind.DEADLINE, FallbackKind.ofReason(line.fallbackReason))
+        // An empty bank has nothing to say instead: the session waits for the model.
+        assertNotNull(session(FirstSentenceAt(10_000), 8_000, bank = emptyList()).next(speak = {})!!.engine)
     }
 }

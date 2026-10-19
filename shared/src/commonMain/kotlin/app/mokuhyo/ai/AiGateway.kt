@@ -5,6 +5,8 @@ import app.mokuhyo.speech.SentenceStream
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.currentTrace
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
@@ -122,11 +124,12 @@ class AiGateway private constructor(
     fun contextSize(): Int = model()?.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT
 
     @Throws(Exception::class)
-    suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
+    suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null, deadlineMs: Long? = null): AiResult<O> {
         val start = kotlin.time.TimeSource.Monotonic.markNow()
         currentTrace()?.mark(TurnStage.LLM_QUEUED)
-        val result = scheduler.run(task.background,
-            deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
+        val result = withDeadline(task, input, deadlineMs, CompletableDeferred()) {
+            scheduler.run(task.background, deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
+        }
         log(task, result, start.elapsedNow().inWholeMilliseconds)
         return result
     }
@@ -150,14 +153,42 @@ class AiGateway private constructor(
     @Throws(Exception::class)
     suspend fun <I, O> stream(
         task: StreamingPromptTask<I, O>, input: I, splitter: SentenceSplitter, onSentence: suspend (String) -> Unit, timeoutMs: Long? = null,
+        /**
+         * The whole-turn deadline (N3): queue wait, generation and retries until the first sentence is ready to speak.
+         * Missed → generation stops and the result is the task's fallback with [DEADLINE_REASON]. Once a sentence has
+         * gone to speech only [timeoutMs] (the hard ceiling) still applies. Null = no deadline.
+         */
+        deadlineMs: Long? = null,
     ): Streamed<O> {
         val start = kotlin.time.TimeSource.Monotonic.markNow()
         currentTrace()?.mark(TurnStage.LLM_QUEUED)
         val spoken = ArrayList<String>()
-        val result = scheduler.run(task.background,
-            deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { streamInner(task, input, splitter, onSentence, spoken, timeoutMs) }
+        val first = CompletableDeferred<Unit>()
+        val result = withDeadline(task, input, deadlineMs, first) {
+            scheduler.run(task.background, deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) {
+                streamInner(task, input, splitter, { s -> first.complete(Unit); onSentence(s) }, spoken, timeoutMs)
+            }
+        }
         log(task, result, start.elapsedNow().inWholeMilliseconds)
         return Streamed(result, spoken.toList())
+    }
+
+    /**
+     * Runs [work], but gives up after [deadlineMs] unless [started] (or the work itself) completed by then: the work is
+     * cancelled (and waited for, so the engine has stopped) and the task's fallback answers with [DEADLINE_REASON]. A
+     * race rather than a timeout around [work], whose own per-attempt timeout handling would swallow it.
+     */
+    private suspend fun <I, O> withDeadline(task: PromptTask<I, O>, input: I, deadlineMs: Long?, started: CompletableDeferred<Unit>, work: suspend () -> AiResult<O>): AiResult<O> {
+        if (deadlineMs == null) return work()
+        return coroutineScope {
+            val job = async { work() }
+            job.invokeOnCompletion { started.complete(Unit) }
+            if (withTimeoutOrNull(deadlineMs) { started.await() } == null) {
+                job.cancel()
+                job.join()
+                fallbackOr(task, input, DEADLINE_REASON)
+            } else job.await()
+        }
     }
 
     private suspend fun <I, O> streamInner(
@@ -298,6 +329,9 @@ class AiGateway private constructor(
     companion object {
         /** [AiResult.Fallback.reason] / [AiResult.Unavailable.reason] when the engine reported cancellation. */
         const val CANCELLED_REASON = "the model was stopped"
+
+        /** [AiResult.Fallback.reason] when a live reply missed the whole-turn deadline (N3). */
+        const val DEADLINE_REASON = "the reply missed its deadline"
 
         private val lenient = Json {
             ignoreUnknownKeys = true

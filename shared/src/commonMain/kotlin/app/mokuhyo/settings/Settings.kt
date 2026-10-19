@@ -44,6 +44,8 @@ class Settings(private val db: MokuhyoDatabase) {
         OLLAMA_MODEL("device.ollama.model", Scope.DEVICE),
         /** A local-network Ollama server (BRIEF_PHASE8 N-00b; explicit opt-in, LAN only). Empty = this computer. */
         OLLAMA_URL("device.ollama.url", Scope.DEVICE),
+        /** Interviewer reply deadline in ms (BRIEF_INTERVIEW_SPEED N3); "0" = off. This computer's speed, so device-local. */
+        REPLY_DEADLINE("device.speech.replyDeadlineMs", Scope.DEVICE),
         INPUT_DEVICE("device.audio.input", Scope.DEVICE),
         OUTPUT_DEVICE("device.audio.output", Scope.DEVICE),
         UPDATE_CHECK("device.updates.auto", Scope.DEVICE),

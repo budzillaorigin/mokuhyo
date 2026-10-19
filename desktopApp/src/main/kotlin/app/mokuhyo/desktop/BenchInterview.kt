@@ -13,7 +13,13 @@ import app.mokuhyo.ai.jni.NativeLibrary
 import app.mokuhyo.exam.IlrLevel
 import app.mokuhyo.history.ConversationDraft
 import app.mokuhyo.history.StoredConversation
+import app.mokuhyo.lang.IcuSentences
 import app.mokuhyo.lang.Languages
+import app.mokuhyo.lang.SpokenAudio
+import app.mokuhyo.speech.SpokenReply
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.OpiSession
@@ -98,6 +104,8 @@ object BenchInterview {
         val voices = VoiceService.create()
         val gateway = AiGateway({ model }, AiSettings(timeoutMs = 180_000))
         val play = "--play" in args
+        // The app's own deadline unless --deadline-ms says otherwise (0 = wait for the model every time).
+        val deadline = (Smoke.arg(args, "--deadline-ms")?.toLongOrNull() ?: AppGraph.DEFAULT_REPLY_DEADLINE_MS).takeIf { it > 0 }
         if (!play) notRun["playback"] = "null sink (pass --play to use the default output device)"
 
         println("bench-interview: ${langs.joinToString()} · model ${info?.id ?: "none"} · whisper ${whisper?.name ?: "none"} · ${runtime.status}")
@@ -122,27 +130,40 @@ object BenchInterview {
                 if (model == null) null else if (runtime.gpuActive) "gpu" else "cpu",
                 NativeLibrary.recommendedThreads().takeIf { model != null }, NativeLibrary.recommendedThreads().takeIf { recognizer != null })
             val words: (String) -> Int = { s -> module.segment(s).count { it.isWord } }
-            var session = OpiSession(lang, pack.profile, pack.questions, pack.rolePlays, gateway, words, IlrLevel.L2)
+            var session = OpiSession(lang, pack.profile, pack.questions, pack.rolePlays, gateway, words, IlrLevel.L2, replyDeadlineMs = deadline)
             val id = app.conversations.newId()
 
-            suspend fun speak(text: String) = withContext(Dispatchers.IO) {
-                if (voice == null) return@withContext
-                val spoken = withTimelineTts(timeline) { voices.synthesize(text, lang, voice) } ?: return@withContext
+            suspend fun output(spoken: SpokenAudio) {
                 if (play) runCatching { AudioIO.open(spoken.wav).also { traceMark(TurnStage.OUTPUT_START) }.run() }
                 else traceMark(TurnStage.OUTPUT_START)
                 traceMark(TurnStage.OUTPUT_END)
             }
 
+            suspend fun speak(text: String) = withContext(Dispatchers.IO) {
+                if (voice == null) return@withContext
+                withTimelineTts(timeline) { voices.synthesize(text, lang, voice) }?.let { output(it) }
+            }
+
+            // The live path: the question streams sentence by sentence into synthesis while the model writes it (N3).
+            suspend fun streamed(): app.mokuhyo.opi.InterviewerLine? = coroutineScope {
+                val sentences = Channel<String>(2)
+                val speaking = async(Dispatchers.IO) {
+                    if (voice == null) { for (s in sentences) Unit; null }
+                    else SpokenReply<SpokenAudio>({ s -> withTimelineTts(timeline) { voices.synthesize(s, lang, voice) } }, { a -> output(a); true }).speak(sentences)
+                }
+                try { session.next(speak = { sentences.send(it) }, splitter = IcuSentences(lang)) } finally { sentences.close() }.also { speaking.await() }
+            }
+
             suspend fun partnerLine(turn: Int) = withContext(TimelineTrace(timeline, turn)) {
-                var line = session.next()
+                var line = streamed()
                 if (line == null) {
                     // The interview plan ended: a fresh session on the same, already warm, model.
-                    session = OpiSession(lang, pack.profile, pack.questions, pack.rolePlays, gateway, words, IlrLevel.L2)
-                    line = session.next()
+                    session = OpiSession(lang, pack.profile, pack.questions, pack.rolePlays, gateway, words, IlrLevel.L2, replyDeadlineMs = deadline)
+                    line = streamed()
                 }
                 if (line == null) return@withContext
                 if (line.engine == null) timeline.note(turn) { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
-                speak(line.text)
+                if (!line.spokenByStream) speak(line.text)
             }
 
             // Turn 0: the first question, cold (the model loads on this call).
