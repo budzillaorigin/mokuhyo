@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 from pathlib import Path
@@ -22,27 +21,13 @@ import soundfile as sf
 import torch
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from textsplit import chunks
+
 LANG_IDS = {"ja": "ja", "es": "es", "fr": "fr", "de": "de", "pt-BR": "pt", "ru": "ru", "zh-Hans": "zh", "ko": "ko", "ar": "ar",
             "fa": None, "id": "ms"}  # fa: not supported by the model; id: Malay is the closest (logged listening test)
-
-
-SENTENCE_END = re.compile(r"(?<=[.!?。！？؟])\s*")
-
-
-def chunks(text: str, limit: int = 220) -> list[str]:
-    """Sentence-sized pieces of at most ~[limit] characters: Chatterbox stops after ~1000 speech tokens (~40 s), so a long
-    answer generated in one call was cut off. Sentences are kept whole unless one alone is over the limit."""
-    out: list[str] = []
-    cur = ""
-    for sent in (x.strip() for x in SENTENCE_END.split(text) if x.strip()):
-        if cur and len(cur) + len(sent) + 1 > limit:
-            out.append(cur)
-            cur = sent
-        else:
-            cur = f"{cur} {sent}".strip() if cur else sent
-    if cur:
-        out.append(cur)
-    return out or [text]
+# Indonesian through the Malay model is an approximation, not an equivalence: its clips need a native-speaker listening
+# check before they are trusted (QC 2026-10-19).
 
 
 def yield_to_other_work() -> None:

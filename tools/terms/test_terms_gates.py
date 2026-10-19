@@ -16,6 +16,7 @@ sys.path.insert(0, str(HERE.parent / "sources"))
 
 import fetch_sources
 import gate_terms
+from overlap_fixture import fixture_corpus
 
 import sources as S
 
@@ -186,14 +187,21 @@ def test_overlap_empty_report() -> None:
 
 
 def test_allow_list_ignores_attached_function_words() -> None:
-    """An allow-listed designation still matches when the flagged run carries "l'" / "da" at an end (C-03 fix)."""
-    with tempfile.TemporaryDirectory() as tmp:
+    """An allow-listed designation still matches when the flagged run carries "l'" / "da" at an end (C-03 fix).
+    Runs against the fixture corpus, so it needs no source texts (QC 2026-10-19 #6)."""
+    with tempfile.TemporaryDirectory() as tmp, fixture_corpus() as env:
         f, rep, allow = Path(tmp) / "a.jsonl", Path(tmp) / "r.json", Path(tmp) / "allow.txt"
         f.write_text(json.dumps({"id": "x", "lang": "fr", "text": "Je travaille avec l'Armée de l'air et de l'espace depuis dix ans."}), encoding="utf-8")
+
+        def fails(*extra: str) -> list:
+            subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep), *extra],
+                           check=False, capture_output=True, env=env)
+            return [x for x in json.loads(rep.read_text(encoding="utf-8"))["findings"] if x["verdict"] == "FAIL"]
+
+        # Without the allow list the shared run is flagged; with it, the designation passes despite the attached "l'".
+        assert fails("--allow", str(Path(tmp) / "none.txt")), "fixture should overlap"
         allow.write_text("armée de l air et de l espace\n", encoding="utf-8")
-        subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep), "--allow", str(allow)],
-                       check=False, capture_output=True)
-        assert not [x for x in json.loads(rep.read_text(encoding="utf-8"))["findings"] if x["verdict"] == "FAIL"]
+        assert not fails("--allow", str(allow))
 
 
 if __name__ == "__main__":

@@ -89,6 +89,7 @@ import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -229,7 +230,10 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                 // when a voice for the language is available (docs/LANGUAGES.md, D-013).
                 val canSpeak = remember(module.code) { app.speech.voicesFor(module.code).isNotEmpty() }
                 val pool = remember(module.code, skill, canSpeak) {
-                    if (skill == Skill.LISTENING && !canSpeak) content.pool(skill).filter { content.passages[it.passageId]?.audio != null } else content.pool(skill)
+                    if (skill == Skill.LISTENING && !canSpeak) content.pool(skill).filter { f ->
+                        // The clip itself must be there, not just its entry in the audio index.
+                        content.passages[f.passageId]?.audio?.let { rel -> app.packFile(module.code, rel)?.takeIf { it.length() > 0 } } != null
+                    } else content.pool(skill)
                 }
                 if (skill == Skill.LISTENING && !canSpeak) Text(
                     if (pool.isEmpty()) "No voice for ${module.nameEnglish} is available on this computer, so listening tests can't run here. Practice still shows the transcripts."
@@ -385,7 +389,9 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                 }
             }
             Column(Modifier.weight(1f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                if (!session.questionsVisible(passage?.id)) {
+                if (session.isVoided(passage?.id)) {
+                    Text("Not scored: this recording couldn't be played.", style = MaterialTheme.typography.bodyLarge)
+                } else if (!session.questionsVisible(passage?.id)) {
                     Text("Play the recording to see the questions.", style = MaterialTheme.typography.bodyLarge)
                 } else {
                     Text(item.stem, style = MaterialTheme.typography.titleMedium)
@@ -476,13 +482,24 @@ private fun ListeningPanel(
     var difficulty by remember { mutableStateOf(0.4f) }
     var clean by remember(passage.id) { mutableStateOf(false) }
     val stop = remember(passage.id) { AtomicBoolean(false) }
-    LaunchedEffect(passage.id) { audio = PassageAudio(app).load(passage) }
+    var error by remember(passage.id) { mutableStateOf<String?>(null) }
+    var attempt by remember(passage.id) { mutableIntStateOf(0) }
+    LaunchedEffect(passage.id, attempt) { audio = PassageAudio(app).load(passage) }
     DisposableEffect(passage.id) { onDispose { stop.set(true) } }
     SectionCard {
+        if (session.isVoided(passage.id)) {
+            Text("This recording couldn't be played, so its questions are left out of your score. The result will say so.",
+                color = MaterialTheme.colorScheme.error)
+            return@SectionCard
+        }
         when (val a = audio) {
             null -> Text("Preparing audio…")
             is PassageAudio.Result.Unavailable -> {
                 Text(a.reason, color = MaterialTheme.colorScheme.error)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick = { audio = null; attempt++ }) { Text("Try again") }
+                    if (!practice) LeaveOutButton(session, passage, changed)
+                }
                 if (practice) PassageText(app, module, passage.text, aids, tapToDefine = true)
             }
             is PassageAudio.Result.Ready -> {
@@ -490,15 +507,39 @@ private fun ListeningPanel(
                     Button(enabled = playing || session.canPlayAudio(passage.id), onClick = {
                         if (playing) { stop.set(true); return@Button }
                         stop.set(false)
-                        session.audioPlayed(passage.id)
-                        changed()
+                        error = null
                         playing = true
                         scope.launch {
-                            withContext(Dispatchers.IO) {
-                                val p = preset
-                                val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
-                                    AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
-                                runCatching { AudioIO.play(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed) { stop.get() } }
+                            // Open the output first: a play only counts once sound is actually coming out (QC 2026-10-19 #1).
+                            // Not cancellable: an opened line must come back here to be played or closed, never leak.
+                            val opened = withContext(Dispatchers.IO + kotlinx.coroutines.NonCancellable) {
+                                runCatching {
+                                    val p = preset
+                                    val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
+                                        AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
+                                    AudioIO.open(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed)
+                                }
+                            }
+                            val playback = opened.getOrElse { e ->
+                                error = "Couldn't start playback (${e.message ?: e::class.simpleName}). Check the speakers or headphones and " +
+                                    "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
+                                playing = false
+                                return@launch
+                            }
+                            if (stop.get() || !isActive) { // left the question (or pressed Stop) while the output was opening
+                                playback.close()
+                                playing = false
+                                return@launch
+                            }
+                            session.audioPlayed(passage.id)
+                            changed()
+                            val ran = withContext(Dispatchers.IO) { runCatching { playback.run { stop.get() } } }
+                            ran.exceptionOrNull()?.let { e ->
+                                if (e is kotlinx.coroutines.CancellationException) throw e
+                                session.audioFailed(passage.id)
+                                changed()
+                                error = "Playback stopped because of an audio error (${e.message ?: e::class.simpleName})." +
+                                    if (practice) " Try again." else " This play wasn't counted; fix the output and try again."
                             }
                             playing = false
                         }
@@ -506,6 +547,10 @@ private fun ListeningPanel(
                     if (!practice) Text("Plays left: ${(app.exam(module.code)?.blueprint?.listening?.play?.plays ?: 1) - session.playsOf(passage.id)}",
                         style = MaterialTheme.typography.bodySmall)
                     if (practice) listOf(0.8, 0.9, 1.0).forEach { s -> FilterChip(speed == s, { speed = s }, label = { Text("${s}×") }) }
+                }
+                error?.let { msg ->
+                    Text(msg, color = MaterialTheme.colorScheme.error)
+                    if (!practice) LeaveOutButton(session, passage, changed)
                 }
                 Text("Audio: ${a.source}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 if (practice) DegradeControls(preset, difficulty, clean, { preset = it }, { difficulty = it }, { clean = it })
@@ -524,6 +569,20 @@ private fun ListeningPanel(
         }
         Dictation(module, passage)
     }
+}
+
+/** Tests only: when a recording can't be played here, its questions leave the score instead of counting as wrong. */
+@Composable
+private fun LeaveOutButton(session: ExamSession, passage: ExamPassage, changed: () -> Unit) {
+    var confirm by remember(passage.id) { mutableStateOf(false) }
+    TextButton(onClick = { confirm = true }) { Text("Leave this recording out of the score") }
+    if (confirm) AlertDialog(
+        onDismissRequest = { confirm = false },
+        title = { Text("Leave this recording out?") },
+        text = { Text("Its questions won't be scored, and the result will say how many were left out. Use this only when the audio can't play on this computer.") },
+        confirmButton = { Button(onClick = { confirm = false; session.voidPassage(passage.id); changed() }) { Text("Leave it out") } },
+        dismissButton = { TextButton(onClick = { confirm = false }) { Text("Keep trying") } },
+    )
 }
 
 /** Dictation drill: type a line you heard; compared with the language's own folding. */
@@ -559,13 +618,15 @@ private fun ResultView(app: AppGraph, module: LanguageModule, content: ExamConte
             Text(if (practice) "${result.answers.count { it.correct }} of ${result.answers.size} correct" else "Estimated level: $est",
                 style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
             Text("${result.answers.count { it.correct }} of ${result.answers.size} correct")
+            if (s.voidedItems > 0) Text("${s.voidedItems} question${if (s.voidedItems == 1) " was" else "s were"} left out because the recording couldn't be played. " +
+                "This result is incomplete, so its estimate is provisional.", color = MaterialTheme.colorScheme.error)
             Disclaimer()
         }
         if (s.byLevel.isNotEmpty()) SectionCard("By ILR level") {
             s.byLevel.forEach { t -> Text("ILR ${t.key}: ${t.correct}/${t.total} (${if (t.total == 0) 0 else t.correct * 100 / t.total}%)") }
         }
         if (s.weakAreas.isNotEmpty()) SectionCard("Work on") { Text(s.weakAreas.joinToString(", ") { it.replace('_', ' ') }) }
-        val missed = result.form.items.filter { f -> result.answers.firstOrNull { it.itemId == f.item.id }?.correct != true }
+        val missed = result.form.items.filter { f -> result.answers.firstOrNull { it.itemId == f.item.id }?.correct == false }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Button(onClick = again) { Text("Done") }
             if (missed.isNotEmpty()) OutlinedButton(enabled = !addedMissed, onClick = {
@@ -582,7 +643,8 @@ private fun ResultView(app: AppGraph, module: LanguageModule, content: ExamConte
             result.form.items.forEachIndexed { i, f ->
                 val a = result.answers.firstOrNull { it.itemId == f.item.id }
                 Text("${i + 1}. ${f.item.stem}", fontWeight = FontWeight.SemiBold)
-                Text("Your answer: ${a?.choice?.let { f.item.choices[it] } ?: "—"}${if (a?.correct == true) " ✓" else "  ·  Answer: ${f.item.choices[f.item.answer]}"}",
+                if (a == null) Text("Not scored (recording couldn't be played) · Answer: ${f.item.choices[f.item.answer]}", style = MaterialTheme.typography.bodySmall)
+                else Text("Your answer: ${a?.choice?.let { f.item.choices[it] } ?: "—"}${if (a?.correct == true) " ✓" else "  ·  Answer: ${f.item.choices[f.item.answer]}"}",
                     color = if (a?.correct == true) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error)
                 if (f.item.explanation.isNotBlank()) Text(f.item.explanation, style = MaterialTheme.typography.bodySmall, fontFamily = Fonts.forLanguage(module.code))
                 Spacer(Modifier.height(6.dp))

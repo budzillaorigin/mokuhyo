@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,9 +51,12 @@ fun HistoryList(app: AppGraph) {
     val rows = remember(attempts, conversations) {
         attempts.map { a ->
             val form = app.history.form(a)
-            val correct = app.history.answers(a).count { it.correct }
+            val answers = app.history.answers(a)
+            val correct = answers.count { it.correct }
+            val voided = form.items.size - answers.size
             Row(a.id, a.startedAt, "${a.modality.lowercase().replaceFirstChar { it.uppercase() }} ${if (a.mode == "TEST") "test" else "practice"}",
-                "$correct/${form.items.size} correct" + (a.ilrEstimate?.let { " · ILR $it" + if (a.provisional == 1L) " (provisional)" else "" } ?: ""),
+                "$correct/${answers.size} correct" + (if (voided > 0) " · $voided not scored (audio unavailable)" else "") +
+                    (a.ilrEstimate?.let { " · ILR $it" + if (a.provisional == 1L) " (provisional)" else "" } ?: ""),
                 form.items.joinToString(" ") { it.stem + " " + it.type }, if (a.mode == "TEST") Kind.TESTS else Kind.PRACTICE, false, a.bank == "local")
         } + conversations.map { c ->
             val rating = app.conversations.rating(c)
@@ -98,7 +102,9 @@ private fun AttemptDetail(app: AppGraph, lang: String, id: String) {
         val ans = answers[item.id]
         Column {
             Text("${i + 1}. ${item.stem}", fontWeight = FontWeight.SemiBold)
-            Text("Your answer: ${ans?.choice?.let { item.choices.getOrNull(it) } ?: "—"}" + if (ans?.correct == true) " ✓" else " · Answer: ${item.choices[item.answer]}",
+            if (ans == null && a.mode == "TEST" && answers.isNotEmpty()) {
+                Text("Not scored: the recording couldn't be played · Answer: ${item.choices[item.answer]}", style = MaterialTheme.typography.bodySmall)
+            } else Text("Your answer: ${ans?.choice?.let { item.choices.getOrNull(it) } ?: "—"}" + if (ans?.correct == true) " ✓" else " · Answer: ${item.choices[item.answer]}",
                 color = if (ans?.correct == true) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
         }
     }
@@ -131,7 +137,7 @@ private fun ConversationDetail(app: AppGraph, lang: String, id: String) {
             Text(t.text, Modifier.weight(1f), fontFamily = Fonts.forLanguage(lang))
             recordings[i]?.let { rec ->
                 val f = File(app.dataDir, rec.path)
-                if (f.isFile) TextButton(onClick = { Thread { runCatching { AudioIO.play(f.readBytes()) } }.start() }) { Text("▶") }
+                if (f.isFile) TextButton(onClick = { Thread { runCatching { Voice.play(app, f.readBytes()) } }.start() }) { Text("▶") }
             }
         }
     }

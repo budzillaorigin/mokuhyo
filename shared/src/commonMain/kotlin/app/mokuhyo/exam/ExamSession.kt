@@ -17,7 +17,10 @@ data class AttemptScoring(
     val totalMax: Int? = null,
     val passMark: Int? = null,
     val passed: Boolean? = null,
+    /** False when some questions were left out of the score (see [voidedItems]). */
     val complete: Boolean = true,
+    /** Questions not scored because their recording couldn't be played on this computer ([ExamSession.voidPassage]). */
+    val voidedItems: Int = 0,
     val ilr: String? = null,
     val ilrProvisional: String? = null,
     val ilrConfident: Boolean = false,
@@ -71,6 +74,7 @@ data class ExamProgress(
     val choices: Map<String, Int> = emptyMap(),
     val timeMs: Map<String, Long> = emptyMap(),
     val plays: Map<String, Int> = emptyMap(),
+    val voided: List<String> = emptyList(),
 ) {
     @Serializable
     data class SectionRef(val title: String, val minutes: Int?, val listening: Boolean, val items: List<ItemRef>)
@@ -115,6 +119,7 @@ class ExamSession(
     private val choices = mutableMapOf<String, Int>()
     private val timeMs = mutableMapOf<String, Long>()
     private val plays = mutableMapOf<String, Int>()
+    private val voided = mutableSetOf<String>()
     private val deadlines: Array<Long?> = arrayOfNulls(form.sections.size)
 
     // Time away (between the last save and a resume) isn't charged to any item.
@@ -139,6 +144,7 @@ class ExamSession(
             choices += restored.choices
             timeMs += restored.timeMs
             plays += restored.plays
+            voided += restored.voided
             restored.deadlines.forEachIndexed { i, d -> if (i < deadlines.size) deadlines[i] = d }
             sectionIndex = restored.sectionIndex.coerceIn(0, (form.sections.size - 1).coerceAtLeast(0))
             index = restored.index.coerceIn(0, ((form.sections.getOrNull(sectionIndex)?.items?.size ?: 1) - 1).coerceAtLeast(0))
@@ -211,7 +217,8 @@ class ExamSession(
     }
 
     /** Whether [passageId]'s audio may be played (again): unlimited in practice, the blueprint's plays on tests. */
-    fun canPlayAudio(passageId: String): Boolean = !form.mode.strict || (plays[passageId] ?: 0) < playPolicy.plays
+    fun canPlayAudio(passageId: String): Boolean =
+        passageId !in voided && (!form.mode.strict || (plays[passageId] ?: 0) < playPolicy.plays)
 
     fun playsOf(passageId: String): Int = plays[passageId] ?: 0
 
@@ -220,10 +227,33 @@ class ExamSession(
         passageId == null || !form.mode.strict || !form.sections.getOrNull(sectionIndex)?.listening.orFalse() ||
             playPolicy.questionsVisibleBeforeAudio || (plays[passageId] ?: 0) > 0
 
+    /** Counts a play. Call once the audio is actually coming out of the speakers, not when Play is pressed. */
     fun audioPlayed(passageId: String) {
         plays[passageId] = (plays[passageId] ?: 0) + 1
         persist()
     }
+
+    /**
+     * Gives back the play counted by [audioPlayed] when playback then failed (device unplugged, output error): the
+     * learner didn't get to hear it, so it mustn't cost one of the test's plays. Not for the learner's own Stop.
+     */
+    fun audioFailed(passageId: String) {
+        val n = plays[passageId] ?: return
+        if (n <= 1) plays -= passageId else plays[passageId] = n - 1
+        persist()
+    }
+
+    /**
+     * Leaves [passageId]'s questions out of the score because its recording can't be played on this computer. The
+     * result says how many questions were left out and is marked incomplete, rather than counting them as wrong.
+     */
+    fun voidPassage(passageId: String) {
+        if (finished || passageId !in form.passages) return
+        voided += passageId
+        persist()
+    }
+
+    fun isVoided(passageId: String?): Boolean = passageId != null && passageId in voided
 
     private fun Boolean?.orFalse() = this ?: false
 
@@ -246,6 +276,7 @@ class ExamSession(
         choices = choices.toMap(),
         timeMs = timeMs.toMap(),
         plays = plays.toMap(),
+        voided = voided.toList(),
     )
 
     private fun timed(section: Int): Boolean =
@@ -280,12 +311,15 @@ class ExamSession(
         record(clock.now())
         finished = true
         if (saving) store?.clear(attemptId)
-        val answers = form.items.map { f ->
+        val scored = form.items.filter { it.item.passageId !in voided }
+        val answers = scored.map { f ->
             val choice = choices[f.item.id]
             AnswerRecord(f.item.id, choice, choice == f.item.answer, timeMs[f.item.id] ?: 0)
         }
+        val left = form.items.size - scored.size
         val (scoring, summary) = score(answers)
-        return ExamResult(form, startedAt, clock.now(), answers, scoring, summary)
+        return ExamResult(form, startedAt, clock.now(), answers, scoring.copy(complete = left == 0, voidedItems = left),
+            summary + if (left > 0) " · $left not scored (audio unavailable)" else "")
     }
 
     private fun record(until: Instant) {

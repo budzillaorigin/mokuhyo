@@ -63,6 +63,8 @@ class HistoryRepository(private val db: MokuhyoDatabase, private val clock: Cloc
         val id = Uuid.random().toString()
         val test = form.mode != ExamMode.PRACTICE
         val ilr = result.scoring.ilr ?: result.scoring.ilrProvisional
+        // A test with questions left out (recording unplayable) gives at most a provisional estimate.
+        val provisional = if (result.scoring.ilr == null || !result.scoring.complete) 1L else 0L
         db.transaction {
             db.historyQueries.insertAttemptIfAbsent(
                 Attempt(
@@ -71,7 +73,7 @@ class HistoryRepository(private val db: MokuhyoDatabase, private val clock: Cloc
                     formJson = json.encodeToString(StoredForm.serializer(), StoredForm.of(form)),
                     answersJson = json.encodeToString(kotlinx.serialization.builtins.ListSerializer(AnswerRecord.serializer()), result.answers),
                     scoreJson = json.encodeToString(AttemptScoring.serializer(), result.scoring),
-                    ilrEstimate = ilr, provisional = if (result.scoring.ilr == null) 1 else 0, deleted = null,
+                    ilrEstimate = ilr, provisional = provisional, deleted = null,
                 ),
             )
             // Only tests in the shipped bank feed the trend; practice and "generated on this computer" never do (rule 7).
@@ -80,8 +82,8 @@ class HistoryRepository(private val db: MokuhyoDatabase, private val clock: Cloc
                     Ilr_estimate(
                         id = Uuid.random().toString(), learnerId = learnerId, lang = form.language, modality = skill.name,
                         at = result.submittedAt.toEpochMilliseconds(), value_ = ilr, sourceKind = "ATTEMPT", sourceId = id,
-                        confidence = if (result.scoring.ilrConfident) 0.8 else if (result.scoring.ilr != null) 0.5 else 0.3,
-                        provisional = if (result.scoring.ilr == null) 1 else 0, deleted = null,
+                        confidence = if (provisional == 1L) 0.3 else if (result.scoring.ilrConfident) 0.8 else 0.5,
+                        provisional = provisional, deleted = null,
                     ),
                 )
             }

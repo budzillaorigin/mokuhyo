@@ -12,7 +12,7 @@ import java.io.File
 /**
  * `--render-audio --language xx [--packs DIR] [--force]` (build tool, BRIEF §5.3 / `tools/packs/render_audio.py`):
  * renders every listening passage of the pack with the bundled voice service into `<packs>/<lang>/audio/<id>.ogg`
- * (Ogg Opus, 16 kHz mono). Speakers get distinct voices of their gender where the language has them. Languages whose
+ * (Ogg Opus, 24 kHz mono). Speakers get distinct voices of their gender where the language has them. Languages whose
  * only voice is the OS voice are not rendered: the OS voices' terms don't allow redistributing recordings (D-013), so
  * those passages are spoken at run time.
  */
@@ -49,16 +49,17 @@ object RenderAudio {
             // Speaker variety (BRIEF_PHASE8 N-07): rotate by passage id, distinct voices for distinct speakers.
             val cast = VoiceRotation.assign(piper, p.script.map { it.speaker to it.voice }.distinctBy { it.first }, p.id)
             val pcm = ArrayList<ShortArray>()
-            for (line in p.script) {
+            p.script.forEachIndexed { i, line ->
                 val voice = cast.getValue(line.speaker)
                 val audio = voices.synthesize(line.text, lang, voice) ?: return@runBlocking fail("synthesis failed for ${p.id}")
-                pcm += AudioIO.toPcm16kMono(audio.wav)
-                pcm += ShortArray(16_000 * 6 / 10)
+                val (samples, rate) = AudioIO.toMonoPcm(audio.wav)
+                pcm += AudioIO.resample(samples, rate, ChatterboxJobs.CLIP_RATE)
+                p.script.getOrNull(i + 1)?.let { next -> pcm += ShortArray(ChatterboxJobs.CLIP_RATE * PassageAudio.pauseMs(line.speaker, next.speaker) / 1000) }
             }
             val all = ShortArray(pcm.sumOf { it.size }).also { a -> var o = 0; pcm.forEach { it.copyInto(a, o); o += it.size } }
-            out.writeBytes(OggOpus.encode(all))
+            out.writeBytes(OggOpus.encode(all, bitrate = 32_000, sampleRate = ChatterboxJobs.CLIP_RATE))
             made++
-            println("render-audio: ${p.id} ${all.size / 16_000}s ${out.length() / 1024} KB")
+            println("render-audio: ${p.id} ${all.size / ChatterboxJobs.CLIP_RATE}s ${out.length() / 1024} KB")
         }
         voices.close()
         println("render-audio: $lang rendered $made, kept $kept")

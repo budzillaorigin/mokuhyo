@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.lexicon
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -154,7 +155,7 @@ fun TermCard(app: AppGraph, module: LanguageModule, t: TrackTerm, added: Boolean
         if (t.registerNote.isNotBlank()) Text("Register: ${t.registerNote}", style = MaterialTheme.typography.bodySmall)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = {
-                scope.launch(Dispatchers.IO) { app.speech.synthesize(t.term, module.code)?.let { runCatching { AudioIO.play(it.wav) } } }
+                scope.launch(Dispatchers.IO) { app.speech.synthesize(t.term, module.code)?.let { runCatching { Voice.play(app, it.wav) } } }
             }) { Text("▶ Listen") }
             TextButton(enabled = !added, onClick = {
                 app.reviews.add(app.learnerId, module.code, ReviewService.Kind.TERM, "term:${t.id}", t.term, "${t.termEn}\n${t.definition}", t.examples.firstOrNull()?.text)
@@ -224,7 +225,7 @@ private fun DrillCard(app: AppGraph, module: LanguageModule, track: Track, d: Dr
             if (d.explanation.isNotBlank()) Text(d.explanation, style = MaterialTheme.typography.bodySmall)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (d.kind == "brevity" && d.expected.isNotBlank()) TextButton(onClick = {
-                    scope.launch(Dispatchers.IO) { app.speech.synthesize(d.expected, module.code)?.let { runCatching { AudioIO.play(it.wav) } } }
+                    scope.launch(Dispatchers.IO) { app.speech.synthesize(d.expected, module.code)?.let { runCatching { Voice.play(app, it.wav) } } }
                 }) { Text("▶ Hear the read-back") }
                 Button(onClick = {
                     if (!ok && term != null) app.reviews.add(app.learnerId, module.code, ReviewService.Kind.TERM, "term:${term.id}", term.term,
@@ -265,7 +266,7 @@ private fun DialogueView(app: AppGraph, module: LanguageModule, d: Dialogue) {
                 status = "Preparing audio…"
                 scope.launch {
                     when (val r = PassageAudio(app).load(d.asPassage(module.code))) {
-                        is PassageAudio.Result.Ready -> { status = "Playing (${r.source})"; withContext(Dispatchers.IO) { runCatching { AudioIO.play(r.wav) } }; status = "" }
+                        is PassageAudio.Result.Ready -> { status = "Playing (${r.source})"; withContext(Dispatchers.IO) { runCatching { Voice.play(app, r.wav) } }; status = "" }
                         is PassageAudio.Result.Unavailable -> { status = r.reason; showText = true }
                     }
                 }
@@ -323,7 +324,7 @@ fun CompareTab(app: AppGraph, current: Track, languages: List<String> = app.chos
                         if (c.radioEnglish) Badge("radio: English")
                         if (c.confirmed) Badge("source-confirmed") else c.badge?.let { Badge(it, MaterialTheme.colorScheme.tertiaryContainer) }
                         TextButton(onClick = {
-                            scope.launch(Dispatchers.IO) { app.speech.synthesize(c.term, lang)?.let { runCatching { AudioIO.play(it.wav) } } }
+                            scope.launch(Dispatchers.IO) { app.speech.synthesize(c.term, lang)?.let { runCatching { Voice.play(app, it.wav) } } }
                         }) { Text("▶") }
                     }
                 }

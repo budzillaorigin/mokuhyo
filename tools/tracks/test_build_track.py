@@ -1,13 +1,16 @@
 """Tests for tracks/build_track.py (no network). Run: uv run --group content python tracks/test_build_track.py"""
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / "terms"))
 
 import build_track as B
+from overlap_fixture import fixture_corpus
 
 
 def test_probe_parsing_tolerates_ilr_prefix_and_bold() -> None:
@@ -27,7 +30,15 @@ def test_scrub_drops_copied_text() -> None:
     track = {"terms": [{"examples": [{"text": "Hola.", "english": copied}, {"text": "Adiós.", "english": "Bye."}], "collocations": ["dron"]}],
              "drills": [{"prompt": "x", "choices": ["a"], "explanation": copied}, {"prompt": "y", "choices": ["b"], "explanation": "fine"}],
              "dialogues": []}
-    B.scrub(track, "es")
+    # The fixture corpus stands in for the restricted sources, so this runs without them (QC 2026-10-19 #6).
+    with fixture_corpus() as env:
+        saved = dict(os.environ)
+        os.environ.update(env)
+        try:
+            B.scrub(track, "es")
+        finally:
+            os.environ.clear()
+            os.environ.update(saved)
     assert [e["english"] for e in track["terms"][0]["examples"]] == ["Bye."], track["terms"][0]["examples"]
     assert [d["prompt"] for d in track["drills"]] == ["y"]
 

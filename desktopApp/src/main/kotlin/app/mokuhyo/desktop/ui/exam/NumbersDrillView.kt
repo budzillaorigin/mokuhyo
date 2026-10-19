@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.exam
 
+import app.mokuhyo.desktop.Voice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -65,7 +66,7 @@ fun NumbersDrillView(app: AppGraph, module: LanguageModule, presetKinds: List<Nu
     val item = drill.current
 
     fun play() = scope.launch {
-        withContext(Dispatchers.IO) { app.speech.synthesize(item.spoken, module.code, speed = speed)?.let { runCatching { AudioIO.play(it.wav) } } }
+        withContext(Dispatchers.IO) { app.speech.synthesize(item.spoken, module.code, speed = speed)?.let { runCatching { Voice.play(app, it.wav) } } }
     }
 
     if (presetKinds == null) SectionCard("What to drill") {
