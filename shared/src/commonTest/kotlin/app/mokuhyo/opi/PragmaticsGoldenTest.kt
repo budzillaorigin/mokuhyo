@@ -93,7 +93,8 @@ class PragmaticsGoldenTest {
             val profile = OpiProfile(f.lang, "Use polite register with the learner.")
             val session = TopicSession(f.lang, profile, Topic("t", "military_operations", "Base security", "…"), AiGateway({ model }),
                 persona = persona, culturalNotes = listOf("Address seniors by rank."))
-            val ex = assertNotNull(session.say(f.learner), "${f.lang}: ${f.learner}")
+            assertNotNull(session.say(f.learner), "${f.lang}: ${f.learner}")
+            val ex = assertNotNull(session.feedback(0))
             assertEquals(listOf(f.kind), ex.pragmatics.map { it.kind }, "${f.lang}: ${f.learner}")
             assertEquals("1+", ex.turnLevel, "a pragmatic flag does not change the turn level")
             // The persona reaches the partner's prompt; the cultural notes reach the critique's.

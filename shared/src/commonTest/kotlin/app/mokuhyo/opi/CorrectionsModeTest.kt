@@ -25,6 +25,7 @@ class CorrectionsModeTest {
     private suspend fun run(mode: CorrectionsMode): TopicSession {
         val s = TopicSession("es", profile, topic, AiGateway({ FakeModel(turn, turn) }), mode = mode) // reply, then critique
         s.say("Oye, el dron está sobre la puerta norte.")
+        if (mode.records) s.feedback(0)
         return s
     }
 
@@ -33,7 +34,8 @@ class CorrectionsModeTest {
     fun critiqueFailureKeepsTheReply() = runTest {
         val fake = FakeModel(turn, "not json", "still not json")
         val s = TopicSession("es", profile, topic, AiGateway({ fake }), mode = CorrectionsMode.LIVE)
-        val ex = assertNotNull(s.say("Oye, el dron está sobre la puerta norte."))
+        assertNotNull(s.say("Oye, el dron está sobre la puerta norte."))
+        val ex = assertNotNull(s.feedback(0))
         assertEquals("Entendido, mi coronel. ¿Algo más?", ex.reply)
         assertNull(ex.corrected)
         assertTrue(ex.feedbackMissing!!.contains("failed checks"), ex.feedbackMissing)
@@ -106,6 +108,7 @@ class CorrectionsModeTest {
     fun afterActionBriefBuildsFromRecords() = runTest {
         val s = run(CorrectionsMode.AFTER_ACTION)
         s.say("Oye, el dron está sobre la puerta norte.") // a second identical error → a recurring pattern
+        s.feedback(1)
         val summary = """{"next_steps":["Address officers by rank.","Practise reporting a drone sighting.","Use usted throughout."],
             "grammar":[],"register":["Oye to a colonel"],"avoidance":["no past tense"]}"""
         val aab = AfterActionBuilder.build(AiGateway({ FakeModel(summary) }), "es", CorrectionsMode.AFTER_ACTION, SpeakingActivity.PERSONA, "Drone sighting",

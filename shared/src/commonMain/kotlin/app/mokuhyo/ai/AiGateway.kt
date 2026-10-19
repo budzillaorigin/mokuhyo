@@ -66,6 +66,7 @@ class AiGateway(
     /** Called once per [run] with what happened (BRIEF_PHASE8 N-00b: the app's rolling log). Never sees prompt text. */
     private val onCall: (AiCall) -> Unit = {},
 ) {
+    private val scheduler = InferenceScheduler()
     /** True when a model is configured right now (it may still fail on a given call). */
     fun hasModel(): Boolean = model() != null
 
@@ -75,7 +76,8 @@ class AiGateway(
     @Throws(Exception::class)
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
         val start = kotlin.time.TimeSource.Monotonic.markNow()
-        val result = runInner(task, input, timeoutMs)
+        val result = scheduler.run(task.name == "turn_feedback",
+            deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
         val ms = start.elapsedNow().inWholeMilliseconds
         runCatching {
             onCall(when (result) {

@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -67,10 +69,11 @@ data class TurnFeedbackRecord(
     val pragmatics: List<PragmaticFlag> = emptyList(),
     val engine: String? = null,
     val partnerReply: String? = null,
+    val feedbackMissing: String? = null,
 ) {
     companion object {
         fun of(turnIndex: Int, ex: TopicExchange): TurnFeedbackRecord = TurnFeedbackRecord(
-            turnIndex, ex.learner, ex.corrected, ex.changes, ex.rewrite, ex.vocabulary, ex.turnLevel, ex.pragmatics, ex.engine, ex.reply,
+            turnIndex, ex.learner, ex.corrected, ex.changes, ex.rewrite, ex.vocabulary, ex.turnLevel, ex.pragmatics, ex.engine, ex.reply, ex.feedbackMissing,
         )
     }
 }
@@ -157,26 +160,29 @@ class PartnerReply : PromptTask<TopicTurn.Input, PartnerReply.Output> {
  * showing"): a job waits while the session is generating the interviewer's next line ([foregroundBusy]), so feedback
  * never delays the conversation; it catches up in pauses and at the end ([drain]). Results are delivered in turn order.
  */
-class FeedbackQueue(private val gateway: AiGateway, scope: CoroutineScope, private val onRecord: (TurnFeedbackRecord) -> Unit) {
+class FeedbackQueue(private val gateway: AiGateway, scope: CoroutineScope, private val deferredUntilEnd: Boolean = false, private val onRecord: (TurnFeedbackRecord) -> Unit) {
     private class FeedbackJob(val turnIndex: Int, val input: TurnFeedback.Input, val done: CompletableDeferred<Unit> = CompletableDeferred())
 
-    private val jobs = Channel<FeedbackJob>(Channel.UNLIMITED)
+    private val jobs = Channel<FeedbackJob>(32)
     private val busy = MutableStateFlow(false)
+    private val deferred = MutableStateFlow(deferredUntilEnd)
     private val pending = MutableStateFlow(0)
     val pendingCount: StateFlow<Int> get() = pending
     private val worker: kotlinx.coroutines.Job = scope.launch {
         for (job in jobs) {
+            deferred.first { !it }
             busy.first { !it } // the partner's next line first
             val record = when (val r = gateway.run(TurnFeedback(), job.input)) {
                 is AiResult.Ok -> r.value.let { o ->
                     TurnFeedbackRecord(job.turnIndex, job.input.answer, o.corrected.takeIf { it.trim() != job.input.answer.trim() }, o.changes, o.rewrite,
                         o.vocabulary, o.turnLevel, o.pragmatics, r.engine)
                 }
-                else -> TurnFeedbackRecord(job.turnIndex, job.input.answer)
+                else -> TurnFeedbackRecord(job.turnIndex, job.input.answer, feedbackMissing = "Feedback unavailable or deferred")
             }
             onRecord(record)
             pending.value--
             job.done.complete(Unit)
+            all.remove(job.done)
         }
     }
     private val all = mutableListOf<CompletableDeferred<Unit>>()
@@ -189,13 +195,21 @@ class FeedbackQueue(private val gateway: AiGateway, scope: CoroutineScope, priva
         val job = FeedbackJob(turnIndex, input)
         all += job.done
         pending.value++
-        jobs.trySend(job)
+        if (jobs.trySend(job).isFailure) {
+            pending.value--
+            all.remove(job.done)
+            job.done.complete(Unit)
+            onRecord(TurnFeedbackRecord(turnIndex, input.answer, feedbackMissing = "Feedback queue full; transcript saved"))
+        }
     }
 
     /** Waits for every queued job (the end of the session). */
     suspend fun drain() {
         busy.value = false
-        all.toList().forEach { it.await() }
+        deferred.value = false
+        if (withTimeoutOrNull(30_000) { all.toList().forEach { it.await() }; true } == null) {
+            worker.cancelAndJoin()
+        }
     }
 
     fun close() {

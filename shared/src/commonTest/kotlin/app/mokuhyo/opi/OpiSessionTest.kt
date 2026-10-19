@@ -175,7 +175,7 @@ class OpiSessionTest {
         val model = FakeModel(reply("1"), reply("1"), reply("2"), reply("2"), reply("2"), reply("2")) // reply + critique per turn
         val topic = Topic("t1", "daily_life", "Weekend plans", "¿Qué hizo el fin de semana?")
         val t = TopicSession("es", profile, topic, AiGateway({ model }))
-        repeat(3) { assertNotNull(t.say("Yo va al parque.")) }
+        repeat(3) { assertNotNull(t.say("Yo va al parque.")); t.feedback(it) }
         assertEquals(IlrLevel.L2, t.rollingLevel)
         assertEquals(listOf("1", "2", "2"), t.levelTrack)
         assertEquals(1, t.recurringErrors().size)

@@ -92,6 +92,7 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
@@ -334,11 +335,15 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         restored?.transcript?.forEachIndexed { i, t -> add(t to restored.english.getOrElse(i) { "" }) }
     } } // (turn, english gloss)
     var asker by remember { mutableStateOf<String?>(null) }
-    val records = remember { mutableStateListOf<TurnFeedbackRecord>() }
+    val records = remember { mutableStateListOf<TurnFeedbackRecord>().apply { addAll(app.conversations.feedback(conversationId)) } }
     val queue = remember {
-        if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope) { rec ->
+        if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope, deferredUntilEnd = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive) { rec ->
             records += rec
             app.conversations.addFeedback(conversationId, rec)
+        }.also { q ->
+            restored?.opiTurns?.filter { it.answer != null && records.none { r -> r.turnIndex == it.index * 2 + 1 } }?.forEach {
+                q.enqueue(it.index * 2 + 1, TurnFeedback.Input(module.code, pack.profile.registerNotes, it.question, it.answer!!, notes))
+            }
         } else null
     }
     DisposableEffect(Unit) { onDispose { queue?.close() } }
@@ -799,6 +804,8 @@ private fun TopicConversation(
     var aab by remember { mutableStateOf<AfterActionBrief?>(null) }
     val recorder = remember { Recorder(app) }
     val hasStt = remember { app.recognizer() != null }
+    var feedbackJob by remember { mutableStateOf<Job?>(null) }
+    val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
     val added = remember { mutableStateListOf<String>() }
 
     suspend fun checkpoint() {
@@ -810,6 +817,13 @@ private fun TopicConversation(
         }
     }
 
+    suspend fun collectFeedback(index: Int) {
+        val updated = session.feedback(index) ?: return
+        if (index < exchanges.size) exchanges[index] = updated
+        withContext(Dispatchers.IO) { app.conversations.addFeedback(conversationId, TurnFeedbackRecord.of(index * 2 + 1, updated)) }
+        checkpoint()
+    }
+
     fun send(text: String, pcm: ShortArray?) {
         session.accept(text)
         busy = true
@@ -819,6 +833,7 @@ private fun TopicConversation(
             if (pcm != null) withContext(NonCancellable + Dispatchers.IO) {
                 saveRecording(app, conversationId, session.transcript.lastIndex, pcm)
             }
+            feedbackJob?.cancelAndJoin()
             val ex = withContext(Dispatchers.Default) { session.say(text) }
             if (ex == null) {
                 // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
@@ -827,12 +842,15 @@ private fun TopicConversation(
                 checkpoint()
                 exchanges += ex
                 val turn = exchanges.size * 2 - 1
-                if (mode.records) app.conversations.addFeedback(conversationId, TurnFeedbackRecord.of(turn, ex))
                 if (pcm != null) {
                     val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                     fluency += FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
                 }
                 status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                if (mode.records && !deferFeedback) {
+                    val index = exchanges.lastIndex
+                    feedbackJob = scope.launch { collectFeedback(index) }
+                }
             }
             busy = false
         }
@@ -848,7 +866,7 @@ private fun TopicConversation(
     }
 
     fun finish() {
-        if (mode != CorrectionsMode.AFTER_ACTION) {
+        if (!mode.records) {
             save(null)
             close()
             return
@@ -857,6 +875,10 @@ private fun TopicConversation(
         status = "Preparing your After Action Brief…"
         scope.launch(start = CoroutineStart.UNDISPATCHED) {
             checkpoint()
+            feedbackJob?.cancelAndJoin()
+            withTimeoutOrNull(30_000) {
+                session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
+            }
             val brief = AfterActionBuilder.build(app.gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
                 (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,
                 session.levelTrack.toList(), fluencyStats(fluency), cardLookup(app, module.code))
@@ -882,6 +904,7 @@ private fun TopicConversation(
     Page(topic.title, "${module.nameEnglish}" + (persona?.let { " · with ${it.name}, ${it.rankTitle}" } ?: "") +
         if (mode == CorrectionsMode.LIVE) " · your rolling level: ILR ${session.rollingLevel.label}" else "") {
         ModeChip(mode)
+        if (mode == CorrectionsMode.LIVE && deferFeedback) Text("Feedback is deferred until the end to keep speech responsive on this computer.")
         if (topic.opener.isNotBlank()) SectionCard {
             Text(persona?.name ?: "Partner", fontWeight = FontWeight.SemiBold)
             Text(topic.opener, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleMedium)
