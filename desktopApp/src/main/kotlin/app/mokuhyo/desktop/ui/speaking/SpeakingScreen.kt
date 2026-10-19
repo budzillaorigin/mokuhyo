@@ -270,18 +270,6 @@ private fun PersonaPicker(personas: List<Persona>, chosen: Persona?, module: Lan
     }
 }
 
-/** Push-to-talk recorder shared by every mode; returns 16 kHz PCM. */
-private class Recorder(private val app: AppGraph) {
-    private var rec: AudioIO.Recording? = null
-    val recording: Boolean get() = rec != null
-
-    fun start(onLevel: (Double) -> Unit) {
-        rec = AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel)
-    }
-
-    fun stop(): ShortArray = rec?.stop().also { rec = null } ?: ShortArray(0)
-}
-
 private fun sha256(bytes: ByteArray) = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
 
 /** Saves a turn's audio under recordings/<conversation>/ and indexes it — unless the learner turned AAB audio off. */
@@ -289,7 +277,8 @@ private fun saveRecording(app: AppGraph, conversationId: String, turn: Int, pcm:
     if (!app.settings.bool(Settings.Key.AAB_KEEP_AUDIO, default = true)) return null
     val dir = File(app.dataDir, "recordings/$conversationId").apply { mkdirs() }
     val wav = AudioIO.wav(pcm)
-    val file = File(dir, "turn-%02d.wav".format(turn))
+    val original = File(dir, "turn-%02d.wav".format(turn))
+    val file = if (!original.exists()) original else File(dir, "turn-%02d-%s.wav".format(turn, java.util.UUID.randomUUID()))
     file.writeBytes(wav)
     app.conversations.addRecording(conversationId, turn, "recordings/$conversationId/${file.name}", pcm.size / 16L, sha256(wav))
     return file.path
@@ -360,7 +349,6 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var done by remember { mutableStateOf(false) }
     var started by remember { mutableStateOf(restored != null) }
     var job by remember { mutableStateOf<Job?>(null) }
-    val recorder = remember { Recorder(app) }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
     val hasStt = remember { app.recognizer() != null }
     // How the learner answered, and whether a test had to fall back to text (QC 2026-10-19 #2, #3).
@@ -411,7 +399,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             rating = r
             cultural = c
             aab = brief
-            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
+            trendNote = withContext(Dispatchers.IO) {
+                saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
+            }
             busy = false
             done = true
         }
@@ -710,7 +700,8 @@ private fun TranscriptCard(app: AppGraph, module: LanguageModule, session: OpiSe
                     if (turn.speaker == Speaker.LEARNER && rec != null) CompareWithExemplars(app, module, rec.question)
                 }
                 if (turn.speaker == Speaker.LEARNER) {
-                    val file = File(app.dataDir, "recordings/$conversationId/turn-%02d.wav".format(i))
+                    val path = app.conversations.recordings(conversationId).lastOrNull { it.turnIndex == i.toLong() }?.path
+                    val file = File(app.dataDir, path ?: "recordings/$conversationId/turn-%02d.wav".format(i))
                     if (file.isFile) TextButton(onClick = { Thread { runCatching { Voice.play(app, file.readBytes()) } }.start() }) { Text("▶") }
                 }
             }
@@ -802,7 +793,6 @@ private fun TopicConversation(
     var typed by remember { mutableStateOf("") }
     var level by remember { mutableStateOf(0.0) }
     var aab by remember { mutableStateOf<AfterActionBrief?>(null) }
-    val recorder = remember { Recorder(app) }
     val hasStt = remember { app.recognizer() != null }
     var feedbackJob by remember { mutableStateOf<Job?>(null) }
     val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
@@ -842,11 +832,11 @@ private fun TopicConversation(
                 checkpoint()
                 exchanges += ex
                 val turn = exchanges.size * 2 - 1
-                if (pcm != null) {
-                    val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
-                    fluency += FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
-                }
                 status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                if (pcm != null) fluency += withContext(Dispatchers.Default) {
+                    val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
+                    FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
+                }
                 if (mode.records && !deferFeedback) {
                     val index = exchanges.lastIndex
                     feedbackJob = scope.launch { collectFeedback(index) }
@@ -856,25 +846,28 @@ private fun TopicConversation(
         }
     }
 
-    fun save(brief: AfterActionBrief?) {
+    suspend fun save(brief: AfterActionBrief?) {
+        withContext(Dispatchers.IO) {
         onFinished?.invoke(session, conversationId)
         app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
             StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId", mode, brief)
         session.recurringErrors().forEach { c ->
             app.reviews.add(app.learnerId, module.code, ReviewService.Kind.ERROR, "${c.from}→${c.to}", c.from, "${c.to}\n${c.why}")
         }
+        }
     }
 
     fun finish() {
-        if (!mode.records) {
-            save(null)
-            close()
-            return
-        }
         busy = true
-        status = "Preparing your After Action Brief…"
+        status = if (mode.records) "Preparing your After Action Brief…" else "Saving…"
         scope.launch(start = CoroutineStart.UNDISPATCHED) {
             checkpoint()
+            if (!mode.records) {
+                save(null)
+                busy = false
+                close()
+                return@launch
+            }
             feedbackJob?.cancelAndJoin()
             withTimeoutOrNull(30_000) {
                 session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }

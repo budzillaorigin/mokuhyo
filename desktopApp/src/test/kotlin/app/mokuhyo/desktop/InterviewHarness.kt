@@ -29,6 +29,7 @@ class InterviewMicrophone : MixerProvider() {
         @Volatile var stopDelayMs = 0L
         @Volatile var openDelayMs = 0L
         @Volatile var closed = 0
+        @Volatile var opening = 0
     }
     override fun getMixerInfo(): Array<Mixer.Info> = if (enabled) arrayOf(info) else emptyArray()
     override fun getMixer(info: Mixer.Info?): Mixer {
@@ -36,7 +37,7 @@ class InterviewMicrophone : MixerProvider() {
         var running = true
         var format = AudioFormat(48000f, 16, 1, true, false)
         val line = proxy<TargetDataLine> { method, args -> when (method) {
-            "open" -> { Thread.sleep(openDelayMs); format = args!![0] as AudioFormat; null }
+            "open" -> { opening++; Thread.sleep(openDelayMs); format = args!![0] as AudioFormat; null }
             "getFormat" -> format
             "start" -> { running = true; null }
             "stop" -> { Thread.sleep(stopDelayMs); running = false; null }

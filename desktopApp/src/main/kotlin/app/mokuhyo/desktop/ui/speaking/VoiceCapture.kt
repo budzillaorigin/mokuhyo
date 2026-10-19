@@ -30,6 +30,9 @@ import app.mokuhyo.speech.Vad
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -57,7 +60,17 @@ fun VoiceCapture(
     var edit by remember { mutableStateOf("") }
     var transcription by remember { mutableStateOf<Job?>(null) }
     var audio by remember { mutableStateOf<ShortArray?>(null) }
-    DisposableEffect(Unit) { onDispose { rec?.runCatching { stop() } } }
+    var captureWork by remember { mutableStateOf<Job?>(null) }
+    DisposableEffect(Unit) {
+        onDispose {
+            captureWork?.cancel()
+            transcription?.cancel()
+            val abandoned = rec
+            rec = null
+            // The composition's scope is being cancelled. The application owns device cleanup, off the UI thread.
+            if (abandoned != null) app.scope.launch(Dispatchers.IO) { runCatching { abandoned.stop() } }
+        }
+    }
 
     fun transcribe(pcm: ShortArray) {
         audio = pcm
@@ -83,34 +96,64 @@ fun VoiceCapture(
         }
     }
 
-    fun finish() {
+    fun finish(noSpeech: Boolean = false) {
         val r = rec ?: return
         rec = null
         level = 0.0
-        transcribe(r.stop())
+        onBusy(true)
+        onStatus("Finishing recording…")
+        captureWork = scope.launch {
+            try {
+                val pcm = withContext(NonCancellable + Dispatchers.IO) { r.stop() }
+                audio = pcm
+                currentCoroutineContext().ensureActive()
+                if (noSpeech) onStatus(noAudioHint() + " You can retry transcription of this audio.") else transcribe(pcm)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                onStatus("Couldn't finish the recording: ${e.message}. Try recording again.")
+            } finally {
+                captureWork = null
+                onBusy(transcription != null)
+            }
+        }
     }
 
     fun start() {
+        if (captureWork != null || transcription != null || rec != null) return
         pending = null
         audio = null
-        val vad = Vad()
-        rec = runCatching {
-            AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = vad, onEvent = { e ->
-                scope.launch {
-                    when (e) {
-                        Vad.Event.AUTO_STOP -> finish()
-                        Vad.Event.NO_AUDIO -> {
-                            rec?.runCatching { stop() }
-                            rec = null
-                            level = 0.0
-                            onStatus(noAudioHint())
+        onBusy(true)
+        onStatus("Opening microphone…")
+        captureWork = scope.launch {
+            var opened: AudioIO.Recording? = null
+            try {
+                // If cancellation arrives during a blocking driver open, retain the returned handle for cleanup.
+                withContext(NonCancellable + Dispatchers.IO) {
+                    opened = AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = Vad(), onEvent = { e ->
+                        scope.launch {
+                            when (e) {
+                                Vad.Event.AUTO_STOP -> finish()
+                                Vad.Event.NO_AUDIO -> finish(noSpeech = true)
+                                Vad.Event.SPEECH_START -> onStatus("Listening… it stops by itself when you finish.")
+                            }
                         }
-                        Vad.Event.SPEECH_START -> onStatus("Listening… it stops by itself when you finish.")
-                    }
+                    })
                 }
-            })
-        }.onFailure { onStatus("Couldn't open the microphone: ${it.message}") }.getOrNull()
-        if (rec != null) onStatus("Recording… speak now (it stops after a short silence, or press Stop).")
+                currentCoroutineContext().ensureActive()
+                rec = opened
+                opened = null // ownership transfers to the composition only after cancellation is checked
+                onStatus("Recording… speak now. Press Stop when finished; each recording is limited to 2 minutes.")
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                onStatus("Couldn't open the microphone: ${e.message}")
+            } finally {
+                opened?.let { withContext(NonCancellable + Dispatchers.IO) { runCatching { it.stop() } } }
+                captureWork = null
+                onBusy(rec != null || transcription != null)
+            }
+        }
     }
 
     val p = pending
@@ -124,13 +167,16 @@ fun VoiceCapture(
         return
     }
     Column {
+        if (captureWork != null && rec == null) {
+            Text("Microphone operation in progress…")
+        }
         if (transcription != null) {
             OutlinedButton(onClick = { transcription?.cancel() }) { Text("Cancel transcription") }
-        } else if (audio != null) {
+        } else if (audio != null && captureWork == null) {
             OutlinedButton(onClick = { audio?.let(::transcribe) }) { Text("Retry transcription") }
         }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(enabled = (enabled && transcription == null) || rec != null, onClick = { if (rec == null) start() else finish() }) {
+            Button(enabled = (enabled && transcription == null && captureWork == null) || rec != null, onClick = { if (rec == null) start() else finish() }) {
                 Text(if (rec != null) "■ Stop" else "● Record")
             }
         }
