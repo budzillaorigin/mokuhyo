@@ -89,7 +89,6 @@ import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -511,37 +510,39 @@ internal fun ListeningPanel(
                         playing = true
                         scope.launch {
                             // Open the output first: a play only counts once sound is actually coming out (QC 2026-10-19 #1).
-                            // Not cancellable: an opened line must come back here to be played or closed, never leak.
-                            val opened = withContext(Dispatchers.IO + kotlinx.coroutines.NonCancellable) {
-                                runCatching {
-                                    val p = preset
-                                    val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
-                                        AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
-                                    AudioIO.open(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed)
+                            // playOwned holds the line from the moment it opens, so leaving mid-open can't leak it (F3).
+                            var counted = false
+                            try {
+                                AudioIO.playOwned(
+                                    open = {
+                                        val p = preset
+                                        val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
+                                            AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
+                                        AudioIO.open(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed)
+                                    },
+                                    stop = { stop.get() },
+                                    started = {
+                                        counted = true
+                                        session.audioPlayed(passage.id)
+                                        changed()
+                                    },
+                                )
+                            } catch (e: kotlinx.coroutines.CancellationException) {
+                                throw e
+                            } catch (e: Exception) {
+                                val what = e.message ?: e::class.simpleName
+                                if (!counted) {
+                                    error = "Couldn't start playback ($what). Check the speakers or headphones and " +
+                                        "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
+                                } else {
+                                    session.audioFailed(passage.id)
+                                    changed()
+                                    error = "Playback stopped because of an audio error ($what)." +
+                                        if (practice) " Try again." else " This play wasn't counted; fix the output and try again."
                                 }
-                            }
-                            val playback = opened.getOrElse { e ->
-                                error = "Couldn't start playback (${e.message ?: e::class.simpleName}). Check the speakers or headphones and " +
-                                    "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
+                            } finally {
                                 playing = false
-                                return@launch
                             }
-                            if (stop.get() || !isActive) { // left the question (or pressed Stop) while the output was opening
-                                playback.close()
-                                playing = false
-                                return@launch
-                            }
-                            session.audioPlayed(passage.id)
-                            changed()
-                            val ran = withContext(Dispatchers.IO) { runCatching { playback.run { stop.get() } } }
-                            ran.exceptionOrNull()?.let { e ->
-                                if (e is kotlinx.coroutines.CancellationException) throw e
-                                session.audioFailed(passage.id)
-                                changed()
-                                error = "Playback stopped because of an audio error (${e.message ?: e::class.simpleName})." +
-                                    if (practice) " Try again." else " This play wasn't counted; fix the output and try again."
-                            }
-                            playing = false
                         }
                     }) { Text(if (playing) "Stop" else if (session.playsOf(passage.id) == 0) "▶ Play" else "▶ Play again") }
                     if (!practice) Text("Plays left: ${(app.exam(module.code)?.blueprint?.listening?.play?.plays ?: 1) - session.playsOf(passage.id)}",

@@ -2,6 +2,12 @@ package app.mokuhyo.speech
 
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.job
+import kotlinx.coroutines.withContext
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioInputStream
@@ -140,6 +146,8 @@ object AudioIO {
      * before anything (a test's limited plays, say) is counted. [run] streams it; [close] releases it unplayed.
      */
     class Playback internal constructor(private val line: SourceDataLine, private val stream: AudioInputStream) : AutoCloseable {
+        private val closed = AtomicBoolean(false)
+
         /**
          * Streams to the end or until [stop] says so; returns true when it played to the end. Throws when the output
          * fails part-way (device unplugged, line error), which callers must tell apart from the learner's Stop.
@@ -168,7 +176,9 @@ object AudioIO {
             }
         }
 
+        /** Releases the line; safe to call more than once (only the first call closes it). */
         override fun close() {
+            if (!closed.compareAndSet(false, true)) return
             runCatching { line.stop() }
             runCatching { line.close() }
             runCatching { stream.close() }
@@ -199,6 +209,30 @@ object AudioIO {
             throw e
         }
         return Playback(line, stream)
+    }
+
+    /**
+     * Opens with [open] and plays to the end, owning the output line whatever is cancelled when (QC follow-up F3): it
+     * is held from the moment it opens, so cancellation before, during or right after opening, or during playback,
+     * still closes it exactly once. [started] runs on the caller's dispatcher once the line is open and the caller still
+     * wants it (not [stop]ped, not cancelled), right before playback: that is where a test counts a play, so a play
+     * is never counted for audio that didn't start. Returns true when it played to the end, false when stopped, null
+     * when stopped before it started. Throws what [open] or playback throws; cancellation propagates.
+     */
+    suspend fun playOwned(open: () -> Playback, stop: () -> Boolean = { false }, started: () -> Unit = {}): Boolean? {
+        val held = java.util.concurrent.atomic.AtomicReference<Playback?>()
+        try {
+            currentCoroutineContext().ensureActive()
+            // Not cancellable: opening runs to the end and the line lands in [held] before control comes back here.
+            withContext(Dispatchers.IO + NonCancellable) { held.set(open()) }
+            currentCoroutineContext().ensureActive()
+            if (stop()) return null
+            started()
+            val job = currentCoroutineContext().job
+            return withContext(Dispatchers.IO) { held.get()!!.run { stop() || !job.isActive } }
+        } finally {
+            held.getAndSet(null)?.close()
+        }
     }
 
     /** Plays WAV (or AIFF) bytes to [deviceName] (null = default) and returns when done or [stop] says so. */
