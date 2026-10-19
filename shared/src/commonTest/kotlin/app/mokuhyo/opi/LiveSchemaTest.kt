@@ -69,4 +69,12 @@ class LiveSchemaTest {
         assertTrue(problems.isNotEmpty())
         assertTrue(GlossLine().validate(GlossLine.Input("ja", "お名前は？"), GlossLine.Output("What is your name?"), ValidationContext()).isEmpty())
     }
+
+    @Test
+    fun backgroundWorkWaitsForTheEndWhereItWouldEvictTheConversationsPromptCache() {
+        assertTrue(CorrectionsMode.LIVE.backgroundBetweenTurns(gpuActive = true))
+        assertTrue(CorrectionsMode.OFF.backgroundBetweenTurns(gpuActive = true), "glosses still come live on a GPU")
+        assertFalse(CorrectionsMode.AFTER_ACTION.backgroundBetweenTurns(gpuActive = true))
+        CorrectionsMode.entries.forEach { assertFalse(it.backgroundBetweenTurns(gpuActive = false), "$it on a CPU") }
+    }
 }

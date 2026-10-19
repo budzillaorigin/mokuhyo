@@ -39,6 +39,13 @@ enum class CorrectionsMode(val id: String, val title: String, val chip: String) 
     val records: Boolean get() = this != OFF
     val showsDuringSession: Boolean get() = this == LIVE
 
+    /**
+     * Whether background model work (feedback, English glosses) may run between turns. Not on a CPU-only computer and
+     * not in After action: any other prompt between two questions evicts the conversation's cached prompt from the
+     * engine (it reuses the longest common prefix), so the next live reply would decode the whole transcript again.
+     */
+    fun backgroundBetweenTurns(gpuActive: Boolean): Boolean = gpuActive && this != AFTER_ACTION
+
     companion object {
         fun of(id: String?): CorrectionsMode? = entries.firstOrNull { it.id == id }
 

@@ -336,7 +336,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var asker by remember { mutableStateOf<String?>(null) }
     val records = remember { mutableStateListOf<TurnFeedbackRecord>().apply { addAll(app.conversations.feedback(conversationId)) } }
     val queue = remember {
-        if (mode.records && gateway.hasModel()) FeedbackQueue(gateway, scope, deferredUntilEnd = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive) { rec ->
+        if (mode.records && gateway.hasModel()) FeedbackQueue(gateway, scope, deferredUntilEnd = !mode.backgroundBetweenTurns(app.runtime.gpuActive)) { rec ->
             records += rec
             app.conversations.addFeedback(conversationId, rec)
         }.also { q ->
@@ -504,8 +504,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     askAloud(line.text)
                 }
                 status = readyStatus()
-                // The English gloss is not part of the live reply: fill it in the background now the question was said.
-                if (line.english.isBlank() && gateway.hasModel()) {
+                // The English gloss is not part of the live reply: fill it in the background now the question was said
+                // (or at the end, where background work between turns would evict the interview's cached prompt).
+                if (line.english.isBlank() && gateway.hasModel() && mode.backgroundBetweenTurns(app.runtime.gpuActive)) {
                     val li = lines.lastIndex
                     val ri = session.turns.lastIndex
                     scope.launch { gloss(li, ri) }
@@ -883,7 +884,7 @@ private fun TopicConversation(
     val hasStt = remember { app.recognizer() != null }
     var pendingAudio by remember { mutableStateOf<Pair<Int, ShortArray>?>(null) }
     var feedbackJob by remember { mutableStateOf<Job?>(null) }
-    val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
+    val deferFeedback = !mode.backgroundBetweenTurns(app.runtime.gpuActive)
     val added = remember { mutableStateListOf<String>() }
     val timeline = remember { app.timings.start(conversationId, kind, module.code, app.timelineSetup(module.code)).also { it.beginTurn(cold = true) } }
 
@@ -944,7 +945,7 @@ private fun TopicConversation(
                     status = (streamed ?: speak(app, ex.reply, module.code, persona)).problem?.let { "$it The reply is shown as text." }.orEmpty()
                     withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
                     timeline.beginTurn()
-                    exchanges.lastIndex.let { i -> scope.launch { gloss(i) } }
+                    if (!deferFeedback) exchanges.lastIndex.let { i -> scope.launch { gloss(i) } }
                     if (pcm != null) fluency += withContext(Dispatchers.Default) {
                         val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                         FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
