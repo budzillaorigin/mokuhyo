@@ -40,6 +40,10 @@ class Settings(private val db: MokuhyoDatabase) {
         MODEL_TIMINGS("device.model.timings", Scope.DEVICE),
         STT_MODEL_ID("device.stt.model", Scope.DEVICE),
         PREFER_CPU("device.native.preferCpu", Scope.DEVICE),
+        /** Thread caps per engine (BRIEF_INTERVIEW_SPEED N4); empty or 0 = automatic. Apply at the next start. */
+        THREADS_LLM("device.native.threads.llm", Scope.DEVICE),
+        THREADS_ASR("device.native.threads.asr", Scope.DEVICE),
+        THREADS_TTS("device.native.threads.tts", Scope.DEVICE),
         USE_OLLAMA("device.ollama.use", Scope.DEVICE),
         OLLAMA_MODEL("device.ollama.model", Scope.DEVICE),
         /** A local-network Ollama server (BRIEF_PHASE8 N-00b; explicit opt-in, LAN only). Empty = this computer. */

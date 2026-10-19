@@ -9,9 +9,9 @@ import app.mokuhyo.ai.jni.NativeLibrary
 import app.mokuhyo.ai.jni.WhisperJniBridge
 
 /** llama.cpp + whisper.cpp over JNI (native/). One bridge of each per process; models load on first use. */
-class JniRuntime private constructor(private val status0: NativeLibrary.Status) : NativeRuntime {
-    private val llmBridge by lazy { LlamaJniBridge().also { created += { it.shutdown() } } }
-    private val sttBridge by lazy { WhisperJniBridge().also { created += { it.shutdown() } } }
+class JniRuntime private constructor(private val status0: NativeLibrary.Status, private val caps: () -> app.mokuhyo.ai.ThreadCaps?) : NativeRuntime {
+    private val llmBridge by lazy { LlamaJniBridge(caps()?.llm).also { created += { it.shutdown() } } }
+    private val sttBridge by lazy { WhisperJniBridge(caps()?.asr).also { created += { it.shutdown() } } }
     private val created = java.util.concurrent.CopyOnWriteArrayList<() -> Unit>()
 
     init {
@@ -44,9 +44,13 @@ class JniRuntime private constructor(private val status0: NativeLibrary.Status) 
     override fun stt(): LocalSttBridge? = if (available) sttBridge else null
 
     companion object {
-        fun tryCreate(preferCpu: Boolean): NativeRuntime {
+        /**
+         * [caps]: thread caps for the model and Whisper (N4); null = each engine's own default. Read when a bridge is
+         * first used, after the library loaded with the CPU/GPU preference.
+         */
+        fun tryCreate(preferCpu: Boolean, caps: () -> app.mokuhyo.ai.ThreadCaps? = { null }): NativeRuntime {
             NativeLibrary.configure(preferCpu)
-            return JniRuntime(NativeLibrary.load())
+            return JniRuntime(NativeLibrary.load(), caps)
         }
     }
 }

@@ -2,6 +2,7 @@ package app.mokuhyo.desktop.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.layout.width
 import app.mokuhyo.ai.LanUrl
 import app.mokuhyo.ai.LocalLlamaModel
 import app.mokuhyo.ai.AiResult
@@ -99,11 +100,32 @@ private fun AiSettings(app: AppGraph) {
             })
             Text("Use the CPU even when a GPU is available (takes effect after a restart)")
         }
+        ThreadSettings(app)
     }
     SectionCard("Model tier") { TierSettings(app) }
     TestModel(app)
     SideLoadModel(app)
     OllamaSection(app)
+}
+
+/**
+ * Processor threads per engine (BRIEF_INTERVIEW_SPEED N4): automatic caps that keep the model, speech recognition and
+ * the voice from starving each other, with an override for each. Blank = automatic; applies after a restart.
+ */
+@Composable
+private fun ThreadSettings(app: AppGraph) {
+    val caps = app.threadCaps
+    Text("Processor threads in use: model ${caps.llm} · speech recognition ${caps.asr} · voice ${caps.tts}", style = MaterialTheme.typography.bodyMedium)
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        listOf(Settings.Key.THREADS_LLM to "Model", Settings.Key.THREADS_ASR to "Speech recognition", Settings.Key.THREADS_TTS to "Voice").forEach { (key, label) ->
+            var value by remember { mutableStateOf(app.settings.get(key).orEmpty()) }
+            OutlinedTextField(value, { v ->
+                value = v.filter { it.isDigit() }.take(2)
+                if (value.isEmpty() || value == "0") app.settings.remove(key) else app.settings.put(key, value)
+            }, Modifier.width(150.dp), label = { Text(label) }, placeholder = { Text("automatic") }, singleLine = true)
+        }
+    }
+    Text("Leave blank for automatic. Changes apply after a restart.", style = MaterialTheme.typography.bodySmall)
 }
 
 /**

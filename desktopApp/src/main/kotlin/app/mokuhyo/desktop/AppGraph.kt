@@ -47,7 +47,22 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     val models = ModelManager(FileSystem.SYSTEM, modelsDir.toOkioPath(), Java.create(), manifest, freeBytes = ::freeBytes)
     val downloads = DownloadCenter(scope, models)
     val updates = Updates(scope, settings)
-    val runtime: NativeRuntime by lazy { NativeRuntime.create(settings.bool(Settings.Key.PREFER_CPU)) }
+    /**
+     * Native threads for the model, Whisper and the voice (N4): automatic unless Settings → AI overrides them. The core
+     * count comes from the native library, so [runtime] (which loads it with the CPU/GPU preference) goes first.
+     */
+    val threadCaps: app.mokuhyo.ai.ThreadCaps by lazy {
+        runtime
+        fun n(k: Settings.Key) = settings.get(k)?.toIntOrNull()
+        app.mokuhyo.ai.ThreadBudget.caps(app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads(),
+            app.mokuhyo.ai.ThreadCaps(n(Settings.Key.THREADS_LLM) ?: 0, n(Settings.Key.THREADS_ASR) ?: 0, n(Settings.Key.THREADS_TTS) ?: 0))
+    }
+    val runtime: NativeRuntime by lazy { NativeRuntime.create(settings.bool(Settings.Key.PREFER_CPU)) { threadCaps } }
+
+    init {
+        // The voice service starts its first Piper process later; it reads the cap then.
+        SpeechProvider.ttsThreads = { threadCaps.tts }
+    }
 
     private val _language = MutableStateFlow(settings.get(Settings.Key.CURRENT_LANGUAGE) ?: "ja")
     val language: StateFlow<String> = _language.asStateFlow()
@@ -255,8 +270,9 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
             modelHash = model?.files?.firstOrNull()?.sha256?.take(16),
             voiceId = runCatching { speech.voicesFor(lang).firstOrNull()?.let { "${it.engine}:${it.id}" } }.getOrNull(),
             backend = if (ollama) "endpoint" else if (runtime.gpuActive) "gpu" else "cpu",
-            llmThreads = app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads().takeIf { !runtime.gpuActive && !ollama },
-            asrThreads = app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads(),
+            llmThreads = threadCaps.llm.takeIf { !ollama },
+            asrThreads = threadCaps.asr,
+            ttsThreads = threadCaps.tts,
         )
     }
 

@@ -68,4 +68,23 @@ class AppGraphTest {
         val dir = Files.createTempDirectory("mokuhyo-smoke").toFile()
         assertEquals(0, Smoke.run(arrayOf("--smoke", "--allow-no-native", "--data-dir", dir.absolutePath)))
     }
+
+    @Test
+    fun threadCapsComeFromSettingsAndReachTheTimeline() {
+        val dir = Files.createTempDirectory("mokuhyo-test").toFile()
+        graph(dir).apply {
+            settings.put(Settings.Key.THREADS_LLM, "3")
+            settings.put(Settings.Key.THREADS_TTS, "1")
+            close()
+        }
+        graph(dir).apply {
+            assertEquals(3, threadCaps.llm)
+            assertEquals(1, threadCaps.tts)
+            val setup = timelineSetup("es")
+            assertEquals(threadCaps.asr, setup.asrThreads)
+            assertEquals(1, setup.ttsThreads)
+            assertEquals(1, SpeechProvider.ttsThreads(), "the voice service is started with the cap")
+            close()
+        }
+    }
 }

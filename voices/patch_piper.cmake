@@ -7,6 +7,7 @@
 #    std::string path is decoded in the ANSI code page there, which breaks temp dirs under non-ASCII user names.
 # 3. The WAV file is closed before its path is printed: upstream prints while the ofstream still buffers the tail,
 #    so a reader that acts on the stdout line can see a truncated file.
+# 4. (piper.cpp) MOKUHYO_TTS_THREADS caps ONNX Runtime's threads (see the end of this file).
 # Always applied to the pristine upstream file (kept as main.cpp.orig), so re-running after this script changes
 # gives the same result as a fresh checkout.
 
@@ -46,3 +47,23 @@ replace_once(
 
 file(WRITE "${FILE}" "${src}")
 message(STATUS "patch_piper: patched ${FILE}")
+
+# 4. piper.cpp next to main.cpp: MOKUHYO_TTS_THREADS caps ONNX Runtime's intra-op threads, so the voice doesn't take
+#    every core while the model writes the next sentence (BRIEF_INTERVIEW_SPEED N4). Unset or 0 keeps the default.
+get_filename_component(cpp_dir "${FILE}" DIRECTORY)
+set(PIPER_CPP "${cpp_dir}/piper.cpp")
+if(NOT EXISTS "${PIPER_CPP}.orig")
+  file(COPY_FILE "${PIPER_CPP}" "${PIPER_CPP}.orig")
+endif()
+file(READ "${PIPER_CPP}.orig" src)
+
+replace_once(
+  "#include <array>\n"
+  "#include <array>\n#include <cstdlib> // MOKUHYO_PATCH\n")
+
+replace_once(
+  "  // Slows down performance by ~2x\n  // session.options.SetIntraOpNumThreads(1);\n"
+  "  // Slows down performance by ~2x\n  // session.options.SetIntraOpNumThreads(1);\n  if (const char *mokuhyoThreads = std::getenv(\"MOKUHYO_TTS_THREADS\")) { // MOKUHYO_PATCH\n    int n = std::atoi(mokuhyoThreads);\n    if (n > 0) {\n      session.options.SetIntraOpNumThreads(n);\n    }\n  }\n")
+
+file(WRITE "${PIPER_CPP}" "${src}")
+message(STATUS "patch_piper: patched ${PIPER_CPP}")
