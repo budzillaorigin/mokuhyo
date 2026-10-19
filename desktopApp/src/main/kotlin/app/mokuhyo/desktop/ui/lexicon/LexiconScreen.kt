@@ -265,7 +265,7 @@ private fun DialogueView(app: AppGraph, module: LanguageModule, d: Dialogue) {
             Button(onClick = {
                 status = "Preparing audio…"
                 scope.launch {
-                    when (val r = PassageAudio(app).load(d.asPassage(module.code))) {
+                    when (val r = PassageAudio(app).loadOrUnavailable(d.asPassage(module.code))) {
                         is PassageAudio.Result.Ready -> { status = "Playing (${r.source})"; withContext(Dispatchers.IO) { runCatching { Voice.play(app, r.wav) } }; status = "" }
                         is PassageAudio.Result.Unavailable -> { status = r.reason; showText = true }
                     }

@@ -858,3 +858,44 @@ It is unchanged by this work; run it on the owner's machine.
 - 8 GB / 16 GB laptop benchmarks and device-disconnect runs on Windows and macOS.
 
 Shipped clips stay 16 kHz until re-imported or re-rendered with `--force`.
+
+## QC-2026-10-19 follow-up — F1–F4 fixed ✅ (hardware items open)
+
+What changed, per finding of `docs/QC_REPORT_2026-10-19_FOLLOWUP.md` (brief: `BRIEF_QC_FOLLOWUP_2026-10-19.md`;
+decisions: D-043). Each fix is one commit with its own regression test. Every test was checked to fail on `cc6bfc8`
+and pass after the fix. Some tests use new APIs and can't compile on `cc6bfc8`; those were run against `cc6bfc8`'s
+logic placed behind the new names (see the commit bodies).
+
+| Finding | Fix | Regression test | On `cc6bfc8` |
+|---|---|---|---|
+| F1 Corrupt clip bypasses listening recovery | Damaged or unreadable clip and cache → `Unavailable` with an actionable reason, or a voice-service replacement labelled "the pack recording was damaged"; a damaged cache file is deleted and rendered again; the screens use the `loadOrUnavailable` backstop; cancellation propagates; retrying uses no play | `PassageAudioLoadTest` (7 cases, including a Compose scene of `ListeningPanel` with `es/audio/broken.ogg`) | 7/7 fail ("bad Ogg page at 27"; the panel stays on "Preparing audio…") |
+| F2 Cancel bypasses the "heard it" gate | `QuestionDelivery`: per-question pending / playing / heard / failed / cancelled. Test answers open only when heard or after text fallback. Cancel shows recovery. Repeat runs as the tracked job. `Voice.say` stops on cancellation | `QuestionDeliveryTest` (6 cases, including delayed TTS through the real `Voice.say`, and Repeat or Cancel during playback) | 4/6 fail |
+| F3 Cancel while opening leaks the line | `AudioIO.playOwned` owns the line from open to close; `Playback.close` is idempotent; a play is counted only once playback starts | `PlaybackCancelTest` (cancel before, during and right after open; Stop during open; cancel during run) | 3/5 fail (line never closed; cancelled playback ran to the end) |
+| F4 Provisional labels inconsistent | Context stored with the conversation; one `SpeakingTrend.label` for History rows and detail, PDF entries and the results screen; the PDF footnote repeats under provisional entries; older records fall back to their estimate row | `SpeakingLabelTest`, `HistoryLabelRenderTest`, `SpeakingTrendTest.storedDecisionMatchesTheTrendEntry` | History row "1 answers · ILR 2"; PDF entry unqualified |
+| Optional: rail clips at 683×467 | Rail scrolls vertically | `NavigationRailRenderTest` (1024×700, density 1.5) | fails (Settings has empty bounds) |
+| Optional: Review focus warning | Focus is requested only when a card is shown | `ReviewFocusRenderTest` | fails (FocusRelatedWarning) |
+
+**Gates run here (Linux, headless; report fonts fetched with `stage_fonts.py --cache-only`):**
+- **Focused run** (`MOKUHYO_REQUIRE_PACKS=1 ./gradlew :shared:jvmTest`): the brief's nine suites plus
+  `PlaybackCancelTest` and `SpeakingLabelTest`. 45 tests, 0 failures, 0 conditional skips.
+- **`./gradlew :desktopApp:test`:** 31 tests, 0 failures.
+- **Full suite** (`MOKUHYO_REQUIRE_PACKS=1 ./gradlew :shared:jvmTest :desktopApp:test --rerun`): 377 shared + 31
+  desktop tests, 2 failures. Both are the known missing-asset failures in `LanguageModuleContractTest` (the Japanese
+  dictionary and tokenizer DBs). 18 conditional `SKIP` lines: no native library, no Piper build or voices, no model
+  files, no OS voice.
+- **Python, from `tools/`:** `uv run --locked ruff check .` passes; `run_tests.py`: 10 / 10 scripts.
+
+**Known gap (environment): the smoke test.** `./gradlew :desktopApp:run --args='--smoke --no-network'` fails with
+`smoke: FAIL native library did not load: Not available: libmokuhyo_native.so not found …`. The plain smoke fails the
+same way on `cc6bfc8`. `native/build.sh cpu` can't fetch its pinned llama.cpp source here: github.com archive
+downloads are denied by this container's network policy (HTTP 403).
+- `--smoke --no-network --allow-no-native` passes: SQLite opens, all 11 languages register, the 10-model manifest
+  loads, and a nonblank 1180×800 frame renders.
+- Run the plain smoke where the native library is built (CI, or the owner's machine).
+
+**Still needs real hardware or people:**
+- speakers or headphones unplugged mid-play;
+- real microphones;
+- Windows and macOS windows at 150 % (rail, Review keyboard focus);
+- the D-042 open list: streaming interviewer replies, the Kokoro / VOICEVOX pilot, 24 kHz re-renders of shipped clips,
+  laptop benchmarks, instructor calibration, and the missing dev assets for `gate_terms.sh` and the Japanese DBs.

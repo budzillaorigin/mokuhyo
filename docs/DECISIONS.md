@@ -447,3 +447,76 @@ Source: `docs/QC_REPORT_2026-10-19.md`. Each choice below is the simplest one co
   - a per-language readiness panel and a guided first session;
   - visual QA at 1024×700 and 150 % scaling, and with keyboard navigation and screen readers;
   - laptop benchmarks and device-disconnect tests on real Windows/macOS hardware.
+
+## D-043 Follow-up QC of 2026-10-19: closing the paths D-042 left open (unattended default, 2026-10-19)
+Source: `docs/QC_REPORT_2026-10-19_FOLLOWUP.md` and `BRIEF_QC_FOLLOWUP_2026-10-19.md`. Each choice is the simplest one
+consistent with rules 5, 7, 8 and 11.
+- **Damaged recordings (F1).** `PassageAudio.load` treats a damaged or unreadable file as a recoverable result, never
+  an exception out of the screen:
+  - "Expected" failures are `IOException`, `IllegalArgumentException`, `IllegalStateException`,
+    `UnsupportedAudioFileException` and `IndexOutOfBoundsException` (decoders indexing past a truncated buffer).
+    `CancellationException` is always rethrown first; it is itself an `IllegalStateException`.
+  - A clip counts as usable only when its WAV header parses and it holds at least one frame. So a zero-length clip
+    or `OggS` followed by zeros is damaged, not `Ready`.
+  - A damaged pack clip is replaced by the voice service when a voice exists, in tests as in practice. The source line
+    says "voice service — the pack recording was damaged", so the replacement is visible. Without a voice, the result
+    is `Unavailable`: "This recording file is damaged. Try again, or leave it out of the score (practice shows the
+    transcript instead)."
+  - A damaged cached render is deleted and rendered again once.
+  - `loadOrUnavailable` is the screens' backstop: any other exception becomes `Unavailable`. Listening, Stand-to and
+    the Lexicon use it.
+  - Retrying never touches `ExamSession` plays.
+- **Interview delivery (F2).** `QuestionDelivery` tracks each question's state: pending → playing → heard / failed /
+  cancelled.
+  - The state is keyed to the question's transcript index, and every new question resets it.
+  - Test answers open only when the question was heard, or after "Continue as text practice". Once heard, a question
+    stays answerable: a Repeat that fails or is cancelled doesn't take it away again.
+  - After a Cancel, a test shows "The question was stopped before it played." with Repeat and the text-practice
+    fallback. Practice shows the question text after a failure or a Cancel.
+  - Repeat runs as the tracked job: one playback at a time, and Cancel stops it.
+  - `Voice.say` now stops playback when its coroutine is cancelled, and plays nothing if cancelled during synthesis.
+    The other `Voice.play` callers (History and transcript ▶, exemplars, drills) still play to the end once started.
+    They have no answer gate to protect.
+- **Output ownership (F3).** `AudioIO.playOwned` holds the opened line from inside the non-cancellable open block,
+  and a `finally` in the caller closes it.
+  - `Playback.close` is idempotent.
+  - A play is counted in `started`, after the line opened and while the learner still wants it. This is D-042's order.
+  - Every other `AudioIO` user opens and plays inside one blocking call, with `run`'s own `finally`. There is no
+    coroutine handoff for the line to leak through, so they are unchanged.
+- **Speaking labels (F4).**
+  - **What is stored.** `StoredConversation` gains optional fields: `spokenAnswers`, `typedAnswers`,
+    `textFallback`, `calibrated`, `trend` and `trendReason`. They live in `turnsJson`, so no SQL migration is needed.
+    Older rows and bundles decode with nulls.
+  - **Status values.** `trend` is `COUNTED_FIRM`, `COUNTED_PROVISIONAL`, `EXCLUDED` or `NOT_APPLICABLE` (no estimate).
+    `trendReason` is a short phrase that goes into the label.
+  - **Self-ratings.** The self-rating save copies what `saveInterview` stored instead of rebuilding the record. It
+    used to drop the English glosses too. It files the self-rating as out of the trend.
+  - **One label.** `SpeakingTrend.label` is the only wording, used by History rows and detail, the PDF entries and
+    the results headline:
+    - `ILR 2 (AI-rated)`
+    - `ILR 2* (AI-rated, provisional — not calibrated | some answers typed)`
+    - `ILR 2 (AI-rated, not in speaking trend — mostly typed | text practice | practice)`
+    - `ILR 2 (self-rated)`
+  - **Older records.** These have no stored context, and they are never rewritten:
+    - an estimate row decides by its `provisional` flag;
+    - a rated `OPI_TEST` with no row, or practice, says "not in speaking trend";
+    - anything else says "recorded before 2026-10-19, trend status unknown".
+
+    Pre-D-042 tests were saved with `provisional = false`, so they still read `ILR 2 (AI-rated)`. That follows the
+    brief's rule: use the row's flag.
+  - **Footnote.** The PDF puts the cover's `*` footnote (`SpeakingTrend.PROVISIONAL_NOTE`) under a provisional
+    interview entry.
+- **Navigation rail.** The rail scrolls vertically, rather than switching to icons only. The window's minimum size
+  stays 1024×700. That size is in AWT units, which are logical on HiDPI Windows and macOS. So a window as short as the
+  QC's stress case happens mainly when the screen itself is that small at its scaling.
+- **Review focus.** Focus is requested only when a card is shown.
+- **Tests that can't run on `cc6bfc8`.** Some regression tests use APIs this fix introduces (`QuestionDelivery`,
+  `playOwned`, the label). They can't compile on `cc6bfc8`, so they were run against a copy of `cc6bfc8`'s logic placed
+  behind the new names: the old gate, the old Play coroutine, the old save path. They fail there and pass after the
+  fix. The commit bodies record each run.
+- **Still open (need people, hardware or a larger change):**
+  - **From D-042:** sentence-streaming of interviewer replies to TTS; the Kokoro / VOICEVOX Core live-voice
+    pilot; re-rendering shipped clips at 24 kHz; laptop benchmarks; physical device-disconnect tests; instructor
+    calibration.
+  - **Missing dev assets:** the Japanese dictionary and tokenizer DBs, and the reference PDFs for `gate_terms.sh`.
+  - **Real-window checks:** keyboard testing on Review and the rail; Windows/macOS windows at 150 %.

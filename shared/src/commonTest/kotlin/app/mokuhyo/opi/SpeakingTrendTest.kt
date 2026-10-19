@@ -31,4 +31,20 @@ class SpeakingTrendTest {
         assertNull(SpeakingTrend.entry(true, true, spoken = 10, typed = 0, textFallback = true, calibrated = true))
         assertNotNull(SpeakingTrend.exclusion(true, true, spoken = 2, typed = 8, textFallback = false))
     }
+
+    /** QC follow-up F4: the stored decision agrees with what is written to the trend, for every combination. */
+    @Test
+    fun storedDecisionMatchesTheTrendEntry() {
+        for (test in listOf(true, false)) for (model in listOf(true, false)) for (fallback in listOf(true, false)) for (cal in listOf(true, false))
+            for ((spoken, typed) in listOf(0 to 0, 5 to 0, 4 to 1, 1 to 4)) {
+                val d = SpeakingTrend.decide(test, model, spoken, typed, fallback, cal)
+                val e = SpeakingTrend.entry(test, model, spoken, typed, fallback, cal)
+                when (d.status) {
+                    SpeakingTrend.Status.COUNTED_FIRM -> assertEquals(false, e?.provisional)
+                    SpeakingTrend.Status.COUNTED_PROVISIONAL -> assertEquals(true, e?.provisional)
+                    else -> assertNull(e)
+                }
+            }
+        assertEquals(SpeakingTrend.Status.NOT_APPLICABLE, SpeakingTrend.decide(true, true, 5, 0, false, true, rated = false).status)
+    }
 }

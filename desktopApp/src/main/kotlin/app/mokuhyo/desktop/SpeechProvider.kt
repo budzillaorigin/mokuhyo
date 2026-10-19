@@ -10,7 +10,8 @@ object SpeechProvider {
 
     fun get(@Suppress("UNUSED_PARAMETER") app: AppGraph): SpeechOutput = override ?: service
 
-    fun set(output: SpeechOutput) {
+    /** Tests: replaces the voice service; null restores it. */
+    fun set(output: SpeechOutput?) {
         override = output
     }
 

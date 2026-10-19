@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.lang.Languages
 import app.mokuhyo.opi.Speaker
+import app.mokuhyo.opi.SpeakingTrend
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.desktop.ui.speaking.AfterActionBriefView
 import app.mokuhyo.desktop.ui.speaking.InterpretResults
@@ -47,6 +48,7 @@ fun HistoryList(app: AppGraph) {
     var open by remember { mutableStateOf<String?>(null) }
     val attempts = remember(lang, version) { app.history.attempts(app.learnerId, lang) }
     val conversations = remember(lang, version) { app.conversations.list(app.learnerId, lang) }
+    val speakingRows = remember(lang, version) { app.history.speakingRows(app.learnerId, lang) }
     data class Row(val id: String, val at: Long, val title: String, val detail: String, val searchable: String, val kind: Kind, val conversation: Boolean, val local: Boolean)
     val rows = remember(attempts, conversations) {
         attempts.map { a ->
@@ -59,10 +61,9 @@ fun HistoryList(app: AppGraph) {
                     (a.ilrEstimate?.let { " · ILR $it" + if (a.provisional == 1L) " (provisional)" else "" } ?: ""),
                 form.items.joinToString(" ") { it.stem + " " + it.type }, if (a.mode == "TEST") Kind.TESTS else Kind.PRACTICE, false, a.bank == "local")
         } + conversations.map { c ->
-            val rating = app.conversations.rating(c)
             val stored = app.conversations.stored(c)
             Row(c.id, c.startedAt, when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario: ${c.topic}"; "INTERPRET" -> "Interpretation: ${c.topic}"; "STORYLINE" -> "Exercise week: ${c.topic}"; else -> "Conversation: ${c.topic}" },
-                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (rating?.estimate?.let { " · ILR $it" + if (rating.selfRated) " (self-rated)" else "" } ?: ""),
+                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (app.conversations.speakingLabel(c, speakingRows)?.let { " · ${it.text}" } ?: ""),
                 stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC" || c.kind == "SCENARIO" || c.kind == "INTERPRET" || c.kind == "STORYLINE") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false)
         }.sortedByDescending { it.at }
     }
@@ -117,6 +118,13 @@ private fun ConversationDetail(app: AppGraph, lang: String, id: String) {
     val recordings = app.conversations.recordings(id).associateBy { it.turnIndex?.toInt() }
     val mode = app.conversations.mode(c)
     Text("Corrections: ${mode.title}", style = MaterialTheme.typography.bodySmall)
+    // The same label as the row and the PDF (QC follow-up F4), with how the answers were given when that was recorded.
+    app.conversations.speakingLabel(c, app.history.speakingRows(app.learnerId, lang))?.let { label ->
+        Text("Rating: ${label.text}", fontWeight = FontWeight.SemiBold)
+        val answered = listOfNotNull(stored.spokenAnswers?.let { "$it spoken" }, stored.typedAnswers?.let { "$it typed" }).joinToString(", ")
+        if (answered.isNotEmpty()) Text("Answers: $answered" + if (stored.textFallback == true) " · questions shown as text" else "", style = MaterialTheme.typography.bodySmall)
+        if (label.provisional) Text(SpeakingTrend.PROVISIONAL_NOTE, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
     app.conversations.rating(c)?.let { r ->
         if (r.rationale.isNotBlank()) Text(r.rationale)
         r.nextSteps.forEachIndexed { i, s -> Text("${i + 1}. $s", style = MaterialTheme.typography.bodySmall) }

@@ -1,5 +1,7 @@
 package app.mokuhyo.opi
 
+import kotlinx.serialization.Serializable
+
 /**
  * Whether an interview's rating joins the learner's speaking trend, and how firmly (QC 2026-10-19 #3; CLAUDE.md
  * rule 7). Only a model-rated test counts. Typed answers are writing, not speaking: an interview answered mostly by
@@ -9,6 +11,58 @@ package app.mokuhyo.opi
  */
 object SpeakingTrend {
     data class Entry(val confidence: Double, val provisional: Boolean)
+
+    /** Where an interview stands in the speaking trend; stored with the conversation (QC follow-up F4). */
+    @Serializable
+    enum class Status { COUNTED_FIRM, COUNTED_PROVISIONAL, EXCLUDED, NOT_APPLICABLE }
+
+    /** [status] and its short reason ("not calibrated", "mostly typed", "practice", …). */
+    data class Decision(val status: Status, val reason: String?)
+
+    /** How an interview's rating is shown, the same everywhere (History, the PDF, the results screen). */
+    data class Label(val text: String, val provisional: Boolean)
+
+    /** [entry] and [exclusion] as one stored decision; [rated] is false when the interview has no estimate at all. */
+    fun decide(test: Boolean, modelRated: Boolean, spoken: Int, typed: Int, textFallback: Boolean, calibrated: Boolean, rated: Boolean = true): Decision = when {
+        !rated -> Decision(Status.NOT_APPLICABLE, null)
+        !test -> Decision(Status.EXCLUDED, "practice")
+        !modelRated -> Decision(Status.EXCLUDED, "self-rated")
+        textFallback -> Decision(Status.EXCLUDED, "text practice")
+        spoken == 0 || typed > spoken -> Decision(Status.EXCLUDED, "mostly typed")
+        !calibrated -> Decision(Status.COUNTED_PROVISIONAL, "not calibrated")
+        typed > 0 -> Decision(Status.COUNTED_PROVISIONAL, "some answers typed")
+        else -> Decision(Status.COUNTED_FIRM, null)
+    }
+
+    /**
+     * The label for an interview rated [estimate]. [status]/[reason] are what was stored with it; older records have
+     * neither, and then [trendRow] decides: the provisional flag of its speaking-estimate row, or null when it has
+     * none (so it isn't in the trend). Older records are never rewritten (rule 5); only their label is worked out.
+     */
+    fun label(kind: String, estimate: String, modelRated: Boolean, selfRated: Boolean, status: Status?, reason: String?, trendRow: Boolean?): Label {
+        val ilr = "ILR $estimate"
+        if (selfRated) return Label("$ilr (self-rated)", false)
+        val rater = if (modelRated) "AI-rated" else "rated"
+        if (kind != "OPI" && kind != "OPI_TEST") return Label(if (modelRated) "$ilr (AI-rated)" else ilr, false)
+        val dash = reason?.let { " — $it" } ?: ""
+        return when (status) {
+            Status.COUNTED_FIRM -> Label("$ilr ($rater)", false)
+            Status.COUNTED_PROVISIONAL -> Label("$ilr* ($rater, provisional$dash)", true)
+            Status.EXCLUDED -> Label("$ilr ($rater, not in speaking trend$dash)", false)
+            Status.NOT_APPLICABLE -> Label("$ilr ($rater)", false)
+            null -> when {
+                trendRow == true -> Label("$ilr* ($rater, provisional)", true)
+                trendRow == false -> Label("$ilr ($rater)", false)
+                kind == "OPI_TEST" && modelRated -> Label("$ilr ($rater, not in speaking trend)", false)
+                kind == "OPI" -> Label("$ilr ($rater, not in speaking trend — practice)", false)
+                else -> Label("$ilr ($rater; recorded before 2026-10-19, trend status unknown)", false)
+            }
+        }
+    }
+
+    /** What the `*` after a level means in the PDF: on the cover and under provisional interview entries. */
+    const val PROVISIONAL_NOTE = "* provisional: a short or incomplete test form, or a speaking rating by the AI model that hasn't been calibrated " +
+        "against instructor ratings for that language (or had some answers typed)."
 
     /** Why an interview didn't join the trend, for the results screen; null when it did. */
     fun exclusion(test: Boolean, modelRated: Boolean, spoken: Int, typed: Int, textFallback: Boolean): String? = when {

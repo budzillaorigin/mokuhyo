@@ -29,6 +29,14 @@ data class StoredConversation(
     val cultural: app.mokuhyo.opi.CulturalReview? = null,
     /** Interpretation drill (BRIEF_PHASE8 N-01): every chunk with the rendering and its grade. */
     val interpret: List<app.mokuhyo.opi.InterpretResult> = emptyList(),
+    // Interviews (QC follow-up F4): how it was answered and where it stands in the speaking trend, so every view can
+    // label it the same way. Null on records saved before 2026-10-19 (and on other kinds): unknown, never guessed.
+    val spokenAnswers: Int? = null,
+    val typedAnswers: Int? = null,
+    val textFallback: Boolean? = null,
+    val calibrated: Boolean? = null,
+    val trend: app.mokuhyo.opi.SpeakingTrend.Status? = null,
+    val trendReason: String? = null,
 )
 
 /**
@@ -88,6 +96,17 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
     fun rating(c: Conversation): OpiRating? = c.ratingJson?.let { json.decodeFromString(OpiRating.serializer(), it) }
 
     fun rollingLevels(c: Conversation): List<String> = c.rollingLevelJson?.let { json.decodeFromString(ListSerializer(String.serializer()), it) }.orEmpty()
+
+    /**
+     * The rating's label wherever it's shown (QC follow-up F4); null without an estimate. [speakingRows] maps a
+     * conversation id to the provisional flag of its speaking-estimate row (see [speakingRows]).
+     */
+    fun speakingLabel(c: Conversation, speakingRows: Map<String, Boolean>): app.mokuhyo.opi.SpeakingTrend.Label? {
+        val r = rating(c) ?: return null
+        val estimate = r.estimate ?: return null
+        val s = stored(c)
+        return app.mokuhyo.opi.SpeakingTrend.label(c.kind, estimate, r.engine != null, r.selfRated, s.trend, s.trendReason, speakingRows[c.id])
+    }
 
     fun recordings(conversationId: String): List<Recording> = db.historyQueries.recordingsFor(conversationId).executeAsList()
 

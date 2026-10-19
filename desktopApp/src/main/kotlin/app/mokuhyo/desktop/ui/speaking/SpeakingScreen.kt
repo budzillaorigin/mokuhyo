@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import app.mokuhyo.culture.CultureCard
 import app.mokuhyo.culture.Persona
 import app.mokuhyo.desktop.AppGraph
+import app.mokuhyo.desktop.QuestionDelivery
 import app.mokuhyo.desktop.Voice
 import app.mokuhyo.desktop.ui.Badge
 import app.mokuhyo.desktop.ui.CheckRow
@@ -331,17 +332,19 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     // How the learner answered, and whether a test had to fall back to text (QC 2026-10-19 #2, #3).
     var spoken by remember { mutableIntStateOf(0) }
     var typedAnswers by remember { mutableIntStateOf(0) }
-    var textFallback by remember { mutableStateOf(false) }
-    var voiceProblem by remember { mutableStateOf<String?>(null) }
+    // Per question: pending → playing → heard / failed / cancelled. A test answers only a question it heard (F2).
+    val delivery = remember { QuestionDelivery(test) }
     var trendNote by remember { mutableStateOf<String?>(null) }
-    val questionTextAllowed = !test || textFallback
+    val questionTextAllowed = !test || delivery.textFallback
 
     suspend fun askAloud(text: String) {
-        val outcome = speak(app, text, module.code)
-        voiceProblem = outcome.problem
+        val outcome = delivery.deliver(delivery.question) { speak(app, text, module.code) } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
         if (!outcome.ok && !test) showText = true
     }
+
+    fun readyStatus() = if (delivery.state == QuestionDelivery.State.FAILED) "The question couldn't be played."
+        else if (hasStt) "Press Record and answer." else "Type your answer."
 
     fun complete() {
         finished = true
@@ -360,7 +363,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             rating = r
             cultural = c
             aab = brief
-            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, textFallback)
+            trendNote = saveInterview(app, conversationId, module.code, session, r, test, lines.map { it.second }, c, mode, brief, spoken, typedAnswers, delivery.textFallback)
             busy = false
             done = true
         }
@@ -378,12 +381,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 return@launch
             }
             lines += Turn(Speaker.PARTNER, line.text) to line.english
+            delivery.newQuestion(lines.lastIndex)
             // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
             asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
             status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
             askAloud(line.text)
             busy = false
-            status = if (voiceProblem != null) "The question couldn't be played." else if (hasStt) "Press Record and answer." else "Type your answer."
+            status = readyStatus()
         }
     }
 
@@ -407,7 +411,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         if (done) {
             val r = rating
             trendNote?.let { SectionCard { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } }
-            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test && !textFallback)
+            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test && !delivery.textFallback)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
             aab?.let { brief ->
                 AfterActionBriefView(app, module.code, brief, conversationId) { turnIndex ->
@@ -431,23 +435,33 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER) {
-                    voiceProblem?.let { problem ->
-                        Text(problem, color = MaterialTheme.colorScheme.error)
-                        if (test && !textFallback) {
-                            Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
-                                "the interview then becomes text practice and won't count toward your speaking estimate.", style = MaterialTheme.typography.bodySmall)
-                            OutlinedButton(onClick = { textFallback = true; showText = true }) { Text("Continue as text practice") }
-                        }
+                    delivery.problem?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+                    if (test && !delivery.canAnswer && delivery.needsRecovery) {
+                        Text("Test questions are spoken only. Fix the audio and press Repeat, or carry on with the questions shown as text: " +
+                            "the interview then becomes text practice and won't count toward your speaking estimate.", style = MaterialTheme.typography.bodySmall)
+                        OutlinedButton(onClick = { delivery.fallBackToText(); showText = true }) { Text("Continue as text practice") }
                     }
-                    if (textFallback) Badge("Text practice — the voice couldn't play; not counted as a test")
+                    if (delivery.textFallback) Badge("Text practice — the voice couldn't play; not counted as a test")
                     if (questionTextAllowed) CheckRow(showText, { showText = it }) { Text("Show the question text") }
                     if (showText && questionTextAllowed) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        OutlinedButton(onClick = { scope.launch { askAloud(last.first.text) } }) { Text("Repeat the question") }
+                        // Repeat runs as the tracked job: one playback at a time, and Cancel stops it.
+                        OutlinedButton(enabled = !delivery.playing, onClick = {
+                            busy = true
+                            status = "Repeating the question…"
+                            job = scope.launch {
+                                try {
+                                    askAloud(last.first.text)
+                                } finally {
+                                    busy = false
+                                }
+                                status = readyStatus()
+                            }
+                        }) { Text("Repeat the question") }
                     }
                     // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
                     // A test whose question wasn't heard waits until it's played or the learner falls back to text.
-                    val canAnswer = !test || textFallback || voiceProblem == null
+                    val canAnswer = delivery.canAnswer
                     if (hasStt && canAnswer) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
                         enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     if (canAnswer) OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
@@ -460,7 +474,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     }
                 }
             }
-            if (busy && job != null && !finished) TextButton(onClick = { job?.cancel(); busy = false; status = "Stopped." }) { Text("Cancel") }
+            if (busy && job != null && !finished) TextButton(onClick = {
+                job?.cancel()
+                delivery.stop()
+                busy = false
+                status = "Stopped."
+                if (!test && delivery.needsRecovery) showText = true
+            }) { Text("Cancel") }
         }
         if (!test) lines.filter { it.first.speaker == Speaker.LEARNER }.lastOrNull()?.let { (turn, _) ->
             SectionCard("You said") {
@@ -494,18 +514,23 @@ private fun saveInterview(
     app: AppGraph, id: String, lang: String, session: OpiSession, rating: OpiRating?, test: Boolean, english: List<String>,
     cultural: CulturalReview?, mode: CorrectionsMode, aab: AfterActionBrief?, spoken: Int, typed: Int, textFallback: Boolean,
 ): String? {
-    // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
-    app.conversations.save(
-        id, app.learnerId, lang, if (test && !textFallback) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
-        StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural),
-        rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
-    )
     // Only a spoken, model-rated test counts toward the speaking trend, and it stays provisional until the language and
     // tier are calibrated against instructor ratings (rule 7: honest labels; QC 2026-10-19 #3).
-    val estimate = rating?.estimate ?: return null
-    val modelRated = rating.engine != null
+    val estimate = rating?.estimate
+    val modelRated = rating?.engine != null
     val tier = app.tier
-    val calibrated = tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
+    val calibrated = estimate != null && tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
+    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null)
+    // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
+    // How it was answered and the trend decision are kept with it, so History and the PDF label it the same way (F4).
+    app.conversations.save(
+        id, app.learnerId, lang, if (test && !textFallback) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
+        StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural,
+            spokenAnswers = spoken, typedAnswers = typed, textFallback = textFallback, calibrated = calibrated,
+            trend = decision.status, trendReason = decision.reason),
+        rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
+    )
+    if (estimate == null) return null
     val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated)
         ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback).takeIf { test }
     app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, entry.confidence, entry.provisional)
@@ -533,8 +558,13 @@ private fun InterviewResults(
             Button(onClick = {
                 selfRating = session.selfRate(pack.checklist, checked.toSet())
                 val c = app.conversations.get(conversationId)
+                // Keep what saveInterview stored (glosses, answer counts, fallback); a self-rating stays out of the trend (F4).
+                val saved = c?.let { app.conversations.stored(it) } ?: StoredConversation(session.transcript, cultural = cultural)
+                val decision = SpeakingTrend.decide(test, modelRated = false, saved.spokenAnswers ?: 0, saved.typedAnswers ?: 0,
+                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null)
                 app.conversations.save(conversationId, app.learnerId, module.code, if (test) "OPI_TEST" else "OPI", null,
-                    session.startedAt.toEpochMilliseconds(), StoredConversation(session.transcript, opiTurns = session.turns, cultural = cultural),
+                    session.startedAt.toEpochMilliseconds(),
+                    saved.copy(transcript = session.transcript, opiTurns = session.turns, cultural = cultural, trend = decision.status, trendReason = decision.reason),
                     selfRating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$conversationId",
                     c?.let { app.conversations.mode(it) }, c?.let { app.conversations.aab(it) })
             }) { Text("Save my self-rating") }
@@ -543,7 +573,12 @@ private fun InterviewResults(
     val shown = selfRating ?: rating
     SectionCard {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(shown.estimate?.let { "Estimated speaking level: ILR $it" } ?: "No estimate", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
+            // The same label History and the PDF use (QC follow-up F4), read back from what was saved.
+            val label = remember(shown) {
+                app.conversations.get(conversationId)?.let { app.conversations.speakingLabel(it, app.history.speakingRows(app.learnerId, module.code)) }
+            }
+            Text(shown.estimate?.let { "Estimated speaking level: " + (label?.text ?: "ILR $it") } ?: "No estimate",
+                style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
             if (shown.engine != null) Badge("AI-generated · ${shown.engine}")
             if (shown.selfRated) Badge("Self-rated")
         }

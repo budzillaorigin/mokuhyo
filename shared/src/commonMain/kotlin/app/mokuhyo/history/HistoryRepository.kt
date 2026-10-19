@@ -121,6 +121,10 @@ class HistoryRepository(private val db: MokuhyoDatabase, private val clock: Cloc
         IlrPoint(it.modality, it.at, it.value_, it.confidence, it.provisional == 1L, it.sourceId)
     }
 
+    /** Conversation id → provisional flag of its speaking-estimate row, for [ConversationRepository.speakingLabel]. */
+    fun speakingRows(learnerId: String, lang: String): Map<String, Boolean> =
+        estimates(learnerId, lang).filter { it.modality == "SPEAKING" }.associate { it.sourceId to it.provisional }
+
     /** Latest estimate per modality (READING, LISTENING, SPEAKING). */
     fun latest(learnerId: String, lang: String): Map<String, IlrPoint> = estimates(learnerId, lang).groupBy { it.modality }.mapValues { it.value.last() }
 
