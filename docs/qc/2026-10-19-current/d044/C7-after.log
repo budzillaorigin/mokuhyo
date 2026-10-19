@@ -1,0 +1,58 @@
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+Reusing configuration cache.
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :shared:generateCommonMainDictionaryDatabaseInterface UP-TO-DATE
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:convertXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :desktopApp:copyNonXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:prepareComposeResourcesTaskForTest NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForTest SKIPPED
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :desktopApp:assembleTestResources UP-TO-DATE
+> Task :desktopApp:processTestResources UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+
+> Task :desktopApp:compileKotlin
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/Main.kt:50:20 'fun painterResource(resourcePath: String): Painter' is deprecated. Migrate to the Compose resources library. See https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-images-resources.html If you need to load resources specificly from Java classpath, you should still use the new resource library and use a snippet from https://github.com/JetBrains/compose-multiplatform-core/pull/1457.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/ContentReviewScreen.kt:151:27 Redundant creation of Json format. Creating instances for each usage can be slow.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/Screens.kt:23:9 'when' is exhaustive so 'else' is redundant here.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/SettingsScreen.kt:61:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/exam/SkillScreen.kt:159:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/exam/SkillScreen.kt:323:36 Expression is unused.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/exam/SkillScreen.kt:648:44 Unnecessary safe call on a non-null receiver of type 'AnswerRecord'.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/exam/SkillScreen.kt:648:95 Unnecessary safe call on a non-null receiver of type 'AnswerRecord'.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/exam/SkillScreen.kt:649:34 Unnecessary safe call on a non-null receiver of type 'AnswerRecord'.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/lexicon/LexiconScreen.kt:80:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+w: file:///workspace/mokuhyo/desktopApp/src/main/kotlin/app/mokuhyo/desktop/ui/speaking/SpeakingScreen.kt:160:9 'fun TabRow(selectedTabIndex: Int, modifier: Modifier = ..., containerColor: Color = ..., contentColor: Color = ..., indicator: ComposableFunction1<List<TabPosition>, Unit> = ..., divider: ComposableFunction0<Unit> = ..., tabs: ComposableFunction0<Unit>): Unit' is deprecated. Replaced with PrimaryTabRow and SecondaryTabRow.
+
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar
+> Task :desktopApp:compileTestKotlin
+> Task :desktopApp:compileTestJava NO-SOURCE
+> Task :desktopApp:testClasses UP-TO-DATE
+
+> Task :desktopApp:test
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 17s
+15 actionable tasks: 5 executed, 10 up-to-date
+Configuration cache entry reused.

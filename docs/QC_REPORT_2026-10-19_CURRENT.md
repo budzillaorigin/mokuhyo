@@ -1,5 +1,9 @@
 # Mokuhyo current-code QC and interview readiness — 19 October 2026
 
+**Implementation follow-up:** D-044 addresses C1–C7 on `codex/interview-readiness-d044`.
+See [implementation validation](qc/2026-10-19-current/D044_VALIDATION.md) for commits, failing-main regressions,
+passing suites and remaining hardware/build limits. The findings below retain their original reviewed-revision context.
+
 **Reviewed revision:** `033f0efd401b047b770c7a975950d90fd4eef99e`, remote `main` fetched on 19 October 2026. The initial workspace was `6b5e1f3`; it was clean and was fast-forwarded before this report was written. The newest semantic version tag returned by the remote was `v0.3.0`; that tag is not the reviewed commit. No installed release executable was supplied or audited. Development builds default to `0.1.0` (`0.1.0-dev` without the launcher property), so identify this review by commit, not the About label.
 
 **CI status:** the owner confirms that CI on `033f0ef` is green on Windows, macOS and Linux, including `gate_build` and the packaged smoke. The three fixture-isolation failures below are specific to this sandbox's staged-resource setup; they are not reported CI failures or evidence of a packaged-build regression. CI results were supplied by the owner, not independently rerun during this review.

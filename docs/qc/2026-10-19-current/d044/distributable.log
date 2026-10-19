@@ -1,0 +1,38 @@
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+Reusing configuration cache.
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :shared:generateCommonMainDictionaryDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :desktopApp:checkRuntime UP-TO-DATE
+> Task :desktopApp:unpackDefaultComposeDesktopJvmApplicationResources UP-TO-DATE
+> Task :desktopApp:createRuntimeImage UP-TO-DATE
+> Task :desktopApp:prepareAppResources UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+> Task :desktopApp:compileKotlin UP-TO-DATE
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar UP-TO-DATE
+
+> Task :desktopApp:createDistributable
+The distribution is written to /workspace/mokuhyo/desktopApp/build/compose/binaries/main/app
+
+BUILD SUCCESSFUL in 14s
+16 actionable tasks: 2 executed, 14 up-to-date
+Configuration cache entry reused.

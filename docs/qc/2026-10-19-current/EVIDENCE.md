@@ -1,5 +1,8 @@
 # Evidence for the current-code QC
 
+**D-044 follow-up:** [implementation evidence and current results](D044_VALIDATION.md), with raw regression/build
+logs in [d044/](d044/). The original review evidence below is preserved.
+
 Revision: `033f0efd401b047b770c7a975950d90fd4eef99e`, 19 October 2026. Environment: Linux x86_64, JDK 21.0.12.1, Python 3.12, headless Compose, existing CPU native build. This was not a physical laptop/audio benchmark.
 
 **CI context:** the owner confirms green Windows, macOS and Linux CI on this revision, including `gate_build` and the packaged smoke. Those CI results were supplied by the owner and were not independently rerun in this review. The three fixture-isolation failures recorded below are specific to this sandbox's staged-resource setup, not CI or packaged-build failures.

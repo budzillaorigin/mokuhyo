@@ -1,0 +1,29 @@
+branch shared: {'tests': 384, 'failures': 0, 'errors': 0, 'skipped': 0}
+SKIP realModelFiles: models not downloaded
+SKIP cancelThroughLocalLlamaModelThrowsAiCancelledException: couldn't download stories260K.gguf (offline?)
+SKIP cancelMidGenerationReportsCancelledNotPartialText: couldn't download stories260K.gguf (offline?)
+SKIP generatesStreamsAndReusesTheCache: couldn't download stories260K.gguf (offline?)
+SKIP whisperTranscribesToSegmentJson: no content/models/ggml-tiny.bin or ggml-base.bin
+SKIP grammarConstrainsOutputToTheSchema: couldn't download stories260K.gguf (offline?)
+SKIP stopStringsCutTheOutputAndAreExcluded: couldn't download stories260K.gguf (offline?)
+SKIP whisperCancelReportsCancelled: no content/models/ggml-tiny.bin or ggml-base.bin
+SKIP speedChangesDuration: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP dialoguesRenderWithDistinctVoices: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP oneProcessServesManyRequests: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP idleProcessIsStopped: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP serviceUsesBundledVoiceForEachLanguage: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP cancellationKillsTheProcess: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP synthesizesOneSentencePerAvailableVoice: no Piper build or voices (dev checkout /workspace/mokuhyo/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch
+SKIP ja dictionary: content/packs/ja/dictionary.sqlite not built
+SKIP es dictionary: content/packs/es/dictionary.sqlite not built
+SKIP fr dictionary: content/packs/fr/dictionary.sqlite not built
+SKIP de dictionary: content/packs/de/dictionary.sqlite not built
+SKIP pt-BR dictionary: content/packs/pt-BR/dictionary.sqlite not built
+SKIP ru dictionary: content/packs/ru/dictionary.sqlite not built
+SKIP zh-Hans dictionary: content/packs/zh-Hans/dictionary.sqlite not built
+SKIP ko dictionary: content/packs/ko/dictionary.sqlite not built
+SKIP ar dictionary: content/packs/ar/dictionary.sqlite not built
+SKIP fa dictionary: content/packs/fa/dictionary.sqlite not built
+SKIP id dictionary: content/packs/id/dictionary.sqlite not built
+SKIP realOsVoices: no OS voice on LINUX
+branch desktop: {'tests': 42, 'failures': 0, 'errors': 0, 'skipped': 0}

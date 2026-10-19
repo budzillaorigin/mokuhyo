@@ -1,0 +1,8 @@
+$ /workspace/mokuhyo/tools/.venv/bin/python /workspace/mokuhyo/tools/terms/validate_seeds.py
+validate_seeds: 402 rows, 316 doctrinal (78.6%), 0 errors
+$ /workspace/mokuhyo/tools/.venv/bin/python /workspace/mokuhyo/tools/terms/validate_alignment.py
+validate_alignment: 4315 rows, 0 errors
+$ /workspace/mokuhyo/tools/.venv/bin/python /workspace/mokuhyo/tools/terms/validate_feeds.py --offline
+validate_feeds: 22 links, 0 errors
+gate_terms: overlap check SKIPPED (--no-sources): this machine has no tools/sources PDFs
+gate_terms: PASS
