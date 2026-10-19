@@ -86,3 +86,25 @@ fun DiagnosticsSection(app: AppGraph) {
         if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
     }
 }
+
+/**
+ * Settings → Speech & audio → Readiness by language (BRIEF_INTERVIEW_SPEED N4): for each launch language, the live voice
+ * and where it comes from, speech recognition, the model, and the last measured reply speed on this computer.
+ */
+@Composable
+fun ReadinessSection(app: AppGraph) {
+    var rows by remember { mutableStateOf<List<app.mokuhyo.speech.LanguageReadiness>?>(null) }
+    LaunchedEffect(Unit) { rows = withContext(Dispatchers.IO) { app.readiness() } }
+    SectionCard("Readiness for spoken interviews") {
+        val all = rows
+        if (all == null) Text("Checking voices and models…")
+        else all.forEach { r -> ReadinessRow(r) }
+    }
+}
+
+@Composable
+fun ReadinessRow(r: app.mokuhyo.speech.LanguageReadiness) {
+    Text(r.name + if (r.spoken) "" else " — spoken interview not available", style = MaterialTheme.typography.titleSmall,
+        color = if (r.spoken) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.error)
+    r.lines().forEach { Text(it, style = MaterialTheme.typography.bodySmall) }
+}

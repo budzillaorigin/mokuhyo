@@ -3,9 +3,11 @@ package app.mokuhyo.desktop
 import app.mokuhyo.ai.HardwareInfo
 import app.mokuhyo.platform.Os
 import app.mokuhyo.platform.ProcessMemory
+import app.mokuhyo.speech.MeasuredLatency
 import app.mokuhyo.speech.TimelineSetup
 import app.mokuhyo.speech.TimingReport
 import app.mokuhyo.speech.TurnTimeline
+import kotlinx.serialization.builtins.serializer
 import java.io.File
 
 /**
@@ -36,11 +38,27 @@ class Timings(private val dataDir: File, private val hardware: () -> HardwareInf
 
     fun save(timeline: TurnTimeline) {
         runCatching {
-            file.parentFile.mkdirs()
-            val tmp = File(file.parentFile, file.name + ".tmp")
-            tmp.writeText(report(listOf(timeline.snapshot()), real = true).toJson())
-            if (!tmp.renameTo(file)) { file.delete(); tmp.renameTo(file) }
+            val report = report(listOf(timeline.snapshot()), real = true)
+            write(file, report.toJson())
+            // The per-language readiness panel shows the last measured headline (N4).
+            report.summary.warm[TurnTimeline.FIRST_AUDIO]?.takeIf { it.n > 0 }?.let { s ->
+                val all = measured() + (timeline.language to MeasuredLatency(s.p50, s.p95, s.n, System.currentTimeMillis()))
+                write(byLanguage, json.encodeToString(byLanguageSerializer, all))
+            }
         }
+    }
+
+    /** The last measured first-audio p50/p95 per language on this computer. */
+    fun measured(): Map<String, MeasuredLatency> =
+        runCatching { json.decodeFromString(byLanguageSerializer, byLanguage.readText()) }.getOrDefault(emptyMap())
+
+    private val byLanguage get() = File(dataDir, "diagnostics/by-language.json")
+
+    private fun write(target: File, text: String) {
+        target.parentFile.mkdirs()
+        val tmp = File(target.parentFile, target.name + ".tmp")
+        tmp.writeText(text)
+        if (!tmp.renameTo(target)) { target.delete(); tmp.renameTo(target) }
     }
 
     /** The last session's report: the live one if a session is running, else the saved one. */
@@ -59,6 +77,9 @@ class Timings(private val dataDir: File, private val hardware: () -> HardwareInf
     )
 
     companion object {
+        private val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+        private val byLanguageSerializer = kotlinx.serialization.builtins.MapSerializer(String.serializer(), MeasuredLatency.serializer())
+
         fun machine(hw: HardwareInfo?): TimingReport.Machine = TimingReport.Machine(
             os = Os.current.id, arch = Os.arch, cpuCores = hw?.cpuCores ?: Runtime.getRuntime().availableProcessors(),
             ramGb = hw?.ramGb?.let { Math.round(it * 10) / 10.0 } ?: 0.0,

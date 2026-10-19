@@ -75,6 +75,7 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 SystemVoices(app)
                 AudioCheck(app)
+                ReadinessSection(app)
                 DiagnosticsSection(app)
             }
             SettingsTab.CONTENT -> {

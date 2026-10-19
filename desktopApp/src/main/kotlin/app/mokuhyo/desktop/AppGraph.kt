@@ -225,6 +225,12 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
         return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
+    /** Readiness for spoken interviews in every launch language on this computer (N4). Call off the UI thread. */
+    fun readiness(): List<app.mokuhyo.speech.LanguageReadiness> = app.mokuhyo.speech.LanguageReadiness.all(
+        voices = { speech.voicesFor(it) }, asr = sttModel()?.name, model = if (settings.bool(Settings.Key.USE_OLLAMA)) settings.get(Settings.Key.OLLAMA_MODEL) else chosenModel()?.name,
+        measured = timings.measured(),
+    )
+
     /** The interviewer's whole-turn reply deadline (N3): 8 s unless changed in Settings; null when turned off. */
     fun replyDeadlineMs(): Long? = (settings.get(Settings.Key.REPLY_DEADLINE)?.toLongOrNull() ?: DEFAULT_REPLY_DEADLINE_MS).takeIf { it > 0 }
 

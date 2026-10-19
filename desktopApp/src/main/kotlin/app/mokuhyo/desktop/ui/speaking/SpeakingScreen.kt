@@ -23,6 +23,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -90,6 +91,7 @@ import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FallbackKind
 import app.mokuhyo.speech.Preflight
 import app.mokuhyo.desktop.InterviewPreflight
+import app.mokuhyo.desktop.ui.ReadinessRow
 import app.mokuhyo.speech.TimelineTrace
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.traceMark
@@ -188,6 +190,12 @@ fun SpeakingScreen(app: AppGraph) {
                 "Interviews use the scripted question bank, and at the end you rate yourself against the ILR descriptions. With a model, the interviewer adapts and rates you.")
         }
         if (!hasStt) Text("Speech recognition isn't available, so you'll type your answers.", color = MaterialTheme.colorScheme.error)
+        // What a spoken interview in this language runs on here, before it starts (N4).
+        if (tab <= 1) {
+            var readiness by remember(lang) { mutableStateOf<app.mokuhyo.speech.LanguageReadiness?>(null) }
+            LaunchedEffect(lang) { readiness = withContext(Dispatchers.IO) { app.readiness().firstOrNull { it.language == lang } } }
+            readiness?.let { r -> SectionCard("This computer, for ${r.name}") { ReadinessRow(r) } }
+        }
         when (tab) {
             0 -> SectionCard("Interview practice") {
                 Text("A short interview (about 10 questions): warm-up, level checks, probes, a role-play and a wind-down. " +

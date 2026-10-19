@@ -56,4 +56,21 @@ class TimingsTest {
         val r = Timings(Files.createTempDirectory("mokuhyo-timings").toFile()) { null }.report(listOf(t.snapshot()), real = false)
         assertFalse(diagnosticRows(r).flatten().any { it.any { c -> c.code > 0x2E80 } }, "rows hold numbers and stage names only")
     }
+
+    @Test
+    fun theLastMeasuredSpeedIsKeptPerLanguage() {
+        val dir = Files.createTempDirectory("mokuhyo-timings").toFile()
+        val timings = Timings(dir) { null }
+        val t = timings.start("c", "OPI", "fa", TimelineSetup())
+        t.beginTurn(cold = true)
+        repeat(3) {
+            t.beginTurn()
+            t.markBefore(TurnStage.LAST_SPEECH, 2_000)
+            t.mark(TurnStage.OUTPUT_START)
+            timings.turnDone(t)
+        }
+        val fa = Timings(dir) { null }.measured().getValue("fa")
+        assertEquals(3, fa.turns)
+        assertTrue(fa.p50Ms >= 2_000)
+    }
 }
