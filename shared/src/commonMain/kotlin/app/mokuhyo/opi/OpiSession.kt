@@ -3,6 +3,8 @@ package app.mokuhyo.opi
 import app.mokuhyo.ai.AiGateway
 import app.mokuhyo.ai.AiResult
 import app.mokuhyo.exam.IlrLevel
+import app.mokuhyo.speech.PunctuationSentences
+import app.mokuhyo.speech.SentenceSplitter
 import kotlinx.serialization.Serializable
 import kotlin.random.Random
 import kotlin.time.Clock
@@ -13,7 +15,15 @@ data class InterviewerLine(
     val text: String, val english: String, val phase: OpiPhase, val engine: String?, val domain: String?,
     /** Why the model's question wasn't used (scripted fallback), for diagnostics. */
     val fallbackReason: String? = null,
-)
+    /**
+     * Sentences already spoken while the model streamed (N3). For a model line they are the whole line; for a fallback
+     * they are what played before the reply failed, and the caller still has to say [text].
+     */
+    val streamed: List<String> = emptyList(),
+) {
+    /** The whole line was already spoken by streaming: the caller must not say it again. */
+    val spokenByStream: Boolean get() = engine != null && streamed.isNotEmpty()
+}
 
 /** The rating shown after an interview (BRIEF §6.2). */
 @Serializable
@@ -125,8 +135,11 @@ class OpiSession(
     val transcript: List<Turn> get() = history.toList()
     val turns: List<OpiTurnRecord> get() = records.toList()
 
-    /** The interviewer's next line, or null once the interview is over. */
-    suspend fun next(): InterviewerLine? {
+    /**
+     * The interviewer's next line, or null once the interview is over. With [speak], the model's question is streamed
+     * to it sentence by sentence while it is still being written (N3, split by [splitter]); see [InterviewerLine.streamed].
+     */
+    suspend fun next(speak: (suspend (String) -> Unit)? = null, splitter: SentenceSplitter = PunctuationSentences): InterviewerLine? {
         // A cancelled dispatcher handoff may have committed the question without displaying it. Re-deliver that
         // stable record (index = turn ID) until it is answered; retry must not advance the phase a second time.
         records.lastOrNull()?.takeIf { it.answer == null }?.let {
@@ -151,7 +164,9 @@ class OpiSession(
         )
         val task = OpiInterviewerTurn { scripted(it.phase) }
         var reason: String? = null
-        val (out, engine) = when (val r = gateway.run(task, input)) {
+        var streamed = emptyList<String>()
+        val result = if (speak == null) gateway.run(task, input) else gateway.stream(task, input, splitter, speak).also { streamed = it.spoken }.result
+        val (out, engine) = when (val r = result) {
             is AiResult.Ok -> r.value to r.engine
             is AiResult.Fallback -> { reason = r.reason; r.value to null }
             is AiResult.Unavailable -> {
@@ -160,7 +175,7 @@ class OpiSession(
             }
         }
         val domain = if (reason == null) input.domain.takeIf { phase != OpiPhase.ROLEPLAY } else out.domain.ifBlank { null }
-        val line = InterviewerLine(out.utterance, out.english, phase, engine, domain?.ifBlank { null }, reason)
+        val line = InterviewerLine(out.utterance, out.english, phase, engine, domain?.ifBlank { null }, reason, streamed)
         records += OpiTurnRecord(records.size, phase, out.utterance, out.english, line.domain, targetFor(phase), workingLevel, engine = engine)
         line.domain?.let { usedDomains += it }
         questionPhase = phase

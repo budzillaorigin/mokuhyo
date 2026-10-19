@@ -120,6 +120,7 @@ class LlamaJniBridge(
         val matcher = StopMatcher(if (templated == null) stop + IM_END else stop)
         var stoppedByCancel = false
         var callbackError: Throwable? = null
+        val utf8 = Utf8Chunks()
         val sink = LlamaNative.Sink { bytes ->
             when {
                 isCancelled(id) -> {
@@ -127,7 +128,7 @@ class LlamaJniBridge(
                     false
                 }
                 else -> {
-                    val ready = matcher.append(String(bytes, Charsets.UTF_8))
+                    val ready = matcher.append(utf8.append(bytes))
                     try {
                         if (ready.isNotEmpty()) onToken(ready)
                         !matcher.stopped
@@ -151,6 +152,8 @@ class LlamaJniBridge(
         if (stoppedByCancel || isCancelled(id) || LocalLlmBridge.isCancelled(error)) return null to LocalLlmBridge.CANCELLED
         callbackError?.let { return null to "onToken failed: ${it.message ?: it.javaClass.simpleName}" }
         if (error != null) return null to error
+        val rest = matcher.append(utf8.finish())
+        if (rest.isNotEmpty()) onToken(rest)
         val tail = matcher.finish()
         if (tail.isNotEmpty()) onToken(tail)
         return matcher.text to null

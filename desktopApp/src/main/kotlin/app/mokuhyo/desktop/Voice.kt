@@ -1,6 +1,9 @@
 package app.mokuhyo.desktop
 
+import app.mokuhyo.lang.SpokenAudio
 import app.mokuhyo.lang.VoiceSpec
+import app.mokuhyo.speech.SpokenReply
+import kotlinx.coroutines.channels.ReceiveChannel
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.TurnStage
@@ -70,31 +73,65 @@ object Voice {
      * Synthesizes [text] with the app's voice service and plays it on the chosen output device. Cancelling the caller
      * stops it: nothing plays once cancelled during synthesis, and playback in progress stops (QC follow-up F2).
      */
-    suspend fun say(app: AppGraph, text: String, lang: String, voice: VoiceSpec? = null, stop: () -> Boolean = { false }): Outcome =
-        withContext(Dispatchers.IO) {
-            // Stage marks for the session timeline, when the caller carries one (N1). Text never goes to it.
-            val trace = currentTrace()
-            trace?.mark(TurnStage.TTS_START)
-            val synthStart = System.nanoTime()
-            val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext Outcome.NoVoice
-            trace?.mark(TurnStage.TTS_FIRST_PCM)
-            trace?.timeline?.note(trace.turn) {
-                ttsSynthMs += (System.nanoTime() - synthStart) / 1_000_000
-                ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
-            }
-            ensureActive()
-            val job = coroutineContext.job
-            try {
-                play(app, spoken.wav, { stop() || !job.isActive }) { trace?.mark(TurnStage.OUTPUT_START) }
-                trace?.mark(TurnStage.OUTPUT_END)
-                ensureActive()
-                Outcome.Played(spoken.voice)
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                Outcome.PlaybackFailed(spoken.voice, e.message ?: e::class.simpleName.orEmpty())
-            }
+    suspend fun say(app: AppGraph, text: String, lang: String, voice: VoiceSpec? = null, stop: () -> Boolean = { false }): Outcome {
+        val spoken = render(app, text, lang, voice) ?: return Outcome.NoVoice
+        return playRendered(app, spoken, stop)
+    }
+
+    /** Synthesizes [text] off the UI thread, marking the session timeline's TTS stages when the caller carries one (N1). */
+    suspend fun render(app: AppGraph, text: String, lang: String, voice: VoiceSpec? = null): SpokenAudio? = withContext(Dispatchers.IO) {
+        // Stage marks for the session timeline, when the caller carries one (N1). Text never goes to it.
+        val trace = currentTrace()
+        trace?.mark(TurnStage.TTS_START)
+        val synthStart = System.nanoTime()
+        val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext null
+        trace?.mark(TurnStage.TTS_FIRST_PCM)
+        trace?.timeline?.note(trace.turn) {
+            ttsSynthMs += (System.nanoTime() - synthStart) / 1_000_000
+            ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
         }
+        spoken
+    }
+
+    /** Plays already-synthesized speech; cancelling the caller stops it (QC follow-up F2). */
+    suspend fun playRendered(app: AppGraph, spoken: SpokenAudio, stop: () -> Boolean = { false }): Outcome = withContext(Dispatchers.IO) {
+        val trace = currentTrace()
+        ensureActive()
+        val job = coroutineContext.job
+        try {
+            play(app, spoken.wav, { stop() || !job.isActive }) { trace?.mark(TurnStage.OUTPUT_START) }
+            trace?.mark(TurnStage.OUTPUT_END)
+            ensureActive()
+            Outcome.Played(spoken.voice)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Outcome.PlaybackFailed(spoken.voice, e.message ?: e::class.simpleName.orEmpty())
+        }
+    }
+
+    /**
+     * Speaks a streamed reply (BRIEF_INTERVIEW_SPEED N3): each sentence as it arrives, the next one synthesized while
+     * the current one plays, all in one voice (the first sentence's, or [voice]). Returns [Outcome.Played] when every
+     * sentence played, otherwise why not; null when no sentence arrived at all. Cancelling the caller stops it.
+     */
+    suspend fun sayStreamed(app: AppGraph, sentences: ReceiveChannel<String>, lang: String, voice: VoiceSpec? = null): Outcome? {
+        var used: VoiceSpec? = voice
+        var problem: Outcome? = null
+        val result = SpokenReply<SpokenAudio>(
+            synth = { s ->
+                val a = render(app, s, lang, used)
+                if (a == null) problem = Outcome.NoVoice else if (used == null) used = a.voice
+                a
+            },
+            play = { a -> playRendered(app, a).also { if (!it.ok) problem = it }.ok },
+        ).speak(sentences)
+        return when {
+            result.played == 0 && !result.failed -> null
+            result.failed -> problem ?: Outcome.NoVoice
+            else -> Outcome.Played(used!!)
+        }
+    }
 
     /**
      * Plays a sample sentence through the same voice service and output path the app uses everywhere else (QC

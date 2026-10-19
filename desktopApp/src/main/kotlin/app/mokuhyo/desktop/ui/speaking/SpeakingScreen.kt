@@ -101,6 +101,9 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import app.mokuhyo.lang.IcuSentences
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.security.MessageDigest
@@ -471,8 +474,18 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 pendingFeedback?.let { (turn, input) -> queue?.enqueue(turn, input) }
                 pendingFeedback = null
                 status = "The interviewer is thinking…"
-                val line = withContext(Dispatchers.Default) { session.next() }
+                // The question is spoken sentence by sentence while the model is still writing it (N3).
+                val sentences = Channel<String>(2)
+                val speaking = async { Voice.sayStreamed(app, sentences, module.code) }
+                val line = try {
+                    withContext(Dispatchers.Default) {
+                        session.next(speak = { s -> status = if (test) "Listen, then answer." else "Listen…"; sentences.send(s) }, splitter = IcuSentences(module.code))
+                    }
+                } finally {
+                    sentences.close()
+                }
                 if (line == null) {
+                    speaking.await()
                     complete()
                     return@launch
                 }
@@ -482,7 +495,14 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 if (line.engine == null) timeline.note { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
                 asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
                 status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
-                askAloud(line.text)
+                if (line.spokenByStream) {
+                    val outcome = delivery.deliver(delivery.question) { speaking.await() ?: Voice.Outcome.NoVoice }
+                    if (outcome != null && !outcome.ok && !test) showText = true
+                } else {
+                    // Scripted, or the stream stopped part-way: what played so far finishes, then the question itself.
+                    speaking.await()
+                    askAloud(line.text)
+                }
                 status = readyStatus()
                 // The English gloss is not part of the live reply: fill it in the background now the question was said.
                 if (line.english.isBlank() && gateway.hasModel()) {
@@ -905,14 +925,23 @@ private fun TopicConversation(
                 pendingAudio = null
                 traceMark(TurnStage.CHECKPOINT_SAVED)
                 feedbackJob?.cancelAndJoin()
-                val ex = withContext(Dispatchers.Default) { session.say(text) }
+                // The reply is spoken sentence by sentence as the model writes it (N3), in the persona's one voice.
+                val sentences = Channel<String>(2)
+                val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(module.code), p.id, p.gender) }
+                val speaking = async { Voice.sayStreamed(app, sentences, module.code, voice) }
+                val ex = try {
+                    withContext(Dispatchers.Default) { session.say(text, speak = { sentences.send(it) }, splitter = IcuSentences(module.code)) }
+                } finally {
+                    sentences.close()
+                }
+                val streamed = speaking.await()
                 if (ex == null) {
                     // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
                     status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
                 } else {
                     checkpoint()
                     exchanges += ex
-                    status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                    status = (streamed ?: speak(app, ex.reply, module.code, persona)).problem?.let { "$it The reply is shown as text." }.orEmpty()
                     withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
                     timeline.beginTurn()
                     exchanges.lastIndex.let { i -> scope.launch { gloss(i) } }

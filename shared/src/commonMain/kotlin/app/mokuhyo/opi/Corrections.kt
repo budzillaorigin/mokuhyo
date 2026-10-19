@@ -5,6 +5,7 @@ import app.mokuhyo.ai.AiResult
 import app.mokuhyo.ai.ChatMessage
 import app.mokuhyo.ai.JsonSchema
 import app.mokuhyo.ai.PromptTask
+import app.mokuhyo.ai.StreamingPromptTask
 import app.mokuhyo.ai.Role
 import app.mokuhyo.ai.Validation
 import app.mokuhyo.ai.ValidationContext
@@ -139,7 +140,7 @@ class TurnFeedback : PromptTask<TurnFeedback.Input, TurnFeedback.Output> {
  * `partner_reply` (C-11): the conversation partner's next line only; no analysis of the learner. The live schema is
  * the spoken reply alone (BRIEF_INTERVIEW_SPEED N3): its English gloss comes later from [GlossLine], off the speech path.
  */
-class PartnerReply : PromptTask<TopicTurn.Input, PartnerReply.Output> {
+class PartnerReply : StreamingPromptTask<TopicTurn.Input, PartnerReply.Output> {
     @Serializable
     data class Output(val reply: String, @SerialName("reply_english") val replyEnglish: String = "")
 
@@ -158,6 +159,13 @@ class PartnerReply : PromptTask<TopicTurn.Input, PartnerReply.Output> {
 
     override fun validate(input: TopicTurn.Input, output: Output, context: ValidationContext): List<String> =
         listOfNotNull(ScriptCheck.requireLanguage("reply", output.reply, input.language))
+
+    override val streamField = "reply"
+
+    /** One sentence of a streamed reply (N3): in the language and its script, and the reply within its length. */
+    override fun validateSentence(input: TopicTurn.Input, sentence: String, spoken: List<String>): String? =
+        ScriptCheck.requireLanguage("reply", sentence, input.language)
+            ?: if (spoken.sumOf { it.length + 1 } + sentence.length > 400) "reply is too long" else null
 }
 
 /**

@@ -1,8 +1,13 @@
 package app.mokuhyo.ai
 
+import app.mokuhyo.speech.SentenceSplitter
+import app.mokuhyo.speech.SentenceStream
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.currentTrace
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withTimeout
 import kotlinx.serialization.KSerializer
@@ -34,6 +39,21 @@ interface PromptTask<I, O> {
     /** A non-LLM answer, or null if this task has none. */
     fun fallback(input: I): O? = null
 }
+
+/**
+ * A prompt whose spoken field can be streamed to speech sentence by sentence (BRIEF_INTERVIEW_SPEED N3).
+ * [validateSentence] vets each complete sentence before it may be spoken; the whole reply is still validated at the end.
+ */
+interface StreamingPromptTask<I, O> : PromptTask<I, O> {
+    /** The top-level JSON string field that is spoken ("utterance", "reply"). */
+    val streamField: String
+
+    /** Problem with [sentence] (null = it may be spoken); [spoken] are this reply's sentences already handed to speech. */
+    fun validateSentence(input: I, sentence: String, spoken: List<String>): String?
+}
+
+/** A streamed run: the result, and the sentences already handed to speech (possibly playing) before it ended. */
+class Streamed<out T>(val result: AiResult<T>, val spoken: List<String>)
 
 sealed interface AiResult<out T> {
     /** Model output that passed validation. [engine] is shown next to it with the "AI-generated" badge. */
@@ -107,7 +127,11 @@ class AiGateway private constructor(
         currentTrace()?.mark(TurnStage.LLM_QUEUED)
         val result = scheduler.run(task.background,
             deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
-        val ms = start.elapsedNow().inWholeMilliseconds
+        log(task, result, start.elapsedNow().inWholeMilliseconds)
+        return result
+    }
+
+    private fun log(task: PromptTask<*, *>, result: AiResult<*>, ms: Long) {
         runCatching {
             onCall(when (result) {
                 is AiResult.Ok -> AiCall(task.name, result.engine, ms, "ok", null)
@@ -115,7 +139,98 @@ class AiGateway private constructor(
                 is AiResult.Unavailable -> AiCall(task.name, model()?.id, ms, "unavailable", result.reason)
             })
         }
-        return result
+    }
+
+    /**
+     * Like [run], but the reply's [StreamingPromptTask.streamField] goes to [onSentence] one complete, checked sentence
+     * at a time while the model is still writing (N3). Never partial JSON, never a sentence still being generated, never
+     * one that failed its check. A reply that fails after nothing was spoken is retried as usual; once a sentence has
+     * gone to speech there is no retry: the run stops and falls back (the caller then plays a guided prompt).
+     */
+    @Throws(Exception::class)
+    suspend fun <I, O> stream(
+        task: StreamingPromptTask<I, O>, input: I, splitter: SentenceSplitter, onSentence: suspend (String) -> Unit, timeoutMs: Long? = null,
+    ): Streamed<O> {
+        val start = kotlin.time.TimeSource.Monotonic.markNow()
+        currentTrace()?.mark(TurnStage.LLM_QUEUED)
+        val spoken = ArrayList<String>()
+        val result = scheduler.run(task.background,
+            deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { streamInner(task, input, splitter, onSentence, spoken, timeoutMs) }
+        log(task, result, start.elapsedNow().inWholeMilliseconds)
+        return Streamed(result, spoken.toList())
+    }
+
+    private suspend fun <I, O> streamInner(
+        task: StreamingPromptTask<I, O>, input: I, splitter: SentenceSplitter, onSentence: suspend (String) -> Unit,
+        spoken: MutableList<String>, timeoutMs: Long?,
+    ): AiResult<O> {
+        val lm = model() ?: return fallbackOr(task, input, "no AI model is set up")
+        var messages = withJsonContract(task.messages(input), task.schema)
+        var lastProblem = ""
+        val trace = currentTrace()
+        val attempts = if (settings.retryInvalid) 2 else 1
+        suspend fun hand(sentences: List<String>) = sentences.forEach { spoken += it; onSentence(it) }
+        fun stopped(problem: String) = fallbackOr(task, input, "the model's answer failed checks after ${spoken.size} sentence(s) were spoken ($problem)")
+        repeat(attempts) { attempt ->
+            trace?.mark(TurnStage.LLM_START)
+            trace?.timeline?.note(trace.turn) { llmAttempts++ }
+            val sentences = SentenceStream(task.streamField, splitter) { s, prior -> task.validateSentence(input, s, prior) }
+            val pieces = Channel<String>(Channel.UNLIMITED)
+            var streamedAny = false
+            val completion: CompletionResult? = try {
+                withTimeout(timeoutMs ?: settings.timeoutMs) {
+                    coroutineScope {
+                        val request = CompletionRequest(
+                            ContextWindow.fit(messages, lm.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT, task.maxTokens),
+                            maxTokens = task.maxTokens, temperature = task.temperature, jsonSchema = task.schema,
+                            onToken = { pieces.trySend(it) },
+                        )
+                        val generation = async { try { lm.complete(request) } finally { pieces.close() } }
+                        for (piece in pieces) {
+                            streamedAny = true
+                            hand(sentences.feed(piece))
+                            if (sentences.problem != null) break
+                        }
+                        if (sentences.problem != null) {
+                            generation.cancel()
+                            null
+                        } else generation.await()
+                    }
+                }
+            } catch (e: TimeoutCancellationException) {
+                return if (spoken.isEmpty()) fallbackOr(task, input, "the model took too long") else stopped("the model took too long")
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: AiCancelledException) {
+                return fallbackOr(task, input, CANCELLED_REASON)
+            } catch (e: Exception) {
+                return if (spoken.isEmpty()) fallbackOr(task, input, e.message ?: "the model failed") else stopped(e.message ?: "the model failed")
+            }
+            val text = completion?.text
+            val problems = if (completion == null || text == null) listOf(sentences.problem!!) else {
+                when (val parsed = parse(task, text)) {
+                    null -> listOf("output was not valid JSON matching the schema")
+                    else -> task.validate(input, parsed, context).ifEmpty {
+                        // The whole reply holds up: speak the rest of it (its last sentence ends with the field). An
+                        // engine that doesn't stream (an endpoint) hands over the whole text here, still sentence by sentence.
+                        if (!streamedAny) hand(sentences.feed(text))
+                        hand(sentences.finish())
+                        sentences.problem?.let { return stopped(it) }
+                        trace?.mark(TurnStage.LLM_VALIDATED)
+                        return AiResult.Ok(parsed, completion.engine)
+                    }
+                }
+            }
+            lastProblem = problems.joinToString("; ")
+            if (spoken.isNotEmpty()) return stopped(lastProblem)
+            if (attempt == 0) {
+                messages = messages + listOfNotNull(text?.let { ChatMessage(Role.ASSISTANT, it) }) + ChatMessage(
+                    Role.USER,
+                    "That answer had problems: $lastProblem. Reply again with only the corrected JSON object.",
+                )
+            }
+        }
+        return fallbackOr(task, input, "the model's answer failed checks ($lastProblem)")
     }
 
     private suspend fun <I, O> runInner(task: PromptTask<I, O>, input: I, timeoutMs: Long?): AiResult<O> {

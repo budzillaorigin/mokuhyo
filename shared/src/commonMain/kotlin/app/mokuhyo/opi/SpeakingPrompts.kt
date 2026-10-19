@@ -3,6 +3,7 @@ package app.mokuhyo.opi
 import app.mokuhyo.ai.ChatMessage
 import app.mokuhyo.ai.JsonSchema
 import app.mokuhyo.ai.PromptTask
+import app.mokuhyo.ai.StreamingPromptTask
 import app.mokuhyo.ai.Role
 import app.mokuhyo.ai.Validation
 import app.mokuhyo.ai.ValidationContext
@@ -63,7 +64,7 @@ private fun transcript(history: List<Turn>, learner: String, partner: String): S
 private fun issues(vararg problems: String?): List<String> = problems.filterNotNull()
 
 /** `opi_interviewer_turn`: the interviewer's next question in a practice OPI-style interview, in any language. */
-class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTask<OpiInterviewerTurn.Input, OpiInterviewerTurn.Output> {
+class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null) : StreamingPromptTask<OpiInterviewerTurn.Input, OpiInterviewerTurn.Output> {
     data class Input(
         val language: String,
         val registerNotes: String,
@@ -145,6 +146,19 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     )
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
+
+    override val streamField = "utterance"
+
+    /**
+     * One sentence of a streamed question (N3), checked before it is spoken: in the language and its script, not an
+     * earlier question or the candidate's words again, and the question as a whole still within its length.
+     */
+    override fun validateSentence(input: Input, sentence: String, spoken: List<String>): String? =
+        ScriptCheck.requireLanguage("utterance", sentence, input.language)
+            ?: input.history.firstOrNull { similar(it.text, sentence) }?.let {
+                if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question" else "utterance repeats the candidate's words"
+            }
+            ?: if (spoken.sumOf { it.length + 1 } + sentence.length > 300) "utterance is too long" else null
 
     companion object {
         /** The kind of question each phase and target level calls for (the session's slot, BRIEF_PHASE8 N-00b). */

@@ -3,6 +3,8 @@ package app.mokuhyo.opi
 import app.mokuhyo.ai.AiGateway
 import app.mokuhyo.ai.AiResult
 import app.mokuhyo.exam.IlrLevel
+import app.mokuhyo.speech.PunctuationSentences
+import app.mokuhyo.speech.SentenceSplitter
 import kotlinx.serialization.Serializable
 import kotlin.time.Clock
 import kotlin.time.Instant
@@ -96,15 +98,20 @@ class TopicSession(
 
     val transcript: List<Turn> get() = history.toList()
 
-    /** Sends the learner's turn; returns the exchange, or null when no model is available (topic mode needs one). */
-    suspend fun say(text: String): TopicExchange? {
+    /**
+     * Sends the learner's turn; returns the exchange, or null when no model is available (topic mode needs one). With
+     * [speak], the reply is streamed to it sentence by sentence (N3); a reply that fails after some sentences were
+     * spoken returns null like any failed reply (the learner's turn stays accepted for Retry).
+     */
+    suspend fun say(text: String, speak: (suspend (String) -> Unit)? = null, splitter: SentenceSplitter = PunctuationSentences): TopicExchange? {
         val said = text.trim()
         if (said.isEmpty()) return null
         accept(said)
         val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes, memory)
         // The reply comes first and on its own (small schema), so the conversation continues even when a smaller model
         // can't produce the critique; Off mode stops there (BRIEF_PHASE8 C-11, N-00b).
-        val reply = when (val r = gateway.run(PartnerReply(), input)) {
+        val result = if (speak == null) gateway.run(PartnerReply(), input) else gateway.stream(PartnerReply(), input, splitter, speak).result
+        val reply = when (val r = result) {
             is AiResult.Ok -> r
             is AiResult.Fallback -> { lastError = r.reason; return null }
             is AiResult.Unavailable -> { lastError = r.reason; return null }
