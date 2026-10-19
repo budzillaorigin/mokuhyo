@@ -8,10 +8,15 @@ import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.lang.VoiceSpec
 import app.mokuhyo.speech.AudioIO
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.ByteArrayInputStream
 import java.io.File
+import java.io.IOException
 import java.security.MessageDigest
+import javax.sound.sampled.AudioSystem
+import javax.sound.sampled.UnsupportedAudioFileException
 
 /**
  * Audio for a listening passage (BRIEF §5.3, CLAUDE.md "pre-rendered where consistency matters"): the pack's
@@ -25,25 +30,56 @@ class PassageAudio(private val app: AppGraph) {
     }
 
     suspend fun load(passage: ExamPassage): Result = withContext(Dispatchers.IO) {
-        passage.audio?.let { rel -> app.packFile(passage.language, rel)?.let { return@withContext Result.Ready(decode(it), clipSource(passage)) } }
+        // A pack clip that can't be decoded (truncated, damaged, unreadable) is a recoverable result, never an
+        // exception out of the screen (QC follow-up F1): the voice service replaces it when it can.
+        var damaged = false
+        passage.audio?.let { rel ->
+            app.packFile(passage.language, rel)?.let { file ->
+                expected { decode(file) }?.let { return@withContext Result.Ready(it, clipSource(passage)) }
+                damaged = true
+            }
+        }
         val voices = app.speech.voicesFor(passage.language)
         val unavailable = Result.Unavailable(
-            "No voice for this language is available on this computer. Practice shows the transcript instead; " +
+            if (damaged) DAMAGED else "No voice for this language is available on this computer. Practice shows the transcript instead; " +
                 "in a test you can leave this recording out of the score.",
         )
         if (voices.isEmpty()) return@withContext unavailable
+        val replaced = if (damaged) " — the pack recording was damaged" else ""
         val cast = cast(voices, passage)
         // The key names the voices that will actually speak, so installing or upgrading a voice re-renders (QC 2026-10-19).
         val key = cacheKey(passage, cast)
         val cached = File(app.dataDir, "cache/audio/${passage.language}/${passage.id}-$key.wav")
-        if (cached.isFile) return@withContext Result.Ready(cached.readBytes(), "voice service (cached)")
-        val (wav, asCast) = render(app.speech, passage, cast) ?: return@withContext unavailable
+        if (cached.isFile) {
+            expected { cached.readBytes().takeIf(::playable) }?.let { return@withContext Result.Ready(it, "voice service (cached)$replaced") }
+            // A damaged cache file is thrown away and rendered again, once.
+            cached.delete()
+        }
+        val rendered = try {
+            render(app.speech, passage, cast)
+        } catch (e: Exception) {
+            if (!isExpected(e)) throw e
+            return@withContext Result.Unavailable("The voice couldn't render this recording (${e.message ?: e::class.simpleName}). $RETRY")
+        }
+        val (wav, asCast) = rendered?.takeIf { playable(it.first) } ?: return@withContext unavailable
         // A line that fell back to another voice isn't what the key names: play it, but don't keep it.
-        if (asCast) {
+        if (asCast) expected {
             cached.parentFile.mkdirs()
             cached.writeBytes(wav)
         }
-        Result.Ready(wav, "voice service" + (VOICE_NOTES[passage.language]?.let { " — $it" } ?: ""))
+        Result.Ready(wav, "voice service$replaced" + (VOICE_NOTES[passage.language]?.let { " — $it" } ?: ""))
+    }
+
+    /**
+     * [load], with a backstop for the screen: any failure it didn't foresee (a future decoder bug, say) still becomes
+     * [Result.Unavailable] with the retry and leave-out controls, never a blank panel. Cancellation still propagates.
+     */
+    suspend fun loadOrUnavailable(passage: ExamPassage): Result = try {
+        load(passage)
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        Result.Unavailable("This recording couldn't be loaded (${e.message ?: e::class.simpleName}). $RETRY")
     }
 
     private fun cast(voices: List<VoiceSpec>, passage: ExamPassage): Map<String, VoiceSpec> =
@@ -108,13 +144,37 @@ class PassageAudio(private val app: AppGraph) {
         /** VOICEVOX character credits the characters' terms require (voices/voicevox_voices.json). */
         val VOICEVOX_CREDITS = mapOf("vv:8" to "VOICEVOX:春日部つむぎ", "vv:2" to "VOICEVOX:四国めたん", "vv:11" to "VOICEVOX:玄野武宏", "vv:11:low" to "VOICEVOX:玄野武宏")
 
+        const val RETRY = "Try again, or leave it out of the score (practice shows the transcript instead)."
+        const val DAMAGED = "This recording file is damaged. $RETRY"
+
+        /** Failures a damaged or unreadable file produces; anything else is a bug and is left to [loadOrUnavailable]. */
+        private fun isExpected(e: Exception): Boolean = e !is CancellationException &&
+            (e is IOException || e is IllegalArgumentException || e is IllegalStateException || e is UnsupportedAudioFileException || e is IndexOutOfBoundsException)
+
+        /** [block]'s value, or null when it failed the way a damaged file fails. Never swallows cancellation. */
+        private inline fun <T> expected(block: () -> T): T? = try {
+            block()
+        } catch (e: Exception) {
+            if (!isExpected(e)) throw e
+            null
+        }
+
+        /** WAV (or AIFF) bytes whose header parses and that hold at least one frame of sound. */
+        internal fun playable(wav: ByteArray): Boolean = try {
+            AudioSystem.getAudioInputStream(ByteArrayInputStream(wav)).use { s ->
+                s.frameLength != 0L && s.readNBytes(s.format.frameSize.coerceAtLeast(1)).isNotEmpty()
+            }
+        } catch (e: Exception) {
+            if (!isExpected(e)) throw e
+            false
+        }
+
         /** Honest labels for voices with known problems (docs/LANGUAGES.md, PROGRESS gate_lang known gap). */
         val VOICE_NOTES = mapOf("fa" to "synthetic voice; some words are mispronounced")
     }
 
-    /** Pack clips are Ogg Opus (or WAV); the player wants WAV. */
-    private fun decode(file: File): ByteArray {
-        return AudioIO.clipWav(file.readBytes())
-    }
+    /** Pack clips are Ogg Opus (or WAV); the player wants WAV. Throws when the file is damaged. */
+    private fun decode(file: File): ByteArray =
+        AudioIO.clipWav(file.readBytes()).also { require(playable(it)) { "the recording file is damaged" } }
 
 }

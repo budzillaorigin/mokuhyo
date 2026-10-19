@@ -167,7 +167,7 @@ private fun ListeningStep(app: AppGraph, module: LanguageModule, passageId: Stri
         Button(onClick = {
             status = "Preparing audio…"
             scope.launch {
-                when (val a = PassageAudio(app).load(passage)) {
+                when (val a = PassageAudio(app).loadOrUnavailable(passage)) {
                     is PassageAudio.Result.Ready -> { status = ""; withContext(Dispatchers.IO) { runCatching { Voice.play(app, a.wav) } } }
                     is PassageAudio.Result.Unavailable -> status = a.reason
                 }

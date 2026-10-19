@@ -469,7 +469,7 @@ private fun Feedback(app: AppGraph, module: LanguageModule, item: app.mokuhyo.ex
 
 /** Listening: play/replay with the blueprint's play policy, 0.8–1.0× speed and dictation in practice, transcript after answering. */
 @Composable
-private fun ListeningPanel(
+internal fun ListeningPanel(
     app: AppGraph, module: LanguageModule, session: ExamSession, passage: ExamPassage, practice: Boolean,
     transcriptVisible: Boolean, aids: AidState, onAids: (AidState) -> Unit, changed: () -> Unit,
 ) {
@@ -484,7 +484,7 @@ private fun ListeningPanel(
     val stop = remember(passage.id) { AtomicBoolean(false) }
     var error by remember(passage.id) { mutableStateOf<String?>(null) }
     var attempt by remember(passage.id) { mutableIntStateOf(0) }
-    LaunchedEffect(passage.id, attempt) { audio = PassageAudio(app).load(passage) }
+    LaunchedEffect(passage.id, attempt) { audio = PassageAudio(app).loadOrUnavailable(passage) }
     DisposableEffect(passage.id) { onDispose { stop.set(true) } }
     SectionCard {
         if (session.isVoided(passage.id)) {
