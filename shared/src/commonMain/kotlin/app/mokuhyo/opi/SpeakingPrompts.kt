@@ -85,7 +85,10 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         val questionType: String = "",
     )
 
-    /** The model fills one slot: the question (and its English). Phase and topic come from the session, not the model. */
+    /**
+     * The model fills one slot: the question. Phase and topic come from the session, not the model, and the English
+     * gloss from a background [GlossLine] after the question was spoken (N3); [english] is set for scripted questions.
+     */
     @Serializable
     data class Output(
         val utterance: String,
@@ -99,12 +102,8 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     override val serializer: KSerializer<Output> = Output.serializer()
     override val temperature = 0.6
     override val maxTokens = 400
-    override val schema = JsonSchema.Obj(
-        listOf(
-            "utterance" to JsonSchema.Str(maxLength = 300),
-            "english" to JsonSchema.Str(maxLength = 300),
-        ),
-    )
+    // The live schema is the spoken utterance alone (BRIEF_INTERVIEW_SPEED N3): fewer tokens before the first word.
+    override val schema = JsonSchema.Obj(listOf("utterance" to JsonSchema.Str(maxLength = 300)))
 
     override fun messages(input: Input): List<ChatMessage> {
         val lang = languageName(input.language)
@@ -119,7 +118,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                     "speech breaks down: ask to narrate, compare, support an opinion or hypothesize), roleplay (set up the situation and play your role), winddown (easy closing).",
                 "Write utterance in natural $lang only (no English, no romanization). One question or prompt, short enough to say in one breath. Never correct the candidate.",
                 "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
-                "english is an English translation of your utterance. The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
+                "The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
                 if (input.culturalNotes.isNotEmpty()) "Cultural norms you follow as a native speaker (and in role-plays): " +
                     input.culturalNotes.joinToString(" ") { "• $it" } else "",
             ),

@@ -173,6 +173,12 @@ class OpiSession(
         return line
     }
 
+    /** Fills the English gloss of question [index] once the background [GlossLine] has it (N3); never overwrites one. */
+    fun gloss(index: Int, english: String) {
+        val r = records.getOrNull(index) ?: return
+        if (r.english.isBlank() && english.isNotBlank()) records[index] = r.copy(english = english)
+    }
+
     /** Records the candidate's answer (STT transcript or typed) and adapts the working level. */
     fun answer(text: String) {
         if (records.lastOrNull()?.answer != null || history.lastOrNull()?.speaker != Speaker.PARTNER) return

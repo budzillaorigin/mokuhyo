@@ -143,6 +143,13 @@ class TopicSession(
         return updated
     }
 
+    /** The partner reply's English gloss for exchange [index], from the background [GlossLine] (N3). */
+    fun gloss(index: Int, english: String): TopicExchange? {
+        val ex = exchanges.getOrNull(index) ?: return null
+        if (ex.replyEnglish.isNotBlank() || english.isBlank()) return ex
+        return ex.copy(replyEnglish = english).also { exchanges[index] = it }
+    }
+
     /** "Say it again": drop the last exchange so the learner can redo it. */
     fun redoLast(): Boolean {
         if (exchanges.isEmpty()) return false

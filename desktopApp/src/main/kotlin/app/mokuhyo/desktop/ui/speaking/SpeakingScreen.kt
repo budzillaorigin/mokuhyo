@@ -56,6 +56,7 @@ import app.mokuhyo.db.Conversation
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.lexicon.Scenario
 import app.mokuhyo.lexicon.Track
+import app.mokuhyo.ai.AiResult
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.AfterActionBuilder
 import app.mokuhyo.opi.Calibration
@@ -63,6 +64,7 @@ import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.CulturalReview
 import app.mokuhyo.opi.FeedbackQueue
 import app.mokuhyo.opi.GenerateTopics
+import app.mokuhyo.opi.GlossLine
 import app.mokuhyo.opi.OpiPack
 import app.mokuhyo.opi.OpiProbeMap
 import app.mokuhyo.opi.OpiRating
@@ -382,6 +384,15 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         }
     }
 
+    /** The English gloss of partner line [lineIndex] (record [recordIndex]), off the speech path (N3). */
+    suspend fun gloss(lineIndex: Int, recordIndex: Int) {
+        val text = lines.getOrNull(lineIndex)?.takeIf { it.second.isBlank() }?.first?.text ?: return
+        val english = (gateway.run(GlossLine(), GlossLine.Input(module.code, text)) as? AiResult.Ok)?.value?.english ?: return
+        if (lines.getOrNull(lineIndex)?.first?.text != text) return
+        lines[lineIndex] = lines[lineIndex].first to english
+        session.gloss(recordIndex, english)
+    }
+
     suspend fun askAloud(text: String) {
         val outcome = delivery.deliver(delivery.question) { speak(app, text, module.code) } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
@@ -403,6 +414,11 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 }
                 pendingAudio = null
                 queue?.drain()
+                // Glosses that background work didn't get to yet, bounded like feedback (N3).
+                if (gateway.hasModel()) withTimeoutOrNull(30_000) {
+                    // Partner line k of the transcript is question record k.
+                    lines.indices.filter { lines[it].first.speaker == Speaker.PARTNER }.forEachIndexed { k, li -> gloss(li, k) }
+                }
                 val r = if (mode.records) withContext(Dispatchers.Default) { session.rate() } else null
                 val c = if (mode.records && r?.engine != null) withContext(Dispatchers.Default) { session.culturalReview(notes) } else null
                 val brief = AfterActionBuilder.build(
@@ -468,6 +484,12 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
                 askAloud(line.text)
                 status = readyStatus()
+                // The English gloss is not part of the live reply: fill it in the background now the question was said.
+                if (line.english.isBlank() && gateway.hasModel()) {
+                    val li = lines.lastIndex
+                    val ri = session.turns.lastIndex
+                    scope.launch { gloss(li, ri) }
+                }
                 // This partner line is done; the learner's answer to it starts the next turn.
                 withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
                 timeline.beginTurn()
@@ -854,6 +876,14 @@ private fun TopicConversation(
         }
     }
 
+    /** The reply's English gloss for exchange [index], off the speech path (N3). */
+    suspend fun gloss(index: Int) {
+        val ex = exchanges.getOrNull(index)?.takeIf { it.replyEnglish.isBlank() } ?: return
+        val english = (gateway.run(GlossLine(), GlossLine.Input(module.code, ex.reply)) as? AiResult.Ok)?.value?.english ?: return
+        val updated = session.gloss(index, english) ?: return
+        if (exchanges.getOrNull(index)?.reply == ex.reply) exchanges[index] = updated
+    }
+
     suspend fun collectFeedback(index: Int) {
         val updated = session.feedback(index) ?: return
         if (index < exchanges.size) exchanges[index] = updated
@@ -885,6 +915,7 @@ private fun TopicConversation(
                     status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
                     withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
                     timeline.beginTurn()
+                    exchanges.lastIndex.let { i -> scope.launch { gloss(i) } }
                     if (pcm != null) fluency += withContext(Dispatchers.Default) {
                         val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                         FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
@@ -934,6 +965,7 @@ private fun TopicConversation(
                 feedbackJob?.cancelAndJoin()
                 withTimeoutOrNull(30_000) {
                     session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
+                    exchanges.indices.forEach { gloss(it) }
                 }
                 val brief = AfterActionBuilder.build(gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
                     (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,

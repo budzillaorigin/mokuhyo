@@ -20,6 +20,12 @@ interface PromptTask<I, O> {
     val maxTokens: Int get() = 512
     val temperature: Double get() = 0.3
 
+    /**
+     * Work nobody is waiting for (feedback, glosses): it runs only when no live reply is queued, and a live reply
+     * preempts it (the call then ends as [AiResult.Unavailable] "deferred"). Live replies are foreground.
+     */
+    val background: Boolean get() = false
+
     fun messages(input: I): List<ChatMessage>
 
     /** Problems with [output]; empty means it may be shown. */
@@ -99,7 +105,7 @@ class AiGateway private constructor(
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
         val start = kotlin.time.TimeSource.Monotonic.markNow()
         currentTrace()?.mark(TurnStage.LLM_QUEUED)
-        val result = scheduler.run(task.name == "turn_feedback",
+        val result = scheduler.run(task.background,
             deferred = { AiResult.Unavailable("Feedback deferred for the current response") }) { runInner(task, input, timeoutMs) }
         val ms = start.elapsedNow().inWholeMilliseconds
         runCatching {
