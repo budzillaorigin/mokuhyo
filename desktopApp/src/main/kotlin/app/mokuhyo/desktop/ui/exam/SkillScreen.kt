@@ -89,6 +89,7 @@ import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -510,7 +511,8 @@ private fun ListeningPanel(
                         playing = true
                         scope.launch {
                             // Open the output first: a play only counts once sound is actually coming out (QC 2026-10-19 #1).
-                            val opened = withContext(Dispatchers.IO) {
+                            // Not cancellable: an opened line must come back here to be played or closed, never leak.
+                            val opened = withContext(Dispatchers.IO + kotlinx.coroutines.NonCancellable) {
                                 runCatching {
                                     val p = preset
                                     val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
@@ -521,6 +523,11 @@ private fun ListeningPanel(
                             val playback = opened.getOrElse { e ->
                                 error = "Couldn't start playback (${e.message ?: e::class.simpleName}). Check the speakers or headphones and " +
                                     "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
+                                playing = false
+                                return@launch
+                            }
+                            if (stop.get() || !isActive) { // left the question (or pressed Stop) while the output was opening
+                                playback.close()
                                 playing = false
                                 return@launch
                             }

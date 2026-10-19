@@ -407,7 +407,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         if (done) {
             val r = rating
             trendNote?.let { SectionCard { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } }
-            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test)
+            if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test && !textFallback)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
             aab?.let { brief ->
                 AfterActionBriefView(app, module.code, brief, conversationId) { turnIndex ->
@@ -494,8 +494,9 @@ private fun saveInterview(
     app: AppGraph, id: String, lang: String, session: OpiSession, rating: OpiRating?, test: Boolean, english: List<String>,
     cultural: CulturalReview?, mode: CorrectionsMode, aab: AfterActionBrief?, spoken: Int, typed: Int, textFallback: Boolean,
 ): String? {
+    // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
     app.conversations.save(
-        id, app.learnerId, lang, if (test) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
+        id, app.learnerId, lang, if (test && !textFallback) "OPI_TEST" else "OPI", null, session.startedAt.toEpochMilliseconds(),
         StoredConversation(session.transcript, opiTurns = session.turns, english = english, engine = rating?.engine, cultural = cultural),
         rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
     )

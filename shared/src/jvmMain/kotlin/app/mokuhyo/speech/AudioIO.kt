@@ -155,8 +155,9 @@ object AudioIO {
                     }
                     var off = 0
                     while (off < n) {
+                        // A running line blocks until it takes everything; writing nothing means the device went away.
                         val w = line.write(buf, off, n - off)
-                        if (w <= 0 && !line.isOpen) throw IllegalStateException("the audio output closed during playback")
+                        if (w <= 0) throw IllegalStateException("the audio output stopped during playback")
                         off += w
                         if (stop()) break
                     }
