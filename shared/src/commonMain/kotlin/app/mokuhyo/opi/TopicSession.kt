@@ -25,6 +25,13 @@ data class TopicExchange(
     val feedbackMissing: String? = null,
 )
 
+@Serializable
+data class TopicCheckpoint(
+    val topic: Topic, val startedAt: Long, val transcript: List<Turn>, val exchanges: List<TopicExchange>,
+    val levelTrack: List<String>, val rollingLevel: IlrLevel, val rolePlay: RolePlayContext?, val persona: PersonaContext?,
+    val culturalNotes: List<String>, val memory: List<String>,
+)
+
 /**
  * Topic conversation (BRIEF §6.3): the learner talks about a topic; after each turn the partner replies at the
  * learner's rolling level and corrections, a natural rewrite and vocabulary notes appear. The rolling level is the
@@ -50,12 +57,13 @@ class TopicSession(
     val memory: List<String> = emptyList(),
     /** Time limit for the critique call; longer on CPU-only machines (BRIEF_PHASE8 N-00b). Null = the gateway's. */
     private val critiqueTimeoutMs: Long? = null,
+    restored: TopicCheckpoint? = null,
 ) {
     /** The gateway's reason when the last [say] got no reply (no model, timeout, load failure, schema failure). */
     var lastError: String? = null
         private set
 
-    val startedAt: Instant = clock.now()
+    val startedAt: Instant = restored?.let { Instant.fromEpochMilliseconds(it.startedAt) } ?: clock.now()
     private val history = mutableListOf(Turn(Speaker.PARTNER, topic.opener))
     private val levels = mutableListOf<IlrLevel>()
     val exchanges = mutableListOf<TopicExchange>()
@@ -66,20 +74,40 @@ class TopicSession(
     /** Rolling level after each turn (stored with the conversation). */
     val levelTrack = mutableListOf<String>()
 
+    init {
+        restored?.let {
+            history.clear(); history.addAll(it.transcript); exchanges.addAll(it.exchanges)
+            levels.addAll(it.exchanges.mapNotNull { e -> e.turnLevel?.let(IlrLevel::parse) })
+            levelTrack.addAll(it.levelTrack); rollingLevel = it.rollingLevel
+        }
+    }
+
+    fun checkpoint() = TopicCheckpoint(topic, startedAt.toEpochMilliseconds(), transcript, exchanges.toList(),
+        levelTrack.toList(), rollingLevel, rolePlay, persona, culturalNotes, memory)
+
+    /** Accept once before inference. Retrying a failed reply uses the existing unanswered learner turn. */
+    fun accept(text: String) {
+        val said = text.trim()
+        require(said.isNotEmpty())
+        if (history.lastOrNull()?.speaker == Speaker.LEARNER) {
+            require(history.last().text == said) { "Retry the pending answer before accepting another" }
+        } else history += Turn(Speaker.LEARNER, said)
+    }
+
     val transcript: List<Turn> get() = history.toList()
 
     /** Sends the learner's turn; returns the exchange, or null when no model is available (topic mode needs one). */
     suspend fun say(text: String): TopicExchange? {
         val said = text.trim()
         if (said.isEmpty()) return null
-        history += Turn(Speaker.LEARNER, said)
+        accept(said)
         val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes, memory)
         // The reply comes first and on its own (small schema), so the conversation continues even when a smaller model
         // can't produce the critique; Off mode stops there (BRIEF_PHASE8 C-11, N-00b).
         val reply = when (val r = gateway.run(PartnerReply(), input)) {
             is AiResult.Ok -> r
-            is AiResult.Fallback -> { lastError = r.reason; history.removeAt(history.lastIndex); return null }
-            is AiResult.Unavailable -> { lastError = r.reason; history.removeAt(history.lastIndex); return null }
+            is AiResult.Fallback -> { lastError = r.reason; return null }
+            is AiResult.Unavailable -> { lastError = r.reason; return null }
         }
         lastError = null
         if (!mode.records) {

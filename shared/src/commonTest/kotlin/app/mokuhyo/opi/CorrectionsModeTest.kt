@@ -47,7 +47,7 @@ class CorrectionsModeTest {
         val s = TopicSession("es", profile, topic, AiGateway({ FakeModel(IllegalStateException("couldn't load model: out of memory")) }))
         assertNull(s.say("Hola"))
         assertEquals("couldn't load model: out of memory", s.lastError)
-        assertEquals(1, s.transcript.size, "the unanswered turn is not kept")
+        assertEquals(2, s.transcript.size, "the accepted answer survives a failed partner reply")
         val none = TopicSession("es", profile, topic, AiGateway({ null }))
         assertNull(none.say("Hola"))
         assertEquals("no AI model is set up", none.lastError)
