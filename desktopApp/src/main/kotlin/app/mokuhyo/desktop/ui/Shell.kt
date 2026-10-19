@@ -1,6 +1,8 @@
 package app.mokuhyo.desktop.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -71,13 +73,16 @@ fun Shell(app: AppGraph, start: Destination = Destination.HOME, screens: Screens
     Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         Row(Modifier.fillMaxSize()) {
             NavigationRail(Modifier.fillMaxHeight()) {
-                Destination.entries.forEach { d ->
-                    NavigationRailItem(
-                        selected = destination == d,
-                        onClick = { destination = d },
-                        icon = { Icon(d.icon, contentDescription = d.title) },
-                        label = { Text(d.title) },
-                    )
+                // Scrolls when the window is shorter than the nine items (a small screen at 150 %), so none is cut off.
+                Column(Modifier.verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Destination.entries.forEach { d ->
+                        NavigationRailItem(
+                            selected = destination == d,
+                            onClick = { destination = d },
+                            icon = { Icon(d.icon, contentDescription = d.title) },
+                            label = { Text(d.title) },
+                        )
+                    }
                 }
             }
             Column(Modifier.fillMaxSize()) {
