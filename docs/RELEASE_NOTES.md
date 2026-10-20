@@ -1,4 +1,47 @@
-# Mokuhyo 0.3.0 (pre-release)
+# Mokuhyo 0.4.0 (pre-release)
+
+**What's new in 0.4.0: dependable spoken interviews and faster replies.** On Windows, installing 0.4.0 upgrades
+0.3.x in place; your history, recordings and settings stay.
+
+- **Interviews you can't lose:**
+  - Every answer is saved before the interviewer replies. An interview cut short (closed window, crash, Cancel) can
+    be picked up again from Speaking, and History shows it.
+  - Cancel during a question no longer strands the interview: Retry and End are always there.
+  - Transcription no longer stops itself while it works, and speaking right away is no longer mistaken for silence.
+  - Recording and stopping no longer freeze the window.
+- **Faster replies:**
+  - The interviewer speaks first; corrections and English glosses arrive afterwards (or at the end on computers
+    without a graphics card).
+  - Replies are spoken sentence by sentence as they are checked, instead of after the whole answer.
+  - If the model is slow, a scripted question is asked instead of leaving you waiting (Settings → AI sets the
+    deadline). Interviews that are mostly scripted say "guided" and don't count toward your speaking trend.
+  - The model picker runs a short timing check and recommends the model that keeps up in conversation, not just
+    the largest that fits.
+- **Before you start:** a readiness check tests the microphone, speakers, voice and model, and Settings shows what
+  is available for each language.
+- **Clearer results:** History, results and the PDF report all say when a speaking estimate is provisional or left
+  out of your trend, and why.
+- **Listening:** a damaged recording offers Try again or Leave out instead of an empty panel, and failed plays are
+  given back.
+- **Timing report:** Settings → Speech & audio shows how long each step of the last interview took, and can export
+  it (numbers only, no audio or text).
+
+Response speed on real laptops has not been measured yet. All new content is AI-drafted and marked "unreviewed" until
+a person checks it. Interview estimates say "uncalibrated" until instructor-rated recordings calibrate them.
+
+**Unofficial practice — not an official rating. Not affiliated with DLI, ACTFL, AFCLC or the LEAP program.**
+
+| Computer | File |
+|---|---|
+| Windows 10/11 (64-bit) | `Mokuhyo-0.4.0-windows-x64.msi` |
+| Mac with Apple silicon | `Mokuhyo-0.4.0-macos-arm64.dmg` |
+| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.4.0-macos-x64.dmg` |
+
+Check downloads against `SHA256SUMS`. The installers are unsigned; see `docs/INSTALL.md`.
+
+---
+
+## 0.3.0
 
 **What's new in 0.3.0: natural voices, reliable speaking practice, and new drills.** On Windows, installing 0.3.0
 upgrades 0.2.x in place; your history, recordings and settings stay.
