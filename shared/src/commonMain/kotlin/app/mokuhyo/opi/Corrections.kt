@@ -5,6 +5,7 @@ import app.mokuhyo.ai.AiResult
 import app.mokuhyo.ai.ChatMessage
 import app.mokuhyo.ai.JsonSchema
 import app.mokuhyo.ai.PromptTask
+import app.mokuhyo.ai.StreamingPromptTask
 import app.mokuhyo.ai.Role
 import app.mokuhyo.ai.Validation
 import app.mokuhyo.ai.ValidationContext
@@ -37,6 +38,13 @@ enum class CorrectionsMode(val id: String, val title: String, val chip: String) 
 
     val records: Boolean get() = this != OFF
     val showsDuringSession: Boolean get() = this == LIVE
+
+    /**
+     * Whether background model work (feedback, English glosses) may run between turns. Not on a CPU-only computer and
+     * not in After action: any other prompt between two questions evicts the conversation's cached prompt from the
+     * engine (it reuses the longest common prefix), so the next live reply would decode the whole transcript again.
+     */
+    fun backgroundBetweenTurns(gpuActive: Boolean): Boolean = gpuActive && this != AFTER_ACTION
 
     companion object {
         fun of(id: String?): CorrectionsMode? = entries.firstOrNull { it.id == id }
@@ -99,6 +107,7 @@ class TurnFeedback : PromptTask<TurnFeedback.Input, TurnFeedback.Output> {
     )
 
     override val name = "turn_feedback"
+    override val background = true
     override val serializer: KSerializer<Output> = Output.serializer()
     override val temperature = 0.3
     override val maxTokens = 800
@@ -134,8 +143,11 @@ class TurnFeedback : PromptTask<TurnFeedback.Input, TurnFeedback.Output> {
     ) + PragmaticFlag.problems(output.pragmatics, input.language)
 }
 
-/** `partner_reply` (C-11, Off mode): the conversation partner's next line only; no analysis of the learner. */
-class PartnerReply : PromptTask<TopicTurn.Input, PartnerReply.Output> {
+/**
+ * `partner_reply` (C-11): the conversation partner's next line only; no analysis of the learner. The live schema is
+ * the spoken reply alone (BRIEF_INTERVIEW_SPEED N3): its English gloss comes later from [GlossLine], off the speech path.
+ */
+class PartnerReply : StreamingPromptTask<TopicTurn.Input, PartnerReply.Output> {
     @Serializable
     data class Output(val reply: String, @SerialName("reply_english") val replyEnglish: String = "")
 
@@ -143,16 +155,24 @@ class PartnerReply : PromptTask<TopicTurn.Input, PartnerReply.Output> {
     override val serializer: KSerializer<Output> = Output.serializer()
     override val temperature = 0.5
     override val maxTokens = 400
-    override val schema = JsonSchema.Obj(listOf("reply" to JsonSchema.Str(maxLength = 400), "reply_english" to JsonSchema.Str(maxLength = 400)))
+    override val schema = JsonSchema.Obj(listOf("reply" to JsonSchema.Str(maxLength = 400)))
 
     override fun messages(input: TopicTurn.Input): List<ChatMessage> {
         val full = TopicTurn().messages(input)
-        val sys = full.first().content.lineSequence().takeWhile { !it.startsWith("Then give feedback") }.joinToString("\n")
+        val sys = full.first().content.lineSequence().takeWhile { !it.startsWith("Then give feedback") }
+            .joinToString("\n").replace(" reply_english translates your reply.", "")
         return listOf(ChatMessage(Role.SYSTEM, sys + "\nOnly reply; do not correct or comment on the learner's language."), full.last())
     }
 
     override fun validate(input: TopicTurn.Input, output: Output, context: ValidationContext): List<String> =
         listOfNotNull(ScriptCheck.requireLanguage("reply", output.reply, input.language))
+
+    override val streamField = "reply"
+
+    /** One sentence of a streamed reply (N3): in the language and its script, and the reply within its length. */
+    override fun validateSentence(input: TopicTurn.Input, sentence: String, spoken: List<String>): String? =
+        ScriptCheck.requireLanguage("reply", sentence, input.language)
+            ?: if (spoken.sumOf { it.length + 1 } + sentence.length > 400) "reply is too long" else null
 }
 
 /**
@@ -216,4 +236,33 @@ class FeedbackQueue(private val gateway: AiGateway, scope: CoroutineScope, priva
         jobs.close()
         worker.cancel()
     }
+}
+
+/**
+ * `gloss` (BRIEF_INTERVIEW_SPEED N3): the English translation of one partner line, made in the background after the
+ * line was spoken, so the live reply only has to produce the words to say. Practice learners still see the gloss once
+ * it is ready; tests show it with the transcript at the end.
+ */
+class GlossLine : PromptTask<GlossLine.Input, GlossLine.Output> {
+    data class Input(val language: String, val text: String)
+
+    @Serializable
+    data class Output(val english: String)
+
+    override val name = "gloss"
+    override val background = true
+    override val serializer: KSerializer<Output> = Output.serializer()
+    override val temperature = 0.1
+    override val maxTokens = 200
+    override val schema = JsonSchema.Obj(listOf("english" to JsonSchema.Str(maxLength = 400)))
+
+    override fun messages(input: Input): List<ChatMessage> = listOf(
+        ChatMessage(Role.SYSTEM, "Translate the line from ${languageName(input.language)} into natural English. english = the translation only."),
+        ChatMessage(Role.USER, input.text),
+    )
+
+    override fun validate(input: Input, output: Output, context: ValidationContext): List<String> = listOfNotNull(
+        Validation.length("english", output.english, min = 1, max = 400),
+        ScriptCheck.requireEnglish("english", output.english),
+    )
 }

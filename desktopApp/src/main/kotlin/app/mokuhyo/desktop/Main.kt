@@ -35,6 +35,9 @@ fun main(args: Array<String>) {
         "--eval-speaking" in args -> exitProcess(EvalSpeaking.run(args))
         "--calibrate" in args -> exitProcess(CalibrateSpeaking.run(args))
         "--smoke-opi-full" in args -> exitProcess(SmokeOpiFull.run(args))
+        "--bench-interview" in args -> exitProcess(BenchInterview.run(args))
+        "--prompt-audio" in args -> exitProcess(PromptClips.tool(args))
+        "--listening-kit" in args -> exitProcess(ListeningKit.run(args))
     }
     val app = AppGraph()
     app.updates.startup()

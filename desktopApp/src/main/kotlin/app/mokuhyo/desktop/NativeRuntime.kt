@@ -24,6 +24,6 @@ interface NativeRuntime {
     }
 
     companion object {
-        fun create(preferCpu: Boolean): NativeRuntime = JniRuntime.tryCreate(preferCpu)
+        fun create(preferCpu: Boolean, caps: () -> app.mokuhyo.ai.ThreadCaps? = { null }): NativeRuntime = JniRuntime.tryCreate(preferCpu, caps)
     }
 }

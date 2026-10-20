@@ -1,6 +1,8 @@
 package app.mokuhyo.desktop.ui.speaking
 
 import app.mokuhyo.lang.VoiceRotation
+import app.mokuhyo.lang.SpokenAudio
+import app.mokuhyo.lang.VoiceSpec
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -23,6 +25,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -56,6 +59,7 @@ import app.mokuhyo.db.Conversation
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.lexicon.Scenario
 import app.mokuhyo.lexicon.Track
+import app.mokuhyo.ai.AiResult
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.AfterActionBuilder
 import app.mokuhyo.opi.Calibration
@@ -63,6 +67,7 @@ import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.CulturalReview
 import app.mokuhyo.opi.FeedbackQueue
 import app.mokuhyo.opi.GenerateTopics
+import app.mokuhyo.opi.GlossLine
 import app.mokuhyo.opi.OpiPack
 import app.mokuhyo.opi.OpiProbeMap
 import app.mokuhyo.opi.OpiRating
@@ -85,6 +90,14 @@ import app.mokuhyo.opi.Storyline
 import app.mokuhyo.opi.StorylineRunner
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.FallbackKind
+import app.mokuhyo.speech.Preflight
+import app.mokuhyo.desktop.InterviewPreflight
+import app.mokuhyo.desktop.PromptClips
+import app.mokuhyo.desktop.ui.ReadinessRow
+import app.mokuhyo.speech.TimelineTrace
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.traceMark
 import app.mokuhyo.speech.FluencyAnalyzer
 import app.mokuhyo.srs.ReviewService
 import kotlinx.coroutines.CancellationException
@@ -95,6 +108,9 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import app.mokuhyo.lang.IcuSentences
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.security.MessageDigest
@@ -177,6 +193,12 @@ fun SpeakingScreen(app: AppGraph) {
                 "Interviews use the scripted question bank, and at the end you rate yourself against the ILR descriptions. With a model, the interviewer adapts and rates you.")
         }
         if (!hasStt) Text("Speech recognition isn't available, so you'll type your answers.", color = MaterialTheme.colorScheme.error)
+        // What a spoken interview in this language runs on here, before it starts (N4).
+        if (tab <= 1) {
+            var readiness by remember(lang) { mutableStateOf<app.mokuhyo.speech.LanguageReadiness?>(null) }
+            LaunchedEffect(lang) { readiness = withContext(Dispatchers.IO) { app.readiness().firstOrNull { it.language == lang } } }
+            readiness?.let { r -> SectionCard("This computer, for ${r.name}") { ReadinessRow(r) } }
+        }
         when (tab) {
             0 -> SectionCard("Interview practice") {
                 Text("A short interview (about 10 questions): warm-up, level checks, probes, a role-play and a wind-down. " +
@@ -314,9 +336,11 @@ private fun ModeChip(mode: CorrectionsMode) {
 private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, test: Boolean, mode: CorrectionsMode, restored: StoredConversation? = null, close: () -> Unit) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { restored?.draft?.sessionId ?: app.conversations.newId() }
+    // One conversation model for the whole interview: a settings change mid-session never swaps it (N2).
+    val gateway = remember { app.gateway.pinned() }
     val session = remember {
-        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, app.gateway, wordCounter(module), IlrLevel.L1, test = test,
-            culturalNotes = app.culturalNotes(module.code), restored = restored?.draft?.opi)
+        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, gateway, wordCounter(module), IlrLevel.L1, test = test,
+            culturalNotes = app.culturalNotes(module.code), restored = restored?.draft?.opi, replyDeadlineMs = app.replyDeadlineMs())
     }
     val notes = remember { app.culturalNotes(module.code) }
     val lines = remember { mutableStateListOf<Pair<Turn, String>>().apply {
@@ -325,7 +349,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var asker by remember { mutableStateOf<String?>(null) }
     val records = remember { mutableStateListOf<TurnFeedbackRecord>().apply { addAll(app.conversations.feedback(conversationId)) } }
     val queue = remember {
-        if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope, deferredUntilEnd = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive) { rec ->
+        if (mode.records && gateway.hasModel()) FeedbackQueue(gateway, scope, deferredUntilEnd = !mode.backgroundBetweenTurns(app.runtime.gpuActive)) { rec ->
             records += rec
             app.conversations.addFeedback(conversationId, rec)
         }.also { q ->
@@ -363,6 +387,13 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var pendingFeedback by remember { mutableStateOf<Pair<Int, TurnFeedback.Input>?>(null) }
     var operationFailed by remember { mutableStateOf(false) }
     val questionTextAllowed = !test || delivery.textFallback
+    var preflight by remember { mutableStateOf<Preflight.Report?>(null) }
+    // The current question's bank id when it is scripted: its prerendered clip (N5), Repeat included.
+    var lineBankId by remember { mutableStateOf<String?>(null) }
+    var preflightJob by remember { mutableStateOf<Job?>(null) }
+    var preflightRunning by remember { mutableStateOf(false) }
+    // Stage timings for Settings → Speech & audio → Diagnostics (BRIEF_INTERVIEW_SPEED N1): no text, no audio.
+    val timeline = remember { app.timings.start(conversationId, if (test) "OPI_TEST" else "OPI", module.code, app.timelineSetup(module.code)) }
 
     suspend fun checkpoint() {
         val snapshot = StoredConversation(session.transcript, opiTurns = session.turns, english = lines.map { it.second },
@@ -374,8 +405,31 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         }
     }
 
-    suspend fun askAloud(text: String) {
-        val outcome = delivery.deliver(delivery.question) { speak(app, text, module.code) } ?: return
+    /** The English gloss of partner line [lineIndex] (record [recordIndex]), off the speech path (N3). */
+    suspend fun gloss(lineIndex: Int, recordIndex: Int) {
+        val text = lines.getOrNull(lineIndex)?.takeIf { it.second.isBlank() }?.first?.text ?: return
+        val english = (gateway.run(GlossLine(), GlossLine.Input(module.code, text)) as? AiResult.Ok)?.value?.english ?: return
+        if (lines.getOrNull(lineIndex)?.first?.text != text) return
+        lines[lineIndex] = lines[lineIndex].first to english
+        session.gloss(recordIndex, english)
+    }
+
+    /**
+     * Says the question: a guided (scripted) one from its prerendered clip when the pack has it (N5, no synthesis wait),
+     * else with the live voice; practice shows the text when neither plays.
+     */
+    suspend fun askAloud(text: String, bankId: String? = lineBankId) {
+        val outcome = delivery.deliver(delivery.question) {
+            val clip = bankId?.let { id ->
+                traceMark(TurnStage.TTS_START)
+                PromptClips.load(app, module.code, id, text)?.also { traceMark(TurnStage.TTS_FIRST_PCM) }
+            }
+            if (clip != null) {
+                timeline.note { prerendered = true }
+                val spec = VoiceSpec(clip.entry.voice ?: "prerendered", module.code, "", "prerendered", clip.entry.credit ?: "")
+                Voice.playRendered(app, SpokenAudio(clip.wav, spec))
+            } else speak(app, text, module.code)
+        } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
         if (!outcome.ok && !test) showText = true
     }
@@ -395,10 +449,15 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 }
                 pendingAudio = null
                 queue?.drain()
+                // Glosses that background work didn't get to yet, bounded like feedback (N3).
+                if (gateway.hasModel()) withTimeoutOrNull(30_000) {
+                    // Partner line k of the transcript is question record k.
+                    lines.indices.filter { lines[it].first.speaker == Speaker.PARTNER }.forEachIndexed { k, li -> gloss(li, k) }
+                }
                 val r = if (mode.records) withContext(Dispatchers.Default) { session.rate() } else null
                 val c = if (mode.records && r?.engine != null) withContext(Dispatchers.Default) { session.culturalReview(notes) } else null
                 val brief = AfterActionBuilder.build(
-                    app.gateway.takeIf { mode.records && app.languageModel() != null }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
+                    gateway.takeIf { mode.records && gateway.hasModel() }, module.code, mode, SpeakingActivity.OPI_PRACTICE,
                     if (test) "Interview test" else "Interview practice", null, (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000,
                     session.transcript, records.sortedBy { it.turnIndex }, session.turns.mapNotNull { it.levelAfter?.label }, fluencyStats(fluency),
                     cardLookup(app, module.code),
@@ -426,7 +485,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         busy = true
         operationFailed = false
         status = "Saving your answer…"
-        job = scope.launch(start = CoroutineStart.UNDISPATCHED) {
+        if (timeline.current < 0) timeline.beginTurn(cold = true)
+        job = scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
             try {
                 queue?.foregroundBusy(true)
                 // A navigation/cancel arriving during the checkpoint must not skip the permitted audio write.
@@ -441,22 +501,52 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     }
                 }
                 pendingAudio = null
+                traceMark(TurnStage.CHECKPOINT_SAVED)
                 report?.let { fluency += it }
                 pendingFeedback?.let { (turn, input) -> queue?.enqueue(turn, input) }
                 pendingFeedback = null
                 status = "The interviewer is thinking…"
-                val line = withContext(Dispatchers.Default) { session.next() }
+                // The question is spoken sentence by sentence while the model is still writing it (N3).
+                val sentences = Channel<String>(2)
+                val speaking = async { Voice.sayStreamed(app, sentences, module.code) }
+                val line = try {
+                    withContext(Dispatchers.Default) {
+                        session.next(speak = { s -> status = if (test) "Listen, then answer." else "Listen…"; sentences.send(s) }, splitter = IcuSentences(module.code))
+                    }
+                } finally {
+                    sentences.close()
+                }
                 if (line == null) {
+                    speaking.await()
                     complete()
                     return@launch
                 }
                 if (lines.size < session.transcript.size) lines += Turn(Speaker.PARTNER, line.text) to line.english
+                lineBankId = line.bankId
                 delivery.newQuestion(lines.lastIndex)
                 checkpoint()
-                asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
+                if (line.engine == null) timeline.note { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
+                asker = line.engine?.let { "Asked by $it" } ?: ("Guided interview — scripted question" + (line.fallbackReason?.let { " ($it)" } ?: ""))
                 status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
-                askAloud(line.text)
+                if (line.spokenByStream) {
+                    val outcome = delivery.deliver(delivery.question) { speaking.await() ?: Voice.Outcome.NoVoice }
+                    if (outcome != null && !outcome.ok && !test) showText = true
+                } else {
+                    // Scripted, or the stream stopped part-way: what played so far finishes, then the question itself.
+                    speaking.await()
+                    askAloud(line.text)
+                }
                 status = readyStatus()
+                // The English gloss is not part of the live reply: fill it in the background now the question was said
+                // (or at the end, where background work between turns would evict the interview's cached prompt).
+                if (line.english.isBlank() && gateway.hasModel() && mode.backgroundBetweenTurns(app.runtime.gpuActive)) {
+                    val li = lines.lastIndex
+                    val ri = session.turns.lastIndex
+                    scope.launch { gloss(li, ri) }
+                }
+                // This partner line is done; the learner's answer to it starts the next turn.
+                withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
+                timeline.beginTurn()
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -510,9 +600,53 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
                 prompt = lines.lastOrNull()?.first?.text.orEmpty(),
                 visible = !busy && !operationFailed && lines.lastOrNull()?.first?.speaker == Speaker.PARTNER && delivery.canAnswer,
+                timeline = timeline,
             ) { t, pcm -> submitAnswer(t, pcm) }
             if (!started) {
-                Button(onClick = { started = true; nextQuestion() }) { Text("Start") }
+                // Preflight (N4): every device and engine checked and warmed before the first question; warm-up time is
+                // reported apart from answer time. A failure blocks Start and says what to do.
+                val report = preflight
+                report?.items?.forEach { item ->
+                    val mark = when (item.state) {
+                        Preflight.State.PENDING -> "○"
+                        Preflight.State.RUNNING -> "…"
+                        Preflight.State.OK -> "✓"
+                        Preflight.State.NOT_NEEDED -> "–"
+                        Preflight.State.FAILED -> "✗"
+                    }
+                    Text("$mark ${item.title}" + (item.message?.let { " — $it" } ?: ""), style = MaterialTheme.typography.bodySmall,
+                        color = if (item.state == Preflight.State.FAILED) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface)
+                }
+                if (preflightRunning && report != null) {
+                    val done = report.items.count { it.state != Preflight.State.PENDING && it.state != Preflight.State.RUNNING }
+                    LinearProgressIndicator(progress = { done.toFloat() / report.items.size.coerceAtLeast(1) }, modifier = Modifier.fillMaxWidth())
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (!preflightRunning) Button(onClick = {
+                        status = "Checking the microphone, speakers, voice and models…"
+                        preflightRunning = true
+                        preflightJob = scope.launch {
+                            try {
+                                val checks = InterviewPreflight.checks(app, module.code, gateway, test, session.warmupInput())
+                                val r = Preflight(checks).run(timeline) { preflight = it }
+                                preflight = r
+                                val blocking = r.blocking
+                                if (blocking == null) {
+                                    if (r.state(Preflight.Kind.VOICE) == Preflight.State.NOT_NEEDED) { delivery.fallBackToText(); showText = true }
+                                    started = true
+                                    nextQuestion()
+                                } else status = "Not ready: ${blocking.message}"
+                            } finally {
+                                preflightRunning = false
+                            }
+                        }
+                    }) { Text(if (preflight?.blocking != null) "Check again" else "Start") }
+                    else TextButton(onClick = { preflightJob?.cancel(); status = "Check stopped. Press Start to try again." }) { Text("Cancel") }
+                    // No voice for a spoken test: guided text practice instead, labelled and never counted as speech.
+                    if (preflight?.blocking?.kind == Preflight.Kind.VOICE) OutlinedButton(onClick = {
+                        delivery.fallBackToText(); showText = true; started = true; nextQuestion()
+                    }) { Text("Guided text practice instead (not a spoken test)") }
+                }
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER && !operationFailed) {
@@ -561,8 +695,10 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             }
             if (busy && job != null && !finished) TextButton(onClick = {
                 val previous = job
+                timeline.mark(TurnStage.CANCEL_REQUESTED)
                 job = scope.launch {
                     previous?.cancelAndJoin()
+                    timeline.mark(TurnStage.CANCEL_EFFECTIVE)
                     delivery.stop()
                     busy = false
                     status = "Stopped."
@@ -608,7 +744,9 @@ private fun saveInterview(
     val modelRated = rating?.engine != null
     val tier = app.tier
     val calibrated = estimate != null && tier != null && Calibration.band(estimate, app.calibration.entry(lang, tier.id), lang, "Tier ${tier.id}").calibrated
-    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null)
+    val guided = session.scriptedTurns
+    val questions = session.turns.size
+    val decision = SpeakingTrend.decide(test, modelRated, spoken, typed, textFallback, calibrated, rated = estimate != null, guided = guided, questions = questions)
     // A test that fell back to showing the questions is filed as practice (it no longer met the test's conditions).
     // How it was answered and the trend decision are kept with it, so History and the PDF label it the same way (F4).
     app.conversations.save(
@@ -619,11 +757,12 @@ private fun saveInterview(
         rating, session.turns.mapNotNull { it.levelAfter?.label }, "recordings/$id", mode, aab,
     )
     if (estimate == null) return null
-    val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated)
-        ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback).takeIf { test }
+    val entry = SpeakingTrend.entry(test, modelRated, spoken, typed, textFallback, calibrated, guided, questions)
+        ?: return SpeakingTrend.exclusion(test, modelRated, spoken, typed, textFallback, guided, questions).takeIf { test }
     app.history.saveSpeakingEstimate(app.learnerId, lang, id, estimate, entry.confidence, entry.provisional)
     return if (entry.provisional) "Added to your speaking trend as provisional: " +
-        (if (!calibrated) "this model's ratings aren't yet calibrated against instructor ratings for this language" else "some answers were typed") + "." else null
+        (if (!calibrated) "this model's ratings aren't yet calibrated against instructor ratings for this language"
+        else if (typed > 0) "some answers were typed" else "$guided of $questions questions were scripted (guided)") + "." else null
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -649,7 +788,8 @@ private fun InterviewResults(
                 // Keep what saveInterview stored (glosses, answer counts, fallback); a self-rating stays out of the trend (F4).
                 val saved = c?.let { app.conversations.stored(it) } ?: StoredConversation(session.transcript, cultural = cultural)
                 val decision = SpeakingTrend.decide(test, modelRated = false, saved.spokenAnswers ?: 0, saved.typedAnswers ?: 0,
-                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null)
+                    saved.textFallback ?: false, calibrated = false, rated = selfRating?.estimate != null,
+                    guided = session.scriptedTurns, questions = session.turns.size)
                 app.conversations.save(conversationId, app.learnerId, module.code, if (test) "OPI_TEST" else "OPI", null,
                     session.startedAt.toEpochMilliseconds(),
                     saved.copy(transcript = session.transcript, opiTurns = session.turns, cultural = cultural, trend = decision.status, trendReason = decision.reason),
@@ -806,8 +946,9 @@ private fun TopicConversation(
 ) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { restored?.draft?.sessionId ?: app.conversations.newId() }
+    val gateway = remember { app.gateway.pinned() }
     val session = remember {
-        TopicSession(module.code, pack.profile, topic, app.gateway,
+        TopicSession(module.code, pack.profile, topic, gateway,
             rolePlay = restored?.draft?.topic?.rolePlay ?: rolePlay, persona = restored?.draft?.topic?.persona ?: persona?.context(),
             culturalNotes = restored?.draft?.topic?.culturalNotes ?: app.culturalNotes(module.code, persona), mode = mode,
             memory = restored?.draft?.topic?.memory ?: memory, critiqueTimeoutMs = app.critiqueTimeoutMs(), restored = restored?.draft?.topic)
@@ -823,8 +964,9 @@ private fun TopicConversation(
     val hasStt = remember { app.recognizer() != null }
     var pendingAudio by remember { mutableStateOf<Pair<Int, ShortArray>?>(null) }
     var feedbackJob by remember { mutableStateOf<Job?>(null) }
-    val deferFeedback = mode == CorrectionsMode.AFTER_ACTION || !app.runtime.gpuActive
+    val deferFeedback = !mode.backgroundBetweenTurns(app.runtime.gpuActive)
     val added = remember { mutableStateListOf<String>() }
+    val timeline = remember { app.timings.start(conversationId, kind, module.code, app.timelineSetup(module.code)).also { it.beginTurn(cold = true) } }
 
     suspend fun checkpoint() {
         val snapshot = StoredConversation(session.transcript, exchanges = session.exchanges.toList(),
@@ -833,6 +975,14 @@ private fun TopicConversation(
             app.conversations.checkpoint(conversationId, app.learnerId, module.code, kind, topic.title,
                 session.startedAt.toEpochMilliseconds(), snapshot, mode)
         }
+    }
+
+    /** The reply's English gloss for exchange [index], off the speech path (N3). */
+    suspend fun gloss(index: Int) {
+        val ex = exchanges.getOrNull(index)?.takeIf { it.replyEnglish.isBlank() } ?: return
+        val english = (gateway.run(GlossLine(), GlossLine.Input(module.code, ex.reply)) as? AiResult.Ok)?.value?.english ?: return
+        val updated = session.gloss(index, english) ?: return
+        if (exchanges.getOrNull(index)?.reply == ex.reply) exchanges[index] = updated
     }
 
     suspend fun collectFeedback(index: Int) {
@@ -847,22 +997,35 @@ private fun TopicConversation(
         if (pcm != null) pendingAudio = session.transcript.lastIndex to pcm
         busy = true
         status = "Your partner is replying…"
-        scope.launch(start = CoroutineStart.UNDISPATCHED) {
+        scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
             try {
                 withContext(NonCancellable + Dispatchers.IO) {
                     checkpoint()
                     pendingAudio?.let { (turn, samples) -> saveRecording(app, conversationId, turn, samples) }
                 }
                 pendingAudio = null
+                traceMark(TurnStage.CHECKPOINT_SAVED)
                 feedbackJob?.cancelAndJoin()
-                val ex = withContext(Dispatchers.Default) { session.say(text) }
+                // The reply is spoken sentence by sentence as the model writes it (N3), in the persona's one voice.
+                val sentences = Channel<String>(2)
+                val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(module.code), p.id, p.gender) }
+                val speaking = async { Voice.sayStreamed(app, sentences, module.code, voice) }
+                val ex = try {
+                    withContext(Dispatchers.Default) { session.say(text, speak = { sentences.send(it) }, splitter = IcuSentences(module.code)) }
+                } finally {
+                    sentences.close()
+                }
+                val streamed = speaking.await()
                 if (ex == null) {
                     // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
                     status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
                 } else {
                     checkpoint()
                     exchanges += ex
-                    status = speak(app, ex.reply, module.code, persona).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                    status = (streamed ?: speak(app, ex.reply, module.code, persona)).problem?.let { "$it The reply is shown as text." }.orEmpty()
+                    withContext(NonCancellable + Dispatchers.IO) { app.timings.turnDone(timeline) }
+                    timeline.beginTurn()
+                    if (!deferFeedback) exchanges.lastIndex.let { i -> scope.launch { gloss(i) } }
                     if (pcm != null) fluency += withContext(Dispatchers.Default) {
                         val words = module.segment(text).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
                         FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
@@ -912,8 +1075,9 @@ private fun TopicConversation(
                 feedbackJob?.cancelAndJoin()
                 withTimeoutOrNull(30_000) {
                     session.exchanges.indices.filter { session.exchanges[it].feedbackMissing != null }.takeLast(32).forEach { collectFeedback(it) }
+                    exchanges.indices.forEach { gloss(it) }
                 }
-                val brief = AfterActionBuilder.build(app.gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
+                val brief = AfterActionBuilder.build(gateway, module.code, mode, activity, topic.title, persona?.let { "${it.name} (${it.roleTitle})" },
                     (System.currentTimeMillis() - session.startedAt.toEpochMilliseconds()) / 1000, session.transcript, session.records,
                     session.levelTrack.toList(), fluencyStats(fluency), cardLookup(app, module.code))
                 save(brief)
@@ -1001,7 +1165,7 @@ private fun TopicConversation(
         if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
             enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
             visible = !busy && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER,
-            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
+            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" "), timeline = timeline) { t, pcm -> send(t, pcm) }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty() && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER, onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }

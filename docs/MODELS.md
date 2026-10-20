@@ -103,3 +103,19 @@ Exact and within-one-step agreement between the app's OPI estimate (`opi_rate`) 
 | `mistral-small3.2:24b-instruct-2506-q8_0` | pt-BR | 22 | 91% | 91% | 0% | yes |
 | `mistral-small3.2:24b-instruct-2506-q8_0` | ru | 22 | 100% | 100% | 0% | yes |
 | `mistral-small3.2:24b-instruct-2506-q8_0` | zh-Hans | 22 | 86% | 86% | 0% | no |
+
+## Live voice candidates audited (BRIEF_INTERVIEW_SPEED N6, 2026-10-19)
+
+Audited before any engine code was written, as the brief requires. Neither candidate is integrated, bundled or
+downloadable; nothing below is a weight file the app can fetch. Recorded in D-045.
+
+| Candidate | Component | Developer (country) | License / terms | Source | Verdict |
+|---|---|---|---|---|---|
+| Kokoro-82M (v1.0) | weights | "hexgrad" (Hugging Face account; trained by "@rzvzn" on Discord, per the model card) — **country not established** | Apache-2.0 | https://huggingface.co/hexgrad/Kokoro-82M | **Stopped**: the developer is pseudonymous and no country can be established (brief N6 stop condition; rule 13 needs developer and country) |
+| Kokoro-82M (v1.0) | architecture | StyleTTS 2 (Yinghao Aaron Li et al., Columbia University, United States) + iSTFTNet | MIT (StyleTTS 2 code) | https://github.com/yl4579/StyleTTS2 | not a blocker on its own |
+| Kokoro-82M-v1.1-zh | Chinese training data | LongMaoData (longmaosoft.com; location not stated on the model card) | granted "freely and permissively" per the card | https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh | not used; would need its own rule-13 review |
+| Kokoro (misaki G2P) | phonemizer chain | hexgrad (country not established); falls back to espeak-ng (GPL-3.0-or-later) for es/fr/pt | Apache-2.0 (misaki); espeak-ng GPL — separate executable only (rule 6) | https://github.com/hexgrad/misaki | would need a native helper process; moot while the weights are stopped |
+| Kokoro ONNX | runtime | thewh1teagle (kokoro-onnx, Python) / Microsoft (ONNX Runtime, MIT) | MIT | https://github.com/thewh1teagle/kokoro-onnx | Python runtime can't ship (rule 1); ONNX Runtime itself would be fine |
+| VOICEVOX Core | library | VOICEVOX project (Hiroshiba Kazuyuki, Japan) | MIT for the source and build artifacts from 0.16 on | https://github.com/VOICEVOX/voicevox_core | provenance passes rule 13 |
+| VOICEVOX Core | runtime | VOICEVOX ONNX Runtime (VOICEVOX's own build) | **VOICEVOX ONNX Runtime terms**: redistribution in apps allowed; decompiling/reverse engineering forbidden — not MIT/Apache/BSD/Unicode | https://github.com/VOICEVOX/onnxruntime-builder/releases | **Stopped** (rule 6): it would be linked by the core library and shipped in the installer |
+| VOICEVOX Core | voice models (VVM) | VOICEVOX project (Japan); characters by their own rights holders | **VOICEVOX voice model terms** (custom; no reverse engineering) plus per-character terms and credits | https://github.com/VOICEVOX/voicevox_vvm/blob/main/TERMS.txt | **Stopped** with the runtime (rule 6); build-time rendering of clips with credit is unaffected |

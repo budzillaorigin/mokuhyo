@@ -47,7 +47,22 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     val models = ModelManager(FileSystem.SYSTEM, modelsDir.toOkioPath(), Java.create(), manifest, freeBytes = ::freeBytes)
     val downloads = DownloadCenter(scope, models)
     val updates = Updates(scope, settings)
-    val runtime: NativeRuntime by lazy { NativeRuntime.create(settings.bool(Settings.Key.PREFER_CPU)) }
+    /**
+     * Native threads for the model, Whisper and the voice (N4): automatic unless Settings → AI overrides them. The core
+     * count comes from the native library, so [runtime] (which loads it with the CPU/GPU preference) goes first.
+     */
+    val threadCaps: app.mokuhyo.ai.ThreadCaps by lazy {
+        runtime
+        fun n(k: Settings.Key) = settings.get(k)?.toIntOrNull()
+        app.mokuhyo.ai.ThreadBudget.caps(app.mokuhyo.ai.jni.NativeLibrary.recommendedThreads(),
+            app.mokuhyo.ai.ThreadCaps(n(Settings.Key.THREADS_LLM) ?: 0, n(Settings.Key.THREADS_ASR) ?: 0, n(Settings.Key.THREADS_TTS) ?: 0))
+    }
+    val runtime: NativeRuntime by lazy { NativeRuntime.create(settings.bool(Settings.Key.PREFER_CPU)) { threadCaps } }
+
+    init {
+        // The voice service starts its first Piper process later; it reads the cap then.
+        SpeechProvider.ttsThreads = { threadCaps.tts }
+    }
 
     private val _language = MutableStateFlow(settings.get(Settings.Key.CURRENT_LANGUAGE) ?: "ja")
     val language: StateFlow<String> = _language.asStateFlow()
@@ -210,12 +225,62 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
         return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
+    /** Readiness for spoken interviews in every launch language on this computer (N4). Call off the UI thread. */
+    fun readiness(): List<app.mokuhyo.speech.LanguageReadiness> = app.mokuhyo.speech.LanguageReadiness.all(
+        voices = { speech.voicesFor(it) }, asr = sttModel()?.name, model = if (settings.bool(Settings.Key.USE_OLLAMA)) settings.get(Settings.Key.OLLAMA_MODEL) else chosenModel()?.name,
+        measured = timings.measured(),
+    )
+
+    /** The interviewer's whole-turn reply deadline (N3): 8 s unless changed in Settings; null when turned off. */
+    fun replyDeadlineMs(): Long? = (settings.get(Settings.Key.REPLY_DEADLINE)?.toLongOrNull() ?: DEFAULT_REPLY_DEADLINE_MS).takeIf { it > 0 }
+
+    /** This computer's timing-check results (N2), by model id. */
+    fun modelTimings(): Map<String, app.mokuhyo.ai.ModelTiming> = app.mokuhyo.ai.ModelTiming.parseAll(settings.get(Settings.Key.MODEL_TIMINGS))
+
+    /** [lang]'s quality floor from the calibration table; "unverified" without real evidence. */
+    fun qualityFloor(lang: String): app.mokuhyo.ai.QualityFloor = app.mokuhyo.ai.QualityFloor.of(lang, calibration)
+
+    /**
+     * The short on-device timing check (N2) for a downloaded [model], with Whisper and the voice for [lang] loaded
+     * alongside as they are in a session. Stores and returns the result; null when the model can't run here.
+     * Cancellable; call off the UI thread.
+     */
+    suspend fun checkSpeed(model: app.mokuhyo.ai.ModelInfo, lang: String): app.mokuhyo.ai.ModelTiming? {
+        val file = modelFile(model) ?: return null
+        val bridge = runtime.llm() ?: return null
+        val llm = llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
+        val asr = recognizer()
+        val asrLoaded = asr != null && runCatching { asr.transcribe(ShortArray(8_000), "en") }.isSuccess
+        val voiceLoaded = runCatching { speech.synthesize(Voice.sample(lang), lang) != null }.getOrDefault(false)
+        val timing = app.mokuhyo.ai.ModelTimingCheck.measure(llm, runs = 2, withSpeechLoaded = asrLoaded && voiceLoaded,
+            backend = if (runtime.gpuActive) "gpu" else "cpu", now = System::currentTimeMillis)
+        settings.put(Settings.Key.MODEL_TIMINGS, app.mokuhyo.ai.ModelTiming.encodeAll(modelTimings() + (model.id to timing)))
+        return timing
+    }
+
     private val llamaSlot = app.mokuhyo.ai.LoadedModelSlot()
     private val llamaModels = java.util.concurrent.ConcurrentHashMap<String, app.mokuhyo.ai.LanguageModel>()
 
     /** One gateway for every AI task; reads the current model per call so settings changes apply. */
     /** Rolling diagnostics log in the data dir (BRIEF_PHASE8 N-00b). */
     val log = RollingLog(java.io.File(dataDir, "logs"))
+    /** The last spoken session's stage timings (BRIEF_INTERVIEW_SPEED N1). */
+    val timings = Timings(dataDir) { hardware.value }
+
+    /** What a spoken session in [lang] runs on, for its timeline header: identifiers only. */
+    fun timelineSetup(lang: String): app.mokuhyo.speech.TimelineSetup {
+        val ollama = settings.bool(Settings.Key.USE_OLLAMA)
+        val model = if (ollama) null else chosenModel()
+        return app.mokuhyo.speech.TimelineSetup(
+            modelId = if (ollama) "ollama:" + (settings.get(Settings.Key.OLLAMA_MODEL) ?: "?") else model?.id,
+            modelHash = model?.files?.firstOrNull()?.sha256?.take(16),
+            voiceId = runCatching { speech.voicesFor(lang).firstOrNull()?.let { "${it.engine}:${it.id}" } }.getOrNull(),
+            backend = if (ollama) "endpoint" else if (runtime.gpuActive) "gpu" else "cpu",
+            llmThreads = threadCaps.llm.takeIf { !ollama },
+            asrThreads = threadCaps.asr,
+            ttsThreads = threadCaps.tts,
+        )
+    }
 
     val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000), onCall = log::ai)
 
@@ -248,6 +313,8 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
     }
 
     companion object {
+        const val DEFAULT_REPLY_DEADLINE_MS = 8_000L
+
         val osLabel: String get() = "${Os.current.id}-${Os.arch}"
     }
 }

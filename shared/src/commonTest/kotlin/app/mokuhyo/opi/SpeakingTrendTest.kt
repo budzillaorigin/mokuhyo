@@ -47,4 +47,22 @@ class SpeakingTrendTest {
             }
         assertEquals(SpeakingTrend.Status.NOT_APPLICABLE, SpeakingTrend.decide(true, true, 5, 0, false, true, rated = false).status)
     }
+
+    /** BRIEF_INTERVIEW_SPEED N5: scripted (guided) questions make an interview provisional or keep it out, with the reason stored. */
+    @Test
+    fun guidedQuestionsAffectTheTrendAndTheReasonIsStored() {
+        val mostly = SpeakingTrend.decide(true, true, 10, 0, false, calibrated = true, guided = 6, questions = 10)
+        assertEquals(SpeakingTrend.Status.EXCLUDED, mostly.status)
+        assertEquals(SpeakingTrend.GUIDED, mostly.reason)
+        assertNull(SpeakingTrend.entry(true, true, 10, 0, false, true, guided = 6, questions = 10))
+        assertNotNull(SpeakingTrend.exclusion(true, true, 10, 0, false, guided = 6, questions = 10))
+        val partly = SpeakingTrend.decide(true, true, 10, 0, false, calibrated = true, guided = 2, questions = 10)
+        assertEquals(SpeakingTrend.Status.COUNTED_PROVISIONAL, partly.status)
+        assertEquals("partly guided", partly.reason)
+        assertEquals(true, SpeakingTrend.entry(true, true, 10, 0, false, true, guided = 2, questions = 10)?.provisional)
+        assertEquals(SpeakingTrend.Status.COUNTED_FIRM, SpeakingTrend.decide(true, true, 10, 0, false, calibrated = true, guided = 0, questions = 10).status)
+        assertEquals("practice; " + SpeakingTrend.GUIDED, SpeakingTrend.decide(false, false, 0, 10, false, false, guided = 10, questions = 10).reason)
+        assertEquals("ILR 1 (self-rated — ${SpeakingTrend.GUIDED})",
+            SpeakingTrend.label("OPI", "1", false, true, SpeakingTrend.Status.EXCLUDED, "self-rated; ${SpeakingTrend.GUIDED}", null).text)
+    }
 }

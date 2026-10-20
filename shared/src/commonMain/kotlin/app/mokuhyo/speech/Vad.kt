@@ -28,6 +28,9 @@ class Vad(
 
     val heardSpeech: Boolean get() = started && speechMs >= minSpeechMs
 
+    /** Silence since the last loud frame, once speech started: how far back the learner's last speech was (N1 timeline). */
+    val trailingSilenceMs: Int get() = if (started) silenceMs else 0
+
     fun feed(rms: Double): Event? {
         if (done) return null
         frames++

@@ -110,6 +110,24 @@ Ported algorithms (code in this repo, original license kept):
 
 Clips rendered by Chatterbox carry Resemble AI's inaudible PerTh watermark (AI-generated audio marker).
 
+### Pre-rendered speech (VOICEVOX, build time only; Japanese)
+
+The VOICEVOX engine runs on the render host only (`tools/voices/voicevox_render.py`); no VOICEVOX software or voice
+model ships in the app. Only rendered clips ship, under each character's terms, with the credit the terms require
+(`voices/voicevox_voices.json`, per clip in `packs/ja/audio/voices.json` and `packs/ja/prompts.json`).
+
+| id | Voice | Developer (country) | Terms | Credit / source |
+|---|---|---|---|---|
+| `vv:8` | 春日部つむぎ (Kasukabe Tsumugi) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © 春日部つくし | VOICEVOX voice model terms + character terms: commercial and non-commercial use with credit | VOICEVOX:春日部つむぎ — https://voicevox.hiroshiba.jp/ · https://github.com/VOICEVOX/voicevox_vvm/blob/main/TERMS.txt |
+| `vv:2` | 四国めたん (Shikoku Metan) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © SSS LLC | as above: use with credit | VOICEVOX:四国めたん — https://zunko.jp/con_ongen_kiyaku.html |
+| `vv:11` | 玄野武宏 (Kurono Takehiro) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © 虚空デザイン | as above: use with credit | VOICEVOX:玄野武宏 — https://virvoxproject.wixsite.com/official |
+
+### Prerendered interview prompts (BRIEF_INTERVIEW_SPEED N5)
+
+| id | What | License | Source |
+|---|---|---|---|
+| `prompt-audio` | The scripted question bank and role-play openings of `packs/<lang>/opi.json`, spoken once at build time (`Mokuhyo --prompt-audio`) into `packs/<lang>/audio/prompts/<id>.ogg`; index with text and clip hashes, engine, voice and credit in `packs/<lang>/prompts.json`. Pilot: `es` (Piper `es_ES-davefx-medium`), `ja` (VOICEVOX `vv:8`). | Text: as the OPI pack (`source = "llm"`, CC BY-SA 4.0); audio: the rendering voice's terms (Piper voices table above; VOICEVOX credits above) | `desktopApp/.../PromptClips.kt`. OS voices are never rendered (D-013). |
+
 ## Voice service executables (separate processes, not linked)
 
 Piper runs as a child process (`voices/build/<os>-<arch>/piper/`, staged to `<resources>/voices/piper/`); the app
@@ -211,6 +229,12 @@ Documents under `tools/sources/` (git-ignored PDFs; `tools/sources/SOURCES.json`
 | msitools / wixl (Windows MSI from macOS) | LGPL-2.1-or-later | https://gitlab.gnome.org/GNOME/msitools |
 | Vulkan-Headers, SPIRV-Headers (compiled into the Vulkan variant of `mokuhyo_native`), shaderc `glslc` (shader compiler) | Apache-2.0 OR MIT / MIT-style (Khronos) / Apache-2.0 | https://github.com/KhronosGroup/Vulkan-Headers · https://github.com/KhronosGroup/SPIRV-Headers · https://github.com/google/shaderc |
 | jpackage Windows launcher (`jpackageapplauncherw.exe`, from the Temurin JDK) — shipped as `Mokuhyo.exe` | GPL-2.0 WITH Classpath-exception-2.0 | part of OpenJDK — https://github.com/adoptium/jdk21u |
+
+## Test and benchmark fixtures (tools only — never shipped)
+
+| Fixture | License | Source / use |
+|---|---|---|
+| `tools/bench/answers.json` — synthetic learner answers (short and long, 11 languages) for `--bench-interview` | Apache-2.0 | Written for this repository (`source = "llm"`, unreviewed); no test, textbook or official material. Spoken by the app's own voice service at bench time (synthetic audio, never committed) or replaced by the owner's self-recorded WAVs via `--clips`. Timing input only, never shipped. |
 
 ## Inspiration only — no content used
 

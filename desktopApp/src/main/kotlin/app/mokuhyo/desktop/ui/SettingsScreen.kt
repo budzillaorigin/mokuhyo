@@ -2,6 +2,7 @@ package app.mokuhyo.desktop.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.layout.width
 import app.mokuhyo.ai.LanUrl
 import app.mokuhyo.ai.LocalLlamaModel
 import app.mokuhyo.ai.AiResult
@@ -74,6 +75,8 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 SystemVoices(app)
                 AudioCheck(app)
+                ReadinessSection(app)
+                DiagnosticsSection(app)
             }
             SettingsTab.CONTENT -> {
                 ImportLexicon(app)
@@ -98,11 +101,32 @@ private fun AiSettings(app: AppGraph) {
             })
             Text("Use the CPU even when a GPU is available (takes effect after a restart)")
         }
+        ThreadSettings(app)
     }
     SectionCard("Model tier") { TierSettings(app) }
     TestModel(app)
     SideLoadModel(app)
     OllamaSection(app)
+}
+
+/**
+ * Processor threads per engine (BRIEF_INTERVIEW_SPEED N4): automatic caps that keep the model, speech recognition and
+ * the voice from starving each other, with an override for each. Blank = automatic; applies after a restart.
+ */
+@Composable
+private fun ThreadSettings(app: AppGraph) {
+    val caps = app.threadCaps
+    Text("Processor threads in use: model ${caps.llm} · speech recognition ${caps.asr} · voice ${caps.tts}", style = MaterialTheme.typography.bodyMedium)
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        listOf(Settings.Key.THREADS_LLM to "Model", Settings.Key.THREADS_ASR to "Speech recognition", Settings.Key.THREADS_TTS to "Voice").forEach { (key, label) ->
+            var value by remember { mutableStateOf(app.settings.get(key).orEmpty()) }
+            OutlinedTextField(value, { v ->
+                value = v.filter { it.isDigit() }.take(2)
+                if (value.isEmpty() || value == "0") app.settings.remove(key) else app.settings.put(key, value)
+            }, Modifier.width(150.dp), label = { Text(label) }, placeholder = { Text("automatic") }, singleLine = true)
+        }
+    }
+    Text("Leave blank for automatic. Changes apply after a restart.", style = MaterialTheme.typography.bodySmall)
 }
 
 /**
@@ -250,6 +274,16 @@ private fun SpeakingDefaults(app: AppGraph) {
             Text("Show what I said before sending it, so I can edit it or record again (practice only; interview tests send it directly)")
         }
         Text("Recording stops by itself after a short silence. If nothing is heard, you'll get a hint about the microphone.",
+            style = MaterialTheme.typography.bodySmall)
+        // The whole-turn deadline (BRIEF_INTERVIEW_SPEED N3): device-local, it depends on this computer's speed.
+        var deadline by remember { mutableStateOf(app.replyDeadlineMs() ?: 0L) }
+        Text("If the interviewer's reply isn't ready in time, ask a prepared question instead", style = MaterialTheme.typography.labelLarge)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            listOf(5_000L to "5 s", AppGraph.DEFAULT_REPLY_DEADLINE_MS to "8 s (default)", 12_000L to "12 s", 0L to "Always wait").forEach { (ms, label) ->
+                FilterChip(deadline == ms, { deadline = ms; app.settings.put(Settings.Key.REPLY_DEADLINE, ms.toString()) }, label = { Text(label) })
+            }
+        }
+        Text("Prepared questions are labeled \"Guided interview — scripted question\"; a mostly guided test stays out of your speaking estimate.",
             style = MaterialTheme.typography.bodySmall)
     }
     SectionCard("Speaking: corrections") {

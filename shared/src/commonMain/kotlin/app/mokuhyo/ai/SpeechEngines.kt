@@ -1,6 +1,8 @@
 package app.mokuhyo.ai
 
 import app.mokuhyo.net.EndpointHealth
+import app.mokuhyo.speech.TurnStage
+import app.mokuhyo.speech.currentTrace
 import app.mokuhyo.net.NetTimeouts
 import app.mokuhyo.net.mokuhyoHttpClient
 import io.ktor.client.engine.HttpClientEngine
@@ -80,6 +82,8 @@ class WhisperRecognizer(
             }
         }
         val samples = FloatArray(pcm16kMono.size) { pcm16kMono[it] / 32768f }
+        val trace = currentTrace()
+        trace?.mark(TurnStage.ASR_START)
         val jsonText = suspendCancellableCoroutine { cont ->
             // Leaving the screen (or a timeout) cancels the coroutine: stop the native work too, and ignore the
             // late callback (F-41).
@@ -93,6 +97,7 @@ class WhisperRecognizer(
                 }
             }
         }
+        trace?.mark(TurnStage.ASR_END)
         val segments = parseSegments(jsonText)
         return Transcript(joinSegments(segments, language), segments, "on-device $modelName")
     }

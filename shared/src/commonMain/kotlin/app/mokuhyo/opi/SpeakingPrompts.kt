@@ -3,6 +3,7 @@ package app.mokuhyo.opi
 import app.mokuhyo.ai.ChatMessage
 import app.mokuhyo.ai.JsonSchema
 import app.mokuhyo.ai.PromptTask
+import app.mokuhyo.ai.StreamingPromptTask
 import app.mokuhyo.ai.Role
 import app.mokuhyo.ai.Validation
 import app.mokuhyo.ai.ValidationContext
@@ -63,7 +64,7 @@ private fun transcript(history: List<Turn>, learner: String, partner: String): S
 private fun issues(vararg problems: String?): List<String> = problems.filterNotNull()
 
 /** `opi_interviewer_turn`: the interviewer's next question in a practice OPI-style interview, in any language. */
-class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTask<OpiInterviewerTurn.Input, OpiInterviewerTurn.Output> {
+class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null) : StreamingPromptTask<OpiInterviewerTurn.Input, OpiInterviewerTurn.Output> {
     data class Input(
         val language: String,
         val registerNotes: String,
@@ -85,7 +86,10 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         val questionType: String = "",
     )
 
-    /** The model fills one slot: the question (and its English). Phase and topic come from the session, not the model. */
+    /**
+     * The model fills one slot: the question. Phase and topic come from the session, not the model, and the English
+     * gloss from a background [GlossLine] after the question was spoken (N3); [english] is set for scripted questions.
+     */
     @Serializable
     data class Output(
         val utterance: String,
@@ -93,18 +97,16 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         @SerialName("next_phase") val nextPhase: OpiPhase? = null,
         val topic: String = "",
         val domain: String = "",
+        /** The bank question or role-play card a scripted line came from (its prerendered audio, N5); never from the model. */
+        @kotlinx.serialization.Transient val bankId: String? = null,
     )
 
     override val name = "opi_interviewer_turn"
     override val serializer: KSerializer<Output> = Output.serializer()
     override val temperature = 0.6
     override val maxTokens = 400
-    override val schema = JsonSchema.Obj(
-        listOf(
-            "utterance" to JsonSchema.Str(maxLength = 300),
-            "english" to JsonSchema.Str(maxLength = 300),
-        ),
-    )
+    // The live schema is the spoken utterance alone (BRIEF_INTERVIEW_SPEED N3): fewer tokens before the first word.
+    override val schema = JsonSchema.Obj(listOf("utterance" to JsonSchema.Str(maxLength = 300)))
 
     override fun messages(input: Input): List<ChatMessage> {
         val lang = languageName(input.language)
@@ -119,7 +121,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                     "speech breaks down: ask to narrate, compare, support an opinion or hypothesize), roleplay (set up the situation and play your role), winddown (easy closing).",
                 "Write utterance in natural $lang only (no English, no romanization). One question or prompt, short enough to say in one breath. Never correct the candidate.",
                 "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
-                "english is an English translation of your utterance. The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
+                "The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
                 if (input.culturalNotes.isNotEmpty()) "Cultural norms you follow as a native speaker (and in role-plays): " +
                     input.culturalNotes.joinToString(" ") { "• $it" } else "",
             ),
@@ -146,6 +148,19 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     )
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
+
+    override val streamField = "utterance"
+
+    /**
+     * One sentence of a streamed question (N3), checked before it is spoken: in the language and its script, not an
+     * earlier question or the candidate's words again, and the question as a whole still within its length.
+     */
+    override fun validateSentence(input: Input, sentence: String, spoken: List<String>): String? =
+        ScriptCheck.requireLanguage("utterance", sentence, input.language)
+            ?: input.history.firstOrNull { similar(it.text, sentence) }?.let {
+                if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question" else "utterance repeats the candidate's words"
+            }
+            ?: if (spoken.sumOf { it.length + 1 } + sentence.length > 300) "utterance is too long" else null
 
     companion object {
         /** The kind of question each phase and target level calls for (the session's slot, BRIEF_PHASE8 N-00b). */

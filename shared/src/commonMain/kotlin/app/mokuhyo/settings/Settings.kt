@@ -36,12 +36,20 @@ class Settings(private val db: MokuhyoDatabase) {
         FIRST_RUN_DONE("device.firstRunDone", Scope.DEVICE),
         MODEL_TIER("device.model.tier", Scope.DEVICE),
         MODEL_ID("device.model.id", Scope.DEVICE),
+        /** On-device timing check results per model id (BRIEF_INTERVIEW_SPEED N2): this computer's numbers only. */
+        MODEL_TIMINGS("device.model.timings", Scope.DEVICE),
         STT_MODEL_ID("device.stt.model", Scope.DEVICE),
         PREFER_CPU("device.native.preferCpu", Scope.DEVICE),
+        /** Thread caps per engine (BRIEF_INTERVIEW_SPEED N4); empty or 0 = automatic. Apply at the next start. */
+        THREADS_LLM("device.native.threads.llm", Scope.DEVICE),
+        THREADS_ASR("device.native.threads.asr", Scope.DEVICE),
+        THREADS_TTS("device.native.threads.tts", Scope.DEVICE),
         USE_OLLAMA("device.ollama.use", Scope.DEVICE),
         OLLAMA_MODEL("device.ollama.model", Scope.DEVICE),
         /** A local-network Ollama server (BRIEF_PHASE8 N-00b; explicit opt-in, LAN only). Empty = this computer. */
         OLLAMA_URL("device.ollama.url", Scope.DEVICE),
+        /** Interviewer reply deadline in ms (BRIEF_INTERVIEW_SPEED N3); "0" = off. This computer's speed, so device-local. */
+        REPLY_DEADLINE("device.speech.replyDeadlineMs", Scope.DEVICE),
         INPUT_DEVICE("device.audio.input", Scope.DEVICE),
         OUTPUT_DEVICE("device.audio.output", Scope.DEVICE),
         UPDATE_CHECK("device.updates.auto", Scope.DEVICE),

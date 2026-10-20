@@ -77,8 +77,8 @@ class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, Auto
         const val MAX_SPEED = 2.0
 
         /** The default service: bundled Piper voices found by [VoiceCatalog.discover], then the OS voice. */
-        fun create(catalog: VoiceCatalog = VoiceCatalog.discover()): VoiceService =
-            VoiceService(listOf(PiperEngine(catalog), OsSpeechEngine()))
+        fun create(catalog: VoiceCatalog = VoiceCatalog.discover(), ttsThreads: () -> Int? = { null }): VoiceService =
+            VoiceService(listOf(PiperEngine(catalog, threads = ttsThreads), OsSpeechEngine()))
 
         internal fun sameLanguage(a: String, b: String): Boolean = a.equals(b, ignoreCase = true)
     }

@@ -37,6 +37,11 @@ class PiperEngine(
     private val catalog: VoiceCatalog,
     private val idleTimeoutMs: Long = 120_000,
     private val requestTimeoutMs: (String) -> Long = { text -> (20_000L + 150L * text.length).coerceAtMost(180_000L) },
+    /**
+     * ONNX Runtime threads per Piper process (N4), passed as `MOKUHYO_TTS_THREADS` (voices/patch_piper.cmake); null keeps
+     * ONNX Runtime's default of every core.
+     */
+    private val threads: () -> Int? = { null },
 ) : SpeechEngine, AutoCloseable {
     override val engine: String = "piper"
 
@@ -45,6 +50,11 @@ class PiperEngine(
     private val processes = ConcurrentHashMap<String, PiperProcess>() // writes under mapLock
     private val counter = AtomicLong()
     private val workDir: File by lazy { Files.createTempDirectory("mokuhyo-piper").toFile() }
+
+    /** The Piper command with its environment: the thread cap, when one is set. */
+    internal fun processBuilder(cmd: List<String>): ProcessBuilder = ProcessBuilder(cmd).also { pb ->
+        threads()?.takeIf { it > 0 }?.let { pb.environment()["MOKUHYO_TTS_THREADS"] = it.toString() }
+    }
 
     override fun voicesFor(language: String): List<VoiceSpec> {
         if (catalog.piperExecutable == null || catalog.espeakData == null) return emptyList()
@@ -93,7 +103,7 @@ class PiperEngine(
             "--espeak_data", espeak.absolutePath,
             "--json-input",
         )
-        PiperProcess.start(cmd, workDir).also { processes[key] = it }
+        PiperProcess.start(processBuilder(cmd), workDir).also { processes[key] = it }
     }
 
     private suspend fun retire(pv: VoiceCatalog.PiperVoice, proc: PiperProcess) {
@@ -255,8 +265,8 @@ internal class PiperProcess private constructor(val process: Process) {
             Runtime.getRuntime().addShutdownHook(Thread({ set.forEach { it.destroyForcibly() } }, "piper-shutdown"))
         }
 
-        fun start(cmd: List<String>, workDir: File): PiperProcess =
-            PiperProcess(ProcessBuilder(cmd).directory(workDir).start())
+        fun start(builder: ProcessBuilder, workDir: File): PiperProcess =
+            PiperProcess(builder.directory(workDir).start())
 
         private fun daemon(name: String, body: () -> Unit) {
             Thread(body, name).apply { isDaemon = true }.start()

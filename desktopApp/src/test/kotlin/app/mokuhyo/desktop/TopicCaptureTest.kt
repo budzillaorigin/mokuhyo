@@ -13,7 +13,7 @@ class TopicCaptureTest {
     @Test fun topicCaptureConfirmsAndSpeaksWithoutStartingCpuCritique() {
         val previousOutput = Voice.output
         val heard = AtomicBoolean()
-        Voice.output = { _, _, _ -> heard.set(true) }
+        Voice.output = { _, _, _, started -> started(); heard.set(true) }
         try {
             InterviewHarness().use { h ->
                 val fixtureVoice = VoiceSpec("test-voice", "es", "female", "test", "CC0")

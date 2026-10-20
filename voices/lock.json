@@ -7,7 +7,7 @@
       "sha256": "8b684e102cfe23af097830db9555a8641f17735725853c531a1daeb34b6ed1a8",
       "license": "MIT",
       "licenseFile": "LICENSE.md",
-      "patch": "voices/patch_piper.cmake (json-input: per-line length_scale; UTF-8 output_file path; WAV closed before its path is printed)"
+      "patch": "voices/patch_piper.cmake (json-input: per-line length_scale; UTF-8 output_file path; WAV closed before its path is printed; MOKUHYO_TTS_THREADS caps ONNX Runtime threads)"
     },
     "piper-phonemize": {
       "version": "bfc2e7549957829b0227c66a305d11cc88167bda",
