@@ -358,13 +358,27 @@ private fun SystemVoices(app: AppGraph) {
     }
 }
 
+/**
+ * Every connection the app can make, for Settings → Privacy (QC Q8); docs/SECURITY_PROFILE.md lists the same. Nothing
+ * here runs unless the learner starts it, and `--no-network` refuses all of it.
+ */
+internal val NETWORK_USES = listOf(
+    "Model download: when you pick a model, Mokuhyo downloads that file from the address in its model catalogue. It sends only the file request.",
+    "Update check: off by default. If you turn on automatic checks, or press Check now, it asks GitHub Releases (api.github.com) for the latest version number. It sends no learner data.",
+    "Ollama: when you press Look for Ollama or Connect to this server (Settings → AI), it asks the server you chose — this computer, or a computer on your home network — which models it has.",
+    "Ollama model use: if you choose to use an Ollama model, your interview and conversation prompts, your transcribed answers and the model's replies go to that server. On another computer on your network they leave this computer, though not to the internet.",
+    "Lexicon update by URL: when you type a package URL and press Download, Mokuhyo downloads that file. It sends only the file request.",
+    "Browser links: Open in Reading → This month and release links open your own web browser; Mokuhyo itself sends nothing.",
+)
+
 @Composable
 private fun PrivacySettings(app: AppGraph) {
     var auto by remember { mutableStateOf(app.settings.bool(Settings.Key.UPDATE_CHECK)) }
     SectionCard("Network") {
         if (NetworkPolicy.disabled) Text("Network access is turned off for this session (--no-network): downloads, the update check, " +
             "Ollama detection and lexicon URL imports all refuse to connect.", color = MaterialTheme.colorScheme.error)
-        Text("Mokuhyo works offline. It goes online only to download a model you chose, to check for updates if you turn that on, and to look for Ollama on this computer when you ask.")
+        Text("Mokuhyo works offline. It connects only for these actions, each one off until you choose it:")
+        NETWORK_USES.forEach { Text("• $it", style = MaterialTheme.typography.bodySmall) }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Switch(auto, onCheckedChange = {
                 auto = it
@@ -387,7 +401,7 @@ private fun PrivacySettings(app: AppGraph) {
         }
     }
     SectionCard("Your data") {
-        Text("Stored only on this computer, in:")
+        Text("Stored on this computer, in the folder below. It leaves only in a backup, PDF report or suggestions file you export, or as the prompts and answers sent to an Ollama server you chose.")
         Text(app.dataDir.absolutePath, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall)
     }
 }

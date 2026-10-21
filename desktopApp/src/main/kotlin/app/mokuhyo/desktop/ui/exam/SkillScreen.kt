@@ -41,6 +41,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -52,6 +53,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
@@ -316,6 +318,7 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
     var confirmSubmit by remember { mutableStateOf(false) }
     var aids by remember { mutableStateOf(AidState()) }
     val focus = remember { FocusRequester() }
+    val playback = remember(session) { PlaybackControl() }
     LaunchedEffect(session) {
         focus.requestFocus()
         while (!session.finished) {
@@ -349,6 +352,8 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                 Key.Three, Key.NumPad3 -> { choose(2); true }
                 Key.Four, Key.NumPad4 -> { choose(3); true }
                 Key.Enter, Key.NumPadEnter -> { session.next(); tick++; true }
+                // The Play/Stop button's own command (QC Q9); a focused text field keeps its spaces.
+                Key.Spacebar -> if (skill == Skill.LISTENING && !playback.typing) playback.toggle?.let { it(); true } ?: false else false
                 else -> false
             }
         },
@@ -357,8 +362,7 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
             Text(session.section?.title ?: "", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
             Text("Question ${session.index + 1} of ${session.section?.items?.size ?: 0} · ILR ${item.level} · ${item.type.replace('_', ' ')}",
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
-            if (item.aiGenerated || passage?.aiGenerated == true) Badge("AI-generated")
-            if (passage?.bank == "local") Badge("Generated on this computer")
+            ContentBadges(item, passage)
             Spacer(Modifier.weight(1f))
             session.remainingMs()?.let { ms ->
                 val s = ms / 1000
@@ -383,7 +387,7 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                             PassageText(app, module, passage.body, aids, tapToDefine = practice)
                         }
                     } else {
-                        ListeningPanel(app, module, session, passage, practice, transcriptVisible = showFeedback, aids = aids, onAids = { aids = it }) { tick++ }
+                        ListeningPanel(app, module, session, passage, practice, transcriptVisible = showFeedback, aids = aids, onAids = { aids = it }, control = playback) { tick++ }
                     }
                 }
             }
@@ -421,7 +425,7 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                     }) { Text(if (last) (if (practice) "See results" else "Submit test") else "Next  ⏎") }
                 }
                 if (!practice) QuestionPalette(session) { session.goTo(it); tick++ }
-                Text("Keys: 1–4 choose · Enter next" + if (skill == Skill.LISTENING) " · Space play/pause" else "",
+                Text("Keys: 1–4 choose · Enter next" + if (skill == Skill.LISTENING) " · Space play/stop" else "",
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
@@ -433,6 +437,16 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
         confirmButton = { Button(onClick = { confirmSubmit = false; done(session.submit()) }) { Text("Submit") } },
         dismissButton = { TextButton(onClick = { confirmSubmit = false }) { Text("Keep going") } },
     )
+}
+
+/** AI-drafted content says so, and that no human has reviewed it yet, until review flips `verified` (rule 7, QC Q10). */
+internal const val UNREVIEWED_AI_BADGE = "AI-generated · unreviewed"
+
+/** Reading and Listening share this: origin/review status of the question or its passage, and the local-bank label. */
+@Composable
+internal fun ContentBadges(item: app.mokuhyo.exam.ExamItem, passage: ExamPassage?) {
+    if (item.aiGenerated || passage?.aiGenerated == true) Badge(UNREVIEWED_AI_BADGE)
+    if (passage?.bank == "local") Badge("Generated on this computer")
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -466,11 +480,25 @@ private fun Feedback(app: AppGraph, module: LanguageModule, item: app.mokuhyo.ex
     }
 }
 
+/** One playback command for the Play/Stop button and the session's Space shortcut (QC Q9). */
+internal class PlaybackControl {
+    /** Play, or stop what is playing; null while there is nothing playable. */
+    var toggle: (() -> Unit)? = null
+    /** True while a text field in the panel (dictation) has focus: Space types a space there. */
+    var typing = false
+}
+
+/** How a Listening play reaches the output: the real line by default; headless tests substitute a controllable fixture. */
+internal object ListeningOutput {
+    @Volatile var play: suspend (open: () -> AudioIO.Playback, stop: () -> Boolean, started: () -> Unit) -> Boolean? =
+        { open, stop, started -> AudioIO.playOwned(open, stop, started) }
+}
+
 /** Listening: play/replay with the blueprint's play policy, 0.8–1.0× speed and dictation in practice, transcript after answering. */
 @Composable
 internal fun ListeningPanel(
     app: AppGraph, module: LanguageModule, session: ExamSession, passage: ExamPassage, practice: Boolean,
-    transcriptVisible: Boolean, aids: AidState, onAids: (AidState) -> Unit, changed: () -> Unit,
+    transcriptVisible: Boolean, aids: AidState, onAids: (AidState) -> Unit, control: PlaybackControl? = null, changed: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     var audio by remember(passage.id) { mutableStateOf<PassageAudio.Result?>(null) }
@@ -484,7 +512,9 @@ internal fun ListeningPanel(
     var error by remember(passage.id) { mutableStateOf<String?>(null) }
     var attempt by remember(passage.id) { mutableIntStateOf(0) }
     LaunchedEffect(passage.id, attempt) { audio = PassageAudio(app).loadOrUnavailable(passage) }
-    DisposableEffect(passage.id) { onDispose { stop.set(true) } }
+    DisposableEffect(passage.id) { onDispose { stop.set(true); control?.toggle = null; control?.typing = false } }
+    // Nothing to play (still preparing, unavailable or left out): Space does nothing. Ready sets it again below.
+    SideEffect { if (audio !is PassageAudio.Result.Ready || session.isVoided(passage.id)) control?.toggle = null }
     SectionCard {
         if (session.isVoided(passage.id)) {
             Text("This recording couldn't be played, so its questions are left out of your score. The result will say so.",
@@ -502,49 +532,53 @@ internal fun ListeningPanel(
                 if (practice) PassageText(app, module, passage.text, aids, tapToDefine = true)
             }
             is PassageAudio.Result.Ready -> {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Button(enabled = playing || session.canPlayAudio(passage.id), onClick = {
-                        if (playing) { stop.set(true); return@Button }
-                        stop.set(false)
-                        error = null
-                        playing = true
-                        scope.launch {
-                            // Open the output first: a play only counts once sound is actually coming out (QC 2026-10-19 #1).
-                            // playOwned holds the line from the moment it opens, so leaving mid-open can't leak it (F3).
-                            var counted = false
-                            try {
-                                AudioIO.playOwned(
-                                    open = {
-                                        val p = preset
-                                        val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
-                                            AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
-                                        AudioIO.open(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed)
-                                    },
-                                    stop = { stop.get() },
-                                    started = {
-                                        counted = true
-                                        session.audioPlayed(passage.id)
-                                        changed()
-                                    },
-                                )
-                            } catch (e: kotlinx.coroutines.CancellationException) {
-                                throw e
-                            } catch (e: Exception) {
-                                val what = e.message ?: e::class.simpleName
-                                if (!counted) {
-                                    error = "Couldn't start playback ($what). Check the speakers or headphones and " +
-                                        "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
-                                } else {
-                                    session.audioFailed(passage.id)
+                val canToggle = playing || session.canPlayAudio(passage.id)
+                fun toggle() {
+                    if (!(playing || session.canPlayAudio(passage.id))) return
+                    if (playing) { stop.set(true); return }
+                    stop.set(false)
+                    error = null
+                    playing = true
+                    scope.launch {
+                        // Open the output first: a play only counts once sound is actually coming out (QC 2026-10-19 #1).
+                        // playOwned holds the line from the moment it opens, so leaving mid-open can't leak it (F3).
+                        var counted = false
+                        try {
+                            ListeningOutput.play(
+                                {
+                                    val p = preset
+                                    val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
+                                        AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
+                                    AudioIO.open(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed)
+                                },
+                                { stop.get() },
+                                {
+                                    counted = true
+                                    session.audioPlayed(passage.id)
                                     changed()
-                                    error = "Playback stopped because of an audio error ($what)." +
-                                        if (practice) " Try again." else " This play wasn't counted; fix the output and try again."
-                                }
-                            } finally {
-                                playing = false
+                                },
+                            )
+                        } catch (e: kotlinx.coroutines.CancellationException) {
+                            throw e
+                        } catch (e: Exception) {
+                            val what = e.message ?: e::class.simpleName
+                            if (!counted) {
+                                error = "Couldn't start playback ($what). Check the speakers or headphones and " +
+                                    "the output device in Settings → Speech & audio, then try again." + if (practice) "" else " This didn't use up a play."
+                            } else {
+                                session.audioFailed(passage.id)
+                                changed()
+                                error = "Playback stopped because of an audio error ($what)." +
+                                    if (practice) " Try again." else " This play wasn't counted; fix the output and try again."
                             }
+                        } finally {
+                            playing = false
                         }
-                    }) { Text(if (playing) "Stop" else if (session.playsOf(passage.id) == 0) "▶ Play" else "▶ Play again") }
+                    }
+                }
+                SideEffect { control?.toggle = ::toggle }
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Button(enabled = canToggle, onClick = ::toggle) { Text(if (playing) "Stop" else if (session.playsOf(passage.id) == 0) "▶ Play" else "▶ Play again") }
                     if (!practice) Text("Plays left: ${(app.exam(module.code)?.blueprint?.listening?.play?.plays ?: 1) - session.playsOf(passage.id)}",
                         style = MaterialTheme.typography.bodySmall)
                     if (practice) listOf(0.8, 0.9, 1.0).forEach { s -> FilterChip(speed == s, { speed = s }, label = { Text("${s}×") }) }
@@ -568,7 +602,7 @@ internal fun ListeningPanel(
                 Column(Modifier.weight(1f)) { PassageText(app, module, line.text, aids, tapToDefine = true, context = passage.text) }
             }
         }
-        Dictation(module, passage)
+        Dictation(module, passage) { control?.typing = it }
     }
 }
 
@@ -588,14 +622,14 @@ private fun LeaveOutButton(session: ExamSession, passage: ExamPassage, changed: 
 
 /** Dictation drill: type a line you heard; compared with the language's own folding. */
 @Composable
-private fun Dictation(module: LanguageModule, passage: ExamPassage) {
+private fun Dictation(module: LanguageModule, passage: ExamPassage, typing: (Boolean) -> Unit = {}) {
     var lineIndex by remember(passage.id) { mutableIntStateOf(0) }
     var typed by remember(passage.id, lineIndex) { mutableStateOf("") }
     var checked by remember(passage.id, lineIndex) { mutableStateOf<Double?>(null) }
     val line = passage.script.getOrNull(lineIndex) ?: return
     SectionCard("Dictation drill") {
         Text("Line ${lineIndex + 1} of ${passage.script.size}: listen again and type it.", style = MaterialTheme.typography.bodySmall)
-        OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
+        OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth().onFocusChanged { typing(it.isFocused) }, textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedButton(onClick = { checked = app.mokuhyo.desktop.LangSmoke.tokenMatch(module, line.text, typed) }) { Text("Check") }
             TextButton(enabled = lineIndex + 1 < passage.script.size, onClick = { lineIndex++ }) { Text("Next line") }

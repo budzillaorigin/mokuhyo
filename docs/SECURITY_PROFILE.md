@@ -10,9 +10,11 @@ Mokuhyo works with no network. It makes a connection **only** in these cases, ea
 |---|---|---|
 | Model download | the learner picks a model (first run or Settings → AI) | huggingface.co (HTTPS) |
 | Update check | only if the learner turns it on (off by default); once a day | api.github.com (HTTPS) |
-| Ollama detection | the learner presses "Look for Ollama" | localhost:11434 only |
-| Lexicon update by URL | the learner types a URL and presses Download | that URL (HTTPS) |
-| "Open" in Reading → This month | the learner presses it | opens the learner's own browser; the app makes no request |
+| Manual update check | the learner presses "Check now" (Settings → Privacy & updates) | api.github.com (HTTPS); sends no learner data |
+| Ollama detection | the learner presses "Look for Ollama on this computer" or "Connect to this server" | the server the learner entered: this computer (localhost:11434) or a computer on the home network (private address); nothing on the internet is accepted (`LanUrl`) |
+| Ollama model use | only if the learner chooses an Ollama model instead of the built-in one | that same server: **interview/conversation prompts, the learner's transcribed answers and the model's replies are sent to it**; on another computer on the network they leave this computer |
+| Lexicon update by URL | the learner types a URL and presses Download | that URL (HTTPS); sends only the file request |
+| "Open" in Reading → This month, release links | the learner presses it | opens the learner's own browser; the app makes no request |
 
 Every request goes through one HTTP client with connect, request and idle timeouts and a cancel path.
 
@@ -37,12 +39,14 @@ Speech recognition (Whisper small) and the bundled voices ship inside the instal
 - `db/` (SQLite: history, reviews, settings, imported lexicon updates), `recordings/` (WAV of the learner's spoken
   turns; can be turned off in Settings → Speech & audio), `models/`, `suggestions.json` (the learner's notes), `logs/`.
 - Data leaves the computer only when the learner exports a `.mokuhyo` backup (optionally encrypted with Argon2id +
-  XChaCha20-Poly1305) or a PDF report, or exports suggestions — all to a place they choose.
+  XChaCha20-Poly1305) or a PDF report, or exports suggestions — all to a place they choose — or, if the learner has
+  chosen an Ollama server on another computer of their network, as the prompts, transcribed answers and replies of the
+  sessions that use it (see Network behaviour).
 
 ## Code and content integrity
 - **Installers** are not code-signed yet (known gap; macOS Gatekeeper and Windows SmartScreen warn). Each release
-  publishes SHA-256 checksums (`SHA256SUMS`) and a CycloneDX SBOM (`mokuhyo-<version>-sbom.cdx.json`) of the runtime
-  libraries.
+  publishes SHA-256 checksums (`SHA256SUMS`) and a CycloneDX SBOM per platform
+  (`Mokuhyo-<version>-<platform>-sbom.cdx.json`) of the runtime libraries; a release without one is refused at collection.
 - **Lexicon updates** are Ed25519-signed by the project; the app verifies them against the key it ships and labels
   anything else "unverified publisher" (docs/LEXICON_FORMAT.md).
 - **Model files** are verified by SHA-256 on download and on side-load.
@@ -58,4 +62,6 @@ Speech recognition (Whisper small) and the bundled voices ship inside the instal
 
 ## Generating the SBOM
 `./gradlew :desktopApp:cyclonedxDirectBom` → `desktopApp/build/reports/cyclonedx-direct/bom.json` (CycloneDX 1.6, the
-shipping runtime classpath). The release scripts copy it next to the installers.
+shipping runtime classpath). Packaging (`packageDistributionForCurrentOS`, `createDistributable`) builds it, and
+`tools/release/collect.py` refuses to collect a platform without a valid one, then ships it as
+`Mokuhyo-<version>-<platform>-sbom.cdx.json`, covered by `SHA256SUMS`.

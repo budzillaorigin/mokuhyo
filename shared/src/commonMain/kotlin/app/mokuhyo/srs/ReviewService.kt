@@ -63,7 +63,7 @@ class ReviewService(
 
     /** The card state from the live review log (also used after importing a bundle). */
     fun recompute(itemId: String) {
-        val item = db.srsQueries.itemsAll().executeAsList().firstOrNull { it.id == itemId } ?: return
+        val item = db.srsQueries.item(itemId).executeAsOneOrNull() ?: return
         val reviews = db.srsQueries.reviewsFor(itemId).executeAsList().map { Instant.fromEpochMilliseconds(it.at) to Rating.entries.first { r -> r.value.toLong() == it.rating } }
         save(itemId, scheduler.replay(itemId, Instant.fromEpochMilliseconds(item.createdAt), reviews))
     }

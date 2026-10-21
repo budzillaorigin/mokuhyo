@@ -61,7 +61,39 @@ class SpeakingLabelTest {
         return Loader.loadPDF(out).use { PDFTextStripper().getText(it) }
     }
 
-    private fun interviewLine(pdf: String): String = pdf.lines().first { "Interview test" in it }
+    private fun interviewLine(pdf: String): String = interviewEntry(pdf, "Interview test")
+
+    /**
+     * QC Q7: the PDF entry for the first line containing [marker], with the label's wrapped continuation lines joined
+     * and whitespace normalized. Bounded: it stops at the entry's bullets, the next dated entry or a section heading.
+     */
+    internal fun interviewEntry(pdf: String, marker: String): String {
+        val lines = pdf.lines()
+        val start = lines.indexOfFirst { marker in it }
+        check(start >= 0) { "no entry with '$marker' in:\n$pdf" }
+        val entryStart = Regex("""^\d{1,2} \p{L}{3,} \d{4} · """)
+        val headings = setOf("Weak areas", "Review queue", "Tests", "Interviews and conversations", "ILR estimates over time")
+        val rest = lines.drop(start + 1).takeWhile { l ->
+            val t = l.trim()
+            t.isNotEmpty() && !t.startsWith("•") && !entryStart.containsMatchIn(t) && t !in headings && !t.startsWith("Mokuhyo · ")
+        }.take(3)
+        return (listOf(lines[start]) + rest).joinToString(" ").replace(Regex("\\s+"), " ").trim()
+    }
+
+    /** QC Q7: a wrapped label still counts; a missing qualifier, or one only in the next entry, still fails. */
+    @Test
+    fun interviewEntryJoinsWrappedLabelsButStaysBounded() {
+        val wrapped = "Interviews and conversations\n1 Jan 1970 · Interview test · ILR 2 (AI-rated, not in speaking trend — guided interview — scripted\n" +
+            "questions)\n   • Narrate in the past.\nWeak areas\n"
+        assertTrue("guided interview — scripted questions" in interviewEntry(wrapped, "Interview test"))
+        val missing = wrapped.replace("— scripted\nquestions)", ")")
+        assertTrue("scripted questions" !in interviewEntry(missing, "Interview test"))
+        val nextEntry = "1 Jan 1970 · Interview test · ILR 2 (AI-rated, not in speaking trend — guided interview)\n" +
+            "2 Jan 1970 · Interview practice · ILR 2 (AI-rated, not in speaking trend — guided interview — scripted\nquestions)\n"
+        assertTrue("scripted questions" !in interviewEntry(nextEntry, "Interview test"), interviewEntry(nextEntry, "Interview test"))
+        val bullets = "1 Jan 1970 · Interview test · ILR 2 (AI-rated, not in speaking trend — guided interview)\n   • scripted questions\n"
+        assertTrue("scripted questions" !in interviewEntry(bullets, "Interview test"))
+    }
 
     /** The report's case: a model-rated test saved with a provisional speaking estimate (confidence 0.3). */
     @Test

@@ -100,3 +100,7 @@ sourceSets.main { resources.srcDir(bundledDocs) }
 tasks.named<org.cyclonedx.gradle.CyclonedxDirectTask>("cyclonedxDirectBom") {
     includeConfigs.set(listOf("runtimeClasspath"))
 }
+// QC Q6: packaging produces the SBOM too, so the release collector (which requires it) always finds one.
+tasks.matching { it.name == "packageDistributionForCurrentOS" || it.name == "createDistributable" }.configureEach {
+    dependsOn("cyclonedxDirectBom")
+}

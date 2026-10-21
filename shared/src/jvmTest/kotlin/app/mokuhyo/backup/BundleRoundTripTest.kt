@@ -137,6 +137,39 @@ class BundleRoundTripTest {
         assertTrue(File(b.dir, rec.path).readBytes().contentEquals(File(a.dir, rec.path).readBytes()))
     }
 
+    /** Q1: an item queued but never graded has no review rows; its fresh card must still be rebuilt on import. */
+    @Test
+    fun ungradedReviewItemsKeepTheirFreshCardAfterImport() {
+        for (passphrase in listOf(null, "correct horse battery staple")) {
+            val a = Machine("A")
+            val b = Machine("B")
+            try {
+                val fresh = a.reviews.add("A", "es", ReviewService.Kind.WORD, "dict:7", "hola", "hello")
+                a.reviews.add("A", "es", ReviewService.Kind.WORD, "dict:42", "biblioteca", "library")
+                // B already has dict:42, graded: the incoming fresh copy maps onto it and must not reset B's schedule.
+                val local = b.reviews.add("B", "es", ReviewService.Kind.WORD, "dict:42", "biblioteca", "library")
+                b.reviews.grade(local, Rating.GOOD)
+                val localCard = b.reviews.card(local)
+                assertEquals(0L, b.reviews.dueCount("B", "es"))
+                val bundle = File(a.dir, "fresh.mokuhyo")
+                a.backup.export(bundle, listOf("es"), packs, passphrase)
+                b.backup.importBundle(bundle, passphrase)
+                assertEquals(2L, b.reviews.total("B", "es"))
+                assertEquals(1L, b.reviews.dueCount("B", "es"), "the imported fresh card is due (passphrase=$passphrase)")
+                assertEquals(0, b.reviews.card(fresh)!!.reps)
+                assertEquals(localCard, b.reviews.card(local), "the remapped item keeps the local review history")
+                assertEquals(1L, b.count("review"))
+                val again = b.backup.importBundle(bundle, passphrase)
+                assertEquals(0L, again.total)
+                assertEquals(2L, b.reviews.total("B", "es"))
+                assertEquals(1L, b.reviews.dueCount("B", "es"))
+                assertEquals(localCard, b.reviews.card(local))
+            } finally {
+                a.driver.close(); b.driver.close(); a.dir.deleteRecursively(); b.dir.deleteRecursively()
+            }
+        }
+    }
+
     @Test
     fun tombstonesPropagateAndNothingIsOverwritten() {
         val a = Machine("A")

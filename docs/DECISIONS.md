@@ -630,3 +630,39 @@ provenance exception was added (rule 13 and D-041 unchanged).
 - **Not measured.** No latency target is claimed. This environment could build neither the native runtime (proxy 403
   on the pinned llama.cpp source) nor Piper, and has no model, Whisper model or voice; `--bench-interview` ran as a dry
   run. The owner's hardware runs (docs/BENCHMARK.md) decide every target.
+
+## D-046 — feature QC fixes Q1–Q10 (owner handoff BRIEF_FEATURE_FIXES_2026-10-21, unattended defaults, 2026-10-21)
+
+- **Q1 cards after import.** `card` stays derived state and is never exported as history: every mapped incoming
+  review item is recomputed from its live review log, including items with no reviews (a fresh card, due now). An
+  item that maps onto an existing local one keeps the local log; the replay is the same as after grading or undo.
+- **Q2 self-rating as an appended fact.** Chosen over a new table so no schema migration is needed and older bundles
+  stay readable: saving a conversation id that already exists appends a *revision row* in `conversation`
+  (`<id>:revision:<uuid>`, `StoredConversation.revision = {of, savedAt}`); the completed row is never rewritten.
+  The repository shows the base row with its latest live revision (savedAt, then row id), so both computers agree
+  after merging in any order and only one conversation is visible. Tombstoning a conversation tombstones its
+  revisions, and a deletion is never undone by a later import. Re-saving identical content appends nothing. Known
+  limit: an app older than this change would list a revision row as a second conversation if it imported a bundle
+  containing one (bundles only promise newer-app compatibility, rule 12).
+- **Q3** The shared `Disclaimer` sits under each scored History row (attempts; conversations with a speaking label or
+  graded interpretation) and therefore also above the opened detail.
+- **Q4** Lexicon tab content is keyed by (language, track); the selected tab is kept, everything inside it resets.
+- **Q5 logging only.** `fresh_install_smoke.sh` keeps apt stdout/stderr and status and prints dpkg diagnostics on
+  failure (`LOG_DIR` keeps copies). No Linux dependency was guessed or changed; the v0.4.0 dpkg cause is still
+  unknown until a clean Ubuntu 22.04 rerun of the unchanged artifact captures it (owner/CI follow-up). Linux stays
+  unofficial (D-025).
+- **Q6 SBOM per platform.** Packaging depends on `cyclonedxDirectBom`; `collect.py` refuses a missing or non-CycloneDX
+  SBOM. Name `Mokuhyo-<version>-<platform>-sbom.cdx.json` (the runtime classpath carries per-OS natives and the four
+  release jobs would otherwise overwrite one file); `gate_release` accepts it or the earlier shared name. No workflow
+  file was changed; dist/* upload and `SHA256SUMS` already cover the new file. No release was published or re-run.
+- **Q7** Test-only: the PDF interview entry is read across wrapped lines within a bounded entry. Product wording and
+  layout unchanged.
+- **Q8** Privacy and `SECURITY_PROFILE.md` list every connection, including that prompts, transcribed answers and
+  replies go to an Ollama server the learner chose on the home network. Network scope is unchanged.
+- **Q9 Space = play/stop.** The Play button stops rather than pauses, so the hint now says "Space play/stop"; Space
+  calls the button's own command (same play counting, refunds and line ownership); a focused dictation field keeps
+  Space. `ListeningOutput.play` is a test seam whose default is `AudioIO.playOwned`.
+- **Q10** The Reading/Listening badge reads "AI-generated · unreviewed" under the unchanged condition (llm and not
+  verified). Speaking's topic badges still say "AI-generated"; the brief scoped Q10 to Reading/Listening.
+- **Not verified here:** real speech, physical keyboard/output, Windows/macOS hardware, the Linux installer rerun and a
+  release dry run of the full workflow. See PROGRESS for the run record.

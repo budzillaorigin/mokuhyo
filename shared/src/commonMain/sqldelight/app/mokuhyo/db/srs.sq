@@ -19,6 +19,9 @@ INSERT OR IGNORE INTO review_item VALUES ?;
 itemByRef:
 SELECT * FROM review_item WHERE learnerId = ? AND lang = ? AND kind = ? AND ref = ?;
 
+item:
+SELECT * FROM review_item WHERE id = ?;
+
 itemsAll:
 SELECT * FROM review_item ORDER BY createdAt;
 

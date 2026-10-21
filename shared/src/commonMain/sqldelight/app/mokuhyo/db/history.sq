@@ -74,6 +74,10 @@ SELECT * FROM conversation WHERE learnerId = ? AND lang = ? AND deleted IS NULL 
 conversationsAll:
 SELECT * FROM conversation ORDER BY startedAt;
 
+-- Revision rows of one completed conversation (ConversationRepository.save), by id prefix '<id>:revision:%'.
+conversationRevisions:
+SELECT * FROM conversation WHERE id LIKE ?;
+
 tombstoneConversation:
 UPDATE conversation SET deleted = ? WHERE id = ? AND deleted IS NULL;
 
