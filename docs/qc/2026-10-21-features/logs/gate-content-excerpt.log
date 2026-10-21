@@ -1,0 +1,60 @@
+ja reading: 0 errors, 0 warnings
+ja listening: 0 errors, 0 warnings
+es reading: 0 errors, 0 warnings
+es listening: 0 errors, 0 warnings
+fr reading: 0 errors, 0 warnings
+fr listening: 0 errors, 0 warnings
+de reading: 0 errors, 0 warnings
+de listening: 0 errors, 0 warnings
+pt-BR reading: 0 errors, 0 warnings
+pt-BR listening: 0 errors, 0 warnings
+ru reading: 0 errors, 0 warnings
+ru listening: 0 errors, 0 warnings
+zh-Hans reading: 0 errors, 0 warnings
+zh-Hans listening: 0 errors, 0 warnings
+ko reading: 0 errors, 0 warnings
+ko listening: 0 errors, 0 warnings
+ar reading: 0 errors, 0 warnings
+ar listening: 0 errors, 0 warnings
+fa reading: 0 errors, 0 warnings
+fa listening: 0 errors, 0 warnings
+id reading: 0 errors, 0 warnings
+id listening: 0 errors, 0 warnings
+  FAIL ja       https://www.mod.go.jp/j/press/news/index.html — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL ja       https://www.mod.go.jp/asdf/news/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL ko       https://www.mnd.go.kr/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  warn ko       https://www.airforce.mil.kr/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL de       https://www.bundeswehr.de/de/aktuelles — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL de       https://www.bmvg.de/de/presse — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL fr       https://www.defense.gouv.fr/actualites — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL fr       https://www.defense.gouv.fr/air — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL es       https://www.gob.mx/defensa/prensa — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL es       https://www.defensa.gob.es/gabinete/notasPrensa/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL pt-BR    https://www.gov.br/defesa/pt-br/centrais-de-conteudo/noticias — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL pt-BR    https://www.fab.mil.br/noticias — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  warn ru       https://mil.ru/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  warn ar       https://www.mod.gov.sa/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL ar       https://www.spa.gov.sa/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  warn ar       https://www.mod.gov.qa/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL ar       https://www.qna.org.qa/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  warn fa       https://www.irna.ir/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL id       https://www.kemhan.go.id/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  FAIL id       https://tni-au.mil.id/ — URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+  ok   zh-Hans  http://www.mod.gov.cn/ — HTTP 403
+  ok   zh-Hans  http://www.news.cn/mil/ — HTTP 403
+ERROR https://www.mod.go.jp/j/press/news/index.html: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.mod.go.jp/asdf/news/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.mnd.go.kr/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.bundeswehr.de/de/aktuelles: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.bmvg.de/de/presse: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.defense.gouv.fr/actualites: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.defense.gouv.fr/air: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.gob.mx/defensa/prensa: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.defensa.gob.es/gabinete/notasPrensa/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.gov.br/defesa/pt-br/centrais-de-conteudo/noticias: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.fab.mil.br/noticias: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.spa.gov.sa/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.qna.org.qa/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://www.kemhan.go.id/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+ERROR https://tni-au.mil.id/: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+validate_feeds: 22 links, 15 errors

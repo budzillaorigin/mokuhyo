@@ -1,0 +1,11 @@
+COMMAND java <runtime classpath> app.mokuhyo.desktop.MainKt --listening-kit --no-network --language es,ja,ar --prompts 1 --out /tmp/mokuhyo-feature-qc/listening-kit --data-dir /tmp/mokuhyo-feature-qc/kit-data
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+listening-kit: nothing can speak es here
+listening-kit: nothing can speak ja here
+listening-kit: nothing can speak ar here
+listening-kit: 0 files in /tmp/mokuhyo-feature-qc/listening-kit (keep key.csv; give raters the language folders, scoring-sheet.csv and README.txt)
+
+exit=0

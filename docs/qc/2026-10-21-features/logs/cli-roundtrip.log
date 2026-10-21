@@ -1,0 +1,5 @@
+COMMAND java <runtime classpath> app.mokuhyo.desktop.MainKt --roundtrip --no-network
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+smoke-lang: FAIL --roundtrip <jobs.jsonl> is required
+
+exit=1

@@ -1,0 +1,12 @@
+// Opt-in QC only. No application or normal test source sets are edited on disk.
+gradle.projectsEvaluated {
+    def evidence = new File(System.getProperty('qc.evidence', '/workspace/mokuhyo/docs/qc/2026-10-21-features'))
+    def desktop = rootProject.project(':desktopApp')
+    desktop.kotlin.sourceSets.getByName('test').kotlin.srcDir(new File(evidence, 'probes'))
+    desktop.tasks.withType(Test).configureEach {
+        environment 'QC_OUT', System.getProperty('qc.out', '/tmp/mokuhyo-feature-qc/probes')
+    }
+    desktop.tasks.register('qcClasspath') {
+        doLast { new File(System.getProperty('qc.classpath', '/tmp/mokuhyo-feature-qc/classpath')).text = desktop.sourceSets.main.runtimeClasspath.asPath }
+    }
+}

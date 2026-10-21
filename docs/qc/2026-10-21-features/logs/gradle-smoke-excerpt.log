@@ -1,0 +1,45 @@
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+> Task :desktopApp:compileKotlin UP-TO-DATE
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar UP-TO-DATE
+> Task :desktopApp:prepareAppResources
+
+> Task :desktopApp:run
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+smoke: database /tmp/mokuhyo-smoke11715640202718673874/db/mokuhyo.sqlite (learner 19a9ed5d-83e3-4045-a10b-f345d93cca0e)
+smoke: native CPU (GPU turned off in Settings)
+smoke: languages ja,es,fr,de,pt-BR,ru,zh-Hans,ko,ar,fa,id
+smoke: models in manifest 10
+smoke: rendered frame 1180x800, 20 distinct sampled colors
+smoke: OK
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo-v040-qc/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2s
+13 actionable tasks: 3 executed, 10 up-to-date
+Configuration cache entry stored.

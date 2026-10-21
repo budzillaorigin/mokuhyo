@@ -1,0 +1,33 @@
+ja reading: 0 errors, 0 warnings
+ja listening: 0 errors, 0 warnings
+es reading: 0 errors, 0 warnings
+es listening: 0 errors, 0 warnings
+fr reading: 0 errors, 0 warnings
+fr listening: 0 errors, 0 warnings
+de reading: 0 errors, 0 warnings
+de listening: 0 errors, 0 warnings
+pt-BR reading: 0 errors, 0 warnings
+pt-BR listening: 0 errors, 0 warnings
+ru reading: 0 errors, 0 warnings
+ru listening: 0 errors, 0 warnings
+zh-Hans reading: 0 errors, 0 warnings
+zh-Hans listening: 0 errors, 0 warnings
+ko reading: 0 errors, 0 warnings
+ko listening: 0 errors, 0 warnings
+ar reading: 0 errors, 0 warnings
+ar listening: 0 errors, 0 warnings
+fa reading: 0 errors, 0 warnings
+fa listening: 0 errors, 0 warnings
+id reading: 0 errors, 0 warnings
+id listening: 0 errors, 0 warnings
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:processJvmTestResources SKIPPED
+SpeakingLabelTest[jvm] > aGuidedInterviewIsLabelledInHistoryAndThePdf[jvm] FAILED
+    java.lang.AssertionError at SpeakingLabelTest.kt:106
+35 tests completed, 1 failed
+> Task :shared:jvmTest FAILED
+FAILURE: Build failed with an exception.
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+BUILD FAILED in 3s
