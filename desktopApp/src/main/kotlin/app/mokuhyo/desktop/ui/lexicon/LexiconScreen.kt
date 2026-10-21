@@ -23,6 +23,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -81,12 +82,16 @@ fun LexiconScreen(app: AppGraph) {
             LexiconTab.entries.forEach { t -> Tab(tab == t, { tab = t }, text = { Text(t.title) }) }
         }
         Spacer(Modifier.height(16.dp))
-        when (tab) {
-            LexiconTab.TERMS -> TermsTab(app, module, track)
-            LexiconTab.COMPARE -> CompareTab(app, track)
-            LexiconTab.DRILLS -> DrillsTab(app, module, track)
-            LexiconTab.DIALOGUES -> DialoguesTab(app, module, track)
-            LexiconTab.WHATS_NEW -> LexiconUpdates(app, module)
+        // Each tab's state (drill queue, answers, progress, added terms) belongs to one language's track: a language
+        // switch or an imported update starts it afresh instead of leaving the previous track on screen (QC Q4).
+        key(module.code, track) {
+            when (tab) {
+                LexiconTab.TERMS -> TermsTab(app, module, track)
+                LexiconTab.COMPARE -> CompareTab(app, track)
+                LexiconTab.DRILLS -> DrillsTab(app, module, track)
+                LexiconTab.DIALOGUES -> DialoguesTab(app, module, track)
+                LexiconTab.WHATS_NEW -> LexiconUpdates(app, module)
+            }
         }
         Text(track.attribution, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
