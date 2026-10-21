@@ -5,6 +5,7 @@
 #
 #   tools/gates/fresh_install_smoke.sh v0.1.0 [macos-arm64|macos-x64|linux-x64]
 #   FROM_DIR=dist tools/gates/fresh_install_smoke.sh main macos-arm64   # installers + SHA256SUMS from a folder (dry run)
+#   LOG_DIR=logs ...                                                     # also keep the Linux install logs there
 set -euo pipefail
 SUDO=$([ "$(id -u)" = 0 ] || echo sudo)
 TAG="$1"
@@ -42,7 +43,26 @@ if [ "$EXT" = dmg ]; then
     || { echo "fresh_install_smoke: FAIL Info.plist lacks NSMicrophoneUsageDescription"; exit 1; }
   echo "== Info.plist: NSMicrophoneUsageDescription present"
 else
-  $SUDO apt-get install -y "./$ASSET" >/dev/null
+  # Keep both apt streams (dpkg often puts the real cause on stdout) and apt's own status (QC Q5); on failure, add the
+  # package's metadata and dpkg's own logs so the cause can be read from the CI log. LOG_DIR keeps copies.
+  set +e
+  $SUDO apt-get install -y "./$ASSET" > >(tee apt-install.out) 2> >(tee apt-install.err >&2)
+  STATUS=$?
+  set -e
+  wait
+  if [ -n "${LOG_DIR:-}" ]; then mkdir -p "$LOG_DIR"; cp apt-install.out apt-install.err "$LOG_DIR/"; fi
+  if [ "$STATUS" -ne 0 ]; then
+    echo "fresh_install_smoke: FAIL apt-get install exited $STATUS ($ASSET)" >&2
+    {
+      echo "== dpkg-deb --info $ASSET"; dpkg-deb --info "./$ASSET" 2>&1 || true
+      echo "== dpkg --audit"; dpkg --audit 2>&1 || true
+      echo "== dpkg -l mokuhyo"; dpkg -l mokuhyo 2>&1 || true
+      echo "== /var/log/dpkg.log (last 60 lines)"; tail -n 60 /var/log/dpkg.log 2>&1 || true
+      echo "== /var/log/apt/term.log (last 60 lines)"; $SUDO tail -n 60 /var/log/apt/term.log 2>&1 || true
+    } | tee dpkg-diagnostics.log >&2
+    [ -n "${LOG_DIR:-}" ] && cp dpkg-diagnostics.log "$LOG_DIR/"
+    exit "$STATUS"
+  fi
   BIN=/opt/mokuhyo/bin/Mokuhyo
 fi
 echo "== fresh install: launching $BIN --smoke"
