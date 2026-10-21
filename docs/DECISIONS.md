@@ -666,3 +666,27 @@ provenance exception was added (rule 13 and D-041 unchanged).
   verified). Speaking's topic badges still say "AI-generated"; the brief scoped Q10 to Reading/Listening.
 - **Not verified here:** real speech, physical keyboard/output, Windows/macOS hardware, the Linux installer rerun and a
   release dry run of the full workflow. See PROGRESS for the run record.
+
+## D-047 — release dry run 39663569689: fresh-install fixes (owner request, 2026-10-21)
+
+The first dry run after D-046 built and smoke-tested all four installers and their SBOMs; the fresh-install jobs
+then failed on Windows and Linux. Both macOS fresh installs passed. (A first `macos-x64` upload timeout was a
+GitHub artifact-service error; re-running the job fixed it.)
+
+- **Windows (gate only).** In a dry run SHA256SUMS is written on the Windows runner, whose Git-for-Windows
+  `sha256sum` marks binary mode with `*` (`<hash> *<name>`). `fresh_install_smoke.ps1` matched only `<hash> <name>`,
+  got null and stopped before installing. Real releases write SHA256SUMS on Linux, which is why v0.4.0 passed.
+  `sha256sums.ps1` (`Get-ExpectedSha256`) reads both formats and CRLF, and throws a clear error when a file is
+  missing. Regression: `tools/gates/test_sha256sums.py` (runs where `pwsh` exists, including the Ubuntu CI image).
+- **Linux (real packaging defect).** jpackage's postinst runs `xdg-desktop-menu install` under `set -e`. Without a
+  writable applications folder (minimal/server installs, the Ubuntu 22.04 runner) it exits 3 ("No writable system
+  menu directory found") and dpkg leaves the package half-configured; v0.4.0's Linux fresh install failed the same
+  way. The Compose plugin can't replace jpackage's script templates, so `tools/release/deb_menu.py` rewrites the
+  finished `.deb` during collection: each `xdg-*` line in postinst/prerm/postrm gets `|| echo <warning> >&2`. The
+  app installs without its menu entry instead of failing; the real cause is still printed. Only the control member
+  is rebuilt (as control.tar.gz); the app files are copied byte for byte; a second run changes nothing.
+  Regression: `tools/release/test_deb_menu.py` builds a package with jpackage's script shape and runs its scripts
+  against a stub that fails like the runner. Checked locally with `dpkg -i`/`dpkg --purge`: unpatched → "post-installation
+  script subprocess returned error exit status 3", half-configured; patched → installed and purged cleanly.
+- Not done: the CI runner's missing applications folder is not created by the gate, so the gate keeps testing the
+  harder case. Linux stays unofficial (D-025).
