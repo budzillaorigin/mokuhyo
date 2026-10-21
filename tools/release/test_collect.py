@@ -17,6 +17,7 @@ VALID = {"bomFormat": "CycloneDX", "specVersion": "1.6", "components": [{"type":
 def run(root: Path, sbom: object | None) -> tuple[int, Path]:
     collect.REPO = root
     collect.BIN = root / "binaries"
+    collect.patch_deb = lambda deb: None  # the fixture isn't a real package; test_deb_menu.py covers the patch
     (collect.BIN / "deb").mkdir(parents=True, exist_ok=True)
     (collect.BIN / "deb" / "fixture.deb").write_bytes(b"synthetic fixture")
     bom = root / "desktopApp" / "build" / "reports" / "cyclonedx-direct" / "bom.json"
