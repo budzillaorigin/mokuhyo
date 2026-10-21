@@ -39,7 +39,13 @@ data class StoredConversation(
     val trendReason: String? = null,
     /** Immutable recovery snapshots use ordinary conversation rows, so old bundle readers still keep them. */
     val draft: ConversationDraft? = null,
+    /** Set on a revision row: a later version of a completed conversation (e.g. a self-rating), appended, never replacing it. */
+    val revision: ConversationRevision? = null,
 )
+
+/** A revision row's link to the completed conversation it revises; the latest live revision (by [savedAt], then row id) is shown. */
+@Serializable
+data class ConversationRevision(val of: String, val savedAt: Long)
 
 @Serializable
 data class ConversationDraft(
@@ -51,7 +57,8 @@ data class ConversationDraft(
 /**
  * Interviews and topic conversations with their transcripts, ratings, rolling levels and recordings (BRIEF §8.1).
  * Append-only: a conversation row is written when it ends; recordings are added as turns are recorded; deletes are
- * tombstones.
+ * tombstones. Saving an id that is already complete (a self-rating after the interview) appends a revision row instead
+ * of replacing it, so the original fact survives and bundles merge the change like any other new row (QC Q2).
  */
 class ConversationRepository(private val db: MokuhyoDatabase, private val clock: Clock = Clock.System) {
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
@@ -63,17 +70,27 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
         rating: OpiRating?, rollingLevels: List<String>, audioDir: String?,
         mode: app.mokuhyo.opi.CorrectionsMode? = null, aab: app.mokuhyo.opi.AfterActionBrief? = null,
     ) {
-        db.historyQueries.upsertConversation(
-            Conversation(
-                id = id, learnerId = learnerId, lang = lang, kind = kind, topic = topic, startedAt = startedAt,
-                endedAt = if (stored.draft != null) null else clock.now().toEpochMilliseconds(),
-                turnsJson = json.encodeToString(StoredConversation.serializer(), stored),
-                ratingJson = rating?.let { json.encodeToString(OpiRating.serializer(), it) },
-                rollingLevelJson = json.encodeToString(ListSerializer(String.serializer()), rollingLevels),
-                audioDir = audioDir, deleted = null, correctionsMode = mode?.id,
-                aabJson = aab?.let { json.encodeToString(app.mokuhyo.opi.AfterActionBrief.serializer(), it) },
-            ),
+        val now = clock.now().toEpochMilliseconds()
+        fun row(rowId: String, s: StoredConversation) = Conversation(
+            id = rowId, learnerId = learnerId, lang = lang, kind = kind, topic = topic, startedAt = startedAt,
+            endedAt = if (s.draft != null) null else now,
+            turnsJson = json.encodeToString(StoredConversation.serializer(), s),
+            ratingJson = rating?.let { json.encodeToString(OpiRating.serializer(), it) },
+            rollingLevelJson = json.encodeToString(ListSerializer(String.serializer()), rollingLevels),
+            audioDir = audioDir, deleted = null, correctionsMode = mode?.id,
+            aabJson = aab?.let { json.encodeToString(app.mokuhyo.opi.AfterActionBrief.serializer(), it) },
         )
+        db.transaction {
+            val existing = get(id)
+            if (existing == null) {
+                db.historyQueries.insertConversationIfAbsent(row(id, stored))
+                return@transaction
+            }
+            val candidate = row(id, stored.copy(revision = null))
+            if (candidate.copy(endedAt = existing.endedAt) == existing) return@transaction
+            val revision = stored.copy(draft = null, revision = ConversationRevision(id, now))
+            db.historyQueries.insertConversationIfAbsent(row("$id:revision:${newId()}", revision))
+        }
     }
 
     /** Append a snapshot before calling slow/external work. Never rewrite a prior snapshot or completed result. */
@@ -105,14 +122,28 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
 
     fun list(learnerId: String, lang: String): List<Conversation> {
         val all = db.historyQueries.conversations(learnerId, lang).executeAsList()
-        val completed = all.filter { stored(it).draft == null }.associateBy { it.id }
+        val revisions = all.filter { stored(it).revision != null }.groupBy { stored(it).revision!!.of }
+        val completed = all.filter { stored(it).draft == null && stored(it).revision == null }.associateBy { it.id }
         val drafts = all.filter { stored(it).draft != null }.groupBy { stored(it).draft!!.sessionId }
             .filterKeys { it !in completed && get(it)?.deleted == null }
             .values.map { snapshots -> snapshots.maxWith(compareBy<Conversation> { stored(it).draft!!.savedAt }.thenBy { it.id }) }
-        return (completed.values + drafts).sortedByDescending { it.startedAt }
+        return (completed.values.map { latest(it, revisions[it.id].orEmpty()) } + drafts).sortedByDescending { it.startedAt }
     }
 
-    fun get(id: String): Conversation? = db.historyQueries.conversation(id).executeAsOneOrNull()
+    /** The conversation as shown: [id]'s row with the content of its latest live revision, if any. */
+    fun get(id: String): Conversation? {
+        val base = db.historyQueries.conversation(id).executeAsOneOrNull() ?: return null
+        if (stored(base).draft != null || stored(base).revision != null) return base
+        return latest(base, db.historyQueries.conversationRevisions("$id:revision:%").executeAsList())
+    }
+
+    /** Deterministic on every computer: the newest live revision by savedAt, then row id; its content under [base]'s id. */
+    private fun latest(base: Conversation, revisions: List<Conversation>): Conversation {
+        val r = revisions.filter { it.deleted == null && stored(it).revision?.of == base.id }
+            .maxWithOrNull(compareBy<Conversation> { stored(it).revision!!.savedAt }.thenBy { it.id }) ?: return base
+        return r.copy(id = base.id, startedAt = base.startedAt, endedAt = base.endedAt, deleted = base.deleted,
+            turnsJson = json.encodeToString(StoredConversation.serializer(), stored(r).copy(revision = null)))
+    }
 
     fun stored(c: Conversation): StoredConversation = json.decodeFromString(StoredConversation.serializer(), c.turnsJson)
 
@@ -139,7 +170,7 @@ class ConversationRepository(private val db: MokuhyoDatabase, private val clock:
         val row = get(id) ?: return
         db.transaction {
             db.historyQueries.conversations(row.learnerId, row.lang).executeAsList().filter {
-                it.id == root || stored(it).draft?.sessionId == root
+                it.id == root || stored(it).draft?.sessionId == root || stored(it).revision?.of == root
             }.forEach { db.historyQueries.tombstoneConversation(clock.now().toEpochMilliseconds(), it.id) }
         }
     }
