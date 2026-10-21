@@ -273,7 +273,9 @@ class Backup(
             insert("review_item", "SELECT i.id, ${learner("i.learnerId")}, i.lang, i.kind, i.ref, i.front, i.back, i.context, i.createdAt, i.deleted FROM incoming.review_item i " +
                 "JOIN temp.item_map mp ON mp.inId = i.id WHERE mp.outId = i.id")
             insert("review", "SELECT r.id, mp.outId, r.at, r.rating, r.durationMs, r.deleted FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
-            affected += strings("SELECT DISTINCT mp.outId FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
+            // Every mapped item gets its card rebuilt, not only those with incoming reviews: a queued item that was never
+            // graded has no review rows, and its fresh card (derived state, not in the merge) would otherwise be lost.
+            affected += strings("SELECT DISTINCT outId FROM temp.item_map")
             // Tombstones are facts too: a deletion on either computer stays a deletion.
             for (t in listOf("attempt", "conversation", "recording", "ilr_estimate", "generated_passage", "review", "lexicon_package", "conversation_turn_feedback", "stand_to", "storyline", "storyline_day")) {
                 val before = long("SELECT count(*) FROM main.$t WHERE deleted IS NOT NULL")
