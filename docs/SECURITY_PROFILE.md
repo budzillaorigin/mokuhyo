@@ -41,8 +41,8 @@ Speech recognition (Whisper small) and the bundled voices ship inside the instal
 
 ## Code and content integrity
 - **Installers** are not code-signed yet (known gap; macOS Gatekeeper and Windows SmartScreen warn). Each release
-  publishes SHA-256 checksums (`SHA256SUMS`) and a CycloneDX SBOM (`mokuhyo-<version>-sbom.cdx.json`) of the runtime
-  libraries.
+  publishes SHA-256 checksums (`SHA256SUMS`) and a CycloneDX SBOM per platform
+  (`Mokuhyo-<version>-<platform>-sbom.cdx.json`) of the runtime libraries; a release without one is refused at collection.
 - **Lexicon updates** are Ed25519-signed by the project; the app verifies them against the key it ships and labels
   anything else "unverified publisher" (docs/LEXICON_FORMAT.md).
 - **Model files** are verified by SHA-256 on download and on side-load.
@@ -58,4 +58,6 @@ Speech recognition (Whisper small) and the bundled voices ship inside the instal
 
 ## Generating the SBOM
 `./gradlew :desktopApp:cyclonedxDirectBom` → `desktopApp/build/reports/cyclonedx-direct/bom.json` (CycloneDX 1.6, the
-shipping runtime classpath). The release scripts copy it next to the installers.
+shipping runtime classpath). Packaging (`packageDistributionForCurrentOS`, `createDistributable`) builds it, and
+`tools/release/collect.py` refuses to collect a platform without a valid one, then ships it as
+`Mokuhyo-<version>-<platform>-sbom.cdx.json`, covered by `SHA256SUMS`.

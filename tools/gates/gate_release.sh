@@ -32,8 +32,15 @@ done
 
 # From v0.3.0 every release carries a CycloneDX SBOM of the shipping runtime (BRIEF_PHASE8 N-11).
 if [[ "$VERSION" != 0.1.* && "$VERSION" != 0.2.* ]]; then
-  grep -qx "Mokuhyo-$VERSION-sbom.cdx.json" <<<"$assets" || fail "asset Mokuhyo-$VERSION-sbom.cdx.json (SBOM) missing"
-  echo "  Mokuhyo-$VERSION-sbom.cdx.json"
+  # Up to v0.4.x one shared name; from QC Q6 one per platform (collect.py: Mokuhyo-<version>-<platform>-sbom.cdx.json).
+  if grep -qx "Mokuhyo-$VERSION-sbom.cdx.json" <<<"$assets"; then
+    echo "  Mokuhyo-$VERSION-sbom.cdx.json"
+  else
+    for p in windows-x64 macos-arm64 macos-x64; do
+      grep -qx "Mokuhyo-$VERSION-$p-sbom.cdx.json" <<<"$assets" || fail "asset Mokuhyo-$VERSION-$p-sbom.cdx.json (SBOM) missing"
+      echo "  Mokuhyo-$VERSION-$p-sbom.cdx.json"
+    done
+  fi
 fi
 
 echo "== gate_release: checksums"
