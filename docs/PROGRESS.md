@@ -968,3 +968,42 @@ labels and trend effect, `04703e7` prerendered prompts · N6 `6a94a42` audit (Ko
 `--prompt-audio --language es --render`; VOICEVOX `--jobs` → `voicevox_render.py` → `--import`) and checking their size
 before the other nine languages; a native-speaker round with the listening kit (Persian, Indonesian first); a decision
 on the VAD end-of-speech tail versus the 2 s target; and, if wanted, approved transition/follow-up prompts.
+
+## 2026-10-21 — D-046 feature QC fixes checkpoint (BRIEF_FEATURE_FIXES_2026-10-21, Q1–Q10)
+
+Branch `claude/feature-qc-fixes` from main `e7e26bb`; PR against main, unmerged. One fix and one regression per commit:
+
+| Finding | Commit | Regression | Fails without the fix |
+| --- | --- | --- | --- |
+| Q1 P0 fresh cards after import | `82d653c` | `BundleRoundTripTest.ungradedReviewItemsKeepTheirFreshCardAfterImport` | yes: "imported fresh card is due (passphrase=null) expected 1 but was 0" |
+| Q2 P0 self-rating as appended fact | `9f0465a` | `SelfRatingMergeTest` | yes: "the completed row is never rewritten" |
+| Q3 P0 History disclaimer | `cc7e5ef` | `HistoryDisclaimerRenderTest` | yes: READING_TEST list has no disclaimer |
+| Q4 P1 Lexicon language switch | `65e67fa` | `LexiconLanguageSwitchTest` | yes: "no other language's drill remains" fails at es→ar |
+| Q5 P2 Linux install diagnostics | `07a12fd` | `tools/gates/test_fresh_install_smoke.py` | yes: detailed apt stdout lost (exit 1) |
+| Q6 P2 required SBOM | `87afdb4` | `tools/release/test_collect.py` | yes: installer-only fixture collected (exit 1) |
+| Q7 P2 wrapped PDF label | `1cf5451` | `SpeakingLabelTest.interviewEntryJoinsWrappedLabelsButStaysBounded` | yes: with main's first-line extraction; main's own guided PDF case also fails with fonts staged |
+| Q8 P2 Privacy/security copy | `3891679` | `PrivacyCopyTest` | yes: Privacy screen lacks "Model download" list |
+| Q9 P2 Listening Space | `4e56ad1` | `ListeningSpaceKeyTest` | main lacks the command (does not compile); without the typing guard the text-entry case fails |
+| Q10 P2 unreviewed badge | `86e551b` | `ContentBadgeRenderTest` | yes: with main's wording, expected `[AI-generated · unreviewed]` but was `[AI-generated]` |
+
+**Validation in this container (Linux, headless, no audio devices, no model weights):**
+- `./gradlew :shared:jvmTest :desktopApp:test --rerun-tasks --no-build-cache`: **438 shared + 61 desktop, 0 failures**
+  (report fonts staged with `stage_fonts.py --cache-only`, so the PDF label cases ran; 28 conditional `SKIP` lines
+  for absent models, voices, native runtime and dictionaries). Python: Ruff clean, `run_tests.py` **15/15**.
+- Gates with `MOKUHYO_NO_SOURCES=1 SKIP_EVAL=1 SKIP_FULL=1`: gate_core **pass** (was blocked by Q7), gate_data
+  **pass**, gate_exam **pass**, gate_speaking **pass (reduced)**, gate_terms **pass (overlap skipped: no sources)**.
+  gate_content **fail at feed reachability only**: strict validation of all banks 0 errors/0 warnings, then 3 of 22
+  official links errored from here (`defense.gouv.fr` ×2 HTTP 503, `gob.mx/defensa/prensa` HTTP 404). gate_lang
+  **fail at the Spanish dictionary source**: JMdict built; Kaikki Spanish is a rolling export and its sha256 no longer
+  matches `packs.lock` (`a2cc93ae…` locked, `7b23a5dc…` served). Re-pinning is a deliberate owner step
+  (`packs/build_all.py --update-sources`), not done here. Neither failure is from this change.
+- Gate runs rewrote the tracked pack manifests and `CONTENT_STATUS.md` (this checkout has no recorded audio); those
+  side effects were discarded, not committed.
+- Maven Central returned HTTP 429 for a while; this session added a local Gradle init script (not in the repo) that
+  puts Google's Maven Central mirror first.
+
+**Still open (not claimed):** a clean Ubuntu 22.04 rerun of the checksum-verified unchanged v0.4.0 `.deb` with the
+new logging to capture the dpkg cause (a packaging fix, if any, is a separate cause-specific commit); a release dry
+run showing the per-platform SBOMs and their checksums; real-speech, physical keyboard/output and screen-reader
+checks for Q9; and the report's owner checklist on Mac/Windows with fresh synthetic learners (recheck Q2 self-rating
+there). No release was published, no workflow file added, nothing merged.
