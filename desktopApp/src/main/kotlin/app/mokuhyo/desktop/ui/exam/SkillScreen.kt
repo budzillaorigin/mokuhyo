@@ -362,8 +362,7 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
             Text(session.section?.title ?: "", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
             Text("Question ${session.index + 1} of ${session.section?.items?.size ?: 0} · ILR ${item.level} · ${item.type.replace('_', ' ')}",
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
-            if (item.aiGenerated || passage?.aiGenerated == true) Badge("AI-generated")
-            if (passage?.bank == "local") Badge("Generated on this computer")
+            ContentBadges(item, passage)
             Spacer(Modifier.weight(1f))
             session.remainingMs()?.let { ms ->
                 val s = ms / 1000
@@ -438,6 +437,16 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
         confirmButton = { Button(onClick = { confirmSubmit = false; done(session.submit()) }) { Text("Submit") } },
         dismissButton = { TextButton(onClick = { confirmSubmit = false }) { Text("Keep going") } },
     )
+}
+
+/** AI-drafted content says so, and that no human has reviewed it yet, until review flips `verified` (rule 7, QC Q10). */
+internal const val UNREVIEWED_AI_BADGE = "AI-generated · unreviewed"
+
+/** Reading and Listening share this: origin/review status of the question or its passage, and the local-bank label. */
+@Composable
+internal fun ContentBadges(item: app.mokuhyo.exam.ExamItem, passage: ExamPassage?) {
+    if (item.aiGenerated || passage?.aiGenerated == true) Badge(UNREVIEWED_AI_BADGE)
+    if (passage?.bank == "local") Badge("Generated on this computer")
 }
 
 @OptIn(ExperimentalLayoutApi::class)
