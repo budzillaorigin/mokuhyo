@@ -49,7 +49,7 @@ fun HistoryList(app: AppGraph) {
     val attempts = remember(lang, version) { app.history.attempts(app.learnerId, lang) }
     val conversations = remember(lang, version) { app.conversations.list(app.learnerId, lang) }
     val speakingRows = remember(lang, version) { app.history.speakingRows(app.learnerId, lang) }
-    data class Row(val id: String, val at: Long, val title: String, val detail: String, val searchable: String, val kind: Kind, val conversation: Boolean, val local: Boolean)
+    data class Row(val id: String, val at: Long, val title: String, val detail: String, val searchable: String, val kind: Kind, val conversation: Boolean, val local: Boolean, val scored: Boolean)
     val rows = remember(attempts, conversations) {
         attempts.map { a ->
             val form = app.history.form(a)
@@ -59,12 +59,13 @@ fun HistoryList(app: AppGraph) {
             Row(a.id, a.startedAt, "${a.modality.lowercase().replaceFirstChar { it.uppercase() }} ${if (a.mode == "TEST") "test" else "practice"}",
                 "$correct/${answers.size} correct" + (if (voided > 0) " · $voided not scored (audio unavailable)" else "") +
                     (a.ilrEstimate?.let { " · ILR $it" + if (a.provisional == 1L) " (provisional)" else "" } ?: ""),
-                form.items.joinToString(" ") { it.stem + " " + it.type }, if (a.mode == "TEST") Kind.TESTS else Kind.PRACTICE, false, a.bank == "local")
+                form.items.joinToString(" ") { it.stem + " " + it.type }, if (a.mode == "TEST") Kind.TESTS else Kind.PRACTICE, false, a.bank == "local", true)
         } + conversations.map { c ->
             val stored = app.conversations.stored(c)
+            val label = app.conversations.speakingLabel(c, speakingRows)
             Row(c.id, c.startedAt, when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario: ${c.topic}"; "INTERPRET" -> "Interpretation: ${c.topic}"; "STORYLINE" -> "Exercise week: ${c.topic}"; else -> "Conversation: ${c.topic}" },
-                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (if (stored.draft != null) " · interrupted; resume in Speaking" else "") + (app.conversations.speakingLabel(c, speakingRows)?.let { " · ${it.text}" } ?: ""),
-                stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC" || c.kind == "SCENARIO" || c.kind == "INTERPRET" || c.kind == "STORYLINE") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false)
+                "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (if (stored.draft != null) " · interrupted; resume in Speaking" else "") + (label?.let { " · ${it.text}" } ?: ""),
+                stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC" || c.kind == "SCENARIO" || c.kind == "INTERPRET" || c.kind == "STORYLINE") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false, label != null || stored.interpret.any { it.grade != null })
         }.sortedByDescending { it.at }
     }
     val shown = rows.filter { (kind == Kind.ALL || it.kind == kind) && (query.isBlank() || it.searchable.contains(query, ignoreCase = true) || it.title.contains(query, ignoreCase = true)) }
@@ -81,6 +82,8 @@ fun HistoryList(app: AppGraph) {
                     if (r.local) Badge("Generated on this computer")
                     TextButton(onClick = { open = if (open == r.id) null else r.id }) { Text(if (open == r.id) "Hide" else "Open") }
                 }
+                // Rule 7 (QC Q3): the notice sits with every score, in the row and above its opened detail.
+                if (r.scored) Disclaimer()
                 if (open == r.id) {
                     if (r.conversation) ConversationDetail(app, lang, r.id) else AttemptDetail(app, lang, r.id)
                     TextButton(onClick = {
