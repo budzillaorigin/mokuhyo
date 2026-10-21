@@ -1,0 +1,12 @@
+== gate_lang: packs
+downloading https://deb.debian.org/debian/pool/main/m/mecab-ipadic/mecab-ipadic_2.7.0-20070801+main.orig.tar.gz
+lexicon: 392126 entries, 325871 surfaces, max length 26
+tokenizer: 1316x1316 matrix, 11 char categories, 40 unknown entries
+ja: building (max entries all)
+downloading https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/jmdict-eng-3.6.2%2B20260914172325.json.zip
+  JMdict 3.6.2 (2026-09-14): 218776 words
+ja: {'entries': 218776, 'senses': 253483, 'forms': 102803, 'examples': 0, 'folds': 113475, 'links_resolved': 0} → /workspace/mokuhyo-v040-qc/content/packs/ja/dictionary.sqlite (40.0 MB) in 21.7s
+es: building (max entries 40000)
+downloading https://kaikki.org/dictionary/Spanish/kaikki.org-dictionary-Spanish.jsonl
+OSError: Tunnel connection failed: 403 Forbidden
+urllib.error.URLError: <urlopen error Tunnel connection failed: 403 Forbidden>

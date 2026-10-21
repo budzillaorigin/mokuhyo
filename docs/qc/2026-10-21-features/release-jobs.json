@@ -1,0 +1,124 @@
+{
+  "run_id": 39355829686,
+  "jobs": [
+    {
+      "id": 118410253751,
+      "name": "installers (macos-x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Smoke test the packaged app",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 118410253869,
+      "name": "installers (windows-x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Smoke test the packaged app",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 118410253891,
+      "name": "installers (linux-x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Smoke test the packaged app",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 118410253941,
+      "name": "installers (macos-arm64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Smoke test the packaged app",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 118416776875,
+      "name": "pre-release",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": []
+    },
+    {
+      "id": 118417993762,
+      "name": "fresh install (linux-x64)",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "failure"
+        }
+      ]
+    },
+    {
+      "id": 118417993824,
+      "name": "fresh install (windows-x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "id": 118417993845,
+      "name": "fresh install (macos-arm64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 118417993872,
+      "name": "fresh install (macos-x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install the installer and launch it",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

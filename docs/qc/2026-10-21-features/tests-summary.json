@@ -1,0 +1,1154 @@
+[
+  {
+    "module": "shared",
+    "suite": "AiCallHookTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "AiGatewayTest[jvm]",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "EndpointEnginesTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "GgufReaderTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": [
+      "SKIP realModelFiles: models not downloaded"
+    ]
+  },
+  {
+    "module": "shared",
+    "suite": "JsonSchemaTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LanUrlTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LocalEnginesTest[jvm]",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ModelManagerTest[jvm]",
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PinnedGatewayTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "Sha256Test[jvm]",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ThreadBudgetTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "TierAdvisorTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "TimingAwareTierTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "TranscriptJoinTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ValidationTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "NativeRuntimeTest[jvm]",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": [
+      "SKIP cancelThroughLocalLlamaModelThrowsAiCancelledException: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP loadFailuresAreReportedNotThrown: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP cancelMidGenerationReportsCancelledNotPartialText: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP generatesStreamsAndReusesTheCache: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP whisperTranscribesToSegmentJson: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP grammarConstrainsOutputToTheSchema: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP stopStringsCutTheOutputAndAreExcluded: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP whisperCancelReportsCancelled: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh",
+      "SKIP loadsAndReportsVariantAndDevices: native library not built (libmokuhyo_native.so not found under <dir>/{vulkan,cpu}/ for dir in /workspace/mokuhyo-v040-qc/shared/native/build/linux-x86_64, /workspace/mokuhyo-v040-qc/native/build/linux-x86_64, /workspace/native/build/linux-x86_64, /native/build/linux-x86_64); run native/build.sh"
+    ]
+  },
+  {
+    "module": "shared",
+    "suite": "StopMatcherTest[jvm]",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "Utf8ChunksTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "BundleRoundTripTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "CrossOsBundleTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "RealCulturePacksTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "DictionaryFoldTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "RealPacksTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SqlDictionaryPackTest[jvm]",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ExamSessionTest[jvm]",
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "FormatsTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "IlrEstimatorTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "RealExamPacksTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SuggestionsTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "AfterActionStorageTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "HistoryAndReviewTest[jvm]",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SpeakingLabelTest[jvm]",
+    "tests": 5,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [
+      {
+        "name": "aGuidedInterviewIsLabelledInHistoryAndThePdf[jvm]",
+        "message": "java.lang.AssertionError: Mokuhyo \u00b7 unofficial practice report \u00b7 page 1\nMokuhyo progress report\nTest Learner\nLanguages: Spanish Espa\u00f1ol\nPeriod: all dates \u00b7 generated 21 Oct 2026 \u00b7 app test\nUnofficial practice \u2014 not an official rating. The levels in this report are estimates from practice tests\nand simulated interviews in the Mokuhyo app. They are not DLPT or OPI scores and are not\naffiliated with DLI, ACTFL, AFCLC or the LEAP program.\nSpanish Espa\u00f1ol: Reading \u2014 \u00b7 Listening \u2014 \u00b7 Speaking \u2014\nMokuhyo \u00b7 unofficial practice report \u00b7 page 2\nSpanish Espa\u00f1ol (es)\nILR estimates over time\n0+\n1\n1+\n2\n2+\n3\nNo estimates yet.\nTests\nNo tests in this period.\nInterviews and conversations\n1 Jan 1970 \u00b7 Interview test \u00b7 ILR 2 (AI-rated, not in speaking trend \u2014 guided interview \u2014 scripted\nquestions)\n   \u2022 Narrate in the past.\nWeak areas\nNothing stands out yet.\nReview queue\n0 items \u00b7 0 due now \u00b7 0 reviews in this period\n"
+      }
+    ],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "IcuSentencesTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LanguageModuleContractTest[jvm]",
+    "tests": 7,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [
+      {
+        "name": "dictionaryHitsOnKnownWords[jvm]",
+        "message": "java.lang.AssertionError: required pack missing: es dictionary: content/packs/es/dictionary.sqlite not built"
+      }
+    ],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "VoiceRotationTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ConjugatorTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "DeinflectorTest[jvm]",
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "FuriganaTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "KanaConversionTest[jvm]",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "MoraTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PitchTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LatticeTokenizerTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LexiconPackageTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SideBySideTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "NoNetworkTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "NumbersTest[jvm]",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "CalibrationTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "CorrectionsModeTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ExemplarsTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "GuidedInterviewTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "InterpretTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "InterviewerRepeatTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "LiveSchemaTest[jvm]",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "OpiProbeMapTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "OpiRateGoldenTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "OpiSessionTest[jvm]",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PragmaticsGoldenTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PromptIndexPackTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "RealOpiPacksTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SimilarQuestionsTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SpeakingTrendTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SpeechPriorityTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "StorylineTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ReportFontTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "CaptureResampleTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "DegradeTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "OggOpusTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PlaybackCancelTest[jvm]",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PlaybackOpenTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "PreflightTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ReadinessTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "ReplyDeadlineTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "SentenceStreamTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "TimeStretchTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "TurnTimelineTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "VadStartupTest[jvm]",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "VadTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "AnswerCheckerTest[jvm]",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "FsrsOptimizerTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "FsrsTest[jvm]",
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "StandToTest[jvm]",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "CryptoTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "OsVoiceTest[jvm]",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": [
+      "SKIP realOsVoices: no OS voice on LINUX"
+    ]
+  },
+  {
+    "module": "shared",
+    "suite": "PiperEngineTest[jvm]",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": [
+      "SKIP speedChangesDuration: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP dialoguesRenderWithDistinctVoices: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP oneProcessServesManyRequests: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP idleProcessIsStopped: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP serviceUsesBundledVoiceForEachLanguage: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP cancellationKillsTheProcess: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch",
+      "SKIP synthesizesOneSentencePerAvailableVoice: no Piper build or voices (dev checkout /workspace/mokuhyo-v040-qc/voices; piper=null, voices=0); run voices/build.sh and tools/voices/manifest.py --fetch"
+    ]
+  },
+  {
+    "module": "shared",
+    "suite": "PiperThreadsTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "VoiceCatalogTest[jvm]",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "VoiceServiceTest[jvm]",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "shared",
+    "suite": "UpdateCheckTest[jvm]",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.AfterActionRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.AppGraphTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.FontCoverageTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.FormatRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.HistoryLabelRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewCancelTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewCaptureTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewCheckpointTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewDeviceTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewPreflightTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.InterviewStorageFailureTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.ListeningKitTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.NavigationRailRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.PassageAudioKeyTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.PassageAudioLoadTest",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.PromptClipsTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.QuestionDeliveryTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.ReviewFocusRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.RollingLogTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.RoundtripVerdictTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.SideBySideRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.ThisMonthRenderTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.TimingsTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  },
+  {
+    "module": "desktopApp",
+    "suite": "app.mokuhyo.desktop.TopicCaptureTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [],
+    "conditional_skips": []
+  }
+]

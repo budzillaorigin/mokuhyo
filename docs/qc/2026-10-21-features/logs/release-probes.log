@@ -1,0 +1,5 @@
+Linux logging probe: exit=100, generic stderr retained, detailed stdout lost. This does NOT reproduce the package installation failure.
+== fresh install: Mokuhyo-0.4.0-linux-x64.deb
+Mokuhyo-0.4.0-linux-x64.deb: OK
+QC generic dpkg failure on stderr
+SBOM probe: collection exit=0 with installer present and no SBOM; missing mandatory artifact is accepted.

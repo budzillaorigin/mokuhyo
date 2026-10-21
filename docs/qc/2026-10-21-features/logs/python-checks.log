@@ -1,0 +1,37 @@
+
+COMMAND uv run --locked ruff check .
+All checks passed!
+exit=0
+
+COMMAND uv run --locked --group content --group release python -W ignore run_tests.py
+Installed 3 packages in 152ms
+ok    gates/test_console_encoding.py
+ok    gates/test_python_version.py
+ok    items/test_gen_dlpt.py
+ok    items/test_review_ingest.py
+ok    packs/test_build_dictionary.py
+ok    pragmatics/test_build_pragmatics.py
+ok    release/test_lexicon.py
+ok    terms/test_refresh.py
+ok    terms/test_terms_gates.py
+ok    tracks/test_build_track.py
+ok    voices/test_listening_kit.py
+ok    voices/test_manifest.py
+ok    voices/test_textsplit.py
+13/13 test scripts passed
+exit=0
+
+COMMAND uv run --locked python gates/check_licenses.py
+check_licenses: 0 problem(s)
+exit=0
+
+COMMAND uv run --locked python models/models_doc.py --check
+exit=0
+
+COMMAND uv run --locked python gates/check_provenance.py
+check_provenance: 0 problem(s)
+exit=0
+
+COMMAND uv run --locked python gates/check_culture.py
+check_culture: 11 languages, 0 errors
+exit=0

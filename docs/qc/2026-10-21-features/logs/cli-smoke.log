@@ -1,0 +1,13 @@
+COMMAND java <runtime classpath> app.mokuhyo.desktop.MainKt --smoke --no-network --data-dir /tmp/mokuhyo-feature-qc/smoke-data
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+smoke: database /tmp/mokuhyo-feature-qc/smoke-data/db/mokuhyo.sqlite (learner 93369bec-047f-4a9e-99a0-d30748d5807b)
+smoke: native CPU (GPU turned off in Settings)
+smoke: languages ja,es,fr,de,pt-BR,ru,zh-Hans,ko,ar,fa,id
+smoke: models in manifest 10
+smoke: rendered frame 1180x800, 20 distinct sampled colors
+smoke: OK
+
+exit=0

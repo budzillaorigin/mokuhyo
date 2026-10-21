@@ -1,0 +1,8 @@
+COMMAND java <runtime classpath> app.mokuhyo.desktop.MainKt --screenshots /tmp/mokuhyo-feature-qc/cli-shots --no-network --language es --only home --data-dir /tmp/mokuhyo-feature-qc/shots-data
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+screenshots: /tmp/mokuhyo-feature-qc/cli-shots
+
+exit=0

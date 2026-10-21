@@ -1,0 +1,60 @@
+{
+  "name": "app.mokuhyo.desktop.FeatureQcTest",
+  "tests": "10",
+  "failures": "0",
+  "errors": "0",
+  "skipped": "0",
+  "time": "42.07",
+  "cases": [
+    {
+      "name": "ungradedReviewItemLosesItsScheduleOnImport",
+      "time": "0.415",
+      "failed": false
+    },
+    {
+      "name": "listeningSpaceShortcutIsAdvertisedButUnhandled",
+      "time": "2.277",
+      "failed": false
+    },
+    {
+      "name": "selfRatingReplacesFactAndDoesNotMergeIntoEarlierImport",
+      "time": "0.123",
+      "failed": false
+    },
+    {
+      "name": "privacyCopyOmitsLanInferenceAndUrlImports",
+      "time": "0.806",
+      "failed": false
+    },
+    {
+      "name": "allScriptsAndNineDestinationsRenderOffline",
+      "time": "20.025",
+      "failed": false
+    },
+    {
+      "name": "realHttpEngineIsBlockedBeforeSocketConnection",
+      "time": "0.446",
+      "failed": false
+    },
+    {
+      "name": "lexiconLanguageSwitchKeepsPreviousLanguagesDrills",
+      "time": "1.322",
+      "failed": false
+    },
+    {
+      "name": "historyShowsScoreWithoutRequiredDisclaimer",
+      "time": "0.84",
+      "failed": false
+    },
+    {
+      "name": "firstRunSkipAndReviewGradeUndo",
+      "time": "2.347",
+      "failed": false
+    },
+    {
+      "name": "readingPracticeAndTimedResumeAcrossThreeScripts",
+      "time": "13.463",
+      "failed": false
+    }
+  ]
+}

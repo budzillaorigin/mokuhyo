@@ -1,0 +1,25 @@
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar UP-TO-DATE
+> Task :desktopApp:convertXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForTest NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForTest SKIPPED
+> Task :desktopApp:compileTestKotlin UP-TO-DATE
+> Task :desktopApp:compileTestJava NO-SOURCE
+> Task :desktopApp:assembleTestResources UP-TO-DATE
+> Task :desktopApp:processTestResources UP-TO-DATE
+> Task :desktopApp:testClasses UP-TO-DATE
+
+> Task :desktopApp:test
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo-v040-qc/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 43s
+15 actionable tasks: 2 executed, 13 up-to-date

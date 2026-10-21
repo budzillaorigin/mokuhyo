@@ -1,0 +1,184 @@
+{
+    "format": "mokuhyo-timing/1",
+    "generatedBy": "--bench-interview",
+    "appVersion": "0.4.0",
+    "machine": {
+        "os": "linux",
+        "arch": "x86_64",
+        "cpuCores": 4,
+        "ramGb": 16.0,
+        "gpu": null,
+        "power": null
+    },
+    "real": false,
+    "sessions": [
+        {
+            "id": "bench-es",
+            "kind": "BENCH",
+            "language": "es",
+            "modelId": null,
+            "modelHash": null,
+            "voiceId": null,
+            "backend": null,
+            "llmThreads": null,
+            "asrThreads": null,
+            "ttsThreads": null,
+            "warmupMs": {},
+            "turns": [
+                {
+                    "index": 0,
+                    "cold": true,
+                    "answerMs": null,
+                    "fallback": "no_model",
+                    "llmAttempts": 0,
+                    "prerendered": false,
+                    "ttsSynthMs": null,
+                    "ttsAudioMs": null,
+                    "peakRssMb": 104,
+                    "events": [
+                        {
+                            "stage": "llm_queued",
+                            "ms": 49,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "tts_start",
+                            "ms": 83,
+                            "meaningful": true
+                        }
+                    ],
+                    "stages": {}
+                },
+                {
+                    "index": 1,
+                    "cold": false,
+                    "answerMs": 7600,
+                    "fallback": "no_model",
+                    "llmAttempts": 0,
+                    "prerendered": false,
+                    "ttsSynthMs": null,
+                    "ttsAudioMs": null,
+                    "peakRssMb": 105,
+                    "events": [
+                        {
+                            "stage": "last_speech",
+                            "ms": -1409,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "vad_endpoint",
+                            "ms": 90,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "capture_stop",
+                            "ms": 90,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "asr_queued",
+                            "ms": 90,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "checkpoint_saved",
+                            "ms": 123,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "llm_queued",
+                            "ms": 123,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "tts_start",
+                            "ms": 124,
+                            "meaningful": true
+                        }
+                    ],
+                    "stages": {
+                        "endpoint": 1500
+                    }
+                },
+                {
+                    "index": 2,
+                    "cold": false,
+                    "answerMs": 60800,
+                    "fallback": "no_model",
+                    "llmAttempts": 0,
+                    "prerendered": false,
+                    "ttsSynthMs": null,
+                    "ttsAudioMs": null,
+                    "peakRssMb": 107,
+                    "events": [
+                        {
+                            "stage": "last_speech",
+                            "ms": -1371,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "vad_endpoint",
+                            "ms": 128,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "capture_stop",
+                            "ms": 128,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "asr_queued",
+                            "ms": 128,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "checkpoint_saved",
+                            "ms": 132,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "llm_queued",
+                            "ms": 132,
+                            "meaningful": true
+                        },
+                        {
+                            "stage": "tts_start",
+                            "ms": 134,
+                            "meaningful": true
+                        }
+                    ],
+                    "stages": {
+                        "endpoint": 1500
+                    }
+                }
+            ]
+        }
+    ],
+    "summary": {
+        "warm": {
+            "endpoint": {
+                "n": 2,
+                "p50": 1500,
+                "p95": 1500,
+                "max": 1500
+            }
+        },
+        "cold": {},
+        "firstAudioBy": {},
+        "ttsRealTimeFactor": null,
+        "fallbackRate": 1.0,
+        "prerenderedRate": 0.0,
+        "peakRssMb": 107,
+        "cancel": {},
+        "warmupMs": {}
+    },
+    "notRun": {
+        "llm": "no model file (pass --model <gguf> --model-id <id>, or install a tier in the app)",
+        "asr": "no Whisper model (pass --whisper <bin>)",
+        "playback": "null sink (pass --play to use the default output device)",
+        "tts:es": "no voice for es on this computer",
+        "clip:es/short": "no self-recorded clip and no voice to render one: ASR fed the text",
+        "clip:es/long": "no self-recorded clip and no voice to render one: ASR fed the text"
+    },
+    "cancellation": []
+}
