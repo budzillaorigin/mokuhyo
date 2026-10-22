@@ -1,4 +1,44 @@
-# Mokuhyo 0.4.0 (pre-release)
+# Mokuhyo 0.4.1 (pre-release)
+
+**What's new in 0.4.1: safer backups, honest labels everywhere, and fixes from a full feature review.** On Windows,
+installing 0.4.1 upgrades 0.4.0 in place; your history, recordings and settings stay. If you use backup files to move
+between computers, update both computers to 0.4.1.
+
+- **Backups keep everything:**
+  - Words added to Review but not yet practiced now come across in a backup and stay due. Before, they were imported
+    but dropped out of the review queue.
+  - A self-rating given after an interview is saved as a new record instead of replacing the interview, and it now
+    reaches your other computer when you import a backup.
+- **Honest labels:**
+  - History shows the unofficial-practice notice next to every score, in the list and in each opened item.
+  - Reading and Listening badges now say "AI-generated · unreviewed" until a person has checked the item.
+  - Settings → Privacy and the security profile now list every connection the app can make, including that your
+    prompts and answers go to an Ollama server on your home network if you choose one.
+- **Fixes:**
+  - Changing language in the Lexicon no longer leaves the previous language's drill on screen.
+  - Space plays and stops Listening audio, as the on-screen hint says (it now reads "Space play/stop").
+- **Release checks:** every download now comes with its software bill of materials (SBOM), and the installers are
+  installed and launched on a clean machine for each platform before release.
+- **Linux (unofficial):** the `.deb` now installs on systems without a desktop menu folder; it adds the menu entry
+  when it can and otherwise continues.
+
+Response speed on real laptops has not been measured yet. All new content is AI-drafted and marked "unreviewed" until
+a person checks it. Interview estimates say "uncalibrated" until instructor-rated recordings calibrate them.
+
+**Unofficial practice — not an official rating. Not affiliated with DLI, ACTFL, AFCLC or the LEAP program.**
+
+| Computer | File |
+|---|---|
+| Windows 10/11 (64-bit) | `Mokuhyo-0.4.1-windows-x64.msi` |
+| Mac with Apple silicon | `Mokuhyo-0.4.1-macos-arm64.dmg` |
+| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.4.1-macos-x64.dmg` |
+| Linux x64 (unofficial, Ubuntu 22.04 or later) | `Mokuhyo-0.4.1-linux-x64.deb` |
+
+Check downloads against `SHA256SUMS`. The installers are unsigned; see `docs/INSTALL.md`.
+
+---
+
+## 0.4.0
 
 **What's new in 0.4.0: dependable spoken interviews and faster replies.** On Windows, installing 0.4.0 upgrades
 0.3.x in place; your history, recordings and settings stay.
