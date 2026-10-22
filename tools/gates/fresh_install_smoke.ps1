@@ -6,6 +6,7 @@
 #   powershell -File tools/gates/fresh_install_smoke.ps1 -Tag main -Dir dist   # installers from a folder (dry run)
 param([Parameter(Mandatory = $true)][string]$Tag, [string]$Name = "windows-x64", [string]$Dir = "")
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "sha256sums.ps1")
 $version = if ($Tag -match '^v\d') { $Tag.TrimStart("v") } else { "0.1.0" }
 if ($Dir) { $Dir = (Resolve-Path $Dir).Path }
 $asset = "Mokuhyo-$version-$Name.msi"
@@ -20,7 +21,7 @@ if ($Dir) {
     gh release download $Tag --pattern $asset --pattern SHA256SUMS
     if ($LASTEXITCODE -ne 0) { throw "download failed" }
 }
-$want = (Select-String -Path SHA256SUMS -Pattern " $([regex]::Escape($asset))$").Line.Split(" ")[0]
+$want = Get-ExpectedSha256 -SumsPath (Join-Path $work "SHA256SUMS") -Asset $asset
 $got = (Get-FileHash $asset -Algorithm SHA256).Hash.ToLower()
 if ($want -ne $got) { throw "checksum mismatch: $got != $want" }
 $p = Start-Process msiexec.exe -ArgumentList "/i", "`"$work\$asset`"", "/qn", "/l*v", "`"$work\install.log`"" -Wait -PassThru

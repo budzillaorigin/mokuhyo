@@ -18,6 +18,13 @@ REPO = Path(__file__).resolve().parents[2]
 BIN = REPO / "desktopApp" / "build" / "compose" / "binaries" / "main"
 
 
+def patch_deb(deb: Path) -> None:
+    """Make the .deb's desktop-menu step non-fatal (deb_menu.py; release dry run 39663569689)."""
+    import deb_menu  # Linux only: needs dpkg-deb
+    changed = deb_menu.patch(deb)
+    print(f"collect: {deb.name}: {changed} desktop-menu command(s) made non-fatal")
+
+
 def sbom_problem(path: Path) -> str | None:
     """Why [path] is not a usable CycloneDX JSON SBOM of the shipped runtime, or None."""
     if not path.is_file():
@@ -47,6 +54,8 @@ def main() -> int:
     for ext in ("msi", "dmg", "deb"):
         for f in (BIN / ext).glob(f"*.{ext}") if (BIN / ext).is_dir() else []:
             shutil.copy2(f, out / f"{base}.{ext}")
+            if ext == "deb":
+                patch_deb(out / f"{base}.{ext}")
             found += 1
     app = BIN / "app"
     images = [p for p in app.iterdir()] if app.is_dir() else []
