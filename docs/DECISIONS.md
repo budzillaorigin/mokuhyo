@@ -690,3 +690,7 @@ GitHub artifact-service error; re-running the job fixed it.)
   script subprocess returned error exit status 3", half-configured; patched → installed and purged cleanly.
 - Not done: the CI runner's missing applications folder is not created by the gate, so the gate keeps testing the
   harder case. Linux stays unofficial (D-025).
+
+## D-048 — Qwen3-TTS audition exception (owner decision, 2026-10-30)
+
+**D-048 — Qwen3-TTS audition exception (owner decision, 2026-10-30).** Qwen3-TTS may be used for voice auditions on the owner's own machine (RTX 5090). Those auditions have already produced audition sets, which live on that machine and are not in the repo. Repo tooling may import externally rendered audition WAVs as a labeled candidate for blind comparison. Qwen weights, Qwen-rendered audio, Qwen runtime code, and any manifest or installer entry for Qwen are **not** committed or shipped under this exception. Shipping Qwen as a live or prerecorded voice would need a further owner decision. No other exception exists beyond D-041 and D-048.
