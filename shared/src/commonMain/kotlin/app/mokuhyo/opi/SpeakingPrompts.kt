@@ -305,8 +305,11 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             "ILR speaking levels: " + IlrSpeaking.descriptors.entries.joinToString("; ") { "${it.key}: ${it.value}" } + ".",
             if (input.registerNotes.isNotBlank()) "Register in this language: ${input.registerNotes}" else "",
             "Judge only the candidate's lines. Rate each factor: functions (tasks handled: describe, narrate, support opinion, hypothesize), " +
-                "context/content (topics handled: personal, routine, concrete, abstract), accuracy (grammar, vocabulary, pronunciation as reflected in the transcript, register), " +
+                "context/content (topics handled: personal, routine, concrete, abstract), accuracy (grammar, vocabulary, register), " +
                 "text type (words, sentences, connected sentences, paragraphs, extended discourse).",
+            // QC 2026-10-30 V13: a transcript can't show how something sounded (ASR normalizes or mishears it).
+            "You only have a speech-to-text transcript: it carries no evidence of pronunciation, accent, pitch, tones or intonation. " +
+                "Do not judge or mention pronunciation; base every factor on grammar, vocabulary, functions and discourse.",
             "Each factor gets an ILR level, one or two English sentences of evidence and up to 3 short verbatim quotes from the candidate.",
             "sustained_level is the highest level the candidate sustained across the interview; breakdown_level is the lowest level where speech broke down (omit or repeat sustained if none).",
             "estimate is the overall level: the sustained level, never the best single answer. rationale (English) explains it. next_steps: exactly three concrete, specific practice actions in English.",
@@ -352,8 +355,27 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             val sustained = IlrLevel.parse(out.sustainedLevel)
             val estimate = IlrLevel.parse(out.estimate)
             val capped = if (sustained != null && estimate != null && estimate > sustained) sustained.label else out.estimate
-            return out.copy(functions = clean(out.functions), contextContent = clean(out.contextContent), accuracy = clean(out.accuracy),
-                textType = clean(out.textType), estimate = capped, nextSteps = out.nextSteps.take(3))
+            fun heard(f: Factor) = clean(f).copy(evidence = withoutSoundClaims(f.evidence))
+            return out.copy(functions = heard(out.functions), contextContent = heard(out.contextContent), accuracy = heard(out.accuracy),
+                textType = heard(out.textType), estimate = capped, rationale = withoutSoundClaims(out.rationale),
+                nextSteps = out.nextSteps.filter { soundClaim.find(it) == null }.take(3))
+        }
+
+        private val soundClaim = Regex("(?i)pronunc|\\baccent|intonation|\\bpitch")
+
+        /**
+         * [text] without the sentences that judge how the candidate sounded (QC 2026-10-30 V13): this task reads a
+         * transcript, so such a sentence would be a claim without evidence. Fluency heuristics from the audio are separate.
+         */
+        fun withoutSoundClaims(text: String): String =
+            Regex("(?<=[.!?])\\s+").split(text.trim()).filter { it.isNotBlank() && soundClaim.find(it) == null }.joinToString(" ")
+
+        /** How a factor is named on the score screen and in reports: accuracy says what it covers (V13). */
+        fun factorLabel(name: String): String = when (name) {
+            "accuracy" -> "Accuracy (grammar, vocabulary, register; from the transcript)"
+            "context_content" -> "Context/content"
+            "text_type" -> "Text type"
+            else -> name.replaceFirstChar { it.uppercase() }
         }
 
         private fun squash(s: String) = s.lowercase().filter { it.isLetterOrDigit() }

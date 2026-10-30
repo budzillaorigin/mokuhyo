@@ -63,6 +63,7 @@ import app.mokuhyo.ai.AiResult
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.AfterActionBuilder
 import app.mokuhyo.opi.Calibration
+import app.mokuhyo.opi.OpiRate
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.CulturalReview
 import app.mokuhyo.opi.FeedbackQueue
@@ -849,7 +850,7 @@ private fun InterviewResults(
     }
     if (shown.factors.isNotEmpty()) SectionCard("Evidence by factor") {
         shown.factors.forEach { (name, f) ->
-            Text("${name.replace('_', '/').replaceFirstChar { it.uppercase() }}: ILR ${f.level}", fontWeight = FontWeight.SemiBold)
+            Text("${OpiRate.factorLabel(name)}: ILR ${f.level}", fontWeight = FontWeight.SemiBold)
             Text(f.evidence)
             f.quotes.forEach { q -> Text("“$q”", fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.bodySmall) }
         }
