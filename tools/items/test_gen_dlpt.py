@@ -256,5 +256,17 @@ def test_format_text_and_validation() -> None:
     assert any("plain text of formatData" in e for e in r.errors), r.errors
 
 
+def test_listening_prompts_ask_for_a_spoken_genre_not_a_written_document() -> None:
+    """QC 2026-10-30 V9: the "authentic document ... written" instruction went to listening scripts too."""
+    band = g.load_bands()["levels"]["2"]
+    for text_type, marker in (("conversation", "relationship set the register"), ("briefing", "for what purpose")):
+        msgs = g.draft_messages("es", "listening", "2", text_type, "un tema", band, 2, [], None)
+        text = " ".join(m["content"] for m in msgs)
+        assert "written by a native speaker" not in text and "document" not in text, text_type
+        assert marker in text and "[pause]" in text, text_type
+    reading = " ".join(m["content"] for m in g.draft_messages("es", "reading", "2", "report", "un tema", band, 2, [], None))
+    assert "authentic document of its type written by a native speaker" in reading
+
+
 if __name__ == "__main__":
     sys.exit(main())
