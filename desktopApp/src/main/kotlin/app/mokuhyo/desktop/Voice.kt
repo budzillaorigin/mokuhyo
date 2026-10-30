@@ -125,12 +125,18 @@ object Voice {
         }
     }
 
+    /** A streamed reply as delivered: the overall [outcome] and how far each sentence got ([reply], QC 2026-10-30 V10). */
+    data class Streamed(val outcome: Outcome, val reply: SpokenReply.Outcome) {
+        val heard: List<String> get() = reply.heard
+    }
+
     /**
      * Speaks a streamed reply (BRIEF_INTERVIEW_SPEED N3): each sentence as it arrives, the next one synthesized while
-     * the current one plays, all in one voice (the first sentence's, or [voice]). Returns [Outcome.Played] when every
-     * sentence played, otherwise why not; null when no sentence arrived at all. Cancelling the caller stops it.
+     * the current one plays, all in one voice (the first sentence's, or [voice]). [Streamed.outcome] is
+     * [Outcome.Played] when every sentence played, otherwise why not; null when no sentence arrived at all. Audio that
+     * was ready before a failure still plays (V10). Cancelling the caller stops it.
      */
-    suspend fun sayStreamed(app: AppGraph, sentences: ReceiveChannel<String>, lang: String, voice: VoiceSpec? = null): Outcome? {
+    suspend fun sayStreamed(app: AppGraph, sentences: ReceiveChannel<String>, lang: String, voice: VoiceSpec? = null): Streamed? {
         var used: VoiceSpec? = voice
         var problem: Outcome? = null
         val result = SpokenReply<SpokenAudio>(
@@ -141,11 +147,12 @@ object Voice {
             },
             play = { a -> playRendered(app, a).also { if (!it.ok) problem = it }.ok },
         ).speak(sentences)
-        return when {
-            result.played == 0 && !result.failed -> null
+        val outcome = when {
+            result.utterances.isEmpty() -> return null
             result.failed -> problem ?: Outcome.NoVoice
             else -> Outcome.Played(used!!)
         }
+        return Streamed(outcome, result)
     }
 
     /**

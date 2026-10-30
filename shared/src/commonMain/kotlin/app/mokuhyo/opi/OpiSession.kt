@@ -66,6 +66,13 @@ data class OpiTurnRecord(
     val levelAfter: IlrLevel? = null,
     val outcome: OpiTurnOutcome = OpiTurnOutcome.NOT_RATED,
     val engine: String? = null,
+    /**
+     * What the learner actually heard, when it differs from [question] (QC 2026-10-30 V10: a streamed question that
+     * failed part-way). Null on records from before this field existed and whenever the question played as written.
+     */
+    val heard: String? = null,
+    /** Per-sentence delivery of the spoken question (generated, queued, failed, interrupted, completed); null if unknown. */
+    val delivery: List<app.mokuhyo.speech.UtteranceDelivery>? = null,
 ) {
     val rated: Boolean get() = outcome != OpiTurnOutcome.NOT_RATED
 }
@@ -205,6 +212,22 @@ class OpiSession(
      */
     fun warmupInput(): OpiInterviewerTurn.Input = OpiInterviewerTurn.Input(language, profile.registerNotes, phase, workingLevel,
         history.toList(), turnsInPhase, culturalNotes = culturalNotes)
+
+    /**
+     * Records how the current question was delivered (QC 2026-10-30 V10): [heard] is what the learner heard and now
+     * answers (see [app.mokuhyo.speech.ReplyRepair]); it replaces the planned text in the conversation the model sees and
+     * is stored next to it, never instead of it. Only the open (unanswered) question can be updated.
+     */
+    fun delivered(heard: String, delivery: List<app.mokuhyo.speech.UtteranceDelivery>) {
+        val i = records.lastIndex
+        val r = records.getOrNull(i)?.takeIf { it.answer == null } ?: return
+        val text = heard.trim()
+        records[i] = r.copy(heard = text.takeIf { it.isNotEmpty() && it != r.question }, delivery = delivery.ifEmpty { null })
+        if (text.isNotEmpty() && text != r.question && history.lastOrNull()?.speaker == Speaker.PARTNER) {
+            history[history.lastIndex] = Turn(Speaker.PARTNER, text)
+            asked += text
+        }
+    }
 
     /** Fills the English gloss of question [index] once the background [GlossLine] has it (N3); never overwrites one. */
     fun gloss(index: Int, english: String) {
