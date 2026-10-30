@@ -392,6 +392,12 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var preflight by remember { mutableStateOf<Preflight.Report?>(null) }
     // The current question's bank id when it is scripted: its prerendered clip (N5), Repeat included.
     var lineBankId by remember { mutableStateOf<String?>(null) }
+    // One interviewer voice for the whole interview (QC 2026-10-30 V5): the first voice that actually speaks is asked
+    // for on every later turn, streamed or scripted; any substitution is logged (Voice.render).
+    var interviewVoice by remember { mutableStateOf<VoiceSpec?>(null) }
+    fun keepVoice(o: Voice.Outcome?) {
+        if (interviewVoice == null && o is Voice.Outcome.Played && o.voice.engine != "prerendered") interviewVoice = o.voice
+    }
     var preflightJob by remember { mutableStateOf<Job?>(null) }
     var preflightRunning by remember { mutableStateOf(false) }
     // Stage timings for Settings → Speech & audio → Diagnostics (BRIEF_INTERVIEW_SPEED N1): no text, no audio.
@@ -430,7 +436,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 timeline.note { prerendered = true }
                 val spec = VoiceSpec(clip.entry.voice ?: "prerendered", module.code, "", "prerendered", clip.entry.credit ?: "")
                 Voice.playRendered(app, SpokenAudio(clip.wav, spec))
-            } else speak(app, text, module.code)
+            } else Voice.say(app, text, module.code, interviewVoice).also(::keepVoice)
         } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
         if (!outcome.ok && !test) showText = true
@@ -512,7 +518,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 val sentences = Channel<String>(2)
                 // Text-ready, audio-ready and output-start are separate deadlines (QC 2026-10-30 V6): every synthesis
                 // attempt for this question shares one budget, so an engine's per-request timeout can't extend the wait.
-                val speaking = async(SpeechBudget(SpeechBudget.forResponse(app.replyDeadlineMs()))) { Voice.sayStreamed(app, sentences, module.code) }
+                val speaking = async(SpeechBudget(SpeechBudget.forResponse(app.replyDeadlineMs()))) {
+                    Voice.sayStreamed(app, sentences, module.code, interviewVoice)?.also { keepVoice(it.outcome) }
+                }
                 val line = try {
                     withContext(Dispatchers.Default) {
                         session.next(speak = { s -> status = if (test) "Listen, then answer." else "Listen…"; sentences.send(s) }, splitter = IcuSentences(module.code))

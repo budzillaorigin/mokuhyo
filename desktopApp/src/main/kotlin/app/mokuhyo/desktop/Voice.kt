@@ -44,6 +44,12 @@ object Voice {
         /** Nothing had played when the response's speech budget ran out (QC 2026-10-30 V6). */
         data object TimedOut : Outcome
 
+        /**
+         * The reply's voice failed after it had started and only [got] could speak the rest: the reply stopped rather than
+         * switch voices mid-reply (QC 2026-10-30 V5).
+         */
+        data class VoiceChanged(val voice: VoiceSpec, val got: VoiceSpec) : Outcome
+
         val ok: Boolean get() = this is Played
 
         /** A sentence for the learner when it didn't play. */
@@ -51,6 +57,7 @@ object Voice {
             is Played -> null
             NoVoice -> "No voice is available for this language on this computer."
             TimedOut -> "The voice took too long to start, so the text is shown instead."
+            is VoiceChanged -> "The voice stopped working part-way, so the reply stopped rather than continue in another voice; it is shown as text."
             is PlaybackFailed -> "The voice couldn't be played: $message. Check the speakers or headphones and the output device in Settings → Speech & audio."
         }
     }
@@ -95,10 +102,14 @@ object Voice {
         val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext null
         // A WAV engine's audio is ready all at once: synthesis complete, not first PCM (QC 2026-10-30 V12).
         trace?.mark(TurnStage.TTS_SYNTH_DONE)
+        // Every substitution of the requested voice is logged and shown in diagnostics (QC 2026-10-30 V5). Ids only.
+        val fallback = voice?.takeIf { !same(it, spoken.voice) }?.let { "${label(it)}->${label(spoken.voice)}" }
+        fallback?.let { app.log.line("tts fallback $lang $it") }
         trace?.timeline?.note(trace.turn) {
             ttsSynthMs += (System.nanoTime() - synthStart) / 1_000_000
             ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
-            voices += "${spoken.voice.engine}:${spoken.voice.id}"
+            voices += label(spoken.voice)
+            fallback?.let { voiceFallbacks += it }
         }
         spoken
     }
@@ -132,6 +143,11 @@ object Voice {
         }
     }
 
+    /** `engine:id[#speaker]`, the identity compared across a reply and logged. */
+    fun label(v: VoiceSpec): String = "${v.engine}:${v.id}" + (v.speaker?.let { "#$it" } ?: "")
+
+    fun same(a: VoiceSpec, b: VoiceSpec): Boolean = a.engine == b.engine && a.id == b.id && a.speaker == b.speaker
+
     /** A streamed reply as delivered: the overall [outcome] and how far each sentence got ([reply], QC 2026-10-30 V10). */
     data class Streamed(val outcome: Outcome, val reply: SpokenReply.Outcome) {
         val heard: List<String> get() = reply.heard
@@ -144,14 +160,24 @@ object Voice {
      * was ready before a failure still plays (V10). Cancelling the caller stops it.
      */
     suspend fun sayStreamed(app: AppGraph, sentences: ReceiveChannel<String>, lang: String, voice: VoiceSpec? = null): Streamed? {
-        var used: VoiceSpec? = voice
+        // One identity per reply (QC 2026-10-30 V5): [voice] is asked for; the first sentence that renders fixes the
+        // voice (a fallback before anything played is allowed and logged). A later sentence that only another voice
+        // could render stops the reply instead of switching voices part-way; V10's repair then applies.
+        var used: VoiceSpec? = null
         var problem: Outcome? = null
         val result = SpokenReply<SpokenAudio>(
             synth = { s ->
-                val a = render(app, s, lang, used)
-                if (a == null) problem = if (currentSpeechBudget()?.exhausted == true) Outcome.TimedOut else Outcome.NoVoice
-                else if (used == null) used = a.voice
-                a
+                val a = render(app, s, lang, used ?: voice)
+                val fixed = used
+                when {
+                    a == null -> { problem = if (currentSpeechBudget()?.exhausted == true) Outcome.TimedOut else Outcome.NoVoice; null }
+                    fixed != null && !same(fixed, a.voice) -> {
+                        app.log.line("tts reply stopped $lang: ${label(fixed)} failed mid-reply, only ${label(a.voice)} could continue")
+                        problem = Outcome.VoiceChanged(fixed, a.voice)
+                        null
+                    }
+                    else -> a.also { if (fixed == null) used = a.voice }
+                }
             },
             play = { a -> playRendered(app, a).also { if (!it.ok) problem = it }.ok },
         ).speak(sentences)

@@ -109,6 +109,8 @@ class TurnTimeline(
         var prerendered: Boolean = false
         /** `engine:voice` of each utterance in order, as it actually rendered (fallbacks included). */
         val voices: MutableList<String> = ArrayList()
+        /** `requested->rendered` for every utterance another voice spoke (QC 2026-10-30 V5). */
+        val voiceFallbacks: MutableList<String> = ArrayList()
     }
 
     private val lock = Any()
@@ -174,6 +176,7 @@ class TurnTimeline(
                     ttsSynthMs = t.ttsSynthMs.takeIf { it > 0 }, ttsAudioMs = t.ttsAudioMs.takeIf { it > 0 },
                     peakRssMb = t.peakRssBytes?.let { it / (1024 * 1024) },
                     voices = t.voices.toList(),
+                    voiceFallbacks = t.voiceFallbacks.toList(),
                     gapsMs = gaps(mine),
                     underruns = mine.count { it.stage == TurnStage.OUTPUT_UNDERRUN },
                     events = mine.sortedBy { it.atNanos }.map { TimingReport.Mark(it.stage.wire, it.atNanos / 1_000_000, it.meaningful) },
