@@ -1007,3 +1007,68 @@ new logging to capture the dpkg cause (a packaging fix, if any, is a separate ca
 run showing the per-platform SBOMs and their checksums; real-speech, physical keyboard/output and screen-reader
 checks for Q9; and the report's owner checklist on Mac/Windows with fresh synthetic learners (recheck Q2 self-rating
 there). No release was published, no workflow file added, nothing merged.
+
+## 2026-10-30 — D-048/D-049 voice QC fixes checkpoint (BRIEF_VOICE_FIXES_2026-10-30, V1–V13)
+
+Branch `claude/voice-fixes-brief-2026-10-30` from `22a0409` (main `7b4a731` + the brief); PR against main, unmerged.
+No later commit on main had resolved any finding. One fix and one regression per commit; "fails without the fix" was
+shown on this machine with main's logic in place (temporarily restored, then put back).
+
+| Finding | Commit | Regression | Fails without the fix |
+| --- | --- | --- | --- |
+| Step 0 D-048 | `810b6e7` | — (decision record) | — |
+| V1 P1 splitter | `fae642c` | `test_textsplit.py`, `IcuSentencesFixtureTest` | yes: `2.5.` → `2. 5.`; ICU ended a sentence inside "Dr. Smith" |
+| V5 P1 audition labels | `49e5842` | `ListeningKitTest`, `test_listening_kit.py` | yes: B's WAV filed as `piper:a-voice` |
+| V11 P1 render identity | `1f99b5f` | `test_render_identity.py` | main has no identity module; main's rule (skip any existing file) fails on every changed key |
+| V12 P2 markers | `4d30431` | `OutputMarkersTest` | yes: `tts_first_pcm` marked for a WAV engine; no gap measured |
+| V2 P1 boundary policy | `477e9cf` | `BoundaryPolicyTest`, `test_boundary.py`, `PassageAudioKeyTest` | yes: gaps `[550, 900]` instead of `[700, 1050]`; job pause after the last line |
+| V9 P2 register, genres | `d62d5d0` | `test_register_audit.py`, `test_gen_dlpt.py`, `GeneratePassagePromptTest` | yes: both warm-ups flagged; listening prompt had no spoken genre |
+| V10 P1 delivery | `6b53576` | `SentenceStreamTest`, `TopicPartialReplyTest` | yes: A/B/C played `[A.]` only; partial topic reply lost |
+| V6 P1 budget | `b2909f7` | `SpeechBudgetTest` | yes: 10 s wait on a 3 s budget; a fallback voice extended it to 6 s |
+| V5 P1 voice identity | `70be4d8` | `VoiceIdentityTest` | yes: reported A when B spoke; B finished A's reply |
+| V4 P1 speech request | `c6464b2` | `PcmReplyPlayerTest` | new interface (does not compile on main); main opens a line per sentence |
+| V8 P2 conversation | `1ee9ac4` | `ConversationProtocolTest` | yes: 4/4 (tutor; repeat rejected; no follow-up; no coaching rule) |
+| V7 P2 capture mode | `70ac61c` | `CapturePatienceTest` | yes: the fixed 1.5 s endpoint cut a 2 s thinking pause |
+| V13 P2 pronunciation | `52c7910` | `OpiRateClaimsTest` | yes: 2/2 |
+
+**Toolchain and validation in this container (Linux, headless, no audio devices, no model weights, no native build):**
+- OpenJDK 21.0.12.1 with `javac` (the review's container had only the runtime); Gradle 9.7.1 wrapper; Maven Central
+  answered HTTP 429, so a local init script (not in the repo) puts Google's Maven Central mirror first. Python 3.12 via
+  `uv`, with `uv sync --all-groups` (installs `wordfreq` and `cryptography`).
+- Baseline before any change: `./gradlew :shared:jvmTest :desktopApp:test` ran; the only failure was the new V1 ICU
+  fixture test.
+- Final: `./gradlew :shared:jvmTest :desktopApp:test --rerun-tasks`: **467 shared + 70 desktop, 0 failures**, with 30
+  conditional `SKIP` lines for absent resources (native library, Piper build and voices, downloaded models, pack
+  dictionaries, OS voice on Linux): skipped stages, not failures. `uv run python tools/run_tests.py`: **20/20**
+  (including `test_textsplit.py`, `test_manifest.py`, `test_listening_kit.py`, `test_gen_dlpt.py`, and the new
+  `test_render_identity.py`, `test_boundary.py`, `test_register_audit.py`); Ruff clean.
+- Gates with `MOKUHYO_NO_SOURCES=1 SKIP_EVAL=1 SKIP_FULL=1`: gate_core **pass**, gate_speaking **pass**, gate_exam
+  **pass** (after `tools/release/stage_fonts.py --cache-only`; without the fonts its PDF label case stops with "fonts
+  missing", an environment gap, not this change). The gates rewrite tracked pack files; those side effects were discarded.
+- My own V12 edit first broke cancellation (a second lambda parameter on `Playback.run` captured `playOwned`'s trailing
+  lambda); `PlaybackCancelTest` caught it and the commit uses a settable `onUnderrun` instead.
+
+**Register audit (V9), for native review (AFCLC), not fixed here:** 24 bank questions. es: `es-q-warmup-0+-02`,
+`-03`, `-04`, `es-q-probe-1-01`…`-04`, `es-q-probe-2+-02`, `es-cuas-probe-08`; ru: `ru-q-warmup-0+-02`…`-04`,
+`ru-q-level_check-0+-01`…`-06`, `ru-q-level_check-1-01`, `-1-03`, `-1-06`; id: `id-q-warmup-1-02`, `id-q-probe-1-04`;
+ko: `ko-q-probe-1-01`. Run `uv run python tools/opi/register_audit.py` for the text.
+
+**Clip IDs that need re-rendering (owner, not done here):**
+- Prompt clips whose text changed (V9): `es-q-warmup-0+-01` (its index hash now differs, so the app will not play an old
+  clip for it) and `ru-q-warmup-0+-01` (Russian has no prompt index yet).
+- Clips whose lines the old splitter corrupted (V1), if they were rendered by `chatterbox_render.py` (check
+  `audio/voices.json`; Piper-rendered clips never went through the splitter): `ar-dl-1p-announcement-002`,
+  `cuas-base-defense-ar-dlg-joint-patrol-brief`, `de-dl-1p-interview-001`, `de-dl-2-news-002`,
+  `cuas-base-defense-es-dlg-joint-patrol-brief`, `fr-dl-2p-speech-004`, `cuas-base-defense-fr-dlg-joint-patrol-brief`,
+  `id-dl-2-report-004`, `id-dl-2-report-005`, `cuas-base-defense-id-dlg-airspace-coordination`,
+  `cuas-base-defense-id-dlg-joint-patrol-brief`, `cuas-base-defense-id-dlg-fpcon-contractor`,
+  `ko-dl-0p-short_exchange-004`, `cuas-base-defense-ko-dlg-joint-patrol-brief`, `cuas-base-defense-ko-dlg-request-qrf`,
+  `pt-dl-0p-short_exchange-003`, `ru-dl-3-analysis-004`, `cuas-base-defense-ru-dlg-joint-patrol-brief`.
+- Every joined clip will sound different under the V2 boundary policy, but the brief defers bulk re-rendering until the
+  owner has tuned the gaps by ear; V11 sends any new render to `compare/` beside the existing master.
+
+**Not verified (not claimed):** how anything sounds (naturalness, pause quality, the 600/700/1050 ms starting gaps),
+latency or cancellation on real devices, PCM-derived onsets against loopback, the PCM streaming path with a real
+engine (fake engine only), conversation mode with a real microphone, small-model behaviour under the new prompts,
+`chatterbox_render.py`/`voicevox_render.py` against real engines (no GPU, packages or weights here), and
+`--print-identity` on the 5090. Mocks prove control flow, not sound.
