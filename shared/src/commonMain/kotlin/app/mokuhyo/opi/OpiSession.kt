@@ -124,6 +124,13 @@ class OpiSession(
     private val usedDomains = mutableListOf<String>()
     private val records = mutableListOf<OpiTurnRecord>()
     private var turnsInPhase = 0
+    // Topic continuity (QC 2026-10-30 V8): the current topic area and how many follow-ups it has had.
+    private var currentDomain: String? = null
+    private var currentDomainPhase: OpiPhase? = null
+    private var followUps = 0
+    /** The candidate's last turn was a short question (a repair request, or a question to answer first). */
+    private var learnerAsked = false
+    private var lastWasRepair = false
     private var questionPhase = OpiPhase.WARMUP
     private var rolePlay: RolePlay? = null
     private val plan = if (test) TEST_PLAN else PRACTICE_PLAN
@@ -141,6 +148,7 @@ class OpiSession(
             asked.addAll(s.turns.map { it.question }); usedDomains.addAll(s.turns.mapNotNull { it.domain })
             phase = s.phase; workingLevel = s.workingLevel; turnsInPhase = s.turnsInPhase
             questionPhase = s.questionPhase; rolePlay = s.rolePlay; finished = s.finished; scriptedTurns = s.scriptedTurns
+            currentDomain = s.turns.lastOrNull()?.domain
         }
     }
 
@@ -165,6 +173,11 @@ class OpiSession(
         // Slot filling (BRIEF_PHASE8 N-00b): the session picks phase, target level, topic area and question type; the model
         // only writes the question. Phases advance by the plan, never by the model.
         val aim = targetFor(phase)
+        // A repair turn stays on the question it repairs and doesn't count toward the plan (V8).
+        // At most one uncounted repair per question, so questions back can never stall the plan.
+        val repair = learnerAsked && history.lastOrNull()?.speaker == Speaker.LEARNER && !lastWasRepair
+        lastWasRepair = repair
+        val topic = if (repair) currentDomain.orEmpty() else nextDomain()
         val input = OpiInterviewerTurn.Input(
             language, profile.registerNotes, phase, workingLevel, history.toList(), turnsInPhase,
             // Every role-play turn knows the situation and the interviewer's role; only the first sets it up (the model
@@ -174,10 +187,13 @@ class OpiSession(
             },
             usedDomains.distinct(),
             culturalNotes,
-            domain = nextDomain(),
+            domain = topic,
             questionType = OpiInterviewerTurn.questionType(phase, aim, turnsInPhase),
+            learnerAsked = repair,
+            followUp = !repair && followUps > 0 && topic == currentDomain,
         )
-        val task = OpiInterviewerTurn { scripted(it.phase) }
+        // With no usable model, a repair repeats the question being repaired rather than asking a new one (V8).
+        val task = OpiInterviewerTurn { if (it.learnerAsked) repeatLast() else scripted(it.phase) }
         var reason: String? = null
         var streamed = emptyList<String>()
         val deadline = replyDeadlineMs?.takeIf { hasScripted(phase) }
@@ -200,9 +216,13 @@ class OpiSession(
         history += Turn(Speaker.PARTNER, out.utterance)
         if (reason != null) scriptedTurns++
         asked += out.utterance
-        val next = nextFor(phase) // by the plan, counted before this turn is added
-        turnsInPhase++
-        advance(next)
+        learnerAsked = false
+        line.domain?.let { currentDomain = it; currentDomainPhase = phase }
+        if (!repair) {
+            val next = nextFor(phase) // by the plan, counted before this turn is added
+            turnsInPhase++
+            advance(next)
+        }
         return line
     }
 
@@ -241,7 +261,9 @@ class OpiSession(
         val answer = text.trim()
         history += Turn(Speaker.LEARNER, answer)
         val words = wordCount(answer)
-        val judged = questionPhase == OpiPhase.LEVEL_CHECK || questionPhase == OpiPhase.PROBE
+        // A short question back to the interviewer is a repair or a question to answer, not a proficiency sample (V8).
+        learnerAsked = words <= REPAIR_WORDS && app.mokuhyo.speech.ReplyRepair.isQuestion(answer)
+        val judged = (questionPhase == OpiPhase.LEVEL_CHECK || questionPhase == OpiPhase.PROBE) && !learnerAsked
         if (judged) adapt(words)
         val last = records.lastOrNull()
         if (last != null && last.answer == null) {
@@ -337,6 +359,11 @@ class OpiSession(
         return aim.firstNotNullOfOrNull { lv -> fresh.filter { it.level == lv }.randomOrNull(random) } ?: fresh.randomOrNull(random)
     }
 
+    /** The open question again, for a repair with no model (V8). */
+    private fun repeatLast(): OpiInterviewerTurn.Output? = records.lastOrNull()?.let { r ->
+        OpiInterviewerTurn.Output(r.heard ?: r.question, r.english, phase, "", r.domain.orEmpty())
+    }
+
     /** Whether [scripted] can supply a question for [phase] (an unasked bank question, or a role-play card). */
     private fun hasScripted(phase: OpiPhase): Boolean =
         bank.any { it.phase == phase.wireName && it.prompt !in asked } || (phase == OpiPhase.ROLEPLAY && rolePlays.any { it.opening !in asked })
@@ -364,9 +391,19 @@ class OpiSession(
         return OpiInterviewerTurn.Output(q.prompt, q.english, nextFor(phase), "", q.domain.orEmpty(), bankId = q.id)
     }
 
-    /** The next topic area: an unused one (in a stable shuffled order), else the least used. */
+    /**
+     * The next topic area (V8): in the level check and probe the current topic gets [FOLLOW_UPS] related follow-up(s)
+     * within the phase first; then an unused area that suits the phase and target level (in a stable shuffled order), else the least used.
+     */
     private fun nextDomain(): String {
-        val pool = OpiInterviewerTurn.DOMAINS.filter { it != "roleplay" }
+        val pool = domainsFor(phase, targetFor(phase))
+        val current = currentDomain
+        val samePhase = currentDomainPhase == phase && (phase == OpiPhase.LEVEL_CHECK || phase == OpiPhase.PROBE)
+        if (current != null && current in pool && followUps < FOLLOW_UPS && samePhase) {
+            followUps++
+            return current
+        }
+        followUps = 0
         val unused = pool.filter { it !in usedDomains }
         return if (unused.isNotEmpty()) unused.shuffled(random).first() else pool.minBy { d -> usedDomains.count { it == d } }
     }
@@ -374,6 +411,24 @@ class OpiSession(
     private fun nextFor(phase: OpiPhase) = if (turnsInPhase + 1 >= plan.getValue(phase)) OpiPhase.entries.getOrElse(phase.ordinal + 1) { phase } else phase
 
     companion object {
+        /** Related follow-ups a topic gets in the level check and probe before the interviewer moves on (V8). */
+        const val FOLLOW_UPS = 1
+
+        /** A learner turn of at most this many words that ends in a question mark is a question back, not an answer. */
+        const val REPAIR_WORDS = 8
+
+        /** Topic areas that suit [phase] at [aim] (V8): familiar ones early and at the low end, abstract ones only high. */
+        fun domainsFor(phase: OpiPhase, aim: IlrLevel): List<String> = when (phase) {
+            OpiPhase.WARMUP -> listOf("personal", "family", "work", "travel")
+            OpiPhase.WINDDOWN -> listOf("personal", "family", "travel")
+            else -> when {
+                aim <= IlrLevel.L1 -> listOf("personal", "family", "work", "travel", "community")
+                aim <= IlrLevel.L2 -> listOf("work", "community", "travel", "current_events", "military", "family")
+                aim <= IlrLevel.L2_PLUS -> listOf("work", "community", "current_events", "military", "hypothetical")
+                else -> listOf("current_events", "military", "hypothetical", "abstract")
+            }
+        }
+
         /** Planned turns per phase: a short practice interview, and the full 20–30 minute test. */
         val PRACTICE_PLAN = mapOf(OpiPhase.WARMUP to 2, OpiPhase.LEVEL_CHECK to 3, OpiPhase.PROBE to 3, OpiPhase.ROLEPLAY to 2, OpiPhase.WINDDOWN to 1)
         val TEST_PLAN = mapOf(OpiPhase.WARMUP to 3, OpiPhase.LEVEL_CHECK to 6, OpiPhase.PROBE to 5, OpiPhase.ROLEPLAY to 3, OpiPhase.WINDDOWN to 2)

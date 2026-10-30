@@ -157,12 +157,11 @@ class PartnerReply : StreamingPromptTask<TopicTurn.Input, PartnerReply.Output> {
     override val maxTokens = 400
     override val schema = JsonSchema.Obj(listOf("reply" to JsonSchema.Str(maxLength = 400)))
 
-    override fun messages(input: TopicTurn.Input): List<ChatMessage> {
-        val full = TopicTurn().messages(input)
-        val sys = full.first().content.lineSequence().takeWhile { !it.startsWith("Then give feedback") }
-            .joinToString("\n").replace(" reply_english translates your reply.", "")
-        return listOf(ChatMessage(Role.SYSTEM, sys + "\nOnly reply; do not correct or comment on the learner's language."), full.last())
-    }
+    // Composed from the shared partner fragments (QC 2026-10-30 V8), not cut out of TopicTurn's prose.
+    override fun messages(input: TopicTurn.Input): List<ChatMessage> = listOf(
+        system(*TopicTurn.partnerLines(input).toTypedArray(), "Only reply; do not correct or comment on the learner's language."),
+        user("Conversation so far:\n" + transcript(input.history, "Learner", "Partner")),
+    )
 
     override fun validate(input: TopicTurn.Input, output: Output, context: ValidationContext): List<String> =
         listOfNotNull(ScriptCheck.requireLanguage("reply", output.reply, input.language))
