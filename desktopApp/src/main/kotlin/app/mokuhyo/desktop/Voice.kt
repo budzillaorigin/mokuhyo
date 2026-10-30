@@ -8,6 +8,14 @@ import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.EdgeSilence
 import app.mokuhyo.speech.currentSpeechBudget
+import app.mokuhyo.tts.DevicePcmLine
+import app.mokuhyo.tts.PcmReplyPlayer
+import app.mokuhyo.tts.SpeechEngine
+import app.mokuhyo.tts.SpeechRequest
+import app.mokuhyo.tts.VoiceService
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.currentTrace
 import app.mokuhyo.tts.Wav
@@ -160,6 +168,10 @@ object Voice {
      * was ready before a failure still plays (V10). Cancelling the caller stops it.
      */
     suspend fun sayStreamed(app: AppGraph, sentences: ReceiveChannel<String>, lang: String, voice: VoiceSpec? = null): Streamed? {
+        // An engine that streams PCM plays the whole reply through one output line (QC 2026-10-30 V4). No shipped
+        // engine does (Piper and OS voices return WAVs), so this is the path for a future engine; sentence streaming
+        // below stays the compatibility path.
+        (app.speech as? VoiceService)?.pcmStreamFor(lang, voice)?.let { (engine, v) -> return sayPcm(app, engine, v, sentences, lang) }
         // One identity per reply (QC 2026-10-30 V5): [voice] is asked for; the first sentence that renders fixes the
         // voice (a fallback before anything played is allowed and logged). A later sentence that only another voice
         // could render stops the reply instead of switching voices part-way; V10's repair then applies.
@@ -187,6 +199,31 @@ object Voice {
             else -> Outcome.Played(used!!)
         }
         return Streamed(outcome, result)
+    }
+
+    private suspend fun sayPcm(app: AppGraph, engine: SpeechEngine, voice: VoiceSpec, sentences: ReceiveChannel<String>, lang: String): Streamed? = coroutineScope {
+        val trace = currentTrace()
+        val budget = currentSpeechBudget()
+        val requests = Channel<SpeechRequest>(1)
+        launch {
+            var previous: String? = null
+            try {
+                for (s in sentences) {
+                    requests.send(SpeechRequest(voice, lang, s, preceding = previous, intent = SpeechRequest.intentOf(s)))
+                    previous = s
+                }
+            } finally {
+                requests.close()
+            }
+        }
+        val device = app.settings.get(Settings.Key.OUTPUT_DEVICE)
+        val result = PcmReplyPlayer({ rate ->
+            DevicePcmLine.open(rate, device).also { budget?.start(); trace?.mark(TurnStage.OUTPUT_START) }
+        }).speak(engine, requests)
+        trace?.mark(TurnStage.OUTPUT_END)
+        trace?.timeline?.note(trace.turn) { repeat(result.played) { voices += label(voice) } }
+        if (result.utterances.isEmpty()) return@coroutineScope null
+        Streamed(if (result.failed) Outcome.PlaybackFailed(voice, "the streamed voice stopped") else Outcome.Played(voice), result)
     }
 
     /**

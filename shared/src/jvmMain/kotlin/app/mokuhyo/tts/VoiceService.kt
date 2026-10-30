@@ -21,6 +21,12 @@ interface SpeechEngine {
      * can't produce it (the service then tries the next voice). Runs off the caller's thread; cancellable.
      */
     suspend fun synthesize(text: String, voice: VoiceSpec, speed: Double): ByteArray?
+
+    /** What this engine can do (QC 2026-10-30 V4). Piper and the OS voice return WAVs only. */
+    val capabilities: EngineCapabilities get() = EngineCapabilities.WAV_ONLY
+
+    /** [request] as PCM while it is generated, for a [EngineCapabilities.pcmStream] engine; null otherwise. Cancellable. */
+    fun stream(request: SpeechRequest): kotlinx.coroutines.flow.Flow<PcmChunk>? = null
 }
 
 /**
@@ -81,6 +87,15 @@ class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, Auto
         }
         return (listOfNotNull(first) + listed).distinctBy { Triple(it.engine, it.id, it.speaker) }
     }
+
+    /**
+     * The engine that streams PCM for [language] in [voice] (or the first such voice), with that voice; null when none
+     * does, which is every shipped engine today: callers then use [synthesize] sentence by sentence (V4).
+     */
+    fun pcmStreamFor(language: String, voice: VoiceSpec?): Pair<SpeechEngine, VoiceSpec>? =
+        candidates(language, voice).firstNotNullOfOrNull { v ->
+            engines.firstOrNull { it.engine == v.engine && it.capabilities.pcmStream }?.let { it to v }
+        }
 
     override fun close() {
         engines.forEach { (it as? AutoCloseable)?.runCatching { close() } }

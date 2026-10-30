@@ -38,7 +38,7 @@ object AudioIO {
             ?.let { Device(info.name, info.description) }
     }
 
-    private fun mixerNamed(name: String?): Mixer.Info? = name?.let { n -> AudioSystem.getMixerInfo().firstOrNull { it.name == n } }
+    internal fun mixerNamed(name: String?): Mixer.Info? = name?.let { n -> AudioSystem.getMixerInfo().firstOrNull { it.name == n } }
 
     /**
      * An open recording at the device's own [format] (BRIEF_PHASE8 N-00b: many inputs only run at 44.1/48 kHz);
