@@ -67,7 +67,7 @@ def test_voicevox_renders_once_then_reuses_and_a_new_engine_goes_to_compare() ->
         assert list((out / "compare").rglob("ja-dl-1.wav")), "the new render is kept for comparison"
 
 
-def test_chatterbox_identity_covers_reference_audio_and_job_settings() -> None:
+def test_chatterbox_identity_covers_reference_audio_and_speakers() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         refs = Path(tmp)
         (refs / "a.wav").write_bytes(b"one voice")
@@ -75,7 +75,8 @@ def test_chatterbox_identity_covers_reference_audio_and_job_settings() -> None:
         k1 = render_identity.key(chatterbox_render.job_identity(job, "r", "w", refs, {"seed": None}))
         (refs / "a.wav").write_bytes(b"another voice")
         k2 = render_identity.key(chatterbox_render.job_identity(job, "r", "w", refs, {"seed": None}))
-        k3 = render_identity.key(chatterbox_render.job_identity({**job, "pause": 0.3}, "r", "w", refs, {"seed": None}))
+        turn = {**job, "lines": [{**job["lines"][0], "speaker": "B"}]}  # the speaker decides the boundary type
+        k3 = render_identity.key(chatterbox_render.job_identity(turn, "r", "w", refs, {"seed": None}))
         assert len({k1, k2, k3}) == 3
 
 
@@ -86,6 +87,6 @@ def test_checkpoint_is_named() -> None:
 if __name__ == "__main__":
     for t in [test_every_key_invalidates_and_an_unchanged_one_reuses, test_a_master_without_identity_is_never_overwritten,
               test_voicevox_renders_once_then_reuses_and_a_new_engine_goes_to_compare,
-              test_chatterbox_identity_covers_reference_audio_and_job_settings, test_checkpoint_is_named]:
+              test_chatterbox_identity_covers_reference_audio_and_speakers, test_checkpoint_is_named]:
         t()
         print("ok", t.__name__)

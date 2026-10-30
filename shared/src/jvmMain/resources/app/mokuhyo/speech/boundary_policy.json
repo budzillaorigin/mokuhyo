@@ -1,0 +1,9 @@
+{
+ "version": "boundary-1",
+ "about": "Target heard gap in ms at each boundary type: the previous clip's trailing silence + inserted silence + the next clip's leading silence. Only the remainder is inserted; edges are never trimmed and speakers never overlap; nothing is added after the last clip. Shared by the app (BoundaryPolicy.kt) and the render tools (tools/voices/boundary.py). Initial values reproduce the earlier fixed pauses plus the Piper edge silence measured on voices/chatterbox_refs (median 31 ms leading + 317 ms trailing, about 350 ms): continuation 250 + 350, sentence_end 350 + 350, speaker_turn 700 + 350. The owner tunes them by ear (QC 2026-10-30 V2); change 'version' with any value.",
+ "gaps_ms": {
+  "continuation": 600,
+  "sentence_end": 700,
+  "speaker_turn": 1050
+ }
+}

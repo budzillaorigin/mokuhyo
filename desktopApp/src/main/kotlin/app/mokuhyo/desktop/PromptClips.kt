@@ -110,7 +110,7 @@ object PromptClips {
                 val ref = pools?.first?.get(lang)?.firstOrNull()?.ref ?: return@runBlocking fail("--jobs needs --voices with a pool for $lang")
                 index.prompts.filter { !it.rendered }.forEach { e ->
                     jobs += buildJsonObject {
-                        put("id", e.id); put("lang", lang); put("pause", 0.0)
+                        put("id", e.id); put("lang", lang)
                         put("lines", buildJsonArray { add(buildJsonObject { put("text", texts.getValue(e.id)); put("ref", ref); put("speaker", "interviewer") }) })
                     }.toString()
                 }

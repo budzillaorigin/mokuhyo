@@ -23,7 +23,15 @@ class PassageAudioKeyTest {
     }
 
     @Test
-    fun turnChangesPauseLongerThanOneSpeakersNextLine() {
-        assert(PassageAudio.pauseMs("A", "B") > PassageAudio.pauseMs("A", "A"))
+    fun linesJoinByTheBoundaryPolicyWithNoFinalPad() {
+        // QC 2026-10-30 V2: each line's edge silence counts toward its gap; nothing follows the last line.
+        val rate = 1000
+        val line = ShortArray(400) { if (it in 100 until 300) 2000 else 0 } // 100 ms lead, 100 ms trail
+        val policy = app.mokuhyo.speech.BoundaryPolicies.default
+        val out = PassageAudio.compose(listOf(line to rate, line to rate, line to rate), listOf("A", "A", "B"), rate)
+        val voiced = out.indices.filter { kotlin.math.abs(out[it].toInt()) >= 328 }
+        val gaps = voiced.zipWithNext().filter { (a, b) -> b - a > 1 }.map { (a, b) -> b - a - 1 }
+        assertEquals(listOf(policy.targetMs(app.mokuhyo.speech.Boundary.SENTENCE_END), policy.targetMs(app.mokuhyo.speech.Boundary.SPEAKER_TURN)), gaps)
+        assertEquals(100, out.size - 1 - voiced.last(), "the last line keeps its own trailing silence and nothing more")
     }
 }

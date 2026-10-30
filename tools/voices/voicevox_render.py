@@ -21,9 +21,12 @@ import time
 import urllib.parse
 import urllib.request
 import wave
+from array import array
+from itertools import pairwise
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import boundary
 import render_identity
 
 TIMEOUT = 120
@@ -65,10 +68,23 @@ def engine_identity(endpoint: str) -> dict:
 
 def job_identity(job: dict, eng: dict) -> dict:
     return render_identity.identity(
-        text=[[ln["text"], ln["ref"]] for ln in job["lines"]], engine=ENGINE, model_revision=eng["engine_version"],
+        text=[[ln["text"], ln["ref"], ln.get("speaker", "")] for ln in job["lines"]], engine=ENGINE, model_revision=eng["engine_version"],
         weight_sha256=render_identity.combined({"core_versions": json.dumps(eng["core_versions"])}),
         reference_sha256=render_identity.combined({ln["ref"]: ln["ref"] for ln in job["lines"]}),
-        settings={"pause": job.get("pause", 0.6), "low": {"pitchScale": -0.05, "speedScale": -0.05}, "rate": 24000})
+        settings={"low": {"pitchScale": -0.05, "speedScale": -0.05}, "rate": 24000},
+        timing_policy_version=boundary.POLICY_VERSION)
+
+
+def compose(job: dict, synthesize) -> tuple[bytes, int]:
+    """The job's lines joined by the shared boundary policy (QC 2026-10-30 V2): no fixed pause, nothing after the last
+    line."""
+    clips, rate, speakers = [], 24000, []
+    for line in job["lines"]:
+        frames, rate = synthesize(line["text"], line["ref"])
+        clips.append(list(array("h", frames)))
+        speakers.append(line.get("speaker", line["ref"]))
+    joined = boundary.POLICY.join(clips, [boundary.between(a, b) for a, b in pairwise(speakers)], rate)
+    return array("h", joined).tobytes(), rate
 
 
 def render_jobs(jobs: list[dict], out: Path, synthesize, eng: dict) -> int:
@@ -81,10 +97,7 @@ def render_jobs(jobs: list[dict], out: Path, synthesize, eng: dict) -> int:
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
         t0 = time.time()
-        pcm, rate = b"", 24000
-        for line in job["lines"]:
-            frames, rate = synthesize(line["text"], line["ref"])
-            pcm += frames + b"\0\0" * int(rate * job.get("pause", 0.6))
+        pcm, rate = compose(job, synthesize)
         tmp = target.with_suffix(".part.wav")
         with wave.open(str(tmp), "wb") as w:
             w.setnchannels(1)

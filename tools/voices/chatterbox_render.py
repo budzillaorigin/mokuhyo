@@ -4,7 +4,8 @@ Runs on the render host (the RTX 5090), not in the app. Reads a jobs JSONL writt
 tools/packs/chatterbox_jobs.py and writes one 24 kHz mono WAV per job into OUT_DIR/<lang>/<id>.wav with a sidecar
 identity (render_identity.py, QC 2026-10-30 V11). A WAV is reused only when its whole identity matches; an existing master
 rendered differently is never overwritten — the new render goes to OUT_DIR/compare/<key>/. The checkpoint named in
-docs/MODELS.md (CHECKPOINT) is loaded explicitly; the run stops if the installed package can't be shown to load it. A job: {"id", "lang", "lines": [{"text", "ref"}], "pause": seconds}; "ref" is a reference clip in
+docs/MODELS.md (CHECKPOINT) is loaded explicitly; the run stops if the installed package can't be shown to load it. A job: {"id", "lang", "lines": [{"text", "ref", "speaker"}]}; lines and chunks are joined by the shared boundary policy
+(boundary.py, QC 2026-10-30 V2; an older job's "pause" is ignored). "ref" is a reference clip in
 REF_DIR (a donated TTS voice, see voices/chatterbox_voices.json) or "" for Chatterbox's built-in voice. Chinese text
 arrives already segmented with ICU (spaces between words), so Chatterbox's PRC-origin pkuseg segmenter is never used.
 
@@ -21,6 +22,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import boundary
 import render_identity
 from textsplit import chunks
 
@@ -85,16 +87,35 @@ def job_identity(job: dict, model_revision: str, weights: str, refs: Path, setti
     ref_hashes = {ln.get("ref") or "builtin": render_identity.file_sha256(refs / ln["ref"]) if ln.get("ref") else "builtin"
                   for ln in job["lines"]}
     return render_identity.identity(
-        text=[[ln["text"], ln.get("ref", "")] for ln in job["lines"]], engine=ENGINE, model_revision=model_revision,
+        text=[[ln["text"], ln.get("ref", ""), ln.get("speaker", "")] for ln in job["lines"]], engine=ENGINE, model_revision=model_revision,
         weight_sha256=weights, reference_sha256=render_identity.combined(ref_hashes),
-        settings={**settings, "pause": job.get("pause", 0.6), "chunk_gap": 0.25, "language_id": LANG_IDS.get(job["lang"])})
+        settings={**settings, "language_id": LANG_IDS.get(job["lang"])}, timing_policy_version=boundary.POLICY_VERSION)
+
+
+def compose(job: dict, generate, sr: int, refs: Path):
+    """Every chunk of every line, joined by the shared boundary policy (QC 2026-10-30 V2): chunks of one line meet at a
+    continuation, lines at a sentence end or speaker turn; only the gap their own edge silence lacks is added, and
+    nothing after the last line. Returns int16 samples."""
+    import numpy as np
+
+    clips, kinds = [], []
+    for n, ln in enumerate(job["lines"]):
+        ref = refs / ln["ref"] if ln.get("ref") else None
+        parts = chunks(ln["text"], lang=job["lang"])
+        for k, piece in enumerate(parts):
+            wav = np.asarray(generate(piece, LANG_IDS.get(job["lang"]), ref), dtype=np.float32)
+            clips.append((np.clip(wav, -1.0, 1.0) * 32767).astype(np.int16))
+            if k < len(parts) - 1:
+                kinds.append("continuation")
+        if n < len(job["lines"]) - 1:
+            kinds.append(boundary.between(ln.get("speaker", ln.get("ref", "")), job["lines"][n + 1].get("speaker", job["lines"][n + 1].get("ref", ""))))
+    return np.asarray(boundary.POLICY.join(clips, kinds, sr), dtype=np.int16)
 
 
 def render_jobs(jobs: list[dict], out: Path, refs: Path, generate, sr: int, model_revision: str, weights: str,
                 settings: dict, limit: int = 0, on_done=None) -> int:
     """Renders what isn't already rendered with the same identity; returns the number rendered. [generate] is
     (text, language_id, ref path or None) -> float32 mono samples."""
-    import numpy as np
     import soundfile as sf
 
     done = 0
@@ -108,22 +129,15 @@ def render_jobs(jobs: list[dict], out: Path, refs: Path, generate, sr: int, mode
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
         t0 = time.time()
-        pieces = []
-        gap = np.zeros(int(sr * job.get("pause", 0.6)), dtype=np.float32)
-        short_gap = np.zeros(int(sr * 0.25), dtype=np.float32)
-        for ln in job["lines"]:
-            ref = refs / ln["ref"] if ln.get("ref") else None
-            parts = chunks(ln["text"], lang=job["lang"])
-            for k, piece in enumerate(parts):
-                pieces += [np.asarray(generate(piece, lid, ref), dtype=np.float32), short_gap if k < len(parts) - 1 else gap]
+        audio = compose(job, generate, sr, refs)
         tmp = target.with_suffix(".part.wav")
-        sf.write(tmp, np.concatenate(pieces), sr, subtype="PCM_16")
+        sf.write(tmp, audio, sr, subtype="PCM_16")
         tmp.replace(target)
         render_identity.write(target, ident)
         done += 1
         where = "" if target.parent == out / job["lang"] else f" (identity changed: {target.parent.parent})"
-        print(f"render {job['lang']} {job['id']}: {sum(len(p) for p in pieces) / sr:.1f}s audio in {time.time() - t0:.1f}s{where}", flush=True)
-        del pieces
+        print(f"render {job['lang']} {job['id']}: {len(audio) / sr:.1f}s audio in {time.time() - t0:.1f}s{where}", flush=True)
+        del audio
         if on_done:
             on_done()
         if limit and done >= limit:
