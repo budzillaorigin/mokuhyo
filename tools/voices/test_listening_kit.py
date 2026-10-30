@@ -28,6 +28,10 @@ def main() -> int:
         assert comments[("fa", "piper fa_IR-amir-medium")] == ["fa/fa-001.wav: stress on the last word"]
         md = listening_kit.markdown(totals, comments)
         assert "| fa | piper fa_IR-amir-medium | 3.00 (n=2) | 3.00 (n=2) | 3.00 (n=2) |" in md, md
+        (kit / "missing.csv").write_text("language,source,voice,prompt_id,reason\nfa,piper,fa_IR-gyro-medium,q1,fell back to piper:fa_IR-amir-medium\n",
+                                         encoding="utf-8")
+        md = listening_kit.markdown(totals, comments, listening_kit.read_missing(kit))
+        assert "- fa / piper fa_IR-gyro-medium / q1: fell back to piper:fa_IR-amir-medium" in md, md
         bad = kit / "bad.csv"
         bad.write_text("file,language,intelligibility_1to5,pronunciation_1to5,naturalness_1to5,comments\nfa/fa-001.wav,fa,7,,,\n", encoding="utf-8")
         try:

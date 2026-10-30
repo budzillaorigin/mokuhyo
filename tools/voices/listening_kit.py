@@ -4,7 +4,8 @@
 
 Joins each rater's scoring sheet to KIT_DIR/key.csv and prints, per language and source (piper, os, prerendered, or a
 future candidate engine), the mean and count of intelligibility, pronunciation and naturalness, kept separate, plus
-the comments. Blank scores are skipped. Standard library only.
+the comments. Blank scores are skipped. Candidates that failed or fell back to another voice (KIT_DIR/missing.csv,
+QC 2026-10-30 V5) are listed next to the scores, so a mean is never read without its gaps. Standard library only.
 """
 from __future__ import annotations
 
@@ -20,6 +21,14 @@ QUALITIES = ("intelligibility_1to5", "pronunciation_1to5", "naturalness_1to5")
 def read_key(kit: Path) -> dict[str, dict[str, str]]:
     with (kit / "key.csv").open(encoding="utf-8", newline="") as f:
         return {row["file"]: row for row in csv.DictReader(f)}
+
+
+def read_missing(kit: Path) -> list[dict[str, str]]:
+    path = kit / "missing.csv"
+    if not path.is_file():
+        return []
+    with path.open(encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
 
 
 def score(key: dict[str, dict[str, str]], sheets: list[Path]) -> tuple[dict, dict]:
@@ -45,7 +54,7 @@ def score(key: dict[str, dict[str, str]], sheets: list[Path]) -> tuple[dict, dic
     return totals, comments
 
 
-def markdown(totals: dict, comments: dict) -> str:
+def markdown(totals: dict, comments: dict, missing: list[dict[str, str]] | None = None) -> str:
     out = ["| Language | Source | Intelligibility | Pronunciation | Naturalness |", "| --- | --- | ---: | ---: | ---: |"]
     for (lang, source), qs in sorted(totals.items()):
         cells = [f"{sum(v) / len(v):.2f} (n={len(v)})" if (v := qs.get(q)) else "—" for q in QUALITIES]
@@ -54,6 +63,9 @@ def markdown(totals: dict, comments: dict) -> str:
         out.append("")
         out.append(f"{group[0]} / {group[1]}:")
         out.extend(f"- {n}" for n in notes)
+    if missing:
+        out += ["", "Missing or failed samples (not scored, never replaced by another voice):"]
+        out.extend(f"- {m['language']} / {m['source']} {m['voice']} / {m['prompt_id']}: {m['reason']}" for m in missing)
     return "\n".join(out) + "\n"
 
 
@@ -66,7 +78,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--md", type=Path)
     a = ap.parse_args(argv)
     totals, comments = score(read_key(a.kit), a.sheets)
-    md = markdown(totals, comments)
+    md = markdown(totals, comments, read_missing(a.kit))
     sys.stdout.reconfigure(encoding="utf-8")
     print(md, end="")
     if a.md:
