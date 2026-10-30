@@ -115,6 +115,51 @@ fun interface SentenceSplitter {
 }
 
 /**
+ * Boundaries no splitter may use (QC 2026-10-30 V1; the same rules as tools/voices/textsplit.py, tested against the
+ * shared fixtures/segmentation_cases.json): inside a number (`3.5`, `8.000`, `12:30`), after an abbreviation or an
+ * initial (`Sr. García`, `J. R. R. Tolkien`), before a lowercase word (`Bueno... no sé`, `"Ready?" he asked`), and
+ * after a closed quote that a quotative particle continues (`「はい。」と言った`; `「はい。」そう…` still splits).
+ */
+object SentenceGuard {
+    const val TERMINATORS = ".!?…。！？؟؛।"
+    private const val NO_SPACE_NEEDED = "。！？؟؛।"
+    const val CLOSERS = "\"'”’」』）)]»›"
+    private const val QUOTATIVE = "とっ"
+    private val ABBREVIATIONS = setOf(
+        "mr", "mrs", "ms", "dr", "prof", "st", "sr", "sra", "srta", "dra", "lic", "ing", "m", "mm", "mme", "mlle", "hr", "fr",
+        "z", "b", "nr", "vs", "etc", "gen", "col", "lt", "sgt", "capt", "cpt", "maj", "adm", "no", "tel",
+        "г", "гг", "ул", "д", "т", "е", "им", "проф", "св",
+    )
+
+    /** Whether a sentence may end at [end] (exclusive; trailing spaces before it are allowed) in [text]. */
+    fun allows(text: String, end: Int): Boolean {
+        var e = end
+        while (e > 0 && text[e - 1].isWhitespace()) e--
+        var t = e
+        while (t > 0 && text[t - 1] in CLOSERS) t--
+        val closed = t < e
+        var r = t
+        while (r > 0 && text[r - 1] in TERMINATORS) r--
+        if (r == t) return true // not punctuation (a line break, say)
+        val run = text.substring(r, t)
+        var k = e
+        while (k < text.length && text[k].isWhitespace()) k++
+        val spaced = k > e
+        val next = text.getOrNull(k) ?: return true
+        if (run.any { it in NO_SPACE_NEEDED }) return !(closed && !spaced && next in QUOTATIVE)
+        if (!spaced) return false
+        if (next.isLowerCase()) return false
+        if (run == "." && !closed) {
+            var w = r
+            while (w > 0 && text[w - 1].isLetter()) w--
+            val word = text.substring(w, r)
+            if (word.lowercase() in ABBREVIATIONS || (word.length == 1 && word[0].isUpperCase())) return false
+        }
+        return true
+    }
+}
+
+/**
  * Sentence ends by punctuation, for every launch language: `. ! ? …` followed by a space (Latin, Cyrillic, Hangul,
  * Arabic-script text), the full-width `。！？` and `؟ ؛ ।` even with no space after them, closing quotes and brackets
  * staying with their sentence. The JVM uses ICU's sentence rules first ([app.mokuhyo.lang.IcuSentences]); this is the
@@ -139,7 +184,7 @@ object PunctuationSentences : SentenceSplitter {
                     text[j].isWhitespace() -> true
                     else -> text.substring(i, j).any { it in NO_SPACE_NEEDED }
                 }
-                if (boundary && text.substring(start, j).any { it.isLetterOrDigit() }) {
+                if (boundary && SentenceGuard.allows(text, j) && text.substring(start, j).any { it.isLetterOrDigit() }) {
                     out += j
                     start = j
                 }
