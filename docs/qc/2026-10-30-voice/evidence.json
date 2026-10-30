@@ -1,0 +1,270 @@
+{
+  "reviewed_commit": "9bbb0c23e74d0fdf2963c1fab91b1b3d48f1e4de",
+  "date": "2026-10-30",
+  "scope": "Source-only voice and conversation review; numeric scan of checked-in exam, track and exemplar text; no model audition",
+  "voice_counts": {
+    "es": 4,
+    "fr": 4,
+    "de": 4,
+    "pt-BR": 3,
+    "ru": 2,
+    "fa": 2
+  },
+  "prompt_indexes": {
+    "es": {
+      "entries": 116,
+      "with_audio_hash": 0
+    },
+    "ja": {
+      "entries": 116,
+      "with_audio_hash": 0
+    }
+  },
+  "corpus_scan": {
+    "ar": {
+      "script_and_exemplar_lines": 864,
+      "lines_over_220_chars": 57,
+      "numeric_dot_tokens_changed": 2
+    },
+    "de": {
+      "script_and_exemplar_lines": 865,
+      "lines_over_220_chars": 106,
+      "numeric_dot_tokens_changed": 2
+    },
+    "es": {
+      "script_and_exemplar_lines": 876,
+      "lines_over_220_chars": 93,
+      "numeric_dot_tokens_changed": 1
+    },
+    "fa": {
+      "script_and_exemplar_lines": 887,
+      "lines_over_220_chars": 61,
+      "numeric_dot_tokens_changed": 0
+    },
+    "fr": {
+      "script_and_exemplar_lines": 871,
+      "lines_over_220_chars": 90,
+      "numeric_dot_tokens_changed": 2
+    },
+    "id": {
+      "script_and_exemplar_lines": 871,
+      "lines_over_220_chars": 80,
+      "numeric_dot_tokens_changed": 5
+    },
+    "ja": {
+      "script_and_exemplar_lines": 719,
+      "lines_over_220_chars": 19,
+      "numeric_dot_tokens_changed": 0
+    },
+    "ko": {
+      "script_and_exemplar_lines": 830,
+      "lines_over_220_chars": 32,
+      "numeric_dot_tokens_changed": 3
+    },
+    "pt-BR": {
+      "script_and_exemplar_lines": 895,
+      "lines_over_220_chars": 63,
+      "numeric_dot_tokens_changed": 1
+    },
+    "ru": {
+      "script_and_exemplar_lines": 874,
+      "lines_over_220_chars": 66,
+      "numeric_dot_tokens_changed": 2
+    },
+    "zh-Hans": {
+      "script_and_exemplar_lines": 908,
+      "lines_over_220_chars": 6,
+      "numeric_dot_tokens_changed": 0
+    }
+  },
+  "numeric_reproductions": [
+    {
+      "language": "ar",
+      "file": "content/packs/ar/exam.json",
+      "json_path": "$.listening.passages[29].script[2]",
+      "id": "ar-dl-1p-announcement-002",
+      "input": "من الآن فصاعدًا، يجب أن يكون المتقدمون متوسط تراكميًا لا يقل عن 2.5.",
+      "actual_chunks": [
+        "من الآن فصاعدًا، يجب أن يكون المتقدمون متوسط تراكميًا لا يقل عن 2. 5."
+      ]
+    },
+    {
+      "language": "ar",
+      "file": "content/packs/ar/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[5].lines[6]",
+      "id": "cuas-base-defense-ar-dlg-joint-patrol-brief",
+      "input": "التردد الأساسي هو 123.450 ميغاهرتز، والتردد الاحتياطي هو 234.560 ميغاهرتز.",
+      "actual_chunks": [
+        "التردد الأساسي هو 123. 450 ميغاهرتز، والتردد الاحتياطي هو 234. 560 ميغاهرتز."
+      ]
+    },
+    {
+      "language": "de",
+      "file": "content/packs/de/exam.json",
+      "json_path": "$.listening.passages[30].script[3]",
+      "id": "de-dl-1p-interview-001",
+      "input": "Die Location allein hat 8.000 Euro gekostet, und das Catering war auch nicht billig. Insgesamt hat die Hochzeit mehr als 20.000 Euro gekostet.",
+      "actual_chunks": [
+        "Die Location allein hat 8. 000 Euro gekostet, und das Catering war auch nicht billig. Insgesamt hat die Hochzeit mehr als 20. 000 Euro gekostet."
+      ]
+    },
+    {
+      "language": "de",
+      "file": "content/packs/de/exam.json",
+      "json_path": "$.listening.passages[54].script[1]",
+      "id": "de-dl-2-news-002",
+      "input": "25.000 Läuferinnen und Läufer nahmen an diesem Jahr Event teil, bei dem es auch einige Wetterextreme gab.",
+      "actual_chunks": [
+        "25. 000 Läuferinnen und Läufer nahmen an diesem Jahr Event teil, bei dem es auch einige Wetterextreme gab."
+      ]
+    },
+    {
+      "language": "es",
+      "file": "content/packs/es/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[4].lines[6]",
+      "id": "cuas-base-defense-es-dlg-joint-patrol-brief",
+      "input": "La frecuencia de radio es 123.45 MHz. Si encontramos un punto de lanzamiento de drones, necesitamos marcarlo y reportarlo de inmediato.",
+      "actual_chunks": [
+        "La frecuencia de radio es 123. 45 MHz. Si encontramos un punto de lanzamiento de drones, necesitamos marcarlo y reportarlo de inmediato."
+      ]
+    },
+    {
+      "language": "fr",
+      "file": "content/packs/fr/exam.json",
+      "json_path": "$.listening.passages[75].script[3]",
+      "id": "fr-dl-2p-speech-004",
+      "input": "Comme vous le savez, l'inflation reste trop élevée à 3.5 pour cent. C'est pourquoi nous devons intensifier notre lutte contre l'inflation.",
+      "actual_chunks": [
+        "Comme vous le savez, l'inflation reste trop élevée à 3. 5 pour cent. C'est pourquoi nous devons intensifier notre lutte contre l'inflation."
+      ]
+    },
+    {
+      "language": "fr",
+      "file": "content/packs/fr/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[4].lines[6]",
+      "id": "cuas-base-defense-fr-dlg-joint-patrol-brief",
+      "input": "Nous utiliserons la fréquence 123.45 pour les communications principales et la fréquence 67.89 en cas d'urgence.",
+      "actual_chunks": [
+        "Nous utiliserons la fréquence 123. 45 pour les communications principales et la fréquence 67. 89 en cas d'urgence."
+      ]
+    },
+    {
+      "language": "id",
+      "file": "content/packs/id/exam.json",
+      "json_path": "$.listening.passages[57].script[4]",
+      "id": "id-dl-2-report-004",
+      "input": "Baik, kita akan memulai patrol pada pukul 08.00 dan berakhir pada pukul 16.00. Jika ada situasi darurat, kita akan melaporkan ke markas besar secara langsung.",
+      "actual_chunks": [
+        "Baik, kita akan memulai patrol pada pukul 08. 00 dan berakhir pada pukul 16. 00. Jika ada situasi darurat, kita akan melaporkan ke markas besar secara langsung."
+      ]
+    },
+    {
+      "language": "id",
+      "file": "content/packs/id/exam.json",
+      "json_path": "$.listening.passages[58].script[1]",
+      "id": "id-dl-2-report-005",
+      "input": "Kemarin pukul 14.30, Sopir pengiriman bernama Budi tidak diperbolehkan masuk ke pintu gerbang pabrik karena tidak memiliki dokumen yang benar.",
+      "actual_chunks": [
+        "Kemarin pukul 14. 30, Sopir pengiriman bernama Budi tidak diperbolehkan masuk ke pintu gerbang pabrik karena tidak memiliki dokumen yang benar."
+      ]
+    },
+    {
+      "language": "id",
+      "file": "content/packs/id/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[2].lines[6]",
+      "id": "cuas-base-defense-id-dlg-airspace-coordination",
+      "input": "Kami akan mulai pada pukul 13.00 dan selesai pada pukul 16.00.",
+      "actual_chunks": [
+        "Kami akan mulai pada pukul 13. 00 dan selesai pada pukul 16. 00."
+      ]
+    },
+    {
+      "language": "id",
+      "file": "content/packs/id/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[3].lines[4]",
+      "id": "cuas-base-defense-id-dlg-joint-patrol-brief",
+      "input": "Frekuensi radio kita adalah 123.45 MHz. Jika kita menemukan titik peluncuran drone, kita akan melaporkan ke komando dan menandai lokasi dengan penanda GPS.",
+      "actual_chunks": [
+        "Frekuensi radio kita adalah 123. 45 MHz. Jika kita menemukan titik peluncuran drone, kita akan melaporkan ke komando dan menandai lokasi dengan penanda GPS."
+      ]
+    },
+    {
+      "language": "id",
+      "file": "content/packs/id/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[6].lines[2]",
+      "id": "cuas-base-defense-id-dlg-fpcon-contractor",
+      "input": "Pertama, semua pekerja harus tiba sebelum pukul 06.00. Tidak ada pengecualian.",
+      "actual_chunks": [
+        "Pertama, semua pekerja harus tiba sebelum pukul 06. 00. Tidak ada pengecualian."
+      ]
+    },
+    {
+      "language": "ko",
+      "file": "content/packs/ko/exam.json",
+      "json_path": "$.listening.passages[6].script[2]",
+      "id": "ko-dl-0p-short_exchange-004",
+      "input": "금리는 3.5%로 올랐습니다.",
+      "actual_chunks": [
+        "금리는 3. 5%로 올랐습니다."
+      ]
+    },
+    {
+      "language": "ko",
+      "file": "content/packs/ko/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[4].lines[5]",
+      "id": "cuas-base-defense-ko-dlg-joint-patrol-brief",
+      "input": "주파수는 138.350 메가헤르츠입니다. 응답이 없으면 138.650으로 전환해주시기 바랍니다.",
+      "actual_chunks": [
+        "주파수는 138. 350 메가헤르츠입니다. 응답이 없으면 138. 650으로 전환해주시기 바랍니다."
+      ]
+    },
+    {
+      "language": "ko",
+      "file": "content/packs/ko/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[6].lines[4]",
+      "id": "cuas-base-defense-ko-dlg-request-qrf",
+      "input": "네, 현재 좌표는 37°45'12.3\"N, 126°52'34.5\"E입니다.",
+      "actual_chunks": [
+        "네, 현재 좌표는 37°45'12. 3\"N, 126°52'34. 5\"E입니다."
+      ]
+    },
+    {
+      "language": "pt-BR",
+      "file": "content/packs/pt-BR/exam.json",
+      "json_path": "$.listening.passages[5].script[4]",
+      "id": "pt-dl-0p-short_exchange-003",
+      "input": "Almoço às 12.30, como antes.",
+      "actual_chunks": [
+        "Almoço às 12. 30, como antes."
+      ]
+    },
+    {
+      "language": "ru",
+      "file": "content/packs/ru/exam.json",
+      "json_path": "$.listening.passages[78].script[4]",
+      "id": "ru-dl-3-analysis-004",
+      "input": "Абсолютно. Мы будем использовать радиосвязь на частоте 155.7 МГц. В случае обнаружения нарушителей или других потенциальных угроз, мы должны немедленно информировать друг друга.",
+      "actual_chunks": [
+        "Абсолютно. Мы будем использовать радиосвязь на частоте 155. 7 МГц. В случае обнаружения нарушителей или других потенциальных угроз, мы должны немедленно информировать друг друга."
+      ]
+    },
+    {
+      "language": "ru",
+      "file": "content/packs/ru/track-cuas-base-defense.json",
+      "json_path": "$.dialogues[3].lines[6]",
+      "id": "cuas-base-defense-ru-dlg-joint-patrol-brief",
+      "input": "Основная частота — 151.950, резервная — 158.250.",
+      "actual_chunks": [
+        "Основная частота — 151. 950, резервная — 158. 250."
+      ]
+    }
+  ],
+  "validation": {
+    "python tools/voices/test_textsplit.py": "PASS (4 cases)",
+    "python tools/voices/test_manifest.py": "PASS (19 voices, 0 problems)",
+    "python tools/voices/test_listening_kit.py": "PASS",
+    "python tools/items/test_gen_dlpt.py": "NOT RUN: missing wordfreq dependency",
+    "./gradlew :shared:jvmTest :desktopApp:test": "BLOCKED before tests: Java 21 runtime is installed but javac/JDK 21 toolchain is absent",
+    "live_voice_quality_and_hardware_latency": "NOT MEASURED"
+  }
+}
