@@ -34,6 +34,7 @@ import app.mokuhyo.speech.TimingReport
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.TurnTimeline
 import app.mokuhyo.speech.Vad
+import app.mokuhyo.speech.currentTrace
 import app.mokuhyo.speech.traceMark
 import app.mokuhyo.tts.VoiceService
 import app.mokuhyo.tts.Wav
@@ -111,6 +112,7 @@ object BenchInterview {
 
         println("bench-interview: ${langs.joinToString()} · model ${info?.id ?: "none"} · whisper ${whisper?.name ?: "none"} · ${runtime.status}")
         val sessions = ArrayList<TimingReport.Session>()
+        val playbackFailures = ArrayList<String>()
         val cancels = ArrayList<TimingReport.CancelSample>()
         for (lang in langs) {
             val pack = app.opi(lang)
@@ -135,7 +137,8 @@ object BenchInterview {
             val id = app.conversations.newId()
 
             suspend fun output(spoken: SpokenAudio) {
-                if (play) runCatching { AudioIO.open(spoken.wav).also { traceMark(TurnStage.OUTPUT_START) }.run() }
+                val trace = currentTrace()
+                if (play) physicalOutput({ AudioIO.open(spoken.wav) }) { trace?.mark(TurnStage.OUTPUT_START) }?.let { playbackFailures += it }
                 else traceMark(TurnStage.OUTPUT_START)
                 traceMark(TurnStage.OUTPUT_END)
             }
@@ -169,7 +172,7 @@ object BenchInterview {
                 val id = line.bankId
                 val clip = id?.let { traceMark(TurnStage.TTS_START); PromptClips.load(app, lang, it, line.text) }
                 if (clip != null) {
-                    traceMark(TurnStage.TTS_FIRST_PCM)
+                    traceMark(TurnStage.TTS_SYNTH_DONE)
                     timeline.note(turn) { prerendered = true }
                     output(SpokenAudio(clip.wav, VoiceSpec(clip.entry.voice ?: "prerendered", lang, "", "prerendered", "")))
                 } else speak(line.text)
@@ -210,7 +213,11 @@ object BenchInterview {
             cancels += cancelProbes(model, gateway, recognizer, clips["long"], module.sttLanguage, voices, voice, texts.second, lang, pack, words)
             sessions += timeline.snapshot()
         }
-        val real = model != null && recognizer != null && sessions.isNotEmpty() && sessions.all { it.voiceId != null }
+        if (playbackFailures.isNotEmpty()) {
+            notRun["playback"] = "FAILED ${playbackFailures.size} time(s) on the output device: ${playbackFailures.distinct().joinToString("; ")}"
+            println("bench-interview: playback FAILED ${playbackFailures.size} time(s): ${playbackFailures.distinct().joinToString("; ")}")
+        }
+        val real = model != null && recognizer != null && sessions.isNotEmpty() && sessions.all { it.voiceId != null } && playbackFailures.isEmpty()
         val report = app.timings.report(sessions, real, "--bench-interview", cancels, notRun)
         val files = Timings.export(report, File(out, "bench-interview"))
         println(report.toMarkdown())
@@ -280,6 +287,17 @@ object BenchInterview {
         return sqrt(sum / n)
     }
 
+    /**
+     * Plays on the real output device. A failure (device missing, line error) is returned so the report shows it, never
+     * swallowed into a turn that looks played (QC 2026-10-30 V12).
+     */
+    internal fun physicalOutput(open: () -> AudioIO.Playback, opened: () -> Unit): String? = try {
+        open().also { opened() }.run()
+        null
+    } catch (e: Exception) {
+        e.message ?: e::class.simpleName ?: "playback failed"
+    }
+
     /** About 150 words a minute, for answers fed as text. */
     private fun estimateMs(text: String) = (text.split(' ').size.coerceAtLeast(text.length / 4) * 400L)
 
@@ -287,8 +305,9 @@ object BenchInterview {
         traceMark(TurnStage.TTS_START)
         val start = System.nanoTime()
         val spoken = synth()
-        if (spoken != null) traceMark(TurnStage.TTS_FIRST_PCM)
+        if (spoken != null) traceMark(TurnStage.TTS_SYNTH_DONE)
         if (spoken != null) timeline.note {
+            voices += "${spoken.voice.engine}:${spoken.voice.id}"
             ttsSynthMs += (System.nanoTime() - start) / 1_000_000
             ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
         }

@@ -38,7 +38,7 @@ object AudioIO {
             ?.let { Device(info.name, info.description) }
     }
 
-    private fun mixerNamed(name: String?): Mixer.Info? = name?.let { n -> AudioSystem.getMixerInfo().firstOrNull { it.name == n } }
+    internal fun mixerNamed(name: String?): Mixer.Info? = name?.let { n -> AudioSystem.getMixerInfo().firstOrNull { it.name == n } }
 
     /**
      * An open recording at the device's own [format] (BRIEF_PHASE8 N-00b: many inputs only run at 44.1/48 kHz);
@@ -158,19 +158,27 @@ object AudioIO {
     class Playback internal constructor(private val line: SourceDataLine, private val stream: AudioInputStream) : AutoCloseable {
         private val closed = AtomicBoolean(false)
 
+        /** Called when the output buffer ran dry mid-stream (QC 2026-10-30 V12). Set before [run]. */
+        @Volatile
+        var onUnderrun: () -> Unit = {}
+
         /**
          * Streams to the end or until [stop] says so; returns true when it played to the end. Throws when the output
          * fails part-way (device unplugged, line error), which callers must tell apart from the learner's Stop.
+         * [onUnderrun] runs whenever the line's buffer had run dry before the next write.
          */
         fun run(stop: () -> Boolean = { false }): Boolean {
             try {
                 val buf = ByteArray(4096)
+                var wrote = false
                 while (!stop()) {
                     val n = stream.read(buf)
                     if (n < 0) {
                         line.drain()
                         return true
                     }
+                    if (wrote && line.available() >= line.bufferSize) onUnderrun()
+                    wrote = true
                     var off = 0
                     while (off < n) {
                         // A running line blocks until it takes everything; writing nothing means the device went away.

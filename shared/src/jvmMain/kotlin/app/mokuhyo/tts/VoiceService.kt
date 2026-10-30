@@ -3,7 +3,10 @@ package app.mokuhyo.tts
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.lang.SpokenAudio
 import app.mokuhyo.lang.VoiceSpec
+import app.mokuhyo.speech.SpeechBudget
+import app.mokuhyo.speech.currentSpeechBudget
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.withTimeoutOrNull
 
 /** One source of voices: the bundled Piper service, the OS voice, … ([VoiceService] tries them in order). */
 interface SpeechEngine {
@@ -18,6 +21,12 @@ interface SpeechEngine {
      * can't produce it (the service then tries the next voice). Runs off the caller's thread; cancellable.
      */
     suspend fun synthesize(text: String, voice: VoiceSpec, speed: Double): ByteArray?
+
+    /** What this engine can do (QC 2026-10-30 V4). Piper and the OS voice return WAVs only. */
+    val capabilities: EngineCapabilities get() = EngineCapabilities.WAV_ONLY
+
+    /** [request] as PCM while it is generated, for a [EngineCapabilities.pcmStream] engine; null otherwise. Cancellable. */
+    fun stream(request: SpeechRequest): kotlinx.coroutines.flow.Flow<PcmChunk>? = null
 }
 
 /**
@@ -27,7 +36,8 @@ interface SpeechEngine {
  *
  * Within an engine, voices of the requested gender come first; an explicitly requested [VoiceSpec] is tried before
  * anything else. A voice that fails (crashed process, timeout, missing file) falls through to the next one, so a
- * broken bundled voice degrades to the OS voice instead of to silence.
+ * broken bundled voice degrades to the OS voice instead of to silence. When the caller carries a [SpeechBudget], every
+ * attempt runs within what remains of it and no new attempt starts once it is spent (QC 2026-10-30 V6).
  */
 class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, AutoCloseable {
 
@@ -37,10 +47,20 @@ class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, Auto
     override suspend fun synthesize(text: String, language: String, voice: VoiceSpec?, speed: Double): SpokenAudio? {
         if (text.isBlank()) return null
         val pace = speed.coerceIn(MIN_SPEED, MAX_SPEED)
+        val budget = currentSpeechBudget()
         for (candidate in candidates(language, voice)) {
             val engine = engines.firstOrNull { it.engine == candidate.engine } ?: continue
+            val remaining = budget?.remainingMs() ?: Long.MAX_VALUE
+            if (remaining <= 0) {
+                System.err.println("tts: speech budget spent before ${candidate.engine}/${candidate.id} could try")
+                return null
+            }
             val wav = try {
-                engine.synthesize(text, candidate, pace)
+                if (remaining == Long.MAX_VALUE) engine.synthesize(text, candidate, pace)
+                else when (val r = withTimeoutOrNull(remaining) { Result.success(engine.synthesize(text, candidate, pace)) }) {
+                    null -> null.also { System.err.println("tts: ${candidate.engine}/${candidate.id} ran past the speech budget") }
+                    else -> r.getOrNull()
+                }
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -67,6 +87,15 @@ class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, Auto
         }
         return (listOfNotNull(first) + listed).distinctBy { Triple(it.engine, it.id, it.speaker) }
     }
+
+    /**
+     * The engine that streams PCM for [language] in [voice] (or the first such voice), with that voice; null when none
+     * does, which is every shipped engine today: callers then use [synthesize] sentence by sentence (V4).
+     */
+    fun pcmStreamFor(language: String, voice: VoiceSpec?): Pair<SpeechEngine, VoiceSpec>? =
+        candidates(language, voice).firstNotNullOfOrNull { v ->
+            engines.firstOrNull { it.engine == v.engine && it.capabilities.pcmStream }?.let { it to v }
+        }
 
     override fun close() {
         engines.forEach { (it as? AutoCloseable)?.runCatching { close() } }

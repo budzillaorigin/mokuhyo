@@ -16,16 +16,37 @@ Every stage is in the report so a slow turn can be explained:
 
 | Stage | From → to |
 | --- | --- |
-| `first_audio` (headline) | last learner speech → partner audio starts |
+| `first_audio` (headline) | last learner speech → partner output device opened (`output_start`, a proxy; kept so reports stay comparable) |
+| `first_audible` | last learner speech → the reply's first audible sample (`output_audible`) |
 | `endpoint` | last learner speech → VAD end of turn (or Stop) |
 | `asr_queue` / `asr` | transcription queued → started → finished |
 | `llm_queue` | model call queued → started (waiting behind feedback or another call) |
 | `llm_first_token` | model started → first token |
 | `llm_validated` | model started → reply passed its checks |
-| `tts_first_pcm` | speech synthesis started → first audio ready |
-| `output_open` | audio ready → output device playing |
-| `playback` | partner audio starts → ends |
+| `tts_synth` | speech synthesis started → the whole utterance's audio ready (`tts_synth_done`; WAV engines) |
+| `tts_first_pcm` | speech synthesis started → first PCM (`tts_first_pcm`; only engines that stream PCM mark it) |
+| `output_open` | audio ready (first PCM, else synthesis done) → output device opened |
+| `leading_silence` | output device opened → first audible sample |
+| `playback` | output device opened → playback ends |
 | `cancel` | Cancel pressed → work actually stopped |
+
+Markers (QC 2026-10-30 V12). Wire names are never renamed, so stored reports keep their meaning:
+
+| Marker | What it measures |
+| --- | --- |
+| `tts_start` | synthesis requested |
+| `tts_synth_done` | a WAV engine returned the whole utterance (before 2026-10-30 this was marked as `tts_first_pcm`) |
+| `tts_first_pcm` | first PCM of a streaming engine; never marked for WAV engines |
+| `output_start` | output device opened and playback began: **a proxy** for first sound (device latency not included) |
+| `output_audible` | first audible sample: `output_start` + the clip's leading silence (computed from the PCM, not recorded acoustics) |
+| `speech_end` | last audible sample of an utterance that played to the end: `output_end` − trailing silence |
+| `output_underrun` | the output buffer ran dry mid-utterance |
+| `output_end` | playback finished or stopped |
+
+Per turn the report also lists `voices` (`engine:voice` of each utterance as it actually rendered, fallbacks included),
+`gapsMs` (heard gaps: one utterance's `speech_end` → the next one's `output_audible`) and `underruns`. The session's
+`voiceId` is the first voice that actually spoke. A device-open proxy and PCM-derived onsets still need loopback or a
+recording of the real output before they count as audible measurements.
 
 Reports never contain what was said: no transcript text, no audio. Only stage times, counts and identifiers (model id
 and file hash, voice id, backend, thread counts, memory).

@@ -54,14 +54,49 @@ object IlrSpeaking {
 
 private fun languageName(code: String) = Languages.of(code)?.nameEnglish ?: code
 
-private fun system(vararg lines: String) = ChatMessage(Role.SYSTEM, lines.joinToString("\n"))
+internal fun system(vararg lines: String) = ChatMessage(Role.SYSTEM, lines.joinToString("\n"))
 
-private fun user(text: String) = ChatMessage(Role.USER, text)
+internal fun user(text: String) = ChatMessage(Role.USER, text)
 
-private fun transcript(history: List<Turn>, learner: String, partner: String): String =
+internal fun transcript(history: List<Turn>, learner: String, partner: String): String =
     history.joinToString("\n") { t -> (if (t.speaker == Speaker.LEARNER) learner else partner) + ": " + t.text }
 
 private fun issues(vararg problems: String?): List<String> = problems.filterNotNull()
+
+/**
+ * Prompt fragments shared by the speaking tasks (QC 2026-10-30 V8). Each task composes these instead of slicing another
+ * task's prose; the discussion partner and the OPI interviewer have separate protocols (wording from the voice report,
+ * section "Suggested language protocols").
+ */
+object SpeakingProtocols {
+    fun partner(lang: String): String =
+        "Respond to the meaning of the learner's latest turn. If they asked a question, answer it first. Stay with the current " +
+            "situation unless they change it or it is finished. Use ordinary spoken $lang with the agreed register. Usually give one " +
+            "short thought; add a second when it helps. A brief acknowledgment is optional and should relate to what they said. Ask at " +
+            "most one follow-up question when there is something worth asking. A reply may end without a question. Avoid repeated " +
+            "praise, stock introductions, essay-style summaries and unnecessary restatement of their answer. If the meaning is unclear, " +
+            "ask a short specific clarification. Simplify vocabulary and ideas for the learner's level while keeping native grammar and " +
+            "phrasing. Return only the words to be spoken in the reply field; keep coaching and stage directions out of it."
+
+    fun interviewer(lang: String): String =
+        "Conduct the current phase in a calm professional manner. Ask one clear question or give one prompt at a time. Where " +
+            "appropriate, connect it briefly to a detail in the candidate's answer. Stay on the session's current topic until the planned " +
+            "follow-ups are complete. Move to a new topic with a brief natural transition when needed. Do not coach or correct the " +
+            "candidate during the interview. If they ask you to repeat or clarify, do so without supplying the answer or treating the " +
+            "repair as a new proficiency probe. Use concise spoken $lang in the specified register. Do not add routine praise or repeat " +
+            "the full candidate answer."
+
+    /** Who the partner is in a topic conversation: a conversation partner (never introduced as a tutor), or a role. */
+    fun partnerRole(lang: String, topic: String, domain: String, role: RolePlayContext?): String =
+        if (role == null) "You are a conversation partner for a learner of $lang. Topic: $topic (${domain.replace('_', ' ')})."
+        else "You are a conversation partner for a learner of $lang, playing a role in a practice scenario: $topic. " +
+            "Situation: ${role.situation} You play: ${role.partnerRole}. The learner plays: ${role.learnerRole}. Stay in your role."
+
+    /** The learner's turn was a short question to the interviewer: a repair request, or something to answer first. */
+    const val LEARNER_ASKED =
+        "The candidate's last turn was a question to you. If they asked you to repeat or clarify, repeat or rephrase your previous " +
+            "question simply, without supplying the answer. If they asked something else, answer it in a few words first, then continue."
+}
 
 /** `opi_interviewer_turn`: the interviewer's next question in a practice OPI-style interview, in any language. */
 class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null) : StreamingPromptTask<OpiInterviewerTurn.Input, OpiInterviewerTurn.Output> {
@@ -84,6 +119,10 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
          */
         val domain: String = "",
         val questionType: String = "",
+        /** The learner's last turn was a short question (V8): a repeat of the last question is allowed, not a new probe. */
+        val learnerAsked: Boolean = false,
+        /** This question follows up on the same topic as the previous one (V8 topic continuity). */
+        val followUp: Boolean = false,
     )
 
     /**
@@ -119,8 +158,9 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                 "Register: ${input.registerNotes}",
                 "Phases: warmup (easy personal questions), level_check (questions at the working level), probe (one level harder, to find where " +
                     "speech breaks down: ask to narrate, compare, support an opinion or hypothesize), roleplay (set up the situation and play your role), winddown (easy closing).",
-                "Write utterance in natural $lang only (no English, no romanization). One question or prompt, short enough to say in one breath. Never correct the candidate.",
-                "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
+                SpeakingProtocols.interviewer(lang),
+                "Write utterance in natural $lang only (no English, no romanization), short enough to say in one breath. Do not repeat a " +
+                    "question you already asked unless the candidate asks you to, and never repeat the candidate's words back as your question.",
                 "The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
                 if (input.culturalNotes.isNotEmpty()) "Cultural norms you follow as a native speaker (and in role-plays): " +
                     input.culturalNotes.joinToString(" ") { "• $it" } else "",
@@ -130,7 +170,11 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                     "Now: phase ${input.phase.wireName} (turn ${input.turnsInPhase + 1} of this phase). Working level hypothesis: ILR ${input.workingLevel.label} — " +
                     "${IlrSpeaking.describe(input.workingLevel)}. Aim this question at ILR ${aim.label}: ${IlrSpeaking.describe(aim)}." +
                     (input.rolePlay?.let { " Role-play: $it" } ?: "") +
-                    (if (input.domain.isNotBlank() && input.rolePlay == null) " Topic area for this question: ${input.domain}." else "") +
+                    (if (input.domain.isNotBlank() && input.rolePlay == null) {
+                        if (input.followUp) " Stay on the current topic (${input.domain}): ask a related follow-up that builds on a detail of their answer."
+                        else " Topic area for this question: ${input.domain}."
+                    } else "") +
+                    (if (input.learnerAsked) " ${SpeakingProtocols.LEARNER_ASKED}" else "") +
                     (if (input.questionType.isNotBlank()) " Kind of question: ${input.questionType}." else "") +
                     (if (input.usedDomains.isNotEmpty()) " Topic areas already covered: ${input.usedDomains.joinToString()}." else "") +
                     " Write the question.",
@@ -141,7 +185,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     override fun validate(input: Input, output: Output, context: ValidationContext): List<String> = issues(
         ScriptCheck.requireLanguage("utterance", output.utterance, input.language),
         Validation.length("utterance", output.utterance, max = 300),
-        input.history.firstOrNull { similar(it.text, output.utterance) }
+        repeated(input, output.utterance)
             ?.let { if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question (\"${it.text.take(60)}\")" else "utterance repeats the candidate's words" },
         // A backward next_phase is not an error: OpiSession.advance never moves back, so the utterance is still usable.
         if (output.english.isNotBlank()) ScriptCheck.requireEnglish("english", output.english) else null,
@@ -157,10 +201,19 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
      */
     override fun validateSentence(input: Input, sentence: String, spoken: List<String>): String? =
         ScriptCheck.requireLanguage("utterance", sentence, input.language)
-            ?: input.history.firstOrNull { similar(it.text, sentence) }?.let {
+            ?: repeated(input, sentence)?.let {
                 if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question" else "utterance repeats the candidate's words"
             }
             ?: if (spoken.sumOf { it.length + 1 } + sentence.length > 300) "utterance is too long" else null
+
+    /**
+     * The earlier turn [text] nearly duplicates, if any. When the candidate just asked something ([Input.learnerAsked]),
+     * repeating the interviewer's last question is a repair, not a duplicate (QC 2026-10-30 V8).
+     */
+    private fun repeated(input: Input, text: String): Turn? {
+        val lastQuestion = input.history.lastOrNull { it.speaker == Speaker.PARTNER }
+        return input.history.firstOrNull { similar(it.text, text) && !(input.learnerAsked && it === lastQuestion) }
+    }
 
     companion object {
         /** The kind of question each phase and target level calls for (the session's slot, BRIEF_PHASE8 N-00b). */
@@ -252,8 +305,11 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             "ILR speaking levels: " + IlrSpeaking.descriptors.entries.joinToString("; ") { "${it.key}: ${it.value}" } + ".",
             if (input.registerNotes.isNotBlank()) "Register in this language: ${input.registerNotes}" else "",
             "Judge only the candidate's lines. Rate each factor: functions (tasks handled: describe, narrate, support opinion, hypothesize), " +
-                "context/content (topics handled: personal, routine, concrete, abstract), accuracy (grammar, vocabulary, pronunciation as reflected in the transcript, register), " +
+                "context/content (topics handled: personal, routine, concrete, abstract), accuracy (grammar, vocabulary, register), " +
                 "text type (words, sentences, connected sentences, paragraphs, extended discourse).",
+            // QC 2026-10-30 V13: a transcript can't show how something sounded (ASR normalizes or mishears it).
+            "You only have a speech-to-text transcript: it carries no evidence of pronunciation, accent, pitch, tones or intonation. " +
+                "Do not judge or mention pronunciation; base every factor on grammar, vocabulary, functions and discourse.",
             "Each factor gets an ILR level, one or two English sentences of evidence and up to 3 short verbatim quotes from the candidate.",
             "sustained_level is the highest level the candidate sustained across the interview; breakdown_level is the lowest level where speech broke down (omit or repeat sustained if none).",
             "estimate is the overall level: the sustained level, never the best single answer. rationale (English) explains it. next_steps: exactly three concrete, specific practice actions in English.",
@@ -299,8 +355,27 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             val sustained = IlrLevel.parse(out.sustainedLevel)
             val estimate = IlrLevel.parse(out.estimate)
             val capped = if (sustained != null && estimate != null && estimate > sustained) sustained.label else out.estimate
-            return out.copy(functions = clean(out.functions), contextContent = clean(out.contextContent), accuracy = clean(out.accuracy),
-                textType = clean(out.textType), estimate = capped, nextSteps = out.nextSteps.take(3))
+            fun heard(f: Factor) = clean(f).copy(evidence = withoutSoundClaims(f.evidence))
+            return out.copy(functions = heard(out.functions), contextContent = heard(out.contextContent), accuracy = heard(out.accuracy),
+                textType = heard(out.textType), estimate = capped, rationale = withoutSoundClaims(out.rationale),
+                nextSteps = out.nextSteps.filter { soundClaim.find(it) == null }.take(3))
+        }
+
+        private val soundClaim = Regex("(?i)pronunc|\\baccent|intonation|\\bpitch")
+
+        /**
+         * [text] without the sentences that judge how the candidate sounded (QC 2026-10-30 V13): this task reads a
+         * transcript, so such a sentence would be a claim without evidence. Fluency heuristics from the audio are separate.
+         */
+        fun withoutSoundClaims(text: String): String =
+            Regex("(?<=[.!?])\\s+").split(text.trim()).filter { it.isNotBlank() && soundClaim.find(it) == null }.joinToString(" ")
+
+        /** How a factor is named on the score screen and in reports: accuracy says what it covers (V13). */
+        fun factorLabel(name: String): String = when (name) {
+            "accuracy" -> "Accuracy (grammar, vocabulary, register; from the transcript)"
+            "context_content" -> "Context/content"
+            "text_type" -> "Text type"
+            else -> name.replaceFirstChar { it.uppercase() }
         }
 
         private fun squash(s: String) = s.lowercase().filter { it.isLetterOrDigit() }
@@ -379,16 +454,8 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
         val role = input.rolePlay
         return listOf(
             system(
-                if (role == null) "You are a conversation partner and tutor for a learner of $lang. Topic: ${input.topic} (${input.domain.replace('_', ' ')})."
-                else "You are a conversation partner and tutor for a learner of $lang, playing a role in a practice scenario: ${input.topic}. " +
-                    "Situation: ${role.situation} You play: ${role.partnerRole}. The learner plays: ${role.learnerRole}. Stay in your role in reply; " +
-                    "keep the feedback fields about the learner's language.",
-                "Register: ${input.registerNotes}",
-                input.persona?.let { PersonaPrompt.lines(it) } ?: "",
-                if (input.memory.isNotEmpty()) "What you remember from earlier days with this learner (refer to it naturally when it fits): " +
-                    input.memory.joinToString(" ") { "• $it" } else "",
-                "The learner speaks at about ILR ${input.rollingLevel.label} (${IlrSpeaking.describe(input.rollingLevel)}). Reply in natural $lang at that level, " +
-                    "1–3 sentences, and keep the conversation going with a question. reply_english translates your reply.",
+                *partnerLines(input).toTypedArray(),
+                "reply_english translates your reply." + if (role != null) " Keep the feedback fields about the learner's language." else "",
                 "Then give feedback on the learner's LAST turn only: corrected = their sentence with the fewest changes that make it correct and appropriate " +
                     "(identical if nothing is wrong); changes lists each change (from, to, why in English); rewrite = how a native speaker would naturally say it; " +
                     "vocabulary = 1–3 useful words or phrases for this topic (word in $lang, meaning and example in English/$lang).",
@@ -397,6 +464,22 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
             ),
             user("Conversation so far:\n" + transcript(input.history, "Learner", "Partner")),
         )
+    }
+
+    companion object {
+        /** The partner's context and protocol (V8): shared by this task and the live [PartnerReply]. */
+        fun partnerLines(input: Input): List<String> {
+            val lang = languageName(input.language)
+            return listOf(
+                SpeakingProtocols.partnerRole(lang, input.topic, input.domain, input.rolePlay),
+                "Register: ${input.registerNotes}",
+                input.persona?.let { PersonaPrompt.lines(it) } ?: "",
+                if (input.memory.isNotEmpty()) "What you remember from earlier days with this learner (refer to it naturally when it fits): " +
+                    input.memory.joinToString(" ") { "• $it" } else "",
+                "The learner speaks at about ILR ${input.rollingLevel.label} (${IlrSpeaking.describe(input.rollingLevel)}).",
+                SpeakingProtocols.partner(lang),
+            )
+        }
     }
 
     override fun validate(input: Input, output: Output, context: ValidationContext): List<String> {

@@ -67,7 +67,9 @@ class SentenceStreamTest {
         assertTrue(played.first().second < model.lastTokenAt, "first sentence at ${played.first().second} ms, last token at ${model.lastTokenAt} ms")
         assertTrue(line.spokenByStream)
         assertEquals("Muy bien, gracias. ¿Y dónde trabaja usted ahora?", line.text)
-        assertEquals(SpokenReply.Outcome(2, false), outcome)
+        assertEquals(2, outcome.played)
+        assertFalse(outcome.failed)
+        assertEquals(listOf(Delivery.COMPLETED, Delivery.COMPLETED), outcome.utterances.map { it.delivery })
     }
 
     @Test
@@ -81,9 +83,73 @@ class SentenceStreamTest {
         assertNull(line.engine, "the turn falls back")
         assertEquals("¿Cómo se llama usted?", line.text, "the guided question is what the learner answers")
         assertEquals(listOf("¿Dónde vive usted?"), line.streamed)
-        assertFalse(line.spokenByStream, "the caller still has to say the fallback question")
+        assertFalse(line.spokenByStream)
         assertTrue(line.fallbackReason!!.contains("after 1 sentence"), line.fallbackReason)
         assertTrue(model.cancelled, "generation stopped as soon as the bad sentence was seen")
+        // QC 2026-10-30 V10: this test used to expect the guided question to be played after the heard one (two
+        // questions in one turn). The learner heard a question, so it stands and nothing else plays.
+        val repair = ReplyRepair.plan(listOf("¿Dónde vive usted?"), line.text)
+        assertEquals(ReplyRepair.Plan("¿Dónde vive usted?", playScripted = false), repair)
+    }
+
+    @Test
+    fun theSessionRecordsWhatWasHeardNextToWhatWasPlanned() = runTest {
+        val model = SlowModel(10, listOf("{\"utterance\":\"¿Dónde vive usted? ", "Where do you work these days? ", "¿Le gusta?\"}"))
+        val bank = listOf(BankQuestion("w1", "warmup", "1", "¿Cómo se llama usted?", "What is your name?", "personal"))
+        val session = session(model, bank)
+        val line = session.next(speak = {})!!
+        val delivery = listOf(UtteranceDelivery("0:0", "¿Dónde vive usted?", Delivery.COMPLETED.wire))
+        session.delivered(ReplyRepair.plan(line.streamed, line.text).text, delivery)
+        val record = session.turns.single()
+        assertEquals("¿Cómo se llama usted?", record.question, "the planned question is kept")
+        assertEquals("¿Dónde vive usted?", record.heard)
+        assertEquals(delivery, record.delivery)
+        assertEquals("¿Dónde vive usted?", session.transcript.last().text, "the model's next turn sees what was heard")
+    }
+
+    @Test
+    fun anAcknowledgementAloneIsFinishedByTheScriptedQuestionAndRecordedAsBoth() {
+        assertEquals(ReplyRepair.Plan("Muy bien. ¿Cómo se llama usted?", playScripted = true), ReplyRepair.plan(listOf("Muy bien."), "¿Cómo se llama usted?"))
+        assertEquals(ReplyRepair.Plan("¿Cómo se llama usted?", playScripted = true), ReplyRepair.plan(emptyList(), "¿Cómo se llama usted?"))
+        assertEquals(ReplyRepair.Plan("はい。お名前は？", playScripted = true), ReplyRepair.plan(listOf("はい。"), "お名前は？"))
+    }
+
+    private fun reply(failSynth: Set<String> = emptySet(), failPlay: Set<String> = emptySet(), played: MutableList<String>) =
+        SpokenReply<String>({ s -> delay(10); s.takeIf { it !in failSynth } }, { a -> delay(100); if (a in failPlay) false else { played += a; true } })
+
+    @Test
+    fun readyAudioIsNeverDroppedWhenALaterSentenceFails() = runTest {
+        // QC 2026-10-30 V10: A plays, B is queued, C fails to synthesize; B used to be discarded.
+        val played = ArrayList<String>()
+        val sentences = Channel<String>(Channel.UNLIMITED).apply { listOf("A.", "B.", "C.", "D.").forEach { trySend(it) }; close() }
+        val outcome = reply(failSynth = setOf("C."), played = played).speak(sentences)
+        assertEquals(listOf("A.", "B."), played)
+        assertEquals(listOf(Delivery.COMPLETED, Delivery.COMPLETED, Delivery.FAILED, Delivery.GENERATED), outcome.utterances.map { it.delivery })
+        assertEquals(listOf("A.", "B."), outcome.heard)
+        assertTrue(outcome.failed)
+        assertEquals(listOf("7:0", "7:1", "7:2", "7:3"), outcome.record(7).map { it.id }, "stable utterance ids")
+    }
+
+    @Test
+    fun aFailureBeforeFirstAudioHearsNothing() = runTest {
+        val played = ArrayList<String>()
+        val sentences = Channel<String>(Channel.UNLIMITED).apply { listOf("A.", "B.").forEach { trySend(it) }; close() }
+        val outcome = reply(failSynth = setOf("A."), played = played).speak(sentences)
+        assertEquals(emptyList(), played)
+        assertEquals(listOf(Delivery.FAILED, Delivery.GENERATED), outcome.utterances.map { it.delivery })
+        assertEquals(emptyList(), outcome.heard)
+    }
+
+    @Test
+    fun aFailureDuringPlaybackInterruptsThatSentenceOnly() = runTest {
+        val played = ArrayList<String>()
+        val sentences = Channel<String>(Channel.UNLIMITED).apply { listOf("A.", "B.", "C.").forEach { trySend(it) }; close() }
+        val outcome = reply(failPlay = setOf("B."), played = played).speak(sentences)
+        assertEquals(listOf("A."), played)
+        assertEquals(Delivery.COMPLETED, outcome.utterances[0].delivery)
+        assertEquals(Delivery.INTERRUPTED, outcome.utterances[1].delivery)
+        assertTrue(outcome.utterances[2].delivery in setOf(Delivery.QUEUED, Delivery.GENERATED), "never played after the failure")
+        assertEquals(listOf("A."), outcome.heard)
     }
 
     @Test

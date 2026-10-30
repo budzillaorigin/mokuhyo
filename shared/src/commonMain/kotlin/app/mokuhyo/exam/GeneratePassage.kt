@@ -67,8 +67,11 @@ class GeneratePassage : PromptTask<GeneratePassage.Input, GeneratePassage.Output
     override fun messages(input: Input): List<ChatMessage> {
         val lang = Languages.of(input.language)?.nameEnglish ?: input.language
         val (lo, hi) = WORDS.getValue(input.skill).getValue(input.level)
-        val form = if (input.skill == Skill.READING) "Write the text in \"body\" (leave \"script\" empty)." else
-            "Write a listening script in \"script\" (speaker label in $lang, voice female/male, spoken text); leave \"body\" empty."
+        // Reading gets the written-document instruction; listening a spoken genre (QC 2026-10-30 V9).
+        val form = if (input.skill == Skill.READING) "Write the text in \"body\" (leave \"script\" empty). It must read like an authentic " +
+            "document of its type written by a native speaker for native speakers." else
+            "Write a listening script in \"script\" (speaker label in $lang, voice female/male, spoken text); leave \"body\" empty. " +
+                SpokenGenre.instruction(input.textType, lang)
         return listOf(
             ChatMessage(Role.SYSTEM, "You write original practice material for foreign-language proficiency tests on the ILR scale. Never copy real test items; invent plausible names and places."),
             ChatMessage(Role.USER, """Language: $lang. ILR level ${input.level}. Text type: ${input.textType.replace('_', ' ')}. Topic: ${input.topic}.

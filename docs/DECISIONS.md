@@ -690,3 +690,74 @@ GitHub artifact-service error; re-running the job fixed it.)
   script subprocess returned error exit status 3", half-configured; patched → installed and purged cleanly.
 - Not done: the CI runner's missing applications folder is not created by the gate, so the gate keeps testing the
   harder case. Linux stays unofficial (D-025).
+
+## D-048 — Qwen3-TTS audition exception (owner decision, 2026-10-30)
+
+**D-048 — Qwen3-TTS audition exception (owner decision, 2026-10-30).** Qwen3-TTS may be used for voice auditions on the owner's own machine (RTX 5090). Those auditions have already produced audition sets, which live on that machine and are not in the repo. Repo tooling may import externally rendered audition WAVs as a labeled candidate for blind comparison. Qwen weights, Qwen-rendered audio, Qwen runtime code, and any manifest or installer entry for Qwen are **not** committed or shipped under this exception. Shipping Qwen as a live or prerecorded voice would need a further owner decision. No other exception exists beyond D-041 and D-048.
+
+## D-049 — voice QC fixes V1–V13 (BRIEF_VOICE_FIXES_2026-10-30, unattended defaults, 2026-10-30)
+
+One finding, one commit, one regression; no audio was re-rendered or deleted and nothing Qwen was added (D-048).
+
+- **Step 0.** `BRIEF.md` rule 13 had neither the D-041 exception nor a "No other exception exists" sentence, so one
+  sentence naming D-041 and D-048 was added there; `CLAUDE.md` got the D-048 sentence in place of "No other exception exists".
+- **V1 splitter.** Chunks are exact substrings; only whitespace at a split point is dropped. A sentence never ends inside
+  a number (`\d+([.,:'’]\d+)+`), after a listed abbreviation or a single capital initial, before a lowercase word, or
+  where a Japanese quotative particle (と/っ) follows a closed quote. Chunk length is measured per script, not per
+  character: Han 3 units, kana and Hangul 2, everything else 1, limit 220 units (a rough speaking-time proxy; the owner
+  can tune it). The JVM uses the same rules as a veto (`SentenceGuard`) over ICU's and the punctuation splitter's ends;
+  the cases live in `tools/voices/fixtures/segmentation_cases.json`. The existing spoken-normalization step (Chinese
+  word spacing in ChatterboxJobs) is unchanged and still never touches the shown transcript.
+- **V5 audition half.** Candidates are `engine:id` labels (`--candidates`), else every listed voice of an unrestricted
+  engine plus the pack's prerendered clip. Restricted engine: `os` (D-013), only with `--include-os` even when named.
+  External sets: `--import-audition DIR` with `audition.json` (label, engine, model, revision, weight_sha256,
+  reference_sha256 required; settings optional) and `DIR/<lang>/<prompt id>.wav`. The kit writes `missing.csv` and
+  `sources.json` next to `key.csv`.
+- **V11 render identity.** Sidecar `<id>.wav.json` per clip; a different identity renders into
+  `OUT_DIR/compare/<first 16 hex of the key>/<lang>/<id>.wav`. Weight hashes are cached in `OUT_DIR/.weight-hashes.json`
+  by path, size and mtime. The current `chatterbox-tts` (0.1.7) loads `t3_mtl23ls_v2`, not the `t3_mtl23ls_v3` in
+  `docs/MODELS.md`, so `chatterbox_render.py` now stops unless the owner installs a package that loads v3 or passes
+  `--checkpoint t3_mtl23ls_v2` deliberately; which checkpoint made the existing clips is unknown. MODELS.md was not
+  changed (a provenance edit is outside this brief). VOICEVOX keeps its models inside the engine, so its engine and core
+  versions stand in for a weight hash. Reference pools are reported, not changed: the Japanese pool uses es_ES, es_MX,
+  fr_FR and pt_BR references; ko, ar and zh-Hans pools also use only other languages' references.
+- **V12 markers.** Wire names never change, so stored reports keep their meaning: `tts_first_pcm` stays for streaming
+  engines, WAV engines mark the new `tts_synth_done`, `output_start` is documented as a device-open proxy, and the new
+  `output_audible`, `speech_end` and `output_underrun` are derived from the PCM (−40 dBFS threshold) and the line. The
+  headline `first_audio` keeps its device-open end for comparability; `first_audible` adds the leading silence. Session
+  `voiceId` is now the first voice that actually spoke. Listening kit loudness target: about −23 dBFS RMS, peak-limited.
+- **V2 boundary policy.** Config `shared/src/jvmMain/resources/app/mokuhyo/speech/boundary_policy.json` (version
+  `boundary-1`), read by the app and by `tools/voices/boundary.py`. Targets (heard gap = edges + inserted silence):
+  continuation 600 ms, sentence_end 700 ms, speaker_turn 1050 ms = the old 250/350/700 ms pauses plus the Piper edge
+  silence measured on the 15 Piper renders in `voices/chatterbox_refs` (median 31 ms leading + 317 ms trailing). The
+  prerender path used 600 ms after every line whatever the speaker; it now follows the runtime's same-speaker/turn split.
+  A job's `pause` field is ignored and no longer written.
+- **V9 register.** Only `es-q-warmup-0+-01` (→ ¿Cómo se llama?) and `ru-q-warmup-0+-01` (→ Как вас зовут?) changed; both
+  stay `source = llm`, unverified. `tools/opi/register_audit.py` covers es, fr, de, ru, fa, id (T/V word lists), ja
+  (polite forms) and ko (해요체 endings) over bank questions; role-play openings are exempt, and pt-BR, zh-Hans and ar
+  are not audited (their profiles allow the informal pronoun or have no T/V). The other 24 hits go to native review.
+  Spoken genres: conversation, debate, interview, panel discussion, phone call, short exchange and voicemail are
+  discussions; every other listening type is prepared speech. The in-app reading prompt gained the written-document
+  sentence the tool already had.
+- **V10 delivery.** Delivery states generated/queued/failed/interrupted/completed with ids `<turn>:<n>`. Repair: nothing
+  heard → the scripted question; a heard question → it stands, nothing else plays; heard sentences without a question →
+  the scripted question finishes the turn and the turn is recorded as both. New optional fields (`heard`, `delivery`,
+  `TopicExchange.partial`) default to null/false, so older records and bundles read unchanged.
+- **V6 budget.** Output-start budget = text deadline + 4 s (12 s with the 8 s default; 30 s when the learner chose
+  "Always wait"), for streamed replies. When it runs out before audio the reply falls back to its text
+  (`Outcome.TimedOut`); scripted questions and prerecorded clips are not budgeted.
+- **V5 runtime half.** A reply's voice is fixed by its first rendered sentence; a later sentence that only another
+  voice can render stops the reply (`Outcome.VoiceChanged`). The interview keeps the first voice that actually spoke for
+  every later turn. Prerecorded prompt clips keep their own recorded voice; unifying fixed and live voices needs the
+  live-backend decision.
+- **V4 request.** `DeliveryIntent` is STATEMENT/QUESTION/ACKNOWLEDGEMENT (question from the final mark); preceding text
+  is passed, following text is unknown while streaming. Buffer: 4 PCM chunks. No shipped engine streams PCM.
+- **V8 conversation.** One related follow-up per topic within the level check or probe (`FOLLOW_UPS = 1`), so a test
+  interview still covers about six topic areas. A learner turn of at most 8 words ending in a question mark is a
+  question back (language-neutral rule); at most one such repair per question goes uncounted. Domain pools by phase and
+  level are in `OpiSession.domainsFor`. `RealOpiPacksTest` now answers with a statement instead of a question.
+- **V7 capture.** Patience values 1 / 1.5 (today's) / 2.5 / 3.5 s; persona patience 1–2 → 1 s, 3 → 1.5 s, 4 → 2.5 s,
+  5 → 3.5 s, applied only in conversation mode so the default mode is exactly as before. Conversation mode is off by
+  default and never used in interview tests; Stop interrupts the reply in topic conversations.
+- **V13 rating.** Sentences mentioning pronunciation, accent, intonation or pitch are dropped from the shown evidence,
+  rationale and next steps; the accuracy factor is labeled "grammar, vocabulary, register; from the transcript".

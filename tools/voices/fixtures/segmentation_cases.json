@@ -1,0 +1,349 @@
+{
+ "version": 1,
+ "about": "Segmentation cases shared by tools/voices/textsplit.py (test_textsplit.py) and the JVM ICU sentence path (IcuSentencesFixtureTest). No boundary may fall inside a 'protect' span; 'sentences' is the expected sentence count. 'corpus' holds the 18 shipped lines the QC of 2026-10-30 found corrupted (evidence.json numeric_reproductions); every numeric span in them is protected.",
+ "corpus": [
+  {
+   "lang": "ar",
+   "id": "ar-dl-1p-announcement-002",
+   "file": "content/packs/ar/exam.json",
+   "json_path": "$.listening.passages[29].script[2]",
+   "text": "من الآن فصاعدًا، يجب أن يكون المتقدمون متوسط تراكميًا لا يقل عن 2.5."
+  },
+  {
+   "lang": "ar",
+   "id": "cuas-base-defense-ar-dlg-joint-patrol-brief",
+   "file": "content/packs/ar/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[5].lines[6]",
+   "text": "التردد الأساسي هو 123.450 ميغاهرتز، والتردد الاحتياطي هو 234.560 ميغاهرتز."
+  },
+  {
+   "lang": "de",
+   "id": "de-dl-1p-interview-001",
+   "file": "content/packs/de/exam.json",
+   "json_path": "$.listening.passages[30].script[3]",
+   "text": "Die Location allein hat 8.000 Euro gekostet, und das Catering war auch nicht billig. Insgesamt hat die Hochzeit mehr als 20.000 Euro gekostet."
+  },
+  {
+   "lang": "de",
+   "id": "de-dl-2-news-002",
+   "file": "content/packs/de/exam.json",
+   "json_path": "$.listening.passages[54].script[1]",
+   "text": "25.000 Läuferinnen und Läufer nahmen an diesem Jahr Event teil, bei dem es auch einige Wetterextreme gab."
+  },
+  {
+   "lang": "es",
+   "id": "cuas-base-defense-es-dlg-joint-patrol-brief",
+   "file": "content/packs/es/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[4].lines[6]",
+   "text": "La frecuencia de radio es 123.45 MHz. Si encontramos un punto de lanzamiento de drones, necesitamos marcarlo y reportarlo de inmediato."
+  },
+  {
+   "lang": "fr",
+   "id": "fr-dl-2p-speech-004",
+   "file": "content/packs/fr/exam.json",
+   "json_path": "$.listening.passages[75].script[3]",
+   "text": "Comme vous le savez, l'inflation reste trop élevée à 3.5 pour cent. C'est pourquoi nous devons intensifier notre lutte contre l'inflation."
+  },
+  {
+   "lang": "fr",
+   "id": "cuas-base-defense-fr-dlg-joint-patrol-brief",
+   "file": "content/packs/fr/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[4].lines[6]",
+   "text": "Nous utiliserons la fréquence 123.45 pour les communications principales et la fréquence 67.89 en cas d'urgence."
+  },
+  {
+   "lang": "id",
+   "id": "id-dl-2-report-004",
+   "file": "content/packs/id/exam.json",
+   "json_path": "$.listening.passages[57].script[4]",
+   "text": "Baik, kita akan memulai patrol pada pukul 08.00 dan berakhir pada pukul 16.00. Jika ada situasi darurat, kita akan melaporkan ke markas besar secara langsung."
+  },
+  {
+   "lang": "id",
+   "id": "id-dl-2-report-005",
+   "file": "content/packs/id/exam.json",
+   "json_path": "$.listening.passages[58].script[1]",
+   "text": "Kemarin pukul 14.30, Sopir pengiriman bernama Budi tidak diperbolehkan masuk ke pintu gerbang pabrik karena tidak memiliki dokumen yang benar."
+  },
+  {
+   "lang": "id",
+   "id": "cuas-base-defense-id-dlg-airspace-coordination",
+   "file": "content/packs/id/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[2].lines[6]",
+   "text": "Kami akan mulai pada pukul 13.00 dan selesai pada pukul 16.00."
+  },
+  {
+   "lang": "id",
+   "id": "cuas-base-defense-id-dlg-joint-patrol-brief",
+   "file": "content/packs/id/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[3].lines[4]",
+   "text": "Frekuensi radio kita adalah 123.45 MHz. Jika kita menemukan titik peluncuran drone, kita akan melaporkan ke komando dan menandai lokasi dengan penanda GPS."
+  },
+  {
+   "lang": "id",
+   "id": "cuas-base-defense-id-dlg-fpcon-contractor",
+   "file": "content/packs/id/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[6].lines[2]",
+   "text": "Pertama, semua pekerja harus tiba sebelum pukul 06.00. Tidak ada pengecualian."
+  },
+  {
+   "lang": "ko",
+   "id": "ko-dl-0p-short_exchange-004",
+   "file": "content/packs/ko/exam.json",
+   "json_path": "$.listening.passages[6].script[2]",
+   "text": "금리는 3.5%로 올랐습니다."
+  },
+  {
+   "lang": "ko",
+   "id": "cuas-base-defense-ko-dlg-joint-patrol-brief",
+   "file": "content/packs/ko/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[4].lines[5]",
+   "text": "주파수는 138.350 메가헤르츠입니다. 응답이 없으면 138.650으로 전환해주시기 바랍니다."
+  },
+  {
+   "lang": "ko",
+   "id": "cuas-base-defense-ko-dlg-request-qrf",
+   "file": "content/packs/ko/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[6].lines[4]",
+   "text": "네, 현재 좌표는 37°45'12.3\"N, 126°52'34.5\"E입니다."
+  },
+  {
+   "lang": "pt-BR",
+   "id": "pt-dl-0p-short_exchange-003",
+   "file": "content/packs/pt-BR/exam.json",
+   "json_path": "$.listening.passages[5].script[4]",
+   "text": "Almoço às 12.30, como antes."
+  },
+  {
+   "lang": "ru",
+   "id": "ru-dl-3-analysis-004",
+   "file": "content/packs/ru/exam.json",
+   "json_path": "$.listening.passages[78].script[4]",
+   "text": "Абсолютно. Мы будем использовать радиосвязь на частоте 155.7 МГц. В случае обнаружения нарушителей или других потенциальных угроз, мы должны немедленно информировать друг друга."
+  },
+  {
+   "lang": "ru",
+   "id": "cuas-base-defense-ru-dlg-joint-patrol-brief",
+   "file": "content/packs/ru/track-cuas-base-defense.json",
+   "json_path": "$.dialogues[3].lines[6]",
+   "text": "Основная частота — 151.950, резервная — 158.250."
+  }
+ ],
+ "cases": [
+  {
+   "class": "decimal",
+   "lang": "es",
+   "text": "La temperatura es 3.5 grados. ¿Y mañana?",
+   "protect": [
+    "3.5"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "decimal",
+   "lang": "en",
+   "text": "Pi is about 3.14159. It never ends.",
+   "protect": [
+    "3.14159"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "grouping",
+   "lang": "de",
+   "text": "Das kostet 8.000 Euro. Das ist viel.",
+   "protect": [
+    "8.000"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "grouping",
+   "lang": "en",
+   "text": "We counted 1,234,567.89 dollars. That was all.",
+   "protect": [
+    "1,234,567.89"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "grouping",
+   "lang": "fr",
+   "text": "Il a payé 12,5 euros, puis il est parti.",
+   "protect": [
+    "12,5"
+   ],
+   "sentences": 1
+  },
+  {
+   "class": "unit",
+   "lang": "es",
+   "text": "La frecuencia es 123.45 MHz. Repito, 123.45 MHz.",
+   "protect": [
+    "123.45 MHz"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "abbreviation",
+   "lang": "es",
+   "text": "El Sr. García trabaja aquí. ¿Y usted?",
+   "protect": [
+    "Sr. García"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "abbreviation",
+   "lang": "fr",
+   "text": "M. Dupont est là. Et vous ?",
+   "protect": [
+    "M. Dupont"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "abbreviation",
+   "lang": "en",
+   "text": "Dr. Smith met Mr. Jones at 5 p.m. today. They talked.",
+   "protect": [
+    "Dr. Smith",
+    "Mr. Jones"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "abbreviation",
+   "lang": "de",
+   "text": "Wir brauchen z. B. Wasser und Brot. Danke.",
+   "protect": [
+    "z. B. Wasser"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "time",
+   "lang": "pt-BR",
+   "text": "Almoço às 12.30, como antes. Até logo.",
+   "protect": [
+    "12.30"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "time",
+   "lang": "en",
+   "text": "The meeting starts at 14:30. Be on time.",
+   "protect": [
+    "14:30"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "time",
+   "lang": "id",
+   "text": "Kami mulai pukul 08.00 dan selesai pukul 16.00. Terima kasih.",
+   "protect": [
+    "08.00",
+    "16.00"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "initials",
+   "lang": "en",
+   "text": "J. R. R. Tolkien wrote it. Read it.",
+   "protect": [
+    "J. R. R. Tolkien"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "ellipsis",
+   "lang": "es",
+   "text": "Bueno... no sé qué decir. Lo pienso.",
+   "protect": [
+    "Bueno... no"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "ellipsis",
+   "lang": "fr",
+   "text": "Eh bien… peut-être demain. Ou pas.",
+   "protect": [
+    "bien… peut"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "quote",
+   "lang": "en",
+   "text": "\"Is it ready?\" he asked. She nodded.",
+   "protect": [
+    "\"Is it ready?\" he"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "quote",
+   "lang": "es",
+   "text": "«Ya voy», dijo ella. Luego salió.",
+   "protect": [
+    "«Ya voy», dijo"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "quote",
+   "lang": "ja",
+   "text": "彼は「はい。」と言った。それから帰った。",
+   "protect": [
+    "「はい。」と言った。"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "quote",
+   "lang": "ja",
+   "text": "「はい。」そうですね。",
+   "protect": [
+    "「はい。」"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "cjk",
+   "lang": "ja",
+   "text": "はい、わかりました。お仕事は何ですか？",
+   "protect": [],
+   "sentences": 2
+  },
+  {
+   "class": "cjk",
+   "lang": "zh-Hans",
+   "text": "好的，谢谢。你在哪儿工作？",
+   "protect": [],
+   "sentences": 2
+  },
+  {
+   "class": "cjk",
+   "lang": "ko",
+   "text": "금리는 3.5%로 올랐습니다. 감사합니다.",
+   "protect": [
+    "3.5%"
+   ],
+   "sentences": 2
+  },
+  {
+   "class": "coordinates",
+   "lang": "ko",
+   "text": "네, 현재 좌표는 37°45'12.3\"N, 126°52'34.5\"E입니다.",
+   "protect": [
+    "12.3",
+    "34.5"
+   ],
+   "sentences": 1
+  }
+ ]
+}

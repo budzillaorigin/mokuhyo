@@ -1,0 +1,11 @@
+{
+ "about": "Boundary joins shared by tools/voices/test_boundary.py and BoundaryPolicyTest (QC 2026-10-30 V2). A fixture policy, so tuning the shipped values never breaks the table. Clips are [leading silence ms, voiced ms, trailing silence ms] at 1000 Hz; voiced samples are 1000. 'heard_gaps_ms' are the silent runs between voiced spans; 'total_ms' proves nothing is added after the last clip.",
+ "policy": {"version": "fixture", "gaps_ms": {"continuation": 300, "sentence_end": 500, "speaker_turn": 900}},
+ "rate": 1000,
+ "joins": [
+  {"name": "continuation tops up the edges", "clips": [[10, 100, 50], [20, 100, 10]], "boundaries": ["continuation"], "heard_gaps_ms": [300], "total_ms": 520},
+  {"name": "edges longer than the target are kept, never trimmed", "clips": [[0, 100, 400], [200, 100, 0]], "boundaries": ["sentence_end"], "heard_gaps_ms": [600], "total_ms": 800},
+  {"name": "speaker turn with no edge silence", "clips": [[0, 100, 0], [0, 100, 0]], "boundaries": ["speaker_turn"], "heard_gaps_ms": [900], "total_ms": 1100},
+  {"name": "mixed boundaries and no final pad", "clips": [[30, 100, 120], [0, 100, 100], [50, 100, 70]], "boundaries": ["sentence_end", "speaker_turn"], "heard_gaps_ms": [500, 900], "total_ms": 1800}
+ ]
+}

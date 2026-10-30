@@ -49,6 +49,7 @@ import androidx.compose.material3.FilterChip
 import app.mokuhyo.desktop.ui.speaking.correctionsDefault
 import app.mokuhyo.desktop.ui.speaking.settingKey
 import app.mokuhyo.settings.Settings
+import app.mokuhyo.speech.CapturePatience
 import app.mokuhyo.update.UpdateResult
 import io.ktor.client.engine.java.Java
 import kotlinx.coroutines.launch
@@ -275,6 +276,22 @@ private fun SpeakingDefaults(app: AppGraph) {
         }
         Text("Recording stops by itself after a short silence. If nothing is heard, you'll get a hint about the microphone.",
             style = MaterialTheme.typography.bodySmall)
+        // Conversation mode (QC 2026-10-30 V7): opt-in, practice only; manual Record/Stop stays the default.
+        var conversation by remember { mutableStateOf(app.settings.bool(Settings.Key.CONVERSATION_MODE, default = false)) }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Switch(conversation, onCheckedChange = { conversation = it; app.settings.put(Settings.Key.CONVERSATION_MODE, it.toString()) })
+            Text("Conversation mode (practice only): start listening again by itself when the partner finishes; press “I'm done” or pause to end your turn")
+        }
+        if (conversation) {
+            var patience by remember { mutableStateOf(CapturePatience.of(app.settings.get(Settings.Key.CAPTURE_PATIENCE)) ?: CapturePatience.NORMAL) }
+            Text("How long a pause ends my turn (a persona's own patience wins in persona conversations)", style = MaterialTheme.typography.labelLarge)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                CapturePatience.entries.forEach { p ->
+                    FilterChip(patience == p, onClick = { patience = p; app.settings.put(Settings.Key.CAPTURE_PATIENCE, p.wire) }, label = { Text(p.label) })
+                }
+            }
+            Text("The microphone stays off while the partner speaks: interrupt with Stop, not by talking over them.", style = MaterialTheme.typography.bodySmall)
+        }
         // The whole-turn deadline (BRIEF_INTERVIEW_SPEED N3): device-local, it depends on this computer's speed.
         var deadline by remember { mutableStateOf(app.replyDeadlineMs() ?: 0L) }
         Text("If the interviewer's reply isn't ready in time, ask a prepared question instead", style = MaterialTheme.typography.labelLarge)

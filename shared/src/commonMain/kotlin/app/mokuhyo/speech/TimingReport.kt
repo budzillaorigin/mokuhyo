@@ -40,6 +40,13 @@ data class TimingReport(
         val ttsSynthMs: Long? = null,
         val ttsAudioMs: Long? = null,
         val peakRssMb: Long? = null,
+        /** `engine:voice` per utterance as rendered (QC 2026-10-30 V12); the session's voiceId is only the first listed. */
+        val voices: List<String> = emptyList(),
+        /** `requested->rendered` for each voice substitution (QC 2026-10-30 V5). */
+        val voiceFallbacks: List<String> = emptyList(),
+        /** Heard gaps between consecutive utterances, ms. */
+        val gapsMs: List<Long> = emptyList(),
+        val underruns: Int = 0,
         val events: List<Mark> = emptyList(),
         val stages: Map<String, Long> = emptyMap(),
     )
@@ -113,6 +120,9 @@ data class TimingReport(
         appendLine()
         appendLine("- TTS real-time factor: ${summary.ttsRealTimeFactor?.let { fmt(it) } ?: "not measured"}")
         appendLine("- Fallback rate: ${summary.fallbackRate?.let { pct(it) } ?: "n/a"}; prerendered prompts: ${summary.prerenderedRate?.let { pct(it) } ?: "n/a"}")
+        sessions.flatMap { s -> s.turns.flatMap { it.voiceFallbacks } }.let { vf ->
+            appendLine("- TTS voice fallbacks (requested->rendered): " + if (vf.isEmpty()) "none" else "${vf.size} (${vf.groupingBy { it }.eachCount().entries.joinToString { "${it.key} ×${it.value}" }})")
+        }
         appendLine("- Peak memory: ${summary.peakRssMb?.let { "$it MB (app process; Piper runs in its own process)" } ?: "not measured"}")
         summary.cancel.forEach { (k, s) -> appendLine("- Cancel $k: p50 ${s.p50} ms, p95 ${s.p95} ms (n=${s.n})") }
         summary.warmupMs.forEach { (k, v) -> appendLine("- Warm-up $k: $v ms (not counted as answer time)") }

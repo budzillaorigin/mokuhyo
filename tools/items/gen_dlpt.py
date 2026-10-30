@@ -526,6 +526,28 @@ def draft_schema(skill: str, n_items: int) -> dict:
     return {"type": "object", "properties": props, "required": req}
 
 
+# Listening text types where people talk with each other (SpokenGenre.DISCUSSION in the app); the rest are prepared.
+DISCUSSION_TYPES = {"conversation", "debate", "interview", "panel_discussion", "phone_call", "short_exchange", "voicemail"}
+
+
+def spoken_genre(text_type: str, name: str) -> str:
+    """The spoken-genre instruction for a listening script (mirrors app.mokuhyo.exam.SpokenGenre)."""
+    kind = text_type.replace("_", " ")
+    if text_type in DISCUSSION_TYPES:
+        genre = (f"This is a spoken {kind} between native speakers of {name}, not a written text read aloud. Decide who "
+                 "the speakers are to each other (colleagues, neighbors, a clerk and a customer…), why they are talking "
+                 "and where, and let that relationship set the register (formal or informal address, politeness) "
+                 "consistently. Use responsive turns of uneven length: short reactions, answers to what was just asked, "
+                 "an occasional longer explanation, and ordinary spoken syntax.")
+    else:
+        genre = (f"This is a prepared spoken {kind} in {name}, not a written text read aloud. Decide who is speaking to "
+                 "whom, for what purpose and in what situation, and use the register that situation calls for. It may "
+                 "sound prepared, with clear structure, but in sentences a speaker would say aloud.")
+    return (genre + " Keep grammar and register native at every level; simplify ideas and vocabulary for the level "
+            "instead. Write only the spoken words: no fillers added for effect, no stage directions, no [pause] tags, "
+            "no ellipses for pauses and no invented breaths.")
+
+
 def draft_messages(lang: str, skill: str, level: str, text_type: str, topic: str, band: dict, n_items: int,
                    avoid: list[str], feedback: str | None, extra: str | None = None, qtypes_override: list[str] | None = None) -> list[dict]:
     name = LANG_NAMES[lang]
@@ -536,14 +558,18 @@ def draft_messages(lang: str, skill: str, level: str, text_type: str, topic: str
     form = (
         f"Write the passage body in {name}." if skill == "reading" else
         f"Write a listening script in {name}: a list of lines, each with a speaker label (in {name}), a voice "
-        f"('female' or 'male', alternate for different speakers) and the spoken text. Use natural spoken {name}."
+        f"('female' or 'male', alternate for different speakers) and the spoken text. {spoken_genre(text_type, name)}"
     )
+    # Reading gets the written-document instruction; listening a spoken genre instead (QC 2026-10-30 V9).
+    authentic = ("The text must read like an authentic document of its type written by a native speaker for native speakers."
+                 if skill == "reading" else
+                 "The script must sound like authentic speech of its genre between native speakers, not a written text read aloud.")
     system = (
         "You write ORIGINAL practice material for foreign-language reading and listening proficiency tests that follow "
         "the US Interagency Language Roundtable (ILR) scale, in the style of a multiple-choice test with English "
         "questions about a target-language text. Never copy or imitate real test items or copyrighted text; invent "
         "places, organizations and people when needed (but keep them plausible), and never include personal data. "
-        "The text must read like an authentic document of its type written by a native speaker for native speakers."
+        + authentic
     )
     user = f"""Language: {name}
 ILR level: {level} — a reader/listener at this level {desc}.

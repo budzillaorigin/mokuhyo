@@ -107,7 +107,7 @@ class QuestionDeliveryTest {
             val synthesizing = CompletableDeferred<Unit>()
             val played = AtomicInteger()
             SpeechProvider.set(FakeSpeech { synthesizing.complete(Unit); delay(2_000); AudioIO.wav(ShortArray(16_000)) })
-            Voice.output = { _, _, _, started -> started(); played.incrementAndGet() }
+            Voice.output = { _, _, _, started, _ -> started(); played.incrementAndGet() }
             val d = QuestionDelivery(test = true)
             d.newQuestion(0)
             val job = launch(Dispatchers.Default) { d.deliver(0) { Voice.say(app, "¿Cómo se llama?", "es") } }
@@ -133,7 +133,7 @@ class QuestionDeliveryTest {
             val stoppedByCancel = AtomicBoolean(false)
             val playbacks = AtomicInteger()
             SpeechProvider.set(FakeSpeech { AudioIO.wav(ShortArray(16_000)) })
-            Voice.output = { _, _, stop, started ->
+            Voice.output = { _, _, stop, started, _ ->
                 started()
                 playbacks.incrementAndGet()
                 playing.countDown()

@@ -60,7 +60,8 @@ class RealOpiPacksTest {
             for (test in listOf(false, true)) {
                 val scripted = OpiSession(l.code, pack.profile, pack.questions, pack.rolePlays, AiGateway({ null }), words(l.code), IlrLevel.L1, test = test, random = Random(1))
                 val phases = mutableListOf<OpiPhase>()
-                val answer = pack.questions.first { it.level == "2" }.prompt // any text in the language works as an answer
+                // Any text in the language works as an answer; not a question, which is now a repair turn (QC 2026-10-30 V8).
+                val answer = pack.questions.first { it.level == "2" }.prompt.trimEnd('?', '？', '؟', ' ')
                 while (true) {
                     val line = scripted.next() ?: break
                     phases += line.phase

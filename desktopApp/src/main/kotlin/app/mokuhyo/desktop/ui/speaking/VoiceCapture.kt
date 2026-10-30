@@ -12,6 +12,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +27,7 @@ import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.platform.Os
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.CapturePatience
 import app.mokuhyo.speech.TimelineTrace
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.TurnTimeline
@@ -44,6 +46,10 @@ import kotlinx.coroutines.withContext
  * Voice input for every speaking mode (BRIEF_PHASE8 N-00b): record at the device's own rate, stop by itself after the
  * silence that ends an answer (or on Stop), say plainly when no audio arrives, and — in practice, unless turned off —
  * show the transcript to send, edit or retake before it goes to the partner. Interview tests pass [confirm] = false.
+ *
+ * Conversation mode (QC 2026-10-30 V7) is opt-in: [patience] sets the silence that ends a turn (null keeps the default
+ * [Vad], exactly as before), [autoArm] starts recording again by itself once the partner has finished and capture is
+ * [enabled], and the stop button reads "I'm done". The microphone never records while the partner speaks (no barge-in).
  */
 @Composable
 fun VoiceCapture(
@@ -58,6 +64,8 @@ fun VoiceCapture(
     visible: Boolean = true,
     /** The session's timeline (BRIEF_INTERVIEW_SPEED N1): capture, endpoint and ASR stages go to its current turn. */
     timeline: TurnTimeline? = null,
+    patience: CapturePatience? = null,
+    autoArm: Boolean = false,
     onSend: (String, ShortArray) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -144,7 +152,7 @@ fun VoiceCapture(
             try {
                 // If cancellation arrives during a blocking driver open, retain the returned handle for cleanup.
                 withContext(NonCancellable + Dispatchers.IO) {
-                    val detector = Vad().also { vad = it }
+                    val detector = (patience?.vad() ?: Vad()).also { vad = it }
                     opened = AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = { level = it }, vad = detector, onEvent = { e ->
                         // Marked on the capture thread, when the VAD decided, not when the UI got round to it.
                         if (e == Vad.Event.AUTO_STOP) timeline?.let { t ->
@@ -176,6 +184,12 @@ fun VoiceCapture(
         }
     }
 
+    // Conversation mode: re-arm once the partner has finished. Not after a failed or unclear take (audio is kept for a
+    // retry then), and never while anything else holds the microphone or the recognizer.
+    LaunchedEffect(autoArm, enabled, visible) {
+        if (autoArm && enabled && visible && rec == null && pending == null && captureWork == null && transcription == null && audio == null) start()
+    }
+
     // Keep ownership and cleanup composed even while the parent hides the controls.
     if (!visible) return
     val p = pending
@@ -199,7 +213,7 @@ fun VoiceCapture(
         }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Button(enabled = (enabled && transcription == null && captureWork == null) || rec != null, onClick = { if (rec == null) start() else finish() }) {
-                Text(if (rec != null) "■ Stop" else "● Record")
+                Text(if (rec != null) (if (autoArm) "■ I'm done" else "■ Stop") else "● Record")
             }
         }
         if (rec != null) LinearProgressIndicator(progress = { (level * 4).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())

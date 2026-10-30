@@ -48,15 +48,13 @@ object RenderAudio {
             if (out.isFile && "--force" !in args) { kept++; return@forEach }
             // Speaker variety (BRIEF_PHASE8 N-07): rotate by passage id, distinct voices for distinct speakers.
             val cast = VoiceRotation.assign(piper, p.script.map { it.speaker to it.voice }.distinctBy { it.first }, p.id)
-            val pcm = ArrayList<ShortArray>()
-            p.script.forEachIndexed { i, line ->
-                val voice = cast.getValue(line.speaker)
-                val audio = voices.synthesize(line.text, lang, voice) ?: return@runBlocking fail("synthesis failed for ${p.id}")
-                val (samples, rate) = AudioIO.toMonoPcm(audio.wav)
-                pcm += AudioIO.resample(samples, rate, ChatterboxJobs.CLIP_RATE)
-                p.script.getOrNull(i + 1)?.let { next -> pcm += ShortArray(ChatterboxJobs.CLIP_RATE * PassageAudio.pauseMs(line.speaker, next.speaker) / 1000) }
+            val lines = ArrayList<Pair<ShortArray, Int>>()
+            for (line in p.script) {
+                val audio = voices.synthesize(line.text, lang, cast.getValue(line.speaker)) ?: return@runBlocking fail("synthesis failed for ${p.id}")
+                lines += AudioIO.toMonoPcm(audio.wav)
             }
-            val all = ShortArray(pcm.sumOf { it.size }).also { a -> var o = 0; pcm.forEach { it.copyInto(a, o); o += it.size } }
+            // The same joins as the app's runtime passages (QC 2026-10-30 V2).
+            val all = PassageAudio.compose(lines, p.script.map { it.speaker }, ChatterboxJobs.CLIP_RATE)
             out.writeBytes(OggOpus.encode(all, bitrate = 32_000, sampleRate = ChatterboxJobs.CLIP_RATE))
             made++
             println("render-audio: ${p.id} ${all.size / ChatterboxJobs.CLIP_RATE}s ${out.length() / 1024} KB")

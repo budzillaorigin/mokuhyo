@@ -25,6 +25,15 @@ data class TopicExchange(
     val pragmatics: List<PragmaticFlag> = emptyList(),
     /** Why this turn has no feedback, when the critique call failed (BRIEF_PHASE8 N-00b); the reply still stands. */
     val feedbackMissing: String? = null,
+    /**
+     * The reply stopped part-way (QC 2026-10-30 V10): [reply] holds only the sentences that went to speech, and the
+     * exchange is kept so the conversation shows what was said. False on older records.
+     */
+    val partial: Boolean = false,
+    /** What the learner actually heard, when it differs from [reply]; null otherwise and on older records. */
+    val heard: String? = null,
+    /** Per-sentence delivery of the spoken reply; null if unknown. */
+    val delivery: List<app.mokuhyo.speech.UtteranceDelivery>? = null,
 )
 
 @Serializable
@@ -110,18 +119,35 @@ class TopicSession(
         val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes, memory)
         // The reply comes first and on its own (small schema), so the conversation continues even when a smaller model
         // can't produce the critique; Off mode stops there (BRIEF_PHASE8 C-11, N-00b).
-        val result = if (speak == null) gateway.run(PartnerReply(), input) else gateway.stream(PartnerReply(), input, splitter, speak).result
-        val reply = when (val r = result) {
-            is AiResult.Ok -> r
-            is AiResult.Fallback -> { lastError = r.reason; return null }
-            is AiResult.Unavailable -> { lastError = r.reason; return null }
+        var streamed = emptyList<String>()
+        val result = if (speak == null) gateway.run(PartnerReply(), input) else gateway.stream(PartnerReply(), input, splitter, speak).also { streamed = it.spoken }.result
+        val exchange = when (val r = result) {
+            is AiResult.Ok -> TopicExchange(said, r.value.reply, r.value.replyEnglish, engine = r.engine,
+                feedbackMissing = if (mode.records) "Feedback pending" else null)
+            // Part of the reply already went to speech (QC 2026-10-30 V10): keep the exchange as it was said.
+            is AiResult.Fallback, is AiResult.Unavailable -> {
+                lastError = (r as? AiResult.Fallback)?.reason ?: (r as AiResult.Unavailable).reason
+                if (streamed.isEmpty()) return null
+                TopicExchange(said, app.mokuhyo.speech.ReplyRepair.join(streamed), engine = null, partial = true,
+                    feedbackMissing = if (mode.records) "Feedback pending" else null)
+            }
         }
-        lastError = null
-        val exchange = TopicExchange(said, reply.value.reply, reply.value.replyEnglish, engine = reply.engine,
-            feedbackMissing = if (mode.records) "Feedback pending" else null)
+        if (!exchange.partial) lastError = null
         history += Turn(Speaker.PARTNER, exchange.reply)
         exchanges += exchange
         return exchange
+    }
+
+    /**
+     * Records how exchange [index]'s reply was delivered (QC 2026-10-30 V10): [heard] replaces the reply in the
+     * conversation the model sees when it differs, and is stored next to the reply.
+     */
+    fun delivered(index: Int, heard: String, delivery: List<app.mokuhyo.speech.UtteranceDelivery>) {
+        val ex = exchanges.getOrNull(index) ?: return
+        val text = heard.trim()
+        exchanges[index] = ex.copy(heard = text.takeIf { it.isNotEmpty() && it != ex.reply }, delivery = delivery.ifEmpty { null })
+        val h = history.indexOfLast { it.speaker == Speaker.PARTNER }
+        if (index == exchanges.lastIndex && text.isNotEmpty() && text != ex.reply && h >= 0) history[h] = Turn(Speaker.PARTNER, text)
     }
 
     /** Separate, optional work. The caller can speak the reply and accept another answer before requesting this. */

@@ -115,6 +115,51 @@ fun interface SentenceSplitter {
 }
 
 /**
+ * Boundaries no splitter may use (QC 2026-10-30 V1; the same rules as tools/voices/textsplit.py, tested against the
+ * shared fixtures/segmentation_cases.json): inside a number (`3.5`, `8.000`, `12:30`), after an abbreviation or an
+ * initial (`Sr. García`, `J. R. R. Tolkien`), before a lowercase word (`Bueno... no sé`, `"Ready?" he asked`), and
+ * after a closed quote that a quotative particle continues (`「はい。」と言った`; `「はい。」そう…` still splits).
+ */
+object SentenceGuard {
+    const val TERMINATORS = ".!?…。！？؟؛।"
+    private const val NO_SPACE_NEEDED = "。！？؟؛।"
+    const val CLOSERS = "\"'”’」』）)]»›"
+    private const val QUOTATIVE = "とっ"
+    private val ABBREVIATIONS = setOf(
+        "mr", "mrs", "ms", "dr", "prof", "st", "sr", "sra", "srta", "dra", "lic", "ing", "m", "mm", "mme", "mlle", "hr", "fr",
+        "z", "b", "nr", "vs", "etc", "gen", "col", "lt", "sgt", "capt", "cpt", "maj", "adm", "no", "tel",
+        "г", "гг", "ул", "д", "т", "е", "им", "проф", "св",
+    )
+
+    /** Whether a sentence may end at [end] (exclusive; trailing spaces before it are allowed) in [text]. */
+    fun allows(text: String, end: Int): Boolean {
+        var e = end
+        while (e > 0 && text[e - 1].isWhitespace()) e--
+        var t = e
+        while (t > 0 && text[t - 1] in CLOSERS) t--
+        val closed = t < e
+        var r = t
+        while (r > 0 && text[r - 1] in TERMINATORS) r--
+        if (r == t) return true // not punctuation (a line break, say)
+        val run = text.substring(r, t)
+        var k = e
+        while (k < text.length && text[k].isWhitespace()) k++
+        val spaced = k > e
+        val next = text.getOrNull(k) ?: return true
+        if (run.any { it in NO_SPACE_NEEDED }) return !(closed && !spaced && next in QUOTATIVE)
+        if (!spaced) return false
+        if (next.isLowerCase()) return false
+        if (run == "." && !closed) {
+            var w = r
+            while (w > 0 && text[w - 1].isLetter()) w--
+            val word = text.substring(w, r)
+            if (word.lowercase() in ABBREVIATIONS || (word.length == 1 && word[0].isUpperCase())) return false
+        }
+        return true
+    }
+}
+
+/**
  * Sentence ends by punctuation, for every launch language: `. ! ? …` followed by a space (Latin, Cyrillic, Hangul,
  * Arabic-script text), the full-width `。！？` and `؟ ؛ ।` even with no space after them, closing quotes and brackets
  * staying with their sentence. The JVM uses ICU's sentence rules first ([app.mokuhyo.lang.IcuSentences]); this is the
@@ -139,7 +184,7 @@ object PunctuationSentences : SentenceSplitter {
                     text[j].isWhitespace() -> true
                     else -> text.substring(i, j).any { it in NO_SPACE_NEEDED }
                 }
-                if (boundary && text.substring(start, j).any { it.isLetterOrDigit() }) {
+                if (boundary && SentenceGuard.allows(text, j) && text.substring(start, j).any { it.isLetterOrDigit() }) {
                     out += j
                     start = j
                 }
@@ -202,35 +247,112 @@ class SentenceStream(
     }
 }
 
+/** How far one sentence of a spoken reply got (QC 2026-10-30 V10). */
+enum class Delivery(val wire: String) {
+    /** The model produced it; it was never synthesized (an earlier sentence failed or the reply stopped). */
+    GENERATED("generated"),
+
+    /** Its audio was ready but never started. */
+    QUEUED("queued"),
+
+    /** Synthesis failed: nothing of it was heard. */
+    FAILED("failed"),
+
+    /** Playback started and did not finish (device failure or cancellation). */
+    INTERRUPTED("interrupted"),
+
+    /** It played to the end: the learner heard it. */
+    COMPLETED("completed"),
+}
+
+/** One sentence of a reply and its delivery, under a stable id (`<turn>:<n>`), for the turn record (append-only). */
+@kotlinx.serialization.Serializable
+data class UtteranceDelivery(val id: String, val text: String, val state: String)
+
 /**
  * Speaks a reply sentence by sentence as the sentences arrive (N3): sentence N+1 is synthesized while sentence N plays,
  * through one bounded slot. [synth] returns null when nothing can speak it; [play] returns false when playback failed.
- * Either stops the reply (remaining sentences are drained, never spoken), and [Outcome] says how far it got.
- * Cancelling the caller stops synthesis and playback.
+ * A synthesis failure is an ordered event in the same queue (QC 2026-10-30 V10): audio that was already ready ahead of
+ * it still plays, and nothing after it is synthesized. A playback failure stops the reply. [Outcome] says how far each
+ * sentence got. Cancelling the caller stops synthesis and playback.
  */
 class SpokenReply<A : Any>(private val synth: suspend (String) -> A?, private val play: suspend (A) -> Boolean) {
-    data class Outcome(val played: Int, val failed: Boolean)
+    data class Utterance(val index: Int, val text: String, val delivery: Delivery)
+
+    data class Outcome(val played: Int, val failed: Boolean, val utterances: List<Utterance> = emptyList()) {
+        /** What the learner heard: the sentences that played to the end, in order. */
+        val heard: List<String> get() = utterances.filter { it.delivery == Delivery.COMPLETED }.map { it.text }
+
+        /** The delivery record for turn [turn]: stable ids, text and state per sentence. */
+        fun record(turn: Int): List<UtteranceDelivery> = utterances.map { UtteranceDelivery("$turn:${it.index}", it.text, it.delivery.wire) }
+    }
+
+    private sealed interface Item {
+        val index: Int
+        val text: String
+
+        class Ready<A>(override val index: Int, override val text: String, val audio: A) : Item
+        class Failed(override val index: Int, override val text: String) : Item
+        class Skipped(override val index: Int, override val text: String) : Item
+    }
 
     suspend fun speak(sentences: ReceiveChannel<String>): Outcome = coroutineScope {
-        val audio = Channel<A?>(1)
-        val stop = CompletableDeferred<Unit>()
+        val queue = Channel<Item>(1)
+        val stop = CompletableDeferred<Unit>() // set by the player only: playback failed, stop synthesizing
         launch {
             try {
+                var failed = false
+                var index = 0
                 for (s in sentences) {
-                    if (stop.isCompleted) continue // keep draining so the sender never blocks
+                    val i = index++
+                    // Keep draining so the sender never blocks; what isn't synthesized is still recorded.
+                    if (failed || stop.isCompleted) { queue.send(Item.Skipped(i, s)); continue }
                     val a = synth(s)
-                    audio.send(a)
-                    if (a == null) stop.complete(Unit)
+                    if (a == null) { failed = true; queue.send(Item.Failed(i, s)) } else queue.send(Item.Ready(i, s, a))
                 }
             } finally {
-                audio.close()
+                queue.close()
             }
         }
+        val utterances = ArrayList<Utterance>()
         var played = 0
-        for (a in audio) {
-            if (stop.isCompleted) continue
-            if (a == null || !play(a)) stop.complete(Unit) else played++
+        var failed = false
+        for (item in queue) {
+            val delivery = when {
+                item is Item.Skipped -> Delivery.GENERATED
+                item is Item.Failed -> { failed = true; stop.complete(Unit); Delivery.FAILED }
+                failed -> Delivery.QUEUED
+                else -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val ok = play((item as Item.Ready<A>).audio)
+                    if (ok) { played++; Delivery.COMPLETED } else { failed = true; stop.complete(Unit); Delivery.INTERRUPTED }
+                }
+            }
+            utterances += Utterance(item.index, item.text, delivery)
         }
-        Outcome(played, stop.isCompleted)
+        Outcome(played, failed, utterances)
     }
+}
+
+/**
+ * What the learner answers after a streamed question failed part-way (QC 2026-10-30 V10): never a different question
+ * played over one they already heard. Nothing heard → the [scripted] fallback, spoken in full. A heard sentence that is
+ * a question → that question stands and nothing else plays. Heard sentences without a question (an acknowledgement) →
+ * the scripted question finishes the turn, and the turn is recorded as both.
+ */
+object ReplyRepair {
+    data class Plan(val text: String, val playScripted: Boolean)
+
+    private const val QUESTION_MARKS = "?？؟"
+
+    fun isQuestion(sentence: String): Boolean = sentence.trimEnd().trimEnd(*SentenceGuard.CLOSERS.toCharArray()).lastOrNull()?.let { it in QUESTION_MARKS } == true
+
+    fun plan(heard: List<String>, scripted: String): Plan = when {
+        heard.isEmpty() -> Plan(scripted, playScripted = true)
+        heard.any(::isQuestion) -> Plan(join(heard), playScripted = false)
+        else -> Plan(join(heard + scripted), playScripted = true)
+    }
+
+    /** Sentences rejoined: with a space where the language spaces its sentences. */
+    fun join(parts: List<String>): String = parts.joinToString(if (parts.any { ' ' in it.trim() }) " " else "")
 }

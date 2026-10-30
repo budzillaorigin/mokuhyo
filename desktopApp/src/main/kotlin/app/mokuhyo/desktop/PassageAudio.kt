@@ -8,6 +8,9 @@ import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.lang.VoiceSpec
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.Boundary
+import app.mokuhyo.speech.BoundaryPolicies
+import app.mokuhyo.speech.BoundaryPolicy
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -98,14 +101,7 @@ class PassageAudio(private val app: AppGraph) {
         }
         // Keep the voices' own sample rate for playback (Whisper gets its 16 kHz copy elsewhere): no lost bandwidth.
         val rate = lines.maxOf { it.second }
-        val pcm = ArrayList<ShortArray>()
-        passage.script.forEachIndexed { i, line ->
-            val (samples, from) = lines[i]
-            pcm += AudioIO.resample(samples, from, rate)
-            val next = passage.script.getOrNull(i + 1) ?: return@forEachIndexed
-            pcm += ShortArray(rate * pauseMs(line.speaker, next.speaker) / 1000)
-        }
-        val all = ShortArray(pcm.sumOf { it.size }).also { out -> var o = 0; pcm.forEach { it.copyInto(out, o); o += it.size } }
+        val all = compose(lines, passage.script.map { it.speaker }, rate)
         return AudioIO.wav(all, rate) to asCast
     }
 
@@ -128,13 +124,18 @@ class PassageAudio(private val app: AppGraph) {
 
     companion object {
         /** Bump when the way passages are rendered changes, so cached renders are redone. */
-        const val RENDER_VERSION = 2
+        const val RENDER_VERSION = 3
 
-        /** A turn change gets a longer gap than one speaker's next sentence. */
-        fun pauseMs(speaker: String, next: String): Int = if (speaker == next) 350 else 700
+        /**
+         * A passage's line clips (PCM, rate) at [rate], joined by the shared boundary policy (QC 2026-10-30 V2): a speaker
+         * turn gets a longer gap than one speaker's next line, each line's own edge silence counts toward it, and nothing
+         * follows the last line. The prerender tool ([RenderAudio]) joins the same way.
+         */
+        fun compose(lines: List<Pair<ShortArray, Int>>, speakers: List<String>, rate: Int, policy: BoundaryPolicy = BoundaryPolicies.default): ShortArray =
+            policy.join(lines.map { (pcm, from) -> AudioIO.resample(pcm, from, rate) }, speakers.zipWithNext { a, b -> Boundary.between(a, b) }, rate)
 
         internal fun cacheKey(passage: ExamPassage, cast: Map<String, VoiceSpec>): String = digest(
-            "v$RENDER_VERSION|" + passage.language + "|" + cast.entries.sortedBy { it.key }.joinToString(",") { (s, v) -> "$s=${v.engine}/${v.id}/${v.speaker}" } +
+            "v$RENDER_VERSION|${BoundaryPolicies.default.version}|" + passage.language + "|" + cast.entries.sortedBy { it.key }.joinToString(",") { (s, v) -> "$s=${v.engine}/${v.id}/${v.speaker}" } +
                 "\n" + passage.script.joinToString("\n") { it.speaker + "|" + it.voice + "|" + it.text },
         )
 

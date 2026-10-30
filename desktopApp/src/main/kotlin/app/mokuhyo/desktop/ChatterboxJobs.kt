@@ -62,7 +62,7 @@ object ChatterboxJobs {
                         add(buildJsonObject { put("text", text); put("ref", cast.getValue(ln.speaker).id); put("speaker", ln.speaker) })
                     }
                 }
-                lines += buildJsonObject { put("id", p.id); put("lang", lang); put("lines", arr); put("pause", 0.6) }.toString()
+                lines += buildJsonObject { put("id", p.id); put("lang", lang); put("lines", arr) }.toString()
             }
         }
         out.writeText(lines.joinToString("\n") + "\n")

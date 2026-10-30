@@ -29,6 +29,10 @@ class Settings(private val db: MokuhyoDatabase) {
         CORRECTIONS_OPI("learner.corrections.opi", Scope.LEARNER),
         /** Show the transcript to confirm, retake or edit before it is sent (BRIEF_PHASE8 N-00b; on by default in practice). */
         CONFIRM_TRANSCRIPT("learner.speech.confirmTranscript", Scope.LEARNER),
+        /** Optional conversation mode (QC 2026-10-30 V7): capture re-arms after the partner finishes. Off by default; practice only. */
+        CONVERSATION_MODE("learner.speech.conversationMode", Scope.LEARNER),
+        /** How long a pause ends the learner's turn in conversation mode ([app.mokuhyo.speech.CapturePatience] wire name). */
+        CAPTURE_PATIENCE("learner.speech.patience", Scope.LEARNER),
         CORRECTIONS_TOPIC("learner.corrections.topic", Scope.LEARNER),
         CORRECTIONS_PERSONA("learner.corrections.persona", Scope.LEARNER),
         AAB_KEEP_AUDIO("learner.aab.keepAudio", Scope.LEARNER),
