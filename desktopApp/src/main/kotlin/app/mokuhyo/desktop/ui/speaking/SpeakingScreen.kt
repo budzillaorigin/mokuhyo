@@ -111,6 +111,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import app.mokuhyo.lang.IcuSentences
+import app.mokuhyo.speech.CapturePatience
 import app.mokuhyo.speech.ReplyRepair
 import app.mokuhyo.speech.SpeechBudget
 import kotlinx.coroutines.withContext
@@ -395,6 +396,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     // One interviewer voice for the whole interview (QC 2026-10-30 V5): the first voice that actually speaks is asked
     // for on every later turn, streamed or scripted; any substitution is logged (Voice.render).
     var interviewVoice by remember { mutableStateOf<VoiceSpec?>(null) }
+    val conversation = remember { !test && app.settings.bool(Settings.Key.CONVERSATION_MODE, default = false) }
     fun keepVoice(o: Voice.Outcome?) {
         if (interviewVoice == null && o is Voice.Outcome.Played && o.voice.engine != "prerendered") interviewVoice = o.voice
     }
@@ -622,6 +624,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 prompt = lines.lastOrNull()?.first?.text.orEmpty(),
                 visible = !busy && !operationFailed && lines.lastOrNull()?.first?.speaker == Speaker.PARTNER && delivery.canAnswer,
                 timeline = timeline,
+                // Conversation mode is for practice only; tests keep manual controls (QC 2026-10-30 V7).
+                patience = if (conversation) CapturePatience.of(app.settings.get(Settings.Key.CAPTURE_PATIENCE)) ?: CapturePatience.NORMAL else null,
+                autoArm = conversation,
             ) { t, pcm -> submitAnswer(t, pcm) }
             if (!started) {
                 // Preflight (N4): every device and engine checked and warmed before the first question; warm-up time is
@@ -977,6 +982,14 @@ private fun TopicConversation(
     val exchanges = remember { mutableStateListOf<TopicExchange>().apply { addAll(session.exchanges) } }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
     var busy by remember { mutableStateOf(false) }
+    var replyJob by remember { mutableStateOf<kotlinx.coroutines.Job?>(null) }
+    // Conversation mode (QC 2026-10-30 V7): practice only, off by default. A persona's patience sets how long a pause
+    // ends the learner's turn; otherwise the learner's own setting does.
+    val conversation = remember { app.settings.bool(Settings.Key.CONVERSATION_MODE, default = false) }
+    val patience = remember {
+        persona?.let { CapturePatience.forPersona(it.patience) }
+            ?: CapturePatience.of(app.settings.get(Settings.Key.CAPTURE_PATIENCE)) ?: CapturePatience.NORMAL
+    }
     var captureBusy by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("") }
     var typed by remember { mutableStateOf("") }
@@ -1018,7 +1031,7 @@ private fun TopicConversation(
         if (pcm != null) pendingAudio = session.transcript.lastIndex to pcm
         busy = true
         status = "Your partner is replying…"
-        scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
+        replyJob = scope.launch(TimelineTrace(timeline), start = CoroutineStart.UNDISPATCHED) {
             try {
                 withContext(NonCancellable + Dispatchers.IO) {
                     checkpoint()
@@ -1185,10 +1198,13 @@ private fun TopicConversation(
             CircularProgressIndicator(Modifier.width(20.dp).height(20.dp), strokeWidth = 2.dp)
             Text("Working… (Tier A models on a CPU can take 10–25 seconds)")
         }
+        // Conversation mode (QC 2026-10-30 V7): opt-in; capture re-arms after the partner, and Stop interrupts the reply.
+        if (conversation && busy) OutlinedButton(onClick = { replyJob?.cancel(); status = "Stopped. Your answer is kept; retry the reply when you are ready." }) { Text("■ Stop") }
         if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
             enabled = !busy, onStatus = { status = it }, onBusy = { captureBusy = it },
             visible = !busy && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER,
-            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" "), timeline = timeline) { t, pcm -> send(t, pcm) }
+            prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" "), timeline = timeline,
+            patience = if (conversation) patience else null, autoArm = conversation) { t, pcm -> send(t, pcm) }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = !captureBusy && exchanges.isNotEmpty() && session.transcript.lastOrNull()?.speaker != Speaker.LEARNER, onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
