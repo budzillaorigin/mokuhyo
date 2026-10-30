@@ -124,7 +124,7 @@ object ListeningKit {
         val app = AppGraph(AppDirs.ensure(Files.createTempDirectory("mokuhyo-kit").toFile()))
         val voices = VoiceService.create()
         val key = StringBuilder("file,language,source,voice,prompt_id\n")
-        val sheet = StringBuilder("file,language,intelligibility_1to5,pronunciation_1to5,naturalness_1to5,comments\n")
+        val sheet = StringBuilder("file,language,${QUALITIES.joinToString(",")},comments\n")
         val missingCsv = StringBuilder("language,source,voice,prompt_id,reason\n")
         var files = 0
         for (lang in langs) {
@@ -147,11 +147,11 @@ object ListeningKit {
             val dir = File(out, lang).apply { mkdirs() }
             renders.shuffled(random).forEachIndexed { i, (source, id, wav) ->
                 val name = "$lang-%03d.wav".format(i + 1)
-                // One format for every source so a file's header doesn't give its engine away.
+                // One format and one loudness for every source, so neither a header nor a louder engine gives it away.
                 val (pcm, rate) = AudioIO.toMonoPcm(wav)
-                File(dir, name).writeBytes(AudioIO.wav(AudioIO.resample(pcm, rate, 24_000), 24_000))
+                File(dir, name).writeBytes(AudioIO.wav(matchLoudness(AudioIO.resample(pcm, rate, 24_000)), 24_000))
                 key.append("$lang/$name,$lang,${source.substringBefore(':')},${source.substringAfter(':', "")},$id\n")
-                sheet.append("$lang/$name,$lang,,,,\n")
+                sheet.append("$lang/$name,$lang,${",".repeat(QUALITIES.size)}\n")
                 files++
             }
             println("listening-kit: $lang ${prompts.size} prompts, ${renders.size} files")
@@ -170,6 +170,23 @@ object ListeningKit {
         app.close()
         println("listening-kit: $files files in $out (keep key.csv, missing.csv and sources.json; give raters the language folders, scoring-sheet.csv and README.txt)")
         0
+    }
+
+    /** Scored separately, 1–5. The last five rate delivery and matter most on connected (multi-sentence) replies (V12). */
+    val QUALITIES = listOf("intelligibility_1to5", "pronunciation_1to5", "naturalness_1to5", "cadence_1to5", "pause_placement_1to5",
+        "pitch_stress_1to5", "continuity_1to5", "responsiveness_1to5")
+
+    /** RMS target for every kit file (about −23 dBFS), lowered when needed so no peak clips. */
+    const val TARGET_RMS = 2_320.0
+
+    /** Scales [pcm] to [TARGET_RMS] (QC 2026-10-30 V12: loudness differences bias blind ratings); silence stays silent. */
+    fun matchLoudness(pcm: ShortArray): ShortArray {
+        if (pcm.isEmpty()) return pcm
+        val rms = kotlin.math.sqrt(pcm.sumOf { it.toDouble() * it } / pcm.size)
+        val peak = pcm.maxOf { kotlin.math.abs(it.toInt()) }
+        if (rms < 1.0 || peak == 0) return pcm
+        val gain = minOf(TARGET_RMS / rms, 32_000.0 / peak)
+        return ShortArray(pcm.size) { (pcm[it] * gain).toInt().coerceIn(-32768, 32767).toShort() }
     }
 
     /** [count] prompts spread over the phases, role-play openings included, in a stable order. */
@@ -192,10 +209,17 @@ object ListeningKit {
 Each file is one interviewer question read by one voice. The files are shuffled and unlabeled on purpose:
 please don't try to guess which voice is which.
 
-For every file in scoring-sheet.csv give three separate scores from 1 (poor) to 5 (native-like):
+For every file in scoring-sheet.csv give separate scores from 1 (poor) to 5 (native-like):
   intelligibility - could you understand every word without effort?
   pronunciation   - are the sounds, stress and words pronounced as a native speaker would?
   naturalness     - does it sound like a person speaking (rhythm, intonation, pauses)?
+For files with more than one sentence (connected replies), also score:
+  cadence         - is the speed and rhythm of the whole reply natural?
+  pause_placement - are pauses where a speaker would put them, and of a natural length?
+  pitch_stress    - are pitch, accent and stress right across the reply?
+  continuity      - does it sound like one person saying one thing, without joins or restarts?
+  responsiveness  - does it sound like a reply to someone, not a recording being read?
+Leave a score blank when it doesn't apply. All files are set to the same loudness on purpose.
 Add a comment for anything wrong (a mispronounced word, a wrong stress, a robotic phrase).
 Score each quality on its own: a clear voice can still sound unnatural.
 

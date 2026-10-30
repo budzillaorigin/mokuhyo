@@ -66,4 +66,15 @@ class ListeningKitTest {
         File(dir, "audition.json").writeText("""{"label":"cand-x","engine":"ext"}""")
         assertFailsWith<IllegalArgumentException> { ListeningKit.ExternalAudition.read(dir) }
     }
+
+    @Test
+    fun kitFilesAreLoudnessMatched() {
+        fun rms(p: ShortArray) = kotlin.math.sqrt(p.sumOf { it.toDouble() * it } / p.size)
+        val quiet = ShortArray(24_000) { if (it % 2 == 0) 300 else -300 }
+        val loud = ShortArray(24_000) { if (it % 2 == 0) 9_000 else -9_000 }
+        val a = rms(ListeningKit.matchLoudness(quiet))
+        val b = rms(ListeningKit.matchLoudness(loud))
+        assertTrue(kotlin.math.abs(20 * kotlin.math.log10(a / b)) < 0.5, "$a vs $b")
+        assertEquals(0, ListeningKit.matchLoudness(ShortArray(10)).sumOf { kotlin.math.abs(it.toInt()) }, "silence stays silent")
+    }
 }

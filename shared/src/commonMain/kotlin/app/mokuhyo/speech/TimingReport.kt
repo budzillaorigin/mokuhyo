@@ -40,6 +40,11 @@ data class TimingReport(
         val ttsSynthMs: Long? = null,
         val ttsAudioMs: Long? = null,
         val peakRssMb: Long? = null,
+        /** `engine:voice` per utterance as rendered (QC 2026-10-30 V12); the session's voiceId is only the first listed. */
+        val voices: List<String> = emptyList(),
+        /** Heard gaps between consecutive utterances, ms. */
+        val gapsMs: List<Long> = emptyList(),
+        val underruns: Int = 0,
         val events: List<Mark> = emptyList(),
         val stages: Map<String, Long> = emptyMap(),
     )

@@ -24,7 +24,7 @@ class InterviewPreflightTest {
             voices.firstOrNull()?.let { SpokenAudio(AudioIO.wav(ShortArray(1_600) { 500 }), it) }
     }
 
-    private fun <T> withApp(voices: List<VoiceSpec>, output: (ByteArray, String?, () -> Boolean, () -> Unit) -> Unit, body: (AppGraph) -> T): T {
+    private fun <T> withApp(voices: List<VoiceSpec>, output: (ByteArray, String?, () -> Boolean, () -> Unit, () -> Unit) -> Unit, body: (AppGraph) -> T): T {
         val app = AppGraph(AppDirs.ensure(Files.createTempDirectory("mokuhyo-preflight").toFile()))
         val previous = Voice.output
         Voice.output = output
@@ -35,7 +35,7 @@ class InterviewPreflightTest {
     private fun run(app: AppGraph, test: Boolean) = runBlocking { Preflight(InterviewPreflight.real(app, "es", AiGateway({ null }), test, null)).run() }
 
     @Test
-    fun aReadyComputerPassesAndWhatIsntInstalledIsSaid() = withApp(listOf(voice), { _, _, _, started -> started() }) { app ->
+    fun aReadyComputerPassesAndWhatIsntInstalledIsSaid() = withApp(listOf(voice), { _, _, _, started, _ -> started() }) { app ->
         val r = run(app, test = true)
         assertTrue(r.ready, r.items.toString())
         assertEquals(State.OK, r.state(Kind.OUTPUT))
@@ -47,7 +47,7 @@ class InterviewPreflightTest {
     }
 
     @Test
-    fun noVoiceBlocksASpokenTestButNotPractice() = withApp(emptyList(), { _, _, _, started -> started() }) { app ->
+    fun noVoiceBlocksASpokenTestButNotPractice() = withApp(emptyList(), { _, _, _, started, _ -> started() }) { app ->
         val test = run(app, test = true)
         assertEquals(Kind.VOICE, test.blocking?.kind)
         assertTrue(test.blocking!!.message!!.contains("No offline voice can speak Spanish"), test.blocking!!.message)
@@ -57,7 +57,7 @@ class InterviewPreflightTest {
     }
 
     @Test
-    fun speakersThatDontPlayBlockStart() = withApp(listOf(voice), { _, _, _, _ -> error("line unavailable") }) { app ->
+    fun speakersThatDontPlayBlockStart() = withApp(listOf(voice), { _, _, _, _, _ -> error("line unavailable") }) { app ->
         val r = run(app, test = false)
         assertEquals(Kind.OUTPUT, r.blocking?.kind)
         assertTrue(r.blocking!!.message!!.contains("Settings → Speech & audio"))

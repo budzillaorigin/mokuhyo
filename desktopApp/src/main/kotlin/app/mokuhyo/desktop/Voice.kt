@@ -6,6 +6,7 @@ import app.mokuhyo.speech.SpokenReply
 import kotlinx.coroutines.channels.ReceiveChannel
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.EdgeSilence
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.currentTrace
 import app.mokuhyo.tts.Wav
@@ -58,16 +59,18 @@ object Voice {
 
     /**
      * Where audio goes: the device (tests replace it to observe what would have played). [started] runs once the output
-     * line is open and sound is about to flow: the timeline's "first partner audio" (BRIEF_INTERVIEW_SPEED N1).
+     * line is open and sound is about to flow: the device-open proxy for "first partner audio" (BRIEF_INTERVIEW_SPEED N1;
+     * the first audible sample comes after the clip's leading silence, QC 2026-10-30 V12). [underrun] runs when the
+     * line's buffer ran dry mid-utterance.
      */
     @Volatile
-    internal var output: (wav: ByteArray, device: String?, stop: () -> Boolean, started: () -> Unit) -> Unit = { wav, device, stop, started ->
-        AudioIO.open(wav, device).also { started() }.run(stop)
+    internal var output: (wav: ByteArray, device: String?, stop: () -> Boolean, started: () -> Unit, underrun: () -> Unit) -> Unit = { wav, device, stop, started, underrun ->
+        AudioIO.open(wav, device).also { it.onUnderrun = underrun; started() }.run(stop)
     }
 
     /** Plays [wav] on the output device chosen in Settings: the one output path every screen uses. */
-    fun play(app: AppGraph, wav: ByteArray, stop: () -> Boolean = { false }, started: () -> Unit = {}) =
-        output(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop, started)
+    fun play(app: AppGraph, wav: ByteArray, stop: () -> Boolean = { false }, started: () -> Unit = {}, underrun: () -> Unit = {}) =
+        output(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), stop, started, underrun)
 
     /**
      * Synthesizes [text] with the app's voice service and plays it on the chosen output device. Cancelling the caller
@@ -85,22 +88,34 @@ object Voice {
         trace?.mark(TurnStage.TTS_START)
         val synthStart = System.nanoTime()
         val spoken = app.speech.synthesize(text, lang, voice) ?: return@withContext null
-        trace?.mark(TurnStage.TTS_FIRST_PCM)
+        // A WAV engine's audio is ready all at once: synthesis complete, not first PCM (QC 2026-10-30 V12).
+        trace?.mark(TurnStage.TTS_SYNTH_DONE)
         trace?.timeline?.note(trace.turn) {
             ttsSynthMs += (System.nanoTime() - synthStart) / 1_000_000
             ttsAudioMs += ((Wav.info(spoken.wav)?.durationSeconds ?: 0.0) * 1000).toLong()
+            voices += "${spoken.voice.engine}:${spoken.voice.id}"
         }
         spoken
     }
 
-    /** Plays already-synthesized speech; cancelling the caller stops it (QC follow-up F2). */
+    /**
+     * Plays already-synthesized speech; cancelling the caller stops it (QC follow-up F2). Marks device open (a proxy),
+     * the first audible sample (open + the clip's leading silence), underruns and, when it played to the end, the last
+     * audible sample (QC 2026-10-30 V12). Numbers only: no text or audio reaches the timeline.
+     */
     suspend fun playRendered(app: AppGraph, spoken: SpokenAudio, stop: () -> Boolean = { false }): Outcome = withContext(Dispatchers.IO) {
         val trace = currentTrace()
         ensureActive()
         val job = coroutineContext.job
+        val edges = trace?.let { runCatching { AudioIO.toMonoPcm(spoken.wav).let { (pcm, rate) -> EdgeSilence.of(pcm, rate) } }.getOrNull() }
         try {
-            play(app, spoken.wav, { stop() || !job.isActive }) { trace?.mark(TurnStage.OUTPUT_START) }
+            var stopped = false
+            play(app, spoken.wav, { (stop() || !job.isActive).also { if (it) stopped = true } }, {
+                trace?.mark(TurnStage.OUTPUT_START)
+                if (edges != null && !edges.silent) trace.timeline.markAfter(TurnStage.OUTPUT_AUDIBLE, edges.leadingMs, trace.turn)
+            }) { trace?.mark(TurnStage.OUTPUT_UNDERRUN) }
             trace?.mark(TurnStage.OUTPUT_END)
+            if (edges != null && !edges.silent && !stopped) trace.timeline.markBefore(TurnStage.SPEECH_END, edges.trailingMs, trace.turn)
             ensureActive()
             Outcome.Played(spoken.voice)
         } catch (e: CancellationException) {

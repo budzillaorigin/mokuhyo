@@ -8,7 +8,8 @@ import kotlin.time.TimeSource
 /**
  * One measured moment in a spoken turn (BRIEF_INTERVIEW_SPEED N1). A turn runs from the learner's last speech to the
  * partner's reply: capture → speech recognition → model → speech output → playback, plus cancellation and the
- * checkpoint. [wire] is the name in reports.
+ * checkpoint. [wire] is the name in reports; wires are never renamed, so stored reports keep their meaning. Each output
+ * marker says what it really measures (QC 2026-10-30 V12; docs/BENCHMARK.md lists them).
  */
 enum class TurnStage(val wire: String) {
     /** The last audible learner speech (back-dated from the VAD's silence tail). The headline metric starts here. */
@@ -23,12 +24,22 @@ enum class TurnStage(val wire: String) {
     LLM_FIRST_TOKEN("llm_first_token"),
     LLM_VALIDATED("llm_validated"),
     TTS_START("tts_start"),
+    /** The first PCM of an utterance from an engine that streams PCM. WAV-only engines never mark it (see [TTS_SYNTH_DONE]). */
     TTS_FIRST_PCM("tts_first_pcm"),
+    /** The output device opened and playback began: a proxy for first sound, before any leading silence or device delay. */
     OUTPUT_START("output_start"),
     OUTPUT_END("output_end"),
     CANCEL_REQUESTED("cancel_requested"),
     CANCEL_EFFECTIVE("cancel_effective"),
     CHECKPOINT_SAVED("checkpoint_saved"),
+    /** A whole utterance's audio is synthesized (a WAV engine's only "ready" moment; formerly marked as first PCM). */
+    TTS_SYNTH_DONE("tts_synth_done"),
+    /** The first audible sample reaches the device: device open plus the clip's leading silence (from the PCM, not acoustics). */
+    OUTPUT_AUDIBLE("output_audible"),
+    /** The last audible sample of an utterance that played to the end: playback end minus trailing silence. */
+    SPEECH_END("speech_end"),
+    /** The output buffer ran dry mid-utterance (a stall the learner hears as a gap). */
+    OUTPUT_UNDERRUN("output_underrun"),
     ;
 
     companion object {
@@ -58,6 +69,7 @@ data class TimelineSetup(
     val modelId: String? = null,
     /** The model file's SHA-256 (from the manifest), so reports from two machines compare like with like. */
     val modelHash: String? = null,
+    /** A configured voice, used only when no utterance rendered; what actually spoke is logged per utterance. */
     val voiceId: String? = null,
     /** "cpu", "metal", "vulkan", "endpoint" … */
     val backend: String? = null,
@@ -95,6 +107,8 @@ class TurnTimeline(
         var peakRssBytes: Long? = null
         /** Turns guided by a prerendered prompt (N5): counted separately from live-TTS turns. */
         var prerendered: Boolean = false
+        /** `engine:voice` of each utterance in order, as it actually rendered (fallbacks included). */
+        val voices: MutableList<String> = ArrayList()
     }
 
     private val lock = Any()
@@ -126,6 +140,9 @@ class TurnTimeline(
     /** Records [stage] as having happened [ms] milliseconds ago (the VAD reports the last speech after its silence tail). */
     fun markBefore(stage: TurnStage, ms: Long, turn: Int = current) = mark(stage, turn, now() - ms * 1_000_000)
 
+    /** Records [stage] as happening [ms] milliseconds from now (the first audible sample after a clip's leading silence). */
+    fun markAfter(stage: TurnStage, ms: Long, turn: Int = current) = mark(stage, turn, now() + ms * 1_000_000)
+
     /** Edits the current turn's numbers (answer length, fallback, TTS time…). */
     fun note(turn: Int = current, edit: Turn.() -> Unit) {
         synchronized(lock) { turns.getOrNull(turn)?.edit() }
@@ -144,7 +161,9 @@ class TurnTimeline(
     fun snapshot(): TimingReport.Session = synchronized(lock) {
         TimingReport.Session(
             id = sessionId, kind = kind, language = language,
-            modelId = setup.modelId, modelHash = setup.modelHash, voiceId = setup.voiceId, backend = setup.backend,
+            modelId = setup.modelId, modelHash = setup.modelHash, backend = setup.backend,
+            // The first voice that actually spoke; every utterance's own voice is in its turn (QC 2026-10-30 V12).
+            voiceId = turns.firstNotNullOfOrNull { it.voices.firstOrNull() } ?: setup.voiceId,
             llmThreads = setup.llmThreads, asrThreads = setup.asrThreads, ttsThreads = setup.ttsThreads,
             warmupMs = warmups.associate { it.first to it.second },
             turns = turns.map { t ->
@@ -154,6 +173,9 @@ class TurnTimeline(
                     llmAttempts = t.llmAttempts, prerendered = t.prerendered,
                     ttsSynthMs = t.ttsSynthMs.takeIf { it > 0 }, ttsAudioMs = t.ttsAudioMs.takeIf { it > 0 },
                     peakRssMb = t.peakRssBytes?.let { it / (1024 * 1024) },
+                    voices = t.voices.toList(),
+                    gapsMs = gaps(mine),
+                    underruns = mine.count { it.stage == TurnStage.OUTPUT_UNDERRUN },
                     events = mine.sortedBy { it.atNanos }.map { TimingReport.Mark(it.stage.wire, it.atNanos / 1_000_000, it.meaningful) },
                     stages = durations(mine).let { d ->
                         // A guided turn's clip: from choosing it to its first sound (target p95 ≤ 300 ms, N5).
@@ -191,14 +213,31 @@ class TurnTimeline(
             put("llm_first_token", first(TurnStage.LLM_START), first(TurnStage.LLM_FIRST_TOKEN))
             put("llm_validated", first(TurnStage.LLM_START), last(TurnStage.LLM_VALIDATED))
             put("tts_first_pcm", first(TurnStage.TTS_START), first(TurnStage.TTS_FIRST_PCM))
-            put("output_open", first(TurnStage.TTS_FIRST_PCM), firstAudio)
+            put("tts_synth", first(TurnStage.TTS_START), first(TurnStage.TTS_SYNTH_DONE))
+            put("output_open", first(TurnStage.TTS_FIRST_PCM) ?: first(TurnStage.TTS_SYNTH_DONE), firstAudio)
+            val audible = events.filter { it.stage == TurnStage.OUTPUT_AUDIBLE && it.meaningful }.minOfOrNull { it.atNanos }
+            put(FIRST_AUDIBLE, lastSpeech, audible)
+            put("leading_silence", firstAudio, audible)
             put("playback", firstAudio, last(TurnStage.OUTPUT_END))
             put("cancel", last(TurnStage.CANCEL_REQUESTED), last(TurnStage.CANCEL_EFFECTIVE))
             return out
         }
 
-        /** The headline: last learner speech → first meaningful partner audio (endpointing, ASR and queues included). */
+        /** Gaps the learner hears between consecutive utterances of a turn: one's speech end → the next one's first audible sample. */
+        internal fun gaps(events: List<Event>): List<Long> {
+            val ordered = events.filter { it.stage == TurnStage.SPEECH_END || it.stage == TurnStage.OUTPUT_AUDIBLE }.sortedBy { it.atNanos }
+            return ordered.zipWithNext().filter { (a, b) -> a.stage == TurnStage.SPEECH_END && b.stage == TurnStage.OUTPUT_AUDIBLE }
+                .map { (a, b) -> (b.atNanos - a.atNanos) / 1_000_000 }
+        }
+
+        /**
+         * The headline: last learner speech → first meaningful partner audio (endpointing, ASR and queues included). Its end
+         * is the device-open proxy, kept for comparison with earlier reports; [FIRST_AUDIBLE] adds the leading silence.
+         */
         const val FIRST_AUDIO = "first_audio"
+
+        /** Last learner speech → the reply's first audible sample (device open + leading silence). */
+        const val FIRST_AUDIBLE = "first_audible"
 
         /** A prerendered prompt's start: clip chosen → first sound. */
         const val PROMPT_START = "prompt_start"

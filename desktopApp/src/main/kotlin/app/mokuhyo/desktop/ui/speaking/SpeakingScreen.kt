@@ -422,7 +422,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         val outcome = delivery.deliver(delivery.question) {
             val clip = bankId?.let { id ->
                 traceMark(TurnStage.TTS_START)
-                PromptClips.load(app, module.code, id, text)?.also { traceMark(TurnStage.TTS_FIRST_PCM) }
+                PromptClips.load(app, module.code, id, text)?.also { traceMark(TurnStage.TTS_SYNTH_DONE) }
             }
             if (clip != null) {
                 timeline.note { prerendered = true }

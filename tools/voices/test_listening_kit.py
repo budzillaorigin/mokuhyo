@@ -28,6 +28,12 @@ def main() -> int:
         assert comments[("fa", "piper fa_IR-amir-medium")] == ["fa/fa-001.wav: stress on the last word"]
         md = listening_kit.markdown(totals, comments)
         assert "| fa | piper fa_IR-amir-medium | 3.00 (n=2) | 3.00 (n=2) | 3.00 (n=2) |" in md, md
+        c = kit / "rater-c.csv"
+        c.write_text("file,language,naturalness_1to5,cadence_1to5,continuity_1to5,comments\nfa/fa-002.wav,fa,4,2,5,\n", encoding="utf-8")
+        totals, _ = listening_kit.score(listening_kit.read_key(kit), [c])
+        conn = totals[("fa", "prerendered chatterbox:x")]
+        assert conn["cadence_1to5"] == [2.0] and conn["continuity_1to5"] == [5.0] and conn["naturalness_1to5"] == [4.0], conn
+        totals, comments = listening_kit.score(listening_kit.read_key(kit), [a, b])
         (kit / "missing.csv").write_text("language,source,voice,prompt_id,reason\nfa,piper,fa_IR-gyro-medium,q1,fell back to piper:fa_IR-amir-medium\n",
                                          encoding="utf-8")
         md = listening_kit.markdown(totals, comments, listening_kit.read_missing(kit))

@@ -274,7 +274,8 @@ class AppGraph(val dataDir: File = AppDirs.ensure(), packsRoot: File? = null) {
         return app.mokuhyo.speech.TimelineSetup(
             modelId = if (ollama) "ollama:" + (settings.get(Settings.Key.OLLAMA_MODEL) ?: "?") else model?.id,
             modelHash = model?.files?.firstOrNull()?.sha256?.take(16),
-            voiceId = runCatching { speech.voicesFor(lang).firstOrNull()?.let { "${it.engine}:${it.id}" } }.getOrNull(),
+            // No voice here: the first *listed* voice may not be the one that speaks (persona, fallback); each utterance
+            // logs its own (QC 2026-10-30 V12).
             backend = if (ollama) "endpoint" else if (runtime.gpuActive) "gpu" else "cpu",
             llmThreads = threadCaps.llm.takeIf { !ollama },
             asrThreads = threadCaps.asr,

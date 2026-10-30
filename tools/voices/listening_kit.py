@@ -3,7 +3,8 @@
     python voices/listening_kit.py score KIT_DIR SHEET.csv [SHEET2.csv ...] [--md OUT.md]
 
 Joins each rater's scoring sheet to KIT_DIR/key.csv and prints, per language and source (piper, os, prerendered, or a
-future candidate engine), the mean and count of intelligibility, pronunciation and naturalness, kept separate, plus
+future candidate engine), the mean and count of intelligibility, pronunciation and naturalness, and of the delivery ratings for connected
+replies (cadence, pause placement, pitch/stress, continuity, responsiveness), all kept separate, plus
 the comments. Blank scores are skipped. Candidates that failed or fell back to another voice (KIT_DIR/missing.csv,
 QC 2026-10-30 V5) are listed next to the scores, so a mean is never read without its gaps. Standard library only.
 """
@@ -15,7 +16,8 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-QUALITIES = ("intelligibility_1to5", "pronunciation_1to5", "naturalness_1to5")
+QUALITIES = ("intelligibility_1to5", "pronunciation_1to5", "naturalness_1to5", "cadence_1to5", "pause_placement_1to5",
+             "pitch_stress_1to5", "continuity_1to5", "responsiveness_1to5")
 
 
 def read_key(kit: Path) -> dict[str, dict[str, str]]:
@@ -55,7 +57,8 @@ def score(key: dict[str, dict[str, str]], sheets: list[Path]) -> tuple[dict, dic
 
 
 def markdown(totals: dict, comments: dict, missing: list[dict[str, str]] | None = None) -> str:
-    out = ["| Language | Source | Intelligibility | Pronunciation | Naturalness |", "| --- | --- | ---: | ---: | ---: |"]
+    out = ["| Language | Source | Intelligibility | Pronunciation | Naturalness | Cadence | Pause placement | Pitch/stress | Continuity | Responsiveness |",
+           "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
     for (lang, source), qs in sorted(totals.items()):
         cells = [f"{sum(v) / len(v):.2f} (n={len(v)})" if (v := qs.get(q)) else "—" for q in QUALITIES]
         out.append(f"| {lang} | {source} | " + " | ".join(cells) + " |")
