@@ -3,7 +3,10 @@ package app.mokuhyo.tts
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.lang.SpokenAudio
 import app.mokuhyo.lang.VoiceSpec
+import app.mokuhyo.speech.SpeechBudget
+import app.mokuhyo.speech.currentSpeechBudget
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.withTimeoutOrNull
 
 /** One source of voices: the bundled Piper service, the OS voice, … ([VoiceService] tries them in order). */
 interface SpeechEngine {
@@ -27,7 +30,8 @@ interface SpeechEngine {
  *
  * Within an engine, voices of the requested gender come first; an explicitly requested [VoiceSpec] is tried before
  * anything else. A voice that fails (crashed process, timeout, missing file) falls through to the next one, so a
- * broken bundled voice degrades to the OS voice instead of to silence.
+ * broken bundled voice degrades to the OS voice instead of to silence. When the caller carries a [SpeechBudget], every
+ * attempt runs within what remains of it and no new attempt starts once it is spent (QC 2026-10-30 V6).
  */
 class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, AutoCloseable {
 
@@ -37,10 +41,20 @@ class VoiceService(private val engines: List<SpeechEngine>) : SpeechOutput, Auto
     override suspend fun synthesize(text: String, language: String, voice: VoiceSpec?, speed: Double): SpokenAudio? {
         if (text.isBlank()) return null
         val pace = speed.coerceIn(MIN_SPEED, MAX_SPEED)
+        val budget = currentSpeechBudget()
         for (candidate in candidates(language, voice)) {
             val engine = engines.firstOrNull { it.engine == candidate.engine } ?: continue
+            val remaining = budget?.remainingMs() ?: Long.MAX_VALUE
+            if (remaining <= 0) {
+                System.err.println("tts: speech budget spent before ${candidate.engine}/${candidate.id} could try")
+                return null
+            }
             val wav = try {
-                engine.synthesize(text, candidate, pace)
+                if (remaining == Long.MAX_VALUE) engine.synthesize(text, candidate, pace)
+                else when (val r = withTimeoutOrNull(remaining) { Result.success(engine.synthesize(text, candidate, pace)) }) {
+                    null -> null.also { System.err.println("tts: ${candidate.engine}/${candidate.id} ran past the speech budget") }
+                    else -> r.getOrNull()
+                }
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {

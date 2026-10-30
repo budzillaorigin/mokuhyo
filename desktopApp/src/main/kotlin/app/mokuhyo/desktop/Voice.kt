@@ -7,6 +7,7 @@ import kotlinx.coroutines.channels.ReceiveChannel
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.EdgeSilence
+import app.mokuhyo.speech.currentSpeechBudget
 import app.mokuhyo.speech.TurnStage
 import app.mokuhyo.speech.currentTrace
 import app.mokuhyo.tts.Wav
@@ -40,12 +41,16 @@ object Voice {
         /** A voice rendered it but the speakers couldn't play it. */
         data class PlaybackFailed(val voice: VoiceSpec, val message: String) : Outcome
 
+        /** Nothing had played when the response's speech budget ran out (QC 2026-10-30 V6). */
+        data object TimedOut : Outcome
+
         val ok: Boolean get() = this is Played
 
         /** A sentence for the learner when it didn't play. */
         val problem: String? get() = when (this) {
             is Played -> null
             NoVoice -> "No voice is available for this language on this computer."
+            TimedOut -> "The voice took too long to start, so the text is shown instead."
             is PlaybackFailed -> "The voice couldn't be played: $message. Check the speakers or headphones and the output device in Settings → Speech & audio."
         }
     }
@@ -105,12 +110,14 @@ object Voice {
      */
     suspend fun playRendered(app: AppGraph, spoken: SpokenAudio, stop: () -> Boolean = { false }): Outcome = withContext(Dispatchers.IO) {
         val trace = currentTrace()
+        val budget = currentSpeechBudget()
         ensureActive()
         val job = coroutineContext.job
         val edges = trace?.let { runCatching { AudioIO.toMonoPcm(spoken.wav).let { (pcm, rate) -> EdgeSilence.of(pcm, rate) } }.getOrNull() }
         try {
             var stopped = false
             play(app, spoken.wav, { (stop() || !job.isActive).also { if (it) stopped = true } }, {
+                budget?.start()
                 trace?.mark(TurnStage.OUTPUT_START)
                 if (edges != null && !edges.silent) trace.timeline.markAfter(TurnStage.OUTPUT_AUDIBLE, edges.leadingMs, trace.turn)
             }) { trace?.mark(TurnStage.OUTPUT_UNDERRUN) }
@@ -142,7 +149,8 @@ object Voice {
         val result = SpokenReply<SpokenAudio>(
             synth = { s ->
                 val a = render(app, s, lang, used)
-                if (a == null) problem = Outcome.NoVoice else if (used == null) used = a.voice
+                if (a == null) problem = if (currentSpeechBudget()?.exhausted == true) Outcome.TimedOut else Outcome.NoVoice
+                else if (used == null) used = a.voice
                 a
             },
             play = { a -> playRendered(app, a).also { if (!it.ok) problem = it }.ok },

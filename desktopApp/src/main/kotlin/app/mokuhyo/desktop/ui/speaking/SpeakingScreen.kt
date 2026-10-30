@@ -112,6 +112,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import app.mokuhyo.lang.IcuSentences
 import app.mokuhyo.speech.ReplyRepair
+import app.mokuhyo.speech.SpeechBudget
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.security.MessageDigest
@@ -509,7 +510,9 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 status = "The interviewer is thinking…"
                 // The question is spoken sentence by sentence while the model is still writing it (N3).
                 val sentences = Channel<String>(2)
-                val speaking = async { Voice.sayStreamed(app, sentences, module.code) }
+                // Text-ready, audio-ready and output-start are separate deadlines (QC 2026-10-30 V6): every synthesis
+                // attempt for this question shares one budget, so an engine's per-request timeout can't extend the wait.
+                val speaking = async(SpeechBudget(SpeechBudget.forResponse(app.replyDeadlineMs()))) { Voice.sayStreamed(app, sentences, module.code) }
                 val line = try {
                     withContext(Dispatchers.Default) {
                         session.next(speak = { s -> status = if (test) "Listen, then answer." else "Listen…"; sentences.send(s) }, splitter = IcuSentences(module.code))
@@ -1019,7 +1022,7 @@ private fun TopicConversation(
                 // The reply is spoken sentence by sentence as the model writes it (N3), in the persona's one voice.
                 val sentences = Channel<String>(2)
                 val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(module.code), p.id, p.gender) }
-                val speaking = async { Voice.sayStreamed(app, sentences, module.code, voice) }
+                val speaking = async(SpeechBudget(SpeechBudget.forResponse(app.replyDeadlineMs()))) { Voice.sayStreamed(app, sentences, module.code, voice) }
                 val ex = try {
                     withContext(Dispatchers.Default) { session.say(text, speak = { sentences.send(it) }, splitter = IcuSentences(module.code)) }
                 } finally {
